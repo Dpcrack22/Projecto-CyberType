@@ -5,22 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CyberType</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- Link to external JavaScript file -->
     <script src="script.js" defer></script>
 </head>
 <body>
     <section>
         <h1>CyberType</h1>
         <p id="gameDescription">Joc de mecanografia. L'objectiu consisteix en teclejar correctament la frase que proporciona el joc en el menys temps possible i sense errades.</p>
-        <input type="text" id="inputName" placeholder="Insert your name"/>
-        <br>
+        <div id="nameArea">
+            <input type="text" id="inputName" placeholder="Insert your name"/>
+            <p id="infoText"></p>
+        </div>
         <select id="selectDifficulty">
             <option value="easy">Easy</option>
             <option value="medium">Medium</option>
             <option value="hard">Hard</option>
         </select>
         <br>
-        <button id="startGameButton">Start Game</button>
+        <input type="button" id="startGameButton" value="Start Game"/>
     </section>
 </body>
 </html>
