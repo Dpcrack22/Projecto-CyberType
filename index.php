@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberType</title>
+    <style src="styles.css"></style>
+</head>
+<body>
+    <section>
+        <h1>CyberType</h1>
+        <p>Joc de mecanografia. L'objectiu consisteix en teclejar correctament la frase que proporciona el joc en el menys temps possible i sense errades.</p>
+        <input type="text" id="inputName" placeholder="Insert your name"/>
+        <br>
+        <select id="selectDifficulty">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+        </select>
+        <br>
+        <button id="startGameButton">Start Game</button>
+    </section>
+</body>
+</html>
