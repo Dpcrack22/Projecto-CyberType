@@ -24,4 +24,4 @@
         <input type="button" id="startGameButton" value="Start Game"/>
     </section>
 </body>
-</html>
+</html> 
