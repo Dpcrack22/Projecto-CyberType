@@ -88,6 +88,9 @@ option {
 .correcta {
     color: green;
 }
+.normal {
+    color: darkturquoise;
+}
 
 .incorrecta {
     color: red;

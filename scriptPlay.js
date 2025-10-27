@@ -12,6 +12,9 @@ function mostrarFrase() {
         span.textContent = letra;
         fraseDiv.appendChild(span);
     }
+
+    inputOcult.value = "";
+    inputOcult.focus();
 }
 
 const intervalo = setInterval(() => {
@@ -31,23 +34,21 @@ const intervalo = setInterval(() => {
 function verificarEscritura() {
     const valor = inputOcult.value;
     const spans = fraseDiv.querySelectorAll("span");
-    for (let i =0; i < spans.length; i++) {
-        const letra = valor[i];
-        const span = spans[i];
+    for (let i = 0; i < spans.length; i++) {
+        const letraEsperada = fraseAleatoria[i] || "";
+        const letraEscrita = valor[i] || "";
 
-        if (letra == null) {
-            span.classList.remove("correcto");
-            span.classList.remove("incorrecto");
-        } else if (letra === span.textContent) {
-            span.classList.add("correcto");
-            span.classList.remove("incorrecto");
+        if (letraEscrita === "") {
+            spans[i].classList.remove("correcta");
+            spans[i].classList.remove("incorrecta");
+        } else if (letraEscrita === letraEsperada) {
+            spans[i].classList.add("correcta");
+            spans[i].classList.remove("incorrecta");
         } else {
-            span.classList.add("incorrecto");
-            span.classList.remove("correcto");
+            spans[i].classList.add("incorrecta");
+            spans[i].classList.remove("correcta");
         }
     }
-
-    if (valor.length === fraseAleatoria.length) {
-        window.location.href = "ranking.php";
-    }
 };
+
+inputOcult.addEventListener("input", verificarEscritura);
