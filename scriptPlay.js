@@ -3,15 +3,18 @@ const fraseDiv = document.getElementById("frase");
 const inputOcult = document.getElementById("inputOcult");
 const contadorDiv = document.getElementById("contador");
 let contador = 3;
+let posicionActual = 0;
 
 function mostrarFrase() {
     fraseDiv.innerHTML = "";
+    posicionActual = 0;
     fraseAleatoria = fraseOriginal[Math.floor(Math.random() * fraseOriginal.length)];
     for (let letra of fraseAleatoria) {
         const span = document.createElement("span");
         span.textContent = letra;
         fraseDiv.appendChild(span);
     }
+    updateCurrentLetter();
 
     inputOcult.value = "";
     inputOcult.focus();
@@ -31,6 +34,22 @@ const intervalo = setInterval(() => {
     }
 }, 1000);
 
+function updateCurrentLetter() {
+    const spans = fraseDiv.querySelectorAll("span");
+    spans.forEach(span => span.classList.remove("currentLetter"));
+    if (posicionActual < spans.length) {
+        spans[posicionActual].classList.add("currentLetter");
+    }
+}
+
+inputOcult.addEventListener("input", (event) => {
+    const letraEscrita = event.target.value;
+    if (letraEscrita === fraseAleatoria[posicionActual]) {
+        posicionActual++;
+        updateCurrentLetter();
+    }
+    event.target.value = "";
+});
 function verificarEscritura() {
     const valor = inputOcult.value;
     const spans = fraseDiv.querySelectorAll("span");
