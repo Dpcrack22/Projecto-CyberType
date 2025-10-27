@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
-<body>
+<body class="body-index">
     <section>
         <h1>CyberType</h1>
         <p id="gameDescription">Joc de mecanografia. L'objectiu consisteix en teclejar correctament la frase que proporciona el joc en el menys temps possible i sense errades.</p>
@@ -21,7 +21,7 @@
             <option value="hard">Hard</option>
         </select>
         <br>
-        <input type="button" id="startGameButton" value="Start Game"/>
+        <input type="button" id="startGameButton" value="START GAME"/>
     </section>
 </body>
 </html>
