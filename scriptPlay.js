@@ -1,4 +1,4 @@
-const fraseOriginal = "El ràpid guineu marró salta sobre el gos mandrós.";
+const fraseOriginal = ["El ràpid esquirol salta sobre el gos mandrós." , "Tipus de lletra monoespaiada són ideals per a programar." , "La pràctica fa al mestre en qualsevol disciplina."];
 const fraseDiv = document.getElementById("frase");
 const inputOcult = document.getElementById("inputOcult");
 const contadorDiv = document.getElementById("contador");
@@ -6,7 +6,8 @@ let contador = 3;
 
 function mostrarFrase() {
     fraseDiv.innerHTML = "";
-    for (let letra of fraseOriginal) {
+    fraseAleatoria = fraseOriginal[Math.floor(Math.random() * fraseOriginal.length)];
+    for (let letra of fraseAleatoria) {
         const span = document.createElement("span");
         span.textContent = letra;
         fraseDiv.appendChild(span);
