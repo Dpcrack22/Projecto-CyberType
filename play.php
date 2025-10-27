@@ -14,6 +14,11 @@
         <p id="frase"></p>
         <input type="text" id="inputOcult" autofocus/>
     </div>
+    <form id="formRanking" action="ranking.php" method="POST" style="display:none;">
+        <input type="hidden" name="frase" id="fraseInput">
+        <input type="hidden" name="tiempo" id="tiempoInput">
+    </form>
+
     <script src="./scriptPlay.js" defer></script>
 </body>
 </html>

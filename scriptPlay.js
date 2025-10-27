@@ -10,6 +10,7 @@ function mostrarFrase() {
     fraseDiv.innerHTML = "";
     posicionActual = 0;
     fraseAleatoria = fraseOriginal[Math.floor(Math.random() * fraseOriginal.length)];
+    tiempoInicio = performance.now(); // Mide el tiempo que ha tardado en escribir la frase
 
     for (let letra of fraseAleatoria) {
         const span = document.createElement("span");
@@ -68,6 +69,13 @@ function verificarEscritura() {
 
     if (valor.length === fraseAleatoria.length) {
         // alert("¡Frase completada!");
+        const tiempoFin = performance.now();
+        const tiempoTotal = ((tiempoFin - tiempoInicio) / 1000).toFixed(2);
+
+        // Enviar datos al ranking.php
+        document.getElementById("fraseInput").value = fraseAleatoria;
+        document.getElementById("tiempoInput").value = tiempoTotal;
+        document.getElementById("formRanking").submit();
     }
 };
 
