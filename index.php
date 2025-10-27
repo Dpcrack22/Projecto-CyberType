@@ -23,14 +23,6 @@
         <br>
         <input type="button" id="startGameButton" value="Start Game"/>
     </section>
-
-
-    <a href="gameover.php">Provar 403</a>
-    <?php
-        session_start();
-        $_SESSION['game_finished'] = true;
-        header("Location: gameover.php");
-        exit;
-    ?>
+    
 </body>
 </html>

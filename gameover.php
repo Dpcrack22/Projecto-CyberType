@@ -11,11 +11,14 @@
 
 
     <?php
+    // Access control to prevent direct access to this page
+    /*
         session_start();
         if (!isset($_SESSION['game_finished']) || $_SESSION['game_finished'] !== true) {
             header("Location: error403.php");
             exit;
         }
+            */
     ?>
 
 </body>
