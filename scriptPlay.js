@@ -67,8 +67,8 @@ function verificarEscritura() {
     updateCurrentLetter();
 
     // Si ha terminado
-    if (valor === fraseAleatoria) {
-        alert("¡Frase completada!");
+    if (valor.length === fraseAleatoria.length) {
+        // alert("¡Frase completada!");
     }
 };
 
