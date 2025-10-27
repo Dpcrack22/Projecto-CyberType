@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
+    <div class="emoji-404">🚧</div>
+    <h1>404 - Pàgina no trobada</h1>
+    <p>Ups! No hem pogut trobar la pàgina que buscaves.</p>
+    <a href="./index.php">Tornar a l'inici</a>
 </body>
 </html>
