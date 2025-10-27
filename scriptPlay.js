@@ -67,15 +67,33 @@ function verificarEscritura() {
     posicionActual = valor.length;
     updateCurrentLetter();
 
-    if (valor.length === fraseAleatoria.length) {
-        // alert("¡Frase completada!");
-        const tiempoFin = performance.now();
-        const tiempoTotal = ((tiempoFin - tiempoInicio) / 1000).toFixed(2);
 
-        // Enviar datos al ranking.php
+    // Necesito hacer que cuando acabe la partida, se envie el formulario al gameover.php
+    // Pero se debe tener en cuenta que para ir a gameover.php debemos poner este codigo
+    /* Cuando acabe el juego hay que poner esto en algun lado antes de redirigir a gameover.php
+
+        $_SESSION['game_finished'] = true;
+        header("Location: gameover.php");
+
+    */
+    if (valor === fraseAleatoria) {
+        const tiempoFin = performance.now();
+        const tiempoTotal = ((tiempoFin - tiempoInicio) / 1000).toFixed(2); // Tiempo en segundos con dos decimales
+
+        // Rellenar los inputs ocultos del formulario
         document.getElementById("fraseInput").value = fraseAleatoria;
         document.getElementById("tiempoInput").value = tiempoTotal;
+
+        // Enviar el formulario
         document.getElementById("formRanking").submit();
+
+        fetch('gameover.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ game_finished: true })
+        });
     }
 };
 
