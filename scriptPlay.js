@@ -15,6 +15,9 @@ function mostrarFrase() {
         fraseDiv.appendChild(span);
     }
     updateCurrentLetter();
+
+    inputOcult.value = "";
+    inputOcult.focus();
 }
 
 const intervalo = setInterval(() => {
@@ -47,3 +50,24 @@ inputOcult.addEventListener("input", (event) => {
     }
     event.target.value = "";
 });
+function verificarEscritura() {
+    const valor = inputOcult.value;
+    const spans = fraseDiv.querySelectorAll("span");
+    for (let i = 0; i < spans.length; i++) {
+        const letraEsperada = fraseAleatoria[i] || "";
+        const letraEscrita = valor[i] || "";
+
+        if (letraEscrita === "") {
+            spans[i].classList.remove("correcta");
+            spans[i].classList.remove("incorrecta");
+        } else if (letraEscrita === letraEsperada) {
+            spans[i].classList.add("correcta");
+            spans[i].classList.remove("incorrecta");
+        } else {
+            spans[i].classList.add("incorrecta");
+            spans[i].classList.remove("correcta");
+        }
+    }
+};
+
+inputOcult.addEventListener("input", verificarEscritura);
