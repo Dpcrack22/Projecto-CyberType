@@ -27,3 +27,27 @@ const intervalo = setInterval(() => {
         mostrarFrase();
     }
 }, 1000);
+
+function verificarEscritura() {
+    const valor = inputOcult.value;
+    const spans = fraseDiv.querySelectorAll("span");
+    for (let i =0; i < spans.length; i++) {
+        const letra = valor[i];
+        const span = spans[i];
+
+        if (letra == null) {
+            span.classList.remove("correcto");
+            span.classList.remove("incorrecto");
+        } else if (letra === span.textContent) {
+            span.classList.add("correcto");
+            span.classList.remove("incorrecto");
+        } else {
+            span.classList.add("incorrecto");
+            span.classList.remove("correcto");
+        }
+    }
+
+    if (valor.length === fraseAleatoria.length) {
+        window.location.href = "ranking.php";
+    }
+};
