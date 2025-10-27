@@ -1,4 +1,5 @@
-body {
+/* Styles for index.php */
+#bodyIndex {
     background-color: #000000;
     color: darkturquoise;
     text-align: center;
@@ -55,4 +56,44 @@ option {
 #startGameButton:hover {
     background-color: darkturquoise;
     color: #000000;
+}
+
+/* Styles for play.php */
+#bodyPlay {
+    background-color: #000000;
+    color: darkturquoise;
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 50px;
+}
+#contador {
+    font-size: 40px;
+    font-weight: bold;
+}
+#fraseContainer {
+    display: none;
+    margin-top: 20px;
+}
+#inputOcult {
+    width: 60%;
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 20px;
+    background-color: #000000;
+    color: darkturquoise;
+    border: 2px solid darkmagenta;
+}
+
+/* Colores de las letras */
+.correcta {
+    color: green;
+}
+
+.incorrecta {
+    color: red;
+}
+
+#frase span {
+    font-size: 20px;
+    padding: 1px;
 }
