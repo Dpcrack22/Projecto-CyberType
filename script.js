@@ -5,7 +5,11 @@ const infoText = document.getElementById("infoText");
 startGameButton.addEventListener('click', async () => {
     const inputNameValue = document.getElementById("inputName").value;
     const selectDifficultyValue = document.getElementById("selectDifficulty").value;
-    const phrase = await getPhrase(selectDifficultyValue); // Obtener la frase según la dificultad seleccionada
+    const phraseArray = await getPhrase(selectDifficultyValue);
+    let phrase = phraseArray.split(',')[Math.floor(Math.random() * phraseArray.split(',').length)];
+    console.log(phrase);
+    // haz que haya un paron de 3 segundos antes de iniciar el juego
+    await new Promise(resolve => setTimeout(resolve, 20000));
 
     if (inputNameValue.trim() === "") {
         infoText.style.color = "red";
@@ -45,11 +49,11 @@ async function getPhrase(difficulty) {
     const text = await response.text();
     switch (difficulty) {
         case "easy":
-            return text.substring(text.indexOf("easy:") + 5, text.indexOf("medium:")).trim();
+            return text.substring(text.indexOf("easy:") + 6, text.indexOf("]")).trim();
         case "medium":
-            return text.substring(text.indexOf("medium:") + 7, text.indexOf("hard:")).trim();
+            return text.substring(text.indexOf("medium:") + 8, text.indexOf("]", text.indexOf("medium:"))).trim();
         case "hard":
-            return text.substring(text.indexOf("hard:") + 5).trim();
+            return text.substring(text.indexOf("hard:") + 6, text.lastIndexOf("]")).trim();
         default:
             return "";
     }
