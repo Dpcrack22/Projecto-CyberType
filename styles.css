@@ -337,3 +337,21 @@
     background-color: #A50000;
 }
 
+/* Prueba thanos chasquido */
+@keyframes disintegrate {
+  0% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5) rotate(15deg);
+    filter: blur(3px);
+  }
+}
+
+.disappear {
+  animation: disintegrate 1s ease-out forwards;
+}
+

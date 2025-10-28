@@ -7,6 +7,11 @@ let posicionActual = 0;
 let fraseAleatoria = "";
 let puntuacion = 0;
 
+// Prueba Chasquido
+let totalLetrasEscritas = 0;
+let totalErrores = 0;
+let thanosSnapTriggered = false;
+
 function mostrarFrase() {
     fraseDiv.innerHTML = "";
     posicionActual = 0;
@@ -53,6 +58,9 @@ function verificarEscritura() {
     const valor = inputOcult.value;
     const spans = fraseDiv.querySelectorAll("span");
 
+    totalLetrasEscritas = valor.length;
+    totalErrores = 0;
+
     for (let i = 0; i < spans.length; i++) {
         const letraEsperada = fraseAleatoria[i] || "";
         const letraEscrita = valor[i] || "";
@@ -67,11 +75,24 @@ function verificarEscritura() {
             spans[i].classList.add("incorrecta");
             spans[i].classList.remove("correcta");
             puntuacion = puntuacion - 5;
+            totalErrores++;
         }
     }
 
     posicionActual = valor.length;
     updateCurrentLetter();
+
+    if (!thanosSnapTriggered && totalLetrasEscritas > 0) {
+        const errorRate = totalErrores / totalLetrasEscritas;
+        if (errorRate >= 0.5) {
+            thanosSnapTriggered = true;
+            activateThanosSnap();
+            setTimeout(() => {
+                endGame(puntuacion, ((performance.now() - tiempoInicio) / 1000).toFixed(2));
+            }, 4000);
+            return;
+        }
+    }
 
     if (valor.length === fraseAleatoria.length) {
         const tiempoFin = performance.now();
@@ -81,6 +102,26 @@ function verificarEscritura() {
     }
 };
 
+function activateThanosSnap() {
+    console.log("💥 Modo Thanos activado: la mitad de las letras desaparecerán...");
+
+    const spans = Array.from(fraseDiv.querySelectorAll("span"));
+    const half = Math.floor(spans.length / 2);
+    const shuffled = spans.sort(() => 0.5 - Math.random());
+    const toRemove = shuffled.slice(0, half);
+
+    new Audio('snap.mp3').play();
+
+    alert("💀 Thanos ha chasqueado los dedos... la mitad se desintegra y tu partida se acabó.");
+
+    // Efecto visual
+    toRemove.forEach((span, i) => {
+        setTimeout(() => {
+            span.classList.add("disappear");
+            setTimeout(() => span.remove(), 1000);
+        }, i * 100);
+    });
+}
 inputOcult.addEventListener("input", verificarEscritura);
 
 function endGame(score, time) {
