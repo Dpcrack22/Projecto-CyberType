@@ -9,7 +9,7 @@
 </head>
 <body class="body-index">
     <div class="hero-container">
-        <img src="/IMG/IndexImg001.png" alt="Iron Man" class="side-img left-img">
+        <img src="./IMG/IndexImg001.png" alt="Iron Man" class="side-img left-img">
 
         <section>
             <h1>MarvelType</h1>
@@ -27,7 +27,7 @@
             <input type="button" id="startGameButton" value="Start Game"/>
         </section>
 
-        <img src="/IMG/IndexImg002.png" alt="Thanos" class="side-img right-img">
+        <img src="./IMG/IndexImg002.png" alt="Thanos" class="side-img right-img">
     </div>
 
     <noscript>
