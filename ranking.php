@@ -9,7 +9,7 @@
     $score = $_SESSION['score'];
     $time = $_SESSION['time'];
 
-    $archivo = "ranking.txt";
+    $archivo = "./ranking.txt";
 
     // Formato del registro
     $registro = "$playerName | $score | $time" . PHP_EOL;
