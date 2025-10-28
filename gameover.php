@@ -25,7 +25,7 @@
         <input type="hidden" name="inputName" value="<?= htmlspecialchars($inputName) ?>">
         <input type="hidden" name="score" value="<?= htmlspecialchars($score) ?>">
         <input type="hidden" name="time" value="<?= htmlspecialchars($time) ?>">
-        <button type="submit">Guardar en el ranking</button>
+        <button type="submit">Almacenar Ranking</button>
     </form>
 
     <a href="index.php">Jugar de nuevo</a>
