@@ -2,6 +2,11 @@ const fraseOriginal = ["El ràpid esquirol salta sobre el gos mandrós." , "Tipu
 const fraseDiv = document.getElementById("frase");
 const inputOcult = document.getElementById("inputOcult");
 const contadorDiv = document.getElementById("contador");
+const bonusDiv = document.getElementById("bonusMessage");
+let puntuation = 0;
+let consectutiveRightHits = 0;
+let consectutiveWrongHits = 0;
+let bonus = 0;
 let contador = 3;
 let posicionActual = 0;
 let fraseAleatoria = "";
@@ -79,6 +84,14 @@ function verificarEscritura() {
         }
     }
 
+    if (valor.length > 0) {
+        const ultimaLetraIndex = valor.length - 1;
+        const ultimaLetraEsperada = fraseAleatoria[ultimaLetraIndex];
+        const ultimaLetraEscrita = valor[ultimaLetraIndex];
+
+        easterEgg(ultimaLetraEscrita === ultimaLetraEsperada);
+    }
+
     posicionActual = valor.length;
     updateCurrentLetter();
 
@@ -145,4 +158,39 @@ function endGame(score, time) {
         }
     })
     .catch(error => console.error("Error al comunicarse con el servidor:", error));
+}
+
+
+function mostrarBonus() {
+    bonusDiv.textContent = "BONUS!";
+    bonusDiv.style.display = "block";
+
+    setTimeout(() => {
+        bonusDiv.style.display = "none";
+    }, 1500);
+}
+
+
+function easterEgg(bool) {
+    if (bool) {
+        consectutiveWrongHits = 0;
+        consectutiveRightHits++;
+        puntuation += 50;
+        if (consectutiveRightHits === 5) {
+            consectutiveRightHits = 0;
+            puntuation += 200;
+            bonus++;
+            mostrarBonus();
+        }
+    } else {
+        consectutiveRightHits = 0;
+        consectutiveWrongHits++;
+        puntuation -= 20;
+        if (consectutiveWrongHits === 5) {
+            consectutiveWrongHits = 0;
+            puntuation -= 200;
+            bonus--;
+        }
+    }
+    console.log(puntuation);
 }

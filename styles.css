@@ -210,6 +210,21 @@
     font-weight: bold;
 }
 
+#bonusMessage {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 32px;
+    font-weight: bold;
+    display: none;         
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: yellow;
+    color: red;
+    text-align: center;
+    border: 2px solid orange;
+}
 /* 404 PAGE STYLES */
 
 .body-404{
