@@ -27,7 +27,7 @@
     <title>Ranking - MarvelType</title>
     <link rel="stylesheet" type="text/css" href="./styles.css?<?php echo time(); ?>" />
 </head>
-<body>
+<body class="body-ranking">
     <h1>Ranking de Jugadores - CyberType</h1>
     <table>
         <tr>

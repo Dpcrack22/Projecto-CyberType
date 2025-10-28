@@ -15,7 +15,7 @@
     <a href="./index.php">Volver con los demas reclutas</a>
     </div>
     <div class="image-div-403">
-    <img src="./Marvel-Nick-Fury-PNG-HD.png" alt="Image Nick furry" class="image-403">
+    <img src="/IMG/Marvel403.png" alt="Image Nick furry" class="image-403">
     </div>
 </body>
 </html>

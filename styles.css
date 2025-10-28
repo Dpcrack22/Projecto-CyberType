@@ -381,3 +381,168 @@
   animation: disintegrate 1s ease-out forwards;
 }
 
+
+
+
+/* GameOver PAGE STYLES */
+
+.body-gameover {
+    background-color: #141414; 
+    color: #FFFFFF; 
+    font-family: 'Arial', sans-serif; 
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    height: 700px;
+
+}
+
+.body-gameover h1 {
+    color: #ED1D24; 
+    font-size: 3.5em;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-align: center;
+}
+
+.body-gameover p {
+    color: #CCCCCC;
+    font-size: 1.8em;
+    margin: 8px 0;
+    text-align: center;
+}
+
+.body-gameover .botones-gameover{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+
+
+
+.body-gameover .botonEnviarRank-gameover,
+.body-gameover .botonVolverInicio-gameover {
+    display: inline-block;
+    text-align: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.6em;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    min-width: 320px;
+}
+
+.body-gameover .botonEnviarRank-gameover {
+    background-color: #ED1D24; 
+    color: #FFFFFF; 
+}
+
+.body-gameover .botonEnviarRank-gameover:hover {
+    background-color: #A50000;
+}
+
+.body-gameover .botonVolverInicio-gameover {
+    color: #FFFFFF;
+    background-color: #3268BD;
+}
+
+.body-gameover .botonVolverInicio-gameover:hover {
+    background-color: #24497A;
+}
+
+.body-gameover .botonVolverInicio-gameover a{
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+
+/* RANKING PAGE STYLES */
+
+.body-ranking {
+    background-color: #141414;
+    color: #FFFFFF;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.body-ranking h1 {
+    color: #ED1D24;
+    font-size: 2.8em;
+    font-weight: 900;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+}
+
+.body-ranking table {
+    width: 90%;
+    max-width: 800px;
+    border-collapse: collapse;
+    background-color: #242424;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(237, 29, 36, 0.4);
+    margin-bottom: 30px;
+}
+
+.body-ranking th, .body-ranking td {
+    padding: 15px 10px;
+    color: #FFFFFF;
+    font-size: 1.1em;
+}
+
+.body-ranking th {
+    background-color: #ED1D24;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.body-ranking tr:nth-child(even) {
+    background-color: #1A1A1A;
+}
+.body-ranking tr:nth-child(odd) {
+    background-color: #3c3c3c98;
+}
+
+.body-ranking tr:nth-child(even):hover {
+    background-color: #518bca72;
+}
+
+.body-ranking tr:nth-child(odd):hover {
+    background-color: #ed1d246a;
+}
+
+.body-ranking a {
+    display: inline-block;
+    background-color: #ED1D24;
+    color: #FFFFFF;
+    padding: 12px 35px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.body-ranking a:hover {
+    background-color: #A50000;
+}
