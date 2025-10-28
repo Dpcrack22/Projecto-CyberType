@@ -12,7 +12,7 @@
     <div id="fraseContainer">
         <p><strong>Escriu la següent frase:</strong></p>
         <p id="frase"></p>
-        <input type="text" id="inputOcult" autofocus/>
+        <input type="text" id="inputOcult" autofocus autocomplete="off"/>
     </div>
 
     <script src="./scriptPlay.js" defer></script>
