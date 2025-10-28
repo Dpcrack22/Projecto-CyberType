@@ -111,6 +111,7 @@ function verificarEscritura() {
         if (errorRate >= 0.5) {
             thanosSnapTriggered = true;
             activateThanosSnap();
+            puntuacion = -5000;
             setTimeout(() => {
                 endGame(puntuacion, ((performance.now() - tiempoInicio) / 1000).toFixed(2));
             }, 4000);
