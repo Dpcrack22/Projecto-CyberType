@@ -1,3 +1,11 @@
+<?php
+    session_start();
+
+    if (isset($_POST['playerName'])) {
+        $_SESSION['playerName'] = htmlspecialchars($_POST['playerName']);
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
