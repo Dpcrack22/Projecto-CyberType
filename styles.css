@@ -228,14 +228,16 @@
     transform: translateX(-50%);
     font-size: 32px;
     font-weight: bold;
-    display: none;         
-    padding: 10px 20px;
+    display: none;
+    padding: 12px 25px;
     border-radius: 8px;
-    background-color: yellow;
-    color: red;
+    background-color: #ED1D24;
+    color: #FFC82C;
     text-align: center;
-    border: 2px solid orange;
+    border: 2px solid #A50000;
+    box-shadow: 0 0 20px rgba(237, 29, 36, 0.6);
 }
+
 /* 404 PAGE STYLES */
 
 .body-404{
@@ -362,27 +364,6 @@
 .body-403 a:hover {
     background-color: #A50000;
 }
-
-/* Prueba thanos chasquido */
-@keyframes disintegrate {
-  0% {
-    opacity: 1;
-    transform: scale(1) rotate(0deg);
-    filter: blur(0);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1.5) rotate(15deg);
-    filter: blur(3px);
-  }
-}
-
-.disappear {
-  animation: disintegrate 1s ease-out forwards;
-}
-
-
-
 
 /* GameOver PAGE STYLES */
 
@@ -546,3 +527,22 @@
 .body-ranking a:hover {
     background-color: #A50000;
 }
+
+/* Prueba thanos chasquido */
+@keyframes disintegrate {
+  0% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5) rotate(15deg);
+    filter: blur(3px);
+  }
+}
+
+.disappear {
+  animation: disintegrate 1s ease-out forwards;
+}
+

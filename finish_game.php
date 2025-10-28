@@ -12,5 +12,8 @@
     if (isset($_POST['time'])) {
         $_SESSION['time'] = floatval($_POST['time']);
     }
+    if (isset($_POST['bonus'])) {
+        $_SESSION['bonus'] = intval($_POST['bonus']);
+    }
     echo "OK";
 ?>

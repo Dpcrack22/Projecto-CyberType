@@ -13,7 +13,6 @@ let bonus = 0;
 let contador = 3;
 let posicionActual = 0;
 let fraseAleatoria = "";
-let puntuacion = 0;
 
 
 // Prueba Chasquido
@@ -81,18 +80,16 @@ function verificarEscritura() {
             audioRight.pause();
             audioMiss.pause();
             audioRight.currentTime = 0;
-            audioRight.play();
+            audioRight.play().catch(() => {});
             spans[i].classList.add("correcta");
             spans[i].classList.remove("incorrecta");
-            puntuacion = puntuacion + 10;
         } else {
             audioMiss.pause();
             audioRight.pause();
             audioMiss.currentTime = 0;
-            audioMiss.play();
+            audioMiss.play().catch(() => {});
             spans[i].classList.add("incorrecta");
             spans[i].classList.remove("correcta");
-            puntuacion = puntuacion - 5;
             totalErrores++;
         }
     }
@@ -113,9 +110,9 @@ function verificarEscritura() {
         if (errorRate >= 0.5) {
             thanosSnapTriggered = true;
             activateThanosSnap();
-            puntuacion = -5000;
+            puntuation = -5000;
             setTimeout(() => {
-                endGame(puntuacion, ((performance.now() - tiempoInicio) / 1000).toFixed(2));
+                endGame(puntuation, ((performance.now() - tiempoInicio) / 1000).toFixed(2));
             }, 4000);
             return;
         }
@@ -125,7 +122,7 @@ function verificarEscritura() {
         const tiempoFin = performance.now();
         const tiempoTotal = ((tiempoFin - tiempoInicio) / 1000).toFixed(2); // Tiempo en segundos con dos decimales
 
-        endGame(puntuacion, tiempoTotal);
+        endGame(puntuation, tiempoTotal);
     }
 };
 
@@ -159,6 +156,7 @@ function endGame(score, time) {
         },
         body: "score=" + encodeURIComponent(score)
         + "&time=" + encodeURIComponent(time)
+        + "&bonus=" + encodeURIComponent(bonus)
     })
     .then(response => response.text())
     .then(data => {
