@@ -5,6 +5,7 @@ const contadorDiv = document.getElementById("contador");
 let contador = 3;
 let posicionActual = 0;
 let fraseAleatoria = "";
+let puntuacion = 0;
 
 function mostrarFrase() {
     fraseDiv.innerHTML = "";
@@ -61,9 +62,11 @@ function verificarEscritura() {
         } else if (letraEscrita === letraEsperada) {
             spans[i].classList.add("correcta");
             spans[i].classList.remove("incorrecta");
+            puntuacion = puntuacion + 10;
         } else {
             spans[i].classList.add("incorrecta");
             spans[i].classList.remove("correcta");
+            puntuacion = puntuacion - 5;
         }
     }
 
@@ -74,23 +77,31 @@ function verificarEscritura() {
         const tiempoFin = performance.now();
         const tiempoTotal = ((tiempoFin - tiempoInicio) / 1000).toFixed(2); // Tiempo en segundos con dos decimales
 
-        endGame();
+        endGame(puntuacion, tiempoTotal);
     }
 };
 
 inputOcult.addEventListener("input", verificarEscritura);
 
-function endGame() {
+function endGame(score, time) {
     // Llamada al servidor para establecer la variable de sesión
-    fetch('finish_game.php')
-        .then(response => response.text())
-        .then(data => {
-            if (data === "OK") {
-                // Redirigir una vez se haya establecido la sesión
-                window.location.href = "gameover.php";
-            } else {
-                console.error("Error al finalizar el juego en el servidor.");
-            }
-        })
-        .catch(error => console.error("Error al comunicarse con el servidor:", error));
+    // En esta ocasión, también enviamos la puntuación y el tiempo
+    fetch('finish_game.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: "score=" + encodeURIComponent(score)
+        + "&time=" + encodeURIComponent(time)
+    })
+    .then(response => response.text())
+    .then(data => {
+        if (data === "OK") {
+            // Redirigir una vez se haya establecido la sesión
+            window.location.href = "gameover.php";
+        } else {
+            console.error("Error al finalizar el juego en el servidor.");
+        }
+    })
+    .catch(error => console.error("Error al comunicarse con el servidor:", error));
 }
