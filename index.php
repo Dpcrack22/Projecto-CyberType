@@ -29,5 +29,11 @@
 
         <img src="/IMG/IndexImg002.png" alt="Thanos" class="side-img right-img">
     </div>
+
+    <noscript>
+        <div class="no-js-warning">
+            ⚠️ El juego necesita javascript para funcionar. Por favor, habilita Javascript para empezar.
+        </div>
+    </noscript>
 </body>
 </html>

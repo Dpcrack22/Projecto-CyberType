@@ -26,5 +26,11 @@
     <div id="bonusMessage"></div>
 
     <script src="./scriptPlay.js" defer></script>
+
+    <noscript>
+        <div class="no-js-warning">
+            ⚠️ El juego necesita javascript para funcionar. Por favor, habilita Javascript para empezar.
+        </div>
+    </noscript>
 </body>
 </html>

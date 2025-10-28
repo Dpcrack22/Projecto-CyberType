@@ -104,6 +104,17 @@
     transform: scale(1.05);
 }
 
+.no-js-warning {
+    background-color: #ffdddd;
+    color: #a00;
+    padding: 1em;
+    border: 1px solid #a00;
+    border-radius: 8px;
+    text-align: center;
+    margin: 1em auto;
+    max-width: 500px;
+}
+
 /* PLAY PAGE STYLES */
 
 .body-play {
