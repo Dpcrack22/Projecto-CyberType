@@ -2,6 +2,9 @@ const fraseOriginal = ["El ràpid esquirol salta sobre el gos mandrós." , "Tipu
 const fraseDiv = document.getElementById("frase");
 const inputOcult = document.getElementById("inputOcult");
 const contadorDiv = document.getElementById("contador");
+const audioRight = new Audio("Right.mp3");
+const audioMiss = new Audio("Miss.wav");
+const audioGameover = new Audio("gameover.wav");
 let contador = 3;
 let posicionActual = 0;
 let fraseAleatoria = "";
@@ -56,9 +59,17 @@ function verificarEscritura() {
         if (letraEscrita === "") {
             spans[i].classList.remove("correcta", "incorrecta");
         } else if (letraEscrita === letraEsperada) {
+            audioRight.pause();
+            audioMiss.pause();
+            audioRight.currentTime = 0;
+            audioRight.play();
             spans[i].classList.add("correcta");
             spans[i].classList.remove("incorrecta");
         } else {
+            audioMiss.pause();
+            audioRight.pause();
+            audioMiss.currentTime = 0;
+            audioMiss.play();
             spans[i].classList.add("incorrecta");
             spans[i].classList.remove("correcta");
         }
@@ -84,6 +95,7 @@ function endGame() {
         .then(data => {
             if (data === "OK") {
                 // Redirigir una vez se haya establecido la sesión
+                audioGameover.play();
                 window.location.href = "gameover.php";
             } else {
                 console.error("Error al finalizar el juego en el servidor.");
