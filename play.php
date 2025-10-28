@@ -14,6 +14,7 @@
         <p id="frase"></p>
         <input type="text" id="inputOcult" autofocus autocomplete="off"/>
     </div>
+    <div id="bonusMessage"></div>
 
     <script src="./scriptPlay.js" defer></script>
 </body>

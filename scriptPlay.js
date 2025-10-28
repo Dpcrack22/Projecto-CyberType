@@ -2,9 +2,11 @@ const fraseOriginal = ["El ràpid esquirol salta sobre el gos mandrós." , "Tipu
 const fraseDiv = document.getElementById("frase");
 const inputOcult = document.getElementById("inputOcult");
 const contadorDiv = document.getElementById("contador");
+const bonusDiv = document.getElementById("bonusMessage");
 let puntuation = 0;
 let consectutiveRightHits = 0;
 let consectutiveWrongHits = 0;
+let bonus = 0;
 let contador = 3;
 let posicionActual = 0;
 let fraseAleatoria = "";
@@ -103,6 +105,17 @@ function endGame() {
         .catch(error => console.error("Error al comunicarse con el servidor:", error));
 }
 
+
+function mostrarBonus() {
+    bonusDiv.textContent = "BONUS!";
+    bonusDiv.style.display = "block";
+
+    setTimeout(() => {
+        bonusDiv.style.display = "none";
+    }, 1500);
+}
+
+
 function easterEgg(bool) {
     if (bool) {
         consectutiveWrongHits = 0;
@@ -111,7 +124,8 @@ function easterEgg(bool) {
         if (consectutiveRightHits === 5) {
             consectutiveRightHits = 0;
             puntuation += 200;
-            // Que salga algo en plan BONUS en la pantalla para que el usuario sepa que ha conseguido un bonus
+            bonus++;
+            mostrarBonus();
         }
     } else {
         consectutiveRightHits = 0;
@@ -120,6 +134,7 @@ function easterEgg(bool) {
         if (consectutiveWrongHits === 5) {
             consectutiveWrongHits = 0;
             puntuation -= 200;
+            bonus--;
         }
     }
     console.log(puntuation);
