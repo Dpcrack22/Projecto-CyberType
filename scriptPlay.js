@@ -138,8 +138,6 @@ function activateThanosSnap() {
 inputOcult.addEventListener("input", verificarEscritura);
 
 function endGame(score, time) {
-    // Llamada al servidor para establecer la variable de sesión
-    // En esta ocasión, también enviamos la puntuación y el tiempo
     fetch('finish_game.php', {
         method: 'POST',
         headers: {
