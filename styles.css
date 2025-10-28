@@ -340,7 +340,7 @@
 
 
 
-/* 403 PAGE STYLES */
+/* GameOver PAGE STYLES */
 
 .body-gameover {
     background-color: #141414; 
@@ -358,7 +358,7 @@
 
 .body-gameover h1 {
     color: #ED1D24; 
-    font-size: 2.5em;
+    font-size: 3.5em;
     margin-bottom: 10px;
     text-transform: uppercase;
     letter-spacing: 4px;
@@ -367,7 +367,7 @@
 
 .body-gameover p {
     color: #CCCCCC;
-    font-size: 1.2em;
+    font-size: 1.8em;
     margin: 8px 0;
     text-align: center;
 }
@@ -390,13 +390,13 @@
     text-align: center;
     justify-content: center;
     font-weight: bold;
-    font-size: 1.1em;
+    font-size: 1.6em;
     padding: 15px 40px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     text-decoration: none;
-    min-width: 220px;
+    min-width: 320px;
 }
 
 .body-gameover .botonEnviarRank-gameover {
@@ -423,7 +423,7 @@
 }
 
 
-/* === RANKING PAGE STYLES === */
+/* RANKING PAGE STYLES */
 
 .body-ranking {
     background-color: #141414;
@@ -446,8 +446,6 @@
     text-transform: uppercase;
     letter-spacing: 6px;
 }
-
-/* Tabla de ranking */
 
 .body-ranking table {
     width: 90%;
