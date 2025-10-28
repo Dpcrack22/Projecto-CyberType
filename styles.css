@@ -1,0 +1,109 @@
+
+#bodyIndex {
+    background-color: #000000;
+    color: darkturquoise;
+    text-align: center;
+    margin-top: 50px;
+}
+h1 {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 60px;
+    font-weight: bold;
+    color: darkturquoise;
+    text-shadow: 2px 2px 0 #000000;
+}
+#gameDescription {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    color: white;
+    text-shadow: 1px 1px 0 #000000;
+}
+#inputName {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    padding: 5px;
+    border: 2px solid darkturquoise;
+    background-color: #000000;
+    color: darkturquoise;
+    width: 300px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+#selectDifficulty {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    padding: 5px;
+    border: 2px solid darkturquoise;
+    background-color: #000000;
+    color: darkturquoise;
+    width: 315px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+option {
+    background-color: #000000;
+    color: darkturquoise;
+}
+#startGameButton {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: 2px solid darkturquoise;
+    background-color: #000000;
+    color: darkturquoise;
+    cursor: pointer;
+}
+#startGameButton:hover {
+    background-color: darkturquoise;
+    color: #000000;
+}
+
+/* Styles for play.php */
+#bodyPlay {
+    background-color: #000000;
+    color: darkturquoise;
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 50px;
+}
+#contador {
+    font-size: 40px;
+    font-weight: bold;
+}
+#fraseContainer {
+    display: none;
+    margin-top: 20px;
+}
+#inputOcult {
+    width: 60%;
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 20px;
+    background-color: #000000;
+    color: darkturquoise;
+    border: 2px solid darkmagenta;
+}
+
+/* Colores de las letras */
+.correcta {
+    color: green;
+}
+.normal {
+    color: darkturquoise;
+}
+
+.incorrecta {
+    color: red;
+}
+
+#frase span {
+    font-size: 28px;
+    padding: 1px;
+}
+
+.currentLetter {
+    text-decoration: underline;
+    color: purple;
+    font-size: 32px !important;
+    font-weight: bold;
+}
