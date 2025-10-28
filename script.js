@@ -7,9 +7,7 @@ startGameButton.addEventListener('click', async () => {
     const selectDifficultyValue = document.getElementById("selectDifficulty").value;
     const phraseArray = await getPhrase(selectDifficultyValue);
     let phrase = phraseArray.split(',')[Math.floor(Math.random() * phraseArray.split(',').length)];
-    console.log(phrase);
-    // haz que haya un paron de 3 segundos antes de iniciar el juego
-    await new Promise(resolve => setTimeout(resolve, 20000));
+    
 
     if (inputNameValue.trim() === "") {
         infoText.style.color = "red";
