@@ -157,6 +157,7 @@ function endGame(score, time) {
         },
         body: "score=" + encodeURIComponent(score)
         + "&time=" + encodeURIComponent(time)
+        + "&bonus=" + encodeURIComponent(bonus)
     })
     .then(response => response.text())
     .then(data => {
