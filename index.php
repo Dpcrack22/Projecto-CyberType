@@ -13,7 +13,7 @@
 
         <section>
             <h1>MarvelType</h1>
-            <p id="gameDescription">Joc de mecanografia. L'objectiu consisteix en teclejar correctament la frase que proporciona el joc en el menys temps possible i sense errades.</p>
+            <p id="gameDescription">En MarvelType pondrás a prueba tu velocidad y reflejos. Teclea cada frase con precisión y demuestra que tienes lo necesario para unirte a los héroes más poderosos del universo Marvel.</p>
             <div id="nameArea">
                 <input type="text" id="inputName" placeholder="Insert your name"/>
                 <p id="infoText"></p>
