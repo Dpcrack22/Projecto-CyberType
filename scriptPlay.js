@@ -67,7 +67,7 @@ function verificarEscritura() {
     posicionActual = valor.length;
     updateCurrentLetter();
 
-    if (valor === fraseAleatoria) {
+    if (valor.length === fraseAleatoria.length) {
         const tiempoFin = performance.now();
         const tiempoTotal = ((tiempoFin - tiempoInicio) / 1000).toFixed(2); // Tiempo en segundos con dos decimales
 
