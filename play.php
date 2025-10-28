@@ -6,8 +6,9 @@
     <title>Play - CyberType</title>
     <link rel="stylesheet" type="text/css" href="./styles.css?<?php echo time(); ?>" />
 </head>
-<body id="bodyPlay">
-    <h1>Preparat!</h1>
+<body class="body-play">
+    <h1 id="titulo-play">MarvelType</h1>
+    <h1 id="titulo-prepara">Preparat!</h1>
     <div id="contador">3</div>
     <div id="fraseContainer">
         <p><strong>Escriu la següent frase:</strong></p>

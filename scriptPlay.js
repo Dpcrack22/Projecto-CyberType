@@ -41,6 +41,9 @@ const intervalo = setInterval(() => {
         clearInterval(intervalo);
         document.getElementById("contador").style.display = "none";
         document.getElementById("fraseContainer").style.display = "block";
+        document.getElementById("titulo-play").style.display = "block";
+        document.getElementById("titulo-prepara").style.display = "none";
+
         mostrarFrase();
     }
 }, 1000);
