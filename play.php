@@ -10,10 +10,11 @@
     <h1>Preparat!</h1>
     <div id="contador">3</div>
     <div id="fraseContainer">
-        <p><strong>Escriu a següent frase:</strong></p>
+        <p><strong>Escriu la següent frase:</strong></p>
         <p id="frase"></p>
-        <input type="text" id="inputOcult" autofocus/>
+        <input type="text" id="inputOcult" autofocus autocomplete="off"/>
     </div>
+
     <script src="./scriptPlay.js" defer></script>
 </body>
 </html>
