@@ -1,4 +1,3 @@
-const fraseOriginal = ["El ràpid esquirol salta sobre el gos mandrós." , "Tipus de lletra monoespaiada són ideals per a programar." , "La pràctica fa al mestre en qualsevol disciplina."];
 const fraseDiv = document.getElementById("frase");
 const inputOcult = document.getElementById("inputOcult");
 const contadorDiv = document.getElementById("contador");
@@ -6,6 +5,7 @@ const audioRight = new Audio("Right.mp3");
 const audioMiss = new Audio("Miss.wav");
 const audioGameover = new Audio("gameover.wav");
 const bonusDiv = document.getElementById("bonusMessage");
+const dificultadFrase = document.getElementById("frase").textContent = fraseJuego;
 let puntuation = 0;
 let consectutiveRightHits = 0;
 let consectutiveWrongHits = 0;
@@ -14,15 +14,17 @@ let contador = 3;
 let posicionActual = 0;
 let fraseAleatoria = "";
 
+
 // Prueba Chasquido
 let totalLetrasEscritas = 0;
 let totalErrores = 0;
 let thanosSnapTriggered = false;
 
 function mostrarFrase() {
+    fraseAleatoria = dificultadFrase;
     fraseDiv.innerHTML = "";
     posicionActual = 0;
-    fraseAleatoria = fraseOriginal[Math.floor(Math.random() * fraseOriginal.length)];
+    
     tiempoInicio = performance.now(); // Mide el tiempo que ha tardado en escribir la frase
 
     for (let letra of fraseAleatoria) {
