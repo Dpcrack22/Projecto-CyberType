@@ -28,7 +28,7 @@
     <link rel="stylesheet" type="text/css" href="./styles.css?<?php echo time(); ?>" />
 </head>
 <body class="body-ranking">
-    <h1>Ranking de Jugadores - CyberType</h1>
+    <h1>Ranking de Jugadores - MarvelType</h1>
     <table>
         <tr>
             <th>Posición</th>
