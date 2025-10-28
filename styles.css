@@ -104,6 +104,17 @@
     transform: scale(1.05);
 }
 
+.no-js-warning {
+    background-color: #ffdddd;
+    color: #a00;
+    padding: 1em;
+    border: 1px solid #a00;
+    border-radius: 8px;
+    text-align: center;
+    margin: 1em auto;
+    max-width: 500px;
+}
+
 /* PLAY PAGE STYLES */
 
 .body-play {
@@ -210,6 +221,21 @@
     font-weight: bold;
 }
 
+#bonusMessage {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 32px;
+    font-weight: bold;
+    display: none;         
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: yellow;
+    color: red;
+    text-align: center;
+    border: 2px solid orange;
+}
 /* 404 PAGE STYLES */
 
 .body-404{
@@ -335,6 +361,24 @@
 }
 .body-403 a:hover {
     background-color: #A50000;
+}
+
+/* Prueba thanos chasquido */
+@keyframes disintegrate {
+  0% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5) rotate(15deg);
+    filter: blur(3px);
+  }
+}
+
+.disappear {
+  animation: disintegrate 1s ease-out forwards;
 }
 
 
