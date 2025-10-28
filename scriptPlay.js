@@ -2,6 +2,9 @@ const fraseOriginal = ["El ràpid esquirol salta sobre el gos mandrós." , "Tipu
 const fraseDiv = document.getElementById("frase");
 const inputOcult = document.getElementById("inputOcult");
 const contadorDiv = document.getElementById("contador");
+const audioRight = new Audio("Right.mp3");
+const audioMiss = new Audio("Miss.wav");
+const audioGameover = new Audio("gameover.wav");
 const bonusDiv = document.getElementById("bonusMessage");
 let puntuation = 0;
 let consectutiveRightHits = 0;
@@ -73,10 +76,18 @@ function verificarEscritura() {
         if (letraEscrita === "") {
             spans[i].classList.remove("correcta", "incorrecta");
         } else if (letraEscrita === letraEsperada) {
+            audioRight.pause();
+            audioMiss.pause();
+            audioRight.currentTime = 0;
+            audioRight.play();
             spans[i].classList.add("correcta");
             spans[i].classList.remove("incorrecta");
             puntuacion = puntuacion + 10;
         } else {
+            audioMiss.pause();
+            audioRight.pause();
+            audioMiss.currentTime = 0;
+            audioMiss.play();
             spans[i].classList.add("incorrecta");
             spans[i].classList.remove("correcta");
             puntuacion = puntuacion - 5;
