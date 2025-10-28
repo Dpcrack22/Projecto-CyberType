@@ -14,7 +14,7 @@
     <a href="./index.php">Volver al Centro de Mando</a>
     </div>
     <div class="image-div-404">
-    <img src="/IMG/Marvel404.png" alt="Iron Man 404" class="image-404">
+    <img src="./IMG/Marvel404.png" alt="Iron Man 404" class="image-404">
     </div>
 </body>
 </html>
