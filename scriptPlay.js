@@ -10,6 +10,12 @@ let bonus = 0;
 let contador = 3;
 let posicionActual = 0;
 let fraseAleatoria = "";
+let puntuacion = 0;
+
+// Prueba Chasquido
+let totalLetrasEscritas = 0;
+let totalErrores = 0;
+let thanosSnapTriggered = false;
 
 function mostrarFrase() {
     fraseDiv.innerHTML = "";
@@ -46,6 +52,9 @@ const intervalo = setInterval(() => {
         clearInterval(intervalo);
         document.getElementById("contador").style.display = "none";
         document.getElementById("fraseContainer").style.display = "block";
+        document.getElementById("titulo-play").style.display = "block";
+        document.getElementById("titulo-prepara").style.display = "none";
+
         mostrarFrase();
     }
 }, 1000);
@@ -53,6 +62,9 @@ const intervalo = setInterval(() => {
 function verificarEscritura() {
     const valor = inputOcult.value;
     const spans = fraseDiv.querySelectorAll("span");
+
+    totalLetrasEscritas = valor.length;
+    totalErrores = 0;
 
     for (let i = 0; i < spans.length; i++) {
         const letraEsperada = fraseAleatoria[i] || "";
@@ -63,9 +75,12 @@ function verificarEscritura() {
         } else if (letraEscrita === letraEsperada) {
             spans[i].classList.add("correcta");
             spans[i].classList.remove("incorrecta");
+            puntuacion = puntuacion + 10;
         } else {
             spans[i].classList.add("incorrecta");
             spans[i].classList.remove("correcta");
+            puntuacion = puntuacion - 5;
+            totalErrores++;
         }
     }
 
@@ -80,29 +95,69 @@ function verificarEscritura() {
     posicionActual = valor.length;
     updateCurrentLetter();
 
+    if (!thanosSnapTriggered && totalLetrasEscritas > 0) {
+        const errorRate = totalErrores / totalLetrasEscritas;
+        if (errorRate >= 0.5) {
+            thanosSnapTriggered = true;
+            activateThanosSnap();
+            setTimeout(() => {
+                endGame(puntuacion, ((performance.now() - tiempoInicio) / 1000).toFixed(2));
+            }, 4000);
+            return;
+        }
+    }
+
     if (valor.length === fraseAleatoria.length) {
         const tiempoFin = performance.now();
         const tiempoTotal = ((tiempoFin - tiempoInicio) / 1000).toFixed(2); // Tiempo en segundos con dos decimales
 
-        endGame();
+        endGame(puntuacion, tiempoTotal);
     }
 };
 
+function activateThanosSnap() {
+    console.log("💥 Modo Thanos activado: la mitad de las letras desaparecerán...");
+
+    const spans = Array.from(fraseDiv.querySelectorAll("span"));
+    const half = Math.floor(spans.length / 2);
+    const shuffled = spans.sort(() => 0.5 - Math.random());
+    const toRemove = shuffled.slice(0, half);
+
+    new Audio('snap.mp3').play();
+
+    alert("💀 Thanos ha chasqueado los dedos... la mitad se desintegra y tu partida se acabó.");
+
+    // Efecto visual
+    toRemove.forEach((span, i) => {
+        setTimeout(() => {
+            span.classList.add("disappear");
+            setTimeout(() => span.remove(), 1000);
+        }, i * 100);
+    });
+}
 inputOcult.addEventListener("input", verificarEscritura);
 
-function endGame() {
+function endGame(score, time) {
     // Llamada al servidor para establecer la variable de sesión
-    fetch('finish_game.php')
-        .then(response => response.text())
-        .then(data => {
-            if (data === "OK") {
-                // Redirigir una vez se haya establecido la sesión
-                window.location.href = "gameover.php";
-            } else {
-                console.error("Error al finalizar el juego en el servidor.");
-            }
-        })
-        .catch(error => console.error("Error al comunicarse con el servidor:", error));
+    // En esta ocasión, también enviamos la puntuación y el tiempo
+    fetch('finish_game.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: "score=" + encodeURIComponent(score)
+        + "&time=" + encodeURIComponent(time)
+    })
+    .then(response => response.text())
+    .then(data => {
+        if (data === "OK") {
+            // Redirigir una vez se haya establecido la sesión
+            window.location.href = "gameover.php";
+        } else {
+            console.error("Error al finalizar el juego en el servidor.");
+        }
+    })
+    .catch(error => console.error("Error al comunicarse con el servidor:", error));
 }
 
 
