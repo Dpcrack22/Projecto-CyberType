@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    if (!isset($_SESSION['game_finished']) || $_SESSION['game_finished'] !== true) {
+        header("Location: error403.php");
+        exit;
+    }
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,12 +14,6 @@
     <link rel="stylesheet" type="text/css" href="./styles.css?<?php echo time(); ?>" />
 </head>
 <body>
-    <?php
-        session_start();
-        if (!isset($_SESSION['game_finished']) || $_SESSION['game_finished'] !== true) {
-            header("Location: error403.php");
-            exit;
-        }
-    ?>
+    
 </body>
 </html>

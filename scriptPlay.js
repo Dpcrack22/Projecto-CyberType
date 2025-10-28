@@ -67,34 +67,27 @@ function verificarEscritura() {
     posicionActual = valor.length;
     updateCurrentLetter();
 
-
-    // Necesito hacer que cuando acabe la partida, se envie el formulario al gameover.php
-    // Pero se debe tener en cuenta que para ir a gameover.php debemos poner este codigo
-    /* Cuando acabe el juego hay que poner esto en algun lado antes de redirigir a gameover.php
-
-        $_SESSION['game_finished'] = true;
-        header("Location: gameover.php");
-
-    */
     if (valor === fraseAleatoria) {
         const tiempoFin = performance.now();
         const tiempoTotal = ((tiempoFin - tiempoInicio) / 1000).toFixed(2); // Tiempo en segundos con dos decimales
 
-        // Rellenar los inputs ocultos del formulario
-        document.getElementById("fraseInput").value = fraseAleatoria;
-        document.getElementById("tiempoInput").value = tiempoTotal;
-
-        // Enviar el formulario
-        document.getElementById("formRanking").submit();
-
-        fetch('gameover.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ game_finished: true })
-        });
+        endGame();
     }
 };
 
 inputOcult.addEventListener("input", verificarEscritura);
+
+function endGame() {
+    // Llamada al servidor para establecer la variable de sesión
+    fetch('finish_game.php')
+        .then(response => response.text())
+        .then(data => {
+            if (data === "OK") {
+                // Redirigir una vez se haya establecido la sesión
+                window.location.href = "gameover.php";
+            } else {
+                console.error("Error al finalizar el juego en el servidor.");
+            }
+        })
+        .catch(error => console.error("Error al comunicarse con el servidor:", error));
+}
