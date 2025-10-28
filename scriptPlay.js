@@ -1,4 +1,3 @@
-const fraseOriginal = ["El ràpid esquirol salta sobre el gos mandrós." , "Tipus de lletra monoespaiada són ideals per a programar." , "La pràctica fa al mestre en qualsevol disciplina."];
 const fraseDiv = document.getElementById("frase");
 const inputOcult = document.getElementById("inputOcult");
 const contadorDiv = document.getElementById("contador");
@@ -6,7 +5,7 @@ const audioRight = new Audio("Right.mp3");
 const audioMiss = new Audio("Miss.wav");
 const audioGameover = new Audio("gameover.wav");
 const bonusDiv = document.getElementById("bonusMessage");
-const dificultadFrase = "<?php echo htmlspecialchars($difficulty); ?>";
+const dificultadFrase = document.getElementById("frase").textContent = fraseJuego;
 let puntuation = 0;
 let consectutiveRightHits = 0;
 let consectutiveWrongHits = 0;
@@ -22,30 +21,11 @@ let totalLetrasEscritas = 0;
 let totalErrores = 0;
 let thanosSnapTriggered = false;
 
-async function getPhrase(difficulty) {
-    const file = "sentences.txt";
-    const response = await fetch(file);
-    const text = await response.text();
-    switch (difficulty) {
-        case "easy":
-            return text.substring(text.indexOf("easy:") + 6, text.indexOf("]")).trim();
-        case "medium":
-            return text.substring(text.indexOf("medium:") + 8, text.indexOf("]", text.indexOf("medium:"))).trim();
-        case "hard":
-            return text.substring(text.indexOf("hard:") + 6, text.lastIndexOf("]")).trim();
-        default:
-            return "";
-    }
-}
-
 function mostrarFrase() {
-    const frase = getPhrase(dificultadFrase);
-    const frasesArray = frase.split("\n").map(f => f.trim()).filter(f => f !== "");
-    fraseAleatoria = frasesArray[Math.floor(Math.random() * frasesArray.length)];
+    fraseAleatoria = dificultadFrase;
     fraseDiv.innerHTML = "";
     posicionActual = 0;
     
-    fraseAleatoria = Math.floor(Math.random() * getPhrase(dificultadFrase));
     tiempoInicio = performance.now(); // Mide el tiempo que ha tardado en escribir la frase
 
     for (let letra of fraseAleatoria) {

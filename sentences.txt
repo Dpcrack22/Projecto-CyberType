@@ -1,0 +1,3 @@
+easy|Yo soy Iron Man,Wakanda por siempre,Vengadores unidos,No me quiero ir señor Stark,Dormammu he venido a negociar,La paciencia es una virtud,señor Parker
+medium|La realidad puede ser a menudo decepcionante,Un gran poder conlleva una gran responsabilidad,El escudo no me hace el Capitán América mis decisiones sí,No elegimos a nuestros tiempos pero sí cómo enfrentarlos,Incluso el más pequeño de nosotros puede hacer una gran diferencia,El tiempo no es una línea es un círculo
+hard|No importa lo que pase mañana prométeme una cosa: sigue siendo tú,La esperanza es más fuerte que cualquier piedra del infinito,La familia es más que sangre es elección
