@@ -4,6 +4,8 @@
     if (isset($_POST['playerName'])) {
         $_SESSION['playerName'] = htmlspecialchars($_POST['playerName']);
     }
+
+    $difficulty = $_POST['difficulty'];
 ?>
 
 <!DOCTYPE html>
