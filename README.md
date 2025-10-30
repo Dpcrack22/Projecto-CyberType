@@ -6,6 +6,13 @@ Al finalizar, puede guardar su puntuación en el ranking y competir contra otros
 
 ---
 
+## 🌐 Enlace al proyecto publicado
+
+👉 Puedes jugar directamente desde aquí:  
+**[https://cibertype2.ieti.site/Projecto-CyberType/](https://cibertype2.ieti.site/Projecto-CyberType/)**
+
+---
+
 ## 🎯 Objetivo del juego
 El objetivo es escribir correctamente las frases que aparecen en pantalla lo más rápido posible.  
 Cada nivel de dificultad modifica la velocidad o longitud de las frases.  
@@ -18,8 +25,8 @@ Cuando el jugador termina todas las frases, accede a la pantalla final donde pue
 ## 🧩 Tecnologías utilizadas
 - **HTML5**, **CSS3** y **JavaScript** para la parte visual e interactiva.
 - **PHP** para la gestión del juego, navegación entre páginas y almacenamiento del ranking.
-- **Local files** (`ranking.txt`, `sentences.txt`) para guardar datos de jugadores y frases.
-- **Sonidos** y efectos (`snap.mp3`, `gameover.wav`, etc.) para mejorar la experiencia de juego.
+- **Archivos locales** (`ranking.txt`, `sentences.txt`) para guardar datos de jugadores y frases.
+- **Sonidos y efectos** (`snap.mp3`, `gameover.wav`, etc.) para mejorar la experiencia de juego.
 
 ---
 
@@ -73,6 +80,9 @@ Cuando el jugador termina todas las frases, accede a la pantalla final donde pue
 Proyecto desarrollado en equipo para el módulo de **Desenvolupament d’Aplicacions Web (DAW)**.
 
 Cada integrante del equipo ha contribuido con un mínimo de **4 commits** en el repositorio GitHub.
+
+Repositorio Git:  
+🔗 [https://github.com/Dpcrack22/Projecto-CyberType](https://github.com/Dpcrack22/Projecto-CyberType)
 
 ---
 
