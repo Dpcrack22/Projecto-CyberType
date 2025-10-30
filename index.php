@@ -25,15 +25,17 @@
             </select>
             <br>
             <input type="button" id="startGameButton" value="Start Game"/>
+            <noscript>
+                <div class="no-js-warning">
+                    ⚠️ El juego necesita javascript para funcionar. Por favor, habilita Javascript para empezar.
+                </div>
+                <script>
+                    document.getElementById('startGameButton').style.display = 'none';
+                </script>
+            </noscript>
         </section>
 
         <img src="./IMG/IndexImg002.png" alt="Thanos" class="side-img right-img">
     </div>
-
-    <noscript>
-        <div class="no-js-warning">
-            ⚠️ El juego necesita javascript para funcionar. Por favor, habilita Javascript para empezar.
-        </div>
-    </noscript>
 </body>
 </html>
