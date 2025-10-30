@@ -83,6 +83,7 @@ function verificarEscritura() {
             audioRight.play().catch(() => {});
             spans[i].classList.add("correcta");
             spans[i].classList.remove("incorrecta");
+            puntuation += 10;
         } else {
             audioMiss.pause();
             audioRight.pause();
@@ -90,6 +91,7 @@ function verificarEscritura() {
             audioMiss.play().catch(() => {});
             spans[i].classList.add("incorrecta");
             spans[i].classList.remove("correcta");
+            puntuation -= 5;
             totalErrores++;
         }
     }
