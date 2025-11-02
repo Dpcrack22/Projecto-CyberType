@@ -32,7 +32,7 @@
 </head>
 <body class="body-play">
     <h1 id="titulo-play">MarvelType</h1>
-    <h1 id="titulo-prepara">Preparate joven vengador!</h1>
+    <h1 id="titulo-prepara">¡Prepárate joven vengador!</h1>
     <div id="contador">3</div>
     <div id="fraseContainer">
         <p><strong>Escribe la siguiente frase:</strong></p>
