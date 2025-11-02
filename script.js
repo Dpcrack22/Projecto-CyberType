@@ -8,7 +8,7 @@ startGameButton.addEventListener('click', () => {
 
     if (inputNameValue.trim() === "") {
         infoText.style.color = "red";
-        infoText.textContent = "Please enter your name to start the game.";
+        infoText.textContent = "Por favor, ingresa tu nombre para continuar.";
         document.getElementById("inputName").focus();
     } else {
         infoText.textContent = "";

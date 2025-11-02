@@ -24,8 +24,6 @@ function mostrarFrase() {
     fraseAleatoria = dificultadFrase;
     fraseDiv.innerHTML = "";
     posicionActual = 0;
-    
-    tiempoInicio = performance.now(); // Mide el tiempo que ha tardado en escribir la frase
 
     for (let letra of fraseAleatoria) {
         const span = document.createElement("span");
@@ -107,24 +105,16 @@ function verificarEscritura() {
     posicionActual = valor.length;
     updateCurrentLetter();
 
-    if (!thanosSnapTriggered && totalLetrasEscritas > 0) {
-        const errorRate = totalErrores / totalLetrasEscritas;
-        if (errorRate >= 0.5) {
+    if (valor.length === fraseAleatoria.length) {
+        if (Math.random() < 0.01) { // 1% de probabilidad
             thanosSnapTriggered = true;
             activateThanosSnap();
-            puntuation = -5000;
             setTimeout(() => {
-                endGame(puntuation, ((performance.now() - tiempoInicio) / 1000).toFixed(2));
+                endGame(puntuation);
             }, 4000);
             return;
         }
-    }
-
-    if (valor.length === fraseAleatoria.length) {
-        const tiempoFin = performance.now();
-        const tiempoTotal = ((tiempoFin - tiempoInicio) / 1000).toFixed(2); // Tiempo en segundos con dos decimales
-
-        endGame(puntuation, tiempoTotal);
+        endGame(puntuation);
     }
 };
 
@@ -150,14 +140,13 @@ function activateThanosSnap() {
 }
 inputOcult.addEventListener("input", verificarEscritura);
 
-function endGame(score, time) {
+function endGame(score) {
     fetch('finish_game.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
         body: "score=" + encodeURIComponent(score)
-        + "&time=" + encodeURIComponent(time)
         + "&bonus=" + encodeURIComponent(bonus)
     })
     .then(response => response.text())

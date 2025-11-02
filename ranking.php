@@ -1,18 +1,17 @@
 <?php
     session_start();
 
-    if (!isset($_SESSION['playerName']) || !isset($_SESSION['score']) || !isset($_SESSION['time'])) {
+    if (!isset($_SESSION['playerName']) || !isset($_SESSION['score'])) {
         die("No hay datos de jugador para guardar.");
     }
 
     $playerName = $_SESSION['playerName'];
     $score = $_SESSION['score'];
-    $time = $_SESSION['time'];
 
     $archivo = "./ranking.txt";
 
     // Formato del registro
-    $registro = "$playerName | $score | $time" . PHP_EOL;
+    $registro = "$playerName | $score" . PHP_EOL;
 
     // Abrir el archivo y escribir
     if (file_put_contents($archivo, $registro, FILE_APPEND | LOCK_EX) === false) {
@@ -34,7 +33,6 @@
             <th>Posición</th>
             <th>Nombre</th>
             <th>Puntuación</th>
-            <th>Tiempo (s)</th>
         </tr>
         <?php
         $lineas = file($archivo, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
@@ -45,13 +43,12 @@
         });
         $posicion = 1;
         foreach ($lineas as $linea) {
-            list($nombre, $puntuacion, $tiempo) = explode(" | ", $linea);
-            $resaltar = ($nombre === $playerName && $puntuacion == $score && $tiempo == $time) ? 'class="resaltar"' : '';
+            list($nombre, $puntuacion) = explode(" | ", $linea);
+            $resaltar = ($nombre === $playerName && $puntuacion == $score) ? 'class="resaltar"' : '';
             echo "<tr $resaltar>
                     <td>$posicion</td>
                     <td>$nombre</td>
                     <td>$puntuacion</td>
-                    <td>$tiempo</td>
                   </tr>";
             $posicion++;
         }
