@@ -35,9 +35,7 @@
     <h1 id="titulo-prepara">¡Prepárate joven vengador!</h1>
     <div id="contador">3</div>
     <div id="fraseContainer">
-        <p><strong>Escribe la siguiente frase:</strong></p>
-        <p id="frase"></p>
-        <input type="text" id="inputOcult" autofocus autocomplete="off"/>
+        <div id="frase" contenteditable="true"></div>
     </div>
     <div id="bonusMessage"></div>
 

@@ -1,5 +1,5 @@
-const fraseDiv = document.getElementById("frase");
-const inputOcult = document.getElementById("inputOcult");
+// Variables globales
+const inputOcult = document.getElementById("frase");
 const contadorDiv = document.getElementById("contador");
 const audioRight = new Audio("Right.mp3");
 const audioMiss = new Audio("Miss.wav");
@@ -22,13 +22,13 @@ let thanosSnapTriggered = false;
 
 function mostrarFrase() {
     fraseAleatoria = dificultadFrase;
-    fraseDiv.innerHTML = "";
+    inputOcult.innerHTML = "";
     posicionActual = 0;
 
     for (let letra of fraseAleatoria) {
         const span = document.createElement("span");
         span.textContent = letra;
-        fraseDiv.appendChild(span);
+        inputOcult.appendChild(span);
     }
 
     updateCurrentLetter();
@@ -37,7 +37,7 @@ function mostrarFrase() {
 }
 
 function updateCurrentLetter() {
-    const spans = fraseDiv.querySelectorAll("span");
+    const spans = inputOcult.querySelectorAll("span");  
     spans.forEach(span => span.classList.remove("currentLetter"));
     if (posicionActual < spans.length) {
         spans[posicionActual].classList.add("currentLetter");
@@ -62,8 +62,8 @@ const intervalo = setInterval(() => {
 }, 1000);
 
 function verificarEscritura() {
-    const valor = inputOcult.value;
-    const spans = fraseDiv.querySelectorAll("span");
+    const valor = inputOcult.textContent;
+    const spans = inputOcult.querySelectorAll("span");
 
     totalLetrasEscritas = valor.length;
     totalErrores = 0;
