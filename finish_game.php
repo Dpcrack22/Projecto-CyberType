@@ -9,9 +9,6 @@
     if (isset($_POST['score'])) {
         $_SESSION['score'] = intval($_POST['score']);
     }
-    if (isset($_POST['time'])) {
-        $_SESSION['time'] = floatval($_POST['time']);
-    }
     if (isset($_POST['bonus'])) {
         $_SESSION['bonus'] = intval($_POST['bonus']);
     }
