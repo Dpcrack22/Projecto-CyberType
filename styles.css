@@ -395,9 +395,6 @@
     flex-wrap: wrap;
 }
 
-
-
-
 .body-gameover .botonEnviarRank-gameover,
 .body-gameover .botonVolverInicio-gameover {
     display: inline-block;
@@ -435,7 +432,6 @@
     text-decoration: none;
     color: #FFFFFF;
 }
-
 
 /* RANKING PAGE STYLES */
 

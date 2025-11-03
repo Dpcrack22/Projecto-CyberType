@@ -64,10 +64,9 @@ const intervalo = setInterval(() => {
 document.addEventListener("keydown", manejarTecla);
 
 function manejarTecla(e) {
-    // Ignorar teclas especiales
     if (e.key.length !== 1 && e.key !== "Backspace") return;
 
-    e.preventDefault(); // Evita que el navegador escriba nada
+    e.preventDefault();
 
     if (e.key === "Backspace") {
         posicionActual = Math.max(0, posicionActual - 1);
