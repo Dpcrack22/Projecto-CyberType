@@ -61,51 +61,51 @@ const intervalo = setInterval(() => {
     }
 }, 1000);
 
-function verificarEscritura() {
-    const valor = inputOcult.textContent;
+document.addEventListener("keydown", manejarTecla);
+
+function manejarTecla(e) {
+    // Ignorar teclas especiales
+    if (e.key.length !== 1 && e.key !== "Backspace") return;
+
+    e.preventDefault(); // Evita que el navegador escriba nada
+
+    if (e.key === "Backspace") {
+        posicionActual = Math.max(0, posicionActual - 1);
+    } else {
+        verificarEscritura(e.key);
+    }
+
+    updateCurrentLetter();
+}
+
+function verificarEscritura(tecla) {
     const spans = inputOcult.querySelectorAll("span");
+    const letraEsperada = fraseAleatoria[posicionActual];
 
-    totalLetrasEscritas = valor.length;
-    totalErrores = 0;
+    if (!letraEsperada) return;
 
-    for (let i = 0; i < spans.length; i++) {
-        const letraEsperada = fraseAleatoria[i] || "";
-        const letraEscrita = valor[i] || "";
-
-        if (letraEscrita === "") {
-            spans[i].classList.remove("correcta", "incorrecta");
-        } else if (letraEscrita === letraEsperada) {
-            audioRight.pause();
-            audioMiss.pause();
-            audioRight.currentTime = 0;
-            audioRight.play().catch(() => {});
-            spans[i].classList.add("correcta");
-            spans[i].classList.remove("incorrecta");
-            puntuation += 10;
-        } else {
-            audioMiss.pause();
-            audioRight.pause();
-            audioMiss.currentTime = 0;
-            audioMiss.play().catch(() => {});
-            spans[i].classList.add("incorrecta");
-            spans[i].classList.remove("correcta");
-            puntuation -= 5;
-            totalErrores++;
-        }
+    if (tecla === letraEsperada) {
+        audioRight.pause();
+        audioRight.currentTime = 0;
+        audioRight.play().catch(() => {});
+        spans[posicionActual].classList.add("correcta");
+        spans[posicionActual].classList.remove("incorrecta");
+        puntuation += 10;
+        easterEgg(true);
+    } else {
+        audioMiss.pause();
+        audioMiss.currentTime = 0;
+        audioMiss.play().catch(() => {});
+        spans[posicionActual].classList.add("incorrecta");
+        spans[posicionActual].classList.remove("correcta");
+        puntuation -= 5;
+        easterEgg(false);
     }
 
-    if (valor.length > 0) {
-        const ultimaLetraIndex = valor.length - 1;
-        const ultimaLetraEsperada = fraseAleatoria[ultimaLetraIndex];
-        const ultimaLetraEscrita = valor[ultimaLetraIndex];
-
-        easterEgg(ultimaLetraEscrita === ultimaLetraEsperada);
-    }
-
-    posicionActual = valor.length;
+    posicionActual++;
     updateCurrentLetter();
 
-    if (valor.length === fraseAleatoria.length) {
+    if (posicionActual === fraseAleatoria.length) {
         if (Math.random() < 0.01) { // 1% de probabilidad
             thanosSnapTriggered = true;
             activateThanosSnap();

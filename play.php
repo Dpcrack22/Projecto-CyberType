@@ -35,7 +35,7 @@
     <h1 id="titulo-prepara">¡Prepárate joven vengador!</h1>
     <div id="contador">3</div>
     <div id="fraseContainer">
-        <div id="frase" contenteditable="true"></div>
+        <div id="frase"></div>
     </div>
     <div id="bonusMessage"></div>
 
