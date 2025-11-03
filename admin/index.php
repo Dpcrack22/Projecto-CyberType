@@ -3,7 +3,7 @@
 
     // Si no estás logado, redirige al login
     if (empty($_SESSION['logado'])) {
-        header("Location: /login.php");
+        header("Location: /admin/login.php");
         exit;
     }
 ?>

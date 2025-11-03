@@ -11,7 +11,7 @@
 
         if ($usuario === $usuario_correcto && $password === $password_correcta) {
             $_SESSION['logado'] = true; // Guardar Sesión
-            header("Location: /index.php"); // Redeirigr al panel
+            header("Location: /admin/index.php"); // Redeirigr al panel
             exit;
         } else {
             $error = "Usuario o contraseña incorrectos.";
