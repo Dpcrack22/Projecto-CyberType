@@ -2,6 +2,12 @@ const startGameButton = document.getElementById('startGameButton');
 const divArea = document.getElementById("nameArea");
 const infoText = document.getElementById("infoText");
 
+document.addEventListener("keydown", (event) => {
+    if (event.key.toLowerCase() === 'i') {
+        document.getElementById("startGameButton").click();
+    }
+});
+
 startGameButton.addEventListener('click', () => {
     const inputNameValue = document.getElementById("inputName").value;
     const selectDifficultyValue = document.getElementById("selectDifficulty").value;

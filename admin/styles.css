@@ -46,7 +46,7 @@
     min-width: 320px;
 }
 
-.botonLogout-admin a {
+.botonLogout-admin {
     display: inline-block;
     background-color: #ED1D24;
     color: #FFFFFF;
@@ -59,7 +59,7 @@
     cursor: pointer;
 }
 
-.botonListar-admin a {
+.botonListar-admin {
     display: inline-block;
     background-color: #3268BD;
     color: #FFFFFF;
@@ -72,7 +72,7 @@
     cursor: pointer;
 }
 
-.botonAgregar-admin a {
+.botonAgregar-admin {
     display: inline-block;
     background-color: #5f68ab;
     color: #FFFFFF;
@@ -85,15 +85,15 @@
     cursor: pointer;
 }
 
-.botonLogout-admin a:hover {
+.botonLogout-admin:hover {
     background-color: #A50000;
 }
 
-.botonListar-admin a:hover {
+.botonListar-admin:hover {
     background-color: #24497A;
 }
 
-.botonAgregar-admin a:hover {
+.botonAgregar-admin:hover {
     background-color: #434a7d;
 }
 

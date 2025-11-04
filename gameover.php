@@ -26,10 +26,11 @@
         <input type="hidden" name="inputName" value="<?= htmlspecialchars($inputName) ?>">
         <input type="hidden" name="score" value="<?= htmlspecialchars($score) ?>">
         <input type="hidden" name="bonus" value="<?= htmlspecialchars($bonus) ?>">
-        <button class="botonEnviarRank-gameover" type="submit">Almacenar Ranking</button>
+        <button class="botonEnviarRank-gameover" id="almacenarRankingButton" type="submit">Almacenar Ranking</button>
     </form>
 
-    <button class="botonVolverInicio-gameover"><a href="index.php">Jugar de nuevo</a></button>
+    <button class="botonVolverInicio-gameover" id="jugarDeNuevoButton" >Jugar de nuevo</button>
     </div>
+    <script src="scriptGameover.js"></script>
 </body>
 </html>

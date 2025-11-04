@@ -276,7 +276,7 @@
     font-size: 1.2em;
     max-width: 80%;
 }
-.body-404 a {
+.body-404 button {
     background-color: #ED1D24; 
     color: #FFFFFF; 
     border: none;
@@ -339,7 +339,7 @@
     font-size: 1.2em;
     max-width: 80%;
 }
-.body-403 a {
+.body-403 button {
     background-color: #ED1D24; 
     color: #FFFFFF; 
     border: none;
@@ -496,7 +496,7 @@
     background-color: #ed1d246a;
 }
 
-.body-ranking a {
+.body-ranking button {
     display: inline-block;
     background-color: #ED1D24;
     color: #FFFFFF;
