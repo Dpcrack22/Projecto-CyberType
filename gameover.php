@@ -18,6 +18,17 @@
     <link rel="stylesheet" type="text/css" href="./styles.css?<?php echo time(); ?>" />
 </head>
 <body class="body-gameover">
+    <header>
+        <img src="./IMG/Marvel_Logo.png" alt="Marvel Logo" class="marvel-logo">
+        <div class="user-info">
+            <?php
+            if (isset($_SESSION['playerName'])) {
+                echo '<span class="player-name">Jugador: ' . htmlspecialchars($_SESSION['playerName']) . '</span>';
+            }
+            ?>
+            <a href="destroy_session.php" class="logout-link">Cerrar sesión</a>
+        </div>
+    </header>
     <h1>💥 ¡Fin del juego, <?= htmlspecialchars($inputName) ?>! 💥</h1>
     <p>Tu puntuación final es: <?= htmlspecialchars($score) ?></p>
     <p>Bonus conseguidos: <?= htmlspecialchars($bonus) ?></p>
