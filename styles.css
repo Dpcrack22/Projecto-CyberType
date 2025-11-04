@@ -115,6 +115,57 @@
     max-width: 500px;
 }
 
+/* EEstilos para el header con la imagen, y la sesión iniciada */
+/* El header se reutiliza en todas las páginas después de iniciar sesión */
+/* Debe quedar arriba como si fuera una cabecera fija */
+header {
+    background-color: #1A1A1A;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+header img {
+    height: 50px;
+    margin-left: 20px;
+}
+header .user-info {
+    color: #FFFFFF;
+    font-size: 1em;
+}
+header .user-info span {
+    font-weight: bold;
+    color: #f78f3f;
+}
+.player-name {
+    font-weight: bold;
+    color: #f78f3f;
+    text-decoration: none;
+    margin-left: 15px;
+    margin-right: 20px;
+}
+.logout-link {
+    display: inline-block;
+    background-color:	#f78f3f;
+    color: #FFFFFF;
+    padding: 12px 35px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    margin-right: 20px;
+}
+.logout-link:hover {
+    background-color: #d16b2a;
+}
+
 /* PLAY PAGE STYLES */
 
 .body-play {
