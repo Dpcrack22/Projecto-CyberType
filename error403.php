@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Error 403 - Accés denegat</title>
-    <link rel="stylesheet" type="text/css" href="./styles.css?<?php echo time(); ?>" />
+    <link rel="stylesheet" type="text/css" href="/styles.css?<?php echo time(); ?>" />
 </head>
 <body class="body-403">
     <div>
@@ -15,7 +15,7 @@
     <a href="./index.php">Volver con los demas reclutas</a>
     </div>
     <div class="image-div-403">
-    <img src="./IMG/Marvel403.png" alt="Image Nick furry" class="image-403">
+    <img src="/IMG/Marvel403.png" alt="Image Nick furry" class="image-403">
     </div>
 </body>
 </html>
