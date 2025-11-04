@@ -8,43 +8,6 @@ if (empty($_SESSION['logado'])) {
 }
 
 $archivo = '../sentences.txt';
-
-// 🗑️ Si se ha enviado la eliminación de una frase
-if (isset($_GET['accion']) && $_GET['accion'] === 'eliminar' && isset($_GET['dificultad']) && isset($_GET['frase'])) {
-    $dificultad = $_GET['dificultad'];
-    $fraseAEliminar = $_GET['frase'];
-
-    if (file_exists($archivo)) {
-        $lineas = file($archivo, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-        $nuevasLineas = [];
-
-        foreach ($lineas as $linea) {
-            list($dif, $frases) = explode('|', $linea);
-            $fraseArray = array_map('trim', explode(',', $frases));
-
-            if ($dif === $dificultad) {
-                // Eliminar la frase seleccionada
-                $fraseArray = array_filter($fraseArray, function($f) use ($fraseAEliminar) {
-                    return trim($f) !== trim($fraseAEliminar);
-                });
-
-                // Si aún quedan frases, volver a unir
-                if (!empty($fraseArray)) {
-                    $nuevasLineas[] = $dif . '|' . implode(',', $fraseArray);
-                }
-            } else {
-                $nuevasLineas[] = $linea;
-            }
-        }
-
-        // Sobrescribir el archivo con las frases restantes
-        file_put_contents($archivo, implode(PHP_EOL, $nuevasLineas) . PHP_EOL);
-    }
-
-    // Recargar la página sin parámetros GET (para limpiar la URL)
-    header("Location: listar_frases.php");
-    exit;
-}
 ?>
 
 <!DOCTYPE html>
@@ -73,7 +36,7 @@ if (isset($_GET['accion']) && $_GET['accion'] === 'eliminar' && isset($_GET['dif
                     echo "<tr>";
                     echo "<td>" . htmlspecialchars($dificultad) . "</td>";
                     echo "<td>" . htmlspecialchars($fraseIndividual) . "</td>";
-                    echo "<td><a href='?accion=eliminar&dificultad=" . urlencode($dificultad) . "&frase=" . urlencode($fraseIndividual) . "' onclick=\"return confirm('¿Estás seguro de que deseas eliminar esta frase?');\">Eliminar</a></td>";
+                    echo "<td><a href='delete_sentence.php?dificultad=" . urlencode($dificultad) . "&frase=" . urlencode($fraseIndividual) . "'>Eliminar</a></td>";
                     echo "</tr>";
                 }
             }
