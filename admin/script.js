@@ -5,13 +5,13 @@ const agregarFraseButton = document.getElementById("agregarFraseButton");
 document.addEventListener("keydown", (event) => {
     switch (event.key.toLowerCase()) {
         case "c":
-            window.location.href="logout.php";
+            window.location.href="/admin/logout.php";
             break;
         case "l":
-            window.location.href="list_sentences.php";
+            window.location.href="/admin/list_sentences.php";
             break;
         case "a":
-            window.location.href="create_sentence.php";
+            window.location.href="/admin/create_sentence.php";
             break;
         default:
             break;
