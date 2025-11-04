@@ -17,6 +17,11 @@
             $error = "Usuario o contraseña incorrectos.";
         }
     }
+
+    if (!empty($_SESSION['logado'])) {
+        header("Location: /admin/index.php");
+        exit;
+    }
 ?>
 
 <!DOCTYPE html>

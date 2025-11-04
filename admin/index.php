@@ -1,13 +1,12 @@
 <?php
     session_start();
-
+    
     // Si no estás logado, redirige al login
     if (empty($_SESSION['logado'])) {
         header("Location: /admin/login.php");
         exit;
     }
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
