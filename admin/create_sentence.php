@@ -43,6 +43,8 @@
         </section>
     </form>
 
+    <button class="btn-volverIndex"><a href="/admin/index.php">Volver atras</a></button>
+
     <?php
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $nuevaFrase = trim($_POST['inputSentence'] ?? '');
@@ -79,5 +81,6 @@
             $dificultad = '';
         }
     ?>
+    <script src="scriptCreateSentence.js"></script>
 </body>
 </html>
