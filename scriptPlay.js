@@ -1,5 +1,5 @@
-const fraseDiv = document.getElementById("frase");
-const inputOcult = document.getElementById("inputOcult");
+// Variables globales
+const inputOcult = document.getElementById("frase");
 const contadorDiv = document.getElementById("contador");
 const audioRight = new Audio("Right.mp3");
 const audioMiss = new Audio("Miss.wav");
@@ -22,15 +22,13 @@ let thanosSnapTriggered = false;
 
 function mostrarFrase() {
     fraseAleatoria = dificultadFrase;
-    fraseDiv.innerHTML = "";
+    inputOcult.innerHTML = "";
     posicionActual = 0;
-    
-    tiempoInicio = performance.now(); // Mide el tiempo que ha tardado en escribir la frase
 
     for (let letra of fraseAleatoria) {
         const span = document.createElement("span");
         span.textContent = letra;
-        fraseDiv.appendChild(span);
+        inputOcult.appendChild(span);
     }
 
     updateCurrentLetter();
@@ -39,7 +37,7 @@ function mostrarFrase() {
 }
 
 function updateCurrentLetter() {
-    const spans = fraseDiv.querySelectorAll("span");
+    const spans = inputOcult.querySelectorAll("span");  
     spans.forEach(span => span.classList.remove("currentLetter"));
     if (posicionActual < spans.length) {
         spans[posicionActual].classList.add("currentLetter");
@@ -63,66 +61,59 @@ const intervalo = setInterval(() => {
     }
 }, 1000);
 
-function verificarEscritura() {
-    const valor = inputOcult.value;
-    const spans = fraseDiv.querySelectorAll("span");
+document.addEventListener("keydown", manejarTecla);
 
-    totalLetrasEscritas = valor.length;
-    totalErrores = 0;
+function manejarTecla(e) {
+    if (e.key.length !== 1 && e.key !== "Backspace") return;
 
-    for (let i = 0; i < spans.length; i++) {
-        const letraEsperada = fraseAleatoria[i] || "";
-        const letraEscrita = valor[i] || "";
+    e.preventDefault();
 
-        if (letraEscrita === "") {
-            spans[i].classList.remove("correcta", "incorrecta");
-        } else if (letraEscrita === letraEsperada) {
-            audioRight.pause();
-            audioMiss.pause();
-            audioRight.currentTime = 0;
-            audioRight.play().catch(() => {});
-            spans[i].classList.add("correcta");
-            spans[i].classList.remove("incorrecta");
-        } else {
-            audioMiss.pause();
-            audioRight.pause();
-            audioMiss.currentTime = 0;
-            audioMiss.play().catch(() => {});
-            spans[i].classList.add("incorrecta");
-            spans[i].classList.remove("correcta");
-            totalErrores++;
-        }
+    if (e.key === "Backspace") {
+        posicionActual = Math.max(0, posicionActual - 1);
+    } else {
+        verificarEscritura(e.key);
     }
 
-    if (valor.length > 0) {
-        const ultimaLetraIndex = valor.length - 1;
-        const ultimaLetraEsperada = fraseAleatoria[ultimaLetraIndex];
-        const ultimaLetraEscrita = valor[ultimaLetraIndex];
+    updateCurrentLetter();
+}
 
-        easterEgg(ultimaLetraEscrita === ultimaLetraEsperada);
+function verificarEscritura(tecla) {
+    const spans = inputOcult.querySelectorAll("span");
+    const letraEsperada = fraseAleatoria[posicionActual];
+
+    if (!letraEsperada) return;
+
+    if (tecla === letraEsperada) {
+        audioRight.pause();
+        audioRight.currentTime = 0;
+        audioRight.play().catch(() => {});
+        spans[posicionActual].classList.add("correcta");
+        spans[posicionActual].classList.remove("incorrecta");
+        puntuation += 10;
+        easterEgg(true);
+    } else {
+        audioMiss.pause();
+        audioMiss.currentTime = 0;
+        audioMiss.play().catch(() => {});
+        spans[posicionActual].classList.add("incorrecta");
+        spans[posicionActual].classList.remove("correcta");
+        puntuation -= 5;
+        easterEgg(false);
     }
 
-    posicionActual = valor.length;
+    posicionActual++;
     updateCurrentLetter();
 
-    if (!thanosSnapTriggered && totalLetrasEscritas > 0) {
-        const errorRate = totalErrores / totalLetrasEscritas;
-        if (errorRate >= 0.5) {
+    if (posicionActual === fraseAleatoria.length) {
+        if (Math.random() < 0.01) { // 1% de probabilidad
             thanosSnapTriggered = true;
             activateThanosSnap();
-            puntuation = -5000;
             setTimeout(() => {
-                endGame(puntuation, ((performance.now() - tiempoInicio) / 1000).toFixed(2));
+                endGame(puntuation);
             }, 4000);
             return;
         }
-    }
-
-    if (valor.length === fraseAleatoria.length) {
-        const tiempoFin = performance.now();
-        const tiempoTotal = ((tiempoFin - tiempoInicio) / 1000).toFixed(2); // Tiempo en segundos con dos decimales
-
-        endGame(puntuation, tiempoTotal);
+        endGame(puntuation);
     }
 };
 
@@ -148,14 +139,13 @@ function activateThanosSnap() {
 }
 inputOcult.addEventListener("input", verificarEscritura);
 
-function endGame(score, time) {
+function endGame(score) {
     fetch('finish_game.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
         body: "score=" + encodeURIComponent(score)
-        + "&time=" + encodeURIComponent(time)
         + "&bonus=" + encodeURIComponent(bonus)
     })
     .then(response => response.text())

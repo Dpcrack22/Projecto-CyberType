@@ -15,25 +15,27 @@
             <h1>MarvelType</h1>
             <p id="gameDescription">En MarvelType pondrás a prueba tu velocidad y reflejos. Teclea cada frase con precisión y demuestra que tienes lo necesario para unirte a los héroes más poderosos del universo Marvel.</p>
             <div id="nameArea">
-                <input type="text" id="inputName" placeholder="Insert your name"/>
+                <input type="text" id="inputName" placeholder="Inserta tu nombre"/>
                 <p id="infoText"></p>
             </div>
             <select id="selectDifficulty">
-                <option value="easy">Easy</option>
-                <option value="medium">Medium</option>
-                <option value="hard">Hard</option>
+                <option value="facil">Fácil</option>
+                <option value="medio">Medio</option>
+                <option value="dificil">Difícil</option>
             </select>
             <br>
-            <input type="button" id="startGameButton" value="Start Game"/>
+            <input type="button" id="startGameButton" value="Iniciar Juego"/>
+            <noscript>
+                <div class="no-js-warning">
+                    ⚠️ El juego necesita javascript para funcionar. Por favor, habilita Javascript para empezar.
+                </div>
+                <script>
+                    document.getElementById('startGameButton').style.display = 'none';
+                </script>
+            </noscript>
         </section>
 
         <img src="./IMG/IndexImg002.png" alt="Thanos" class="side-img right-img">
     </div>
-
-    <noscript>
-        <div class="no-js-warning">
-            ⚠️ El juego necesita javascript para funcionar. Por favor, habilita Javascript para empezar.
-        </div>
-    </noscript>
 </body>
 </html>
