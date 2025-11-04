@@ -544,7 +544,6 @@ header .user-info {
 }
 
 .body-ranking button {
-.body-ranking .volverInicio {
     display: inline-block;
     background-color: #ED1D24;
     color: #FFFFFF;
@@ -557,7 +556,7 @@ header .user-info {
     cursor: pointer;
 }
 
-.body-ranking .volverInicio:hover {
+.body-ranking button:hover {
     background-color: #A50000;
 }
 
