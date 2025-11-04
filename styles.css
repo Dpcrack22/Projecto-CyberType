@@ -930,3 +930,7 @@ header .user-info {
 .logout-link-admin:hover {
     background-color: #3268BD;
 }
+
+.div-margin{
+    height: 150px;
+}

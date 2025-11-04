@@ -31,6 +31,7 @@
             ?>
         </div>
     </header>
+
     <h1>Listado de frases</h1>
     <table>
         <tr>

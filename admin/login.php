@@ -33,6 +33,8 @@
     <header>
         <img src="../IMG/shield.png" alt="Marvel Logo" class="marvel-logo">
     </header>
+    <div class="div-margin"></div>
+
     <h2>Login</h2>
     <?php if (!empty($error)) echo "<p style='color:red;'>$error</p>"; ?>
     <form method="post">

@@ -30,6 +30,8 @@
             ?>
         </div>
     </header>
+    <div class="div-margin"></div>
+
     <div class="hero-container">
         <img src="./IMG/IndexImg001.png" alt="Iron Man" class="side-img left-img">
 

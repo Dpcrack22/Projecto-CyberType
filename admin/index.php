@@ -28,6 +28,7 @@
             ?>
         </div>
     </header>
+    <div class="div-margin"></div>
     <h1>Bienvenido a S.H.I.E.L.D</h1>
     <div class="botonesIndex">
         <button class="botonLogout-admin"><a href="/admin/logout.php">Cerrar sesión</a></button>

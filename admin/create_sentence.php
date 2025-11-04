@@ -28,6 +28,8 @@
             ?>
         </div>
     </header>
+    <div class="div-margin"></div>
+
     <h1>Añadir Frases</h1>
     <form action="create_sentence.php" method="POST">
         <section>
