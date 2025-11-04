@@ -41,7 +41,7 @@
 
     <script src="./scriptPlay.js" defer></script>
     <script>
-        const fraseJuego = <?php echo json_encode($fraseAleatoria); ?>;
+        const fraseJuego = <?php echo json_encode($fraseAleatoria, JSON_UNESCAPED_UNICODE); ?>;
     </script>
 
     <noscript>
