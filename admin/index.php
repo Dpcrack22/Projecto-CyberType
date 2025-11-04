@@ -20,7 +20,7 @@
     <div class="botonesIndex">
         <button class="botonLogout-admin"><a href="/admin/logout.php">Cerrar sesión</a></button>
         <button class="botonListar-admin"><a href="/admin/listar_frases.php">Listar Frases</a></button>
-        <button class="botonAgregar-admin"><a href="/admin/agregar_frase.php">Agregar Frase</a></button>
+        <button class="botonAgregar-admin"><a href="/admin/create_sentence.php">Agregar Frase</a></button>
     </div>
 </body>
 </html>
