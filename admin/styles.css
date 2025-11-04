@@ -1,4 +1,4 @@
-/* PARTE ADMIN INDEX.PHP */
+/* PARTE ADMIN INDEX.PHP
 .body-adminIndex {
     background-color: #141414;
     color: #FFFFFF;
@@ -96,8 +96,8 @@
 .botonAgregar-admin a:hover {
     background-color: #434a7d;
 }
-
-/* PARTE ADMIN INDEX.PHP */
+*/
+/* PARTE ADMIN INDEX.PHP 
 .body-loginAdmin {
     background-color: #141414;
     color: #FFFFFF;
@@ -160,3 +160,4 @@
 .body-loginAdmin #loginButton:hover {
     background-color: #A50000;
 }
+*/
