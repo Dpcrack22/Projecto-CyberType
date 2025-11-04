@@ -19,6 +19,17 @@ $archivo = '../sentences.txt';
     <link rel="stylesheet" type="text/css" href="/styles.css?<?php echo time(); ?>" />
 </head>
 <body class="body-listarFrases">
+    <header>
+        <img src="../IMG/shield.png" alt="Marvel Logo" class="marvel-logo">
+        <div class="user-info">
+            <?php
+            if (isset($_SESSION['usuario'])) {
+                echo '<span class="admin-name">Administrador: ' . htmlspecialchars($_SESSION['usuario']) . '</span>';
+                echo '<a href="logout.php" class="logout-link-admin">Cerrar sesión</a>';
+            }
+            ?>
+        </div>
+    </header>
     <h1>Listado de frases</h1>
     <table>
         <tr>
@@ -36,7 +47,7 @@ $archivo = '../sentences.txt';
                     echo "<tr>";
                     echo "<td>" . htmlspecialchars($dificultad) . "</td>";
                     echo "<td>" . htmlspecialchars($fraseIndividual) . "</td>";
-                    echo "<td><a href='delete_sentence.php?dificultad=" . urlencode($dificultad) . "&frase=" . urlencode($fraseIndividual) . "'>Eliminar</a></td>";
+                    echo "<td id='delete-link'><a href='delete_sentence.php?dificultad=" . urlencode($dificultad) . "&frase=" . urlencode($fraseIndividual) . "'>Eliminar</a></td>";
                     echo "</tr>";
                 }
             }

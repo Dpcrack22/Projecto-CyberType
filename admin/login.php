@@ -10,6 +10,7 @@
         $password = $_POST['password'] ?? '';
 
         if ($usuario === $usuario_correcto && $password === $password_correcta) {
+            $_SESSION['usuario'] = $usuario;
             $_SESSION['logado'] = true; // Guardar Sesión
             header("Location: /admin/index.php"); // Redeirigr al panel
             exit;
@@ -28,12 +29,15 @@
     <link rel="stylesheet" type="text/css" href="/styles.css?<?php echo time(); ?>" />
 </head>
 <body class="body-loginAdmin">
+    <header>
+        <img src="../IMG/shield.png" alt="Marvel Logo" class="marvel-logo">
+    </header>
     <h2>Login</h2>
     <?php if (!empty($error)) echo "<p style='color:red;'>$error</p>"; ?>
     <form method="post">
         <input type="text" name="usuario" id="userLogin" required placeholder="Usuario..."><br><br>
         <input type="password" name="password" id="passwordLogin" required placeholder="Contraseña..."><br><br>
-        <button type="submit" vale="Entrar" id="loginButton">Iniciar</button>
+        <button type="submit" id="loginButton">Iniciar</button>
     </form>
 </body>
 </html>

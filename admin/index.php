@@ -16,6 +16,17 @@
     <link rel="stylesheet" type="text/css" href="/styles.css?<?php echo time(); ?>" />
 </head>
 <body class="body-adminIndex">
+    <header>
+        <img src="../IMG/shield.png" alt="Marvel Logo" class="marvel-logo">
+        <div class="user-info">
+            <?php
+            if (isset($_SESSION['usuario'])) {
+                echo '<span class="admin-name">Administrador: ' . htmlspecialchars($_SESSION['usuario']) . '</span>';
+                echo '<a href="logout.php" class="logout-link-admin">Cerrar sesión</a>';
+            }
+            ?>
+        </div>
+    </header>
     <h1>Bienvenido a S.H.I.E.L.D</h1>
     <div class="botonesIndex">
         <button class="botonLogout-admin"><a href="/admin/logout.php">Cerrar sesión</a></button>

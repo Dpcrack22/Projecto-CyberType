@@ -16,6 +16,17 @@
     <link rel="stylesheet" type="text/css" href="/styles.css?<?php echo time(); ?>" />
 </head>
 <body class="body-createSentence">
+    <header>
+        <img src="../IMG/shield.png" alt="Marvel Logo" class="marvel-logo">
+        <div class="user-info">
+            <?php
+            if (isset($_SESSION['usuario'])) {
+                echo '<span class="admin-name">Administrador: ' . htmlspecialchars($_SESSION['usuario']) . '</span>';
+                echo '<a href="logout.php" class="logout-link-admin">Cerrar sesión</a>';
+            }
+            ?>
+        </div>
+    </header>
     <h1>Añadir Frases</h1>
     <form action="create_sentence.php" method="POST">
         <section>
