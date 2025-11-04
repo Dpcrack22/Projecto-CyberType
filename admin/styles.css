@@ -1,4 +1,4 @@
-/* PARTE ADMIN INDEX.PHP */
+/* PARTE ADMIN INDEX.PHP
 .body-adminIndex {
     background-color: #141414;
     color: #FFFFFF;
@@ -96,8 +96,8 @@
 .botonAgregar-admin:hover {
     background-color: #434a7d;
 }
-
-/* PARTE ADMIN INDEX.PHP */
+*/
+/* PARTE ADMIN INDEX.PHP 
 .body-loginAdmin {
     background-color: #141414;
     color: #FFFFFF;
@@ -160,9 +160,10 @@
 .body-loginAdmin #loginButton:hover {
     background-color: #A50000;
 }
+*/
 
 
-/* PARTE ADMIN LISTAR_FRASES.PHP */
+/* PARTE ADMIN LISTAR_FRASES.PHP
 
 .body-listarFrases {
     background-color: #141414;
@@ -177,8 +178,30 @@
     text-align: center;
 }
 
+/* PARTE ADMIN CREATE_SENTENCE.PHP 
+.body-createSentence {
+    background-color: #141414;
+    color: #FFFFFF;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 40px 20px;
+    text-align: center;
+}
+
 .body-listarFrases h1 {
     color: #ED1D24;
+    font-size: 2.8em;
+    font-weight: 900;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+}
+.body-createSentence h2 {
+    color: #5f68ab;
     font-size: 2.8em;
     font-weight: 900;
     margin-bottom: 30px;
@@ -240,3 +263,68 @@
 .body-listarFrases a:hover {
     background-color: #A50000;
 }
+.body-createSentence #inputSentence {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border: 2px solid #363636;
+    border-radius: 6px;
+    background-color: #1A1A1A;
+    color: #FFFFFF;
+    font-size: 1.2em;
+    box-sizing: border-box;
+}
+.body-createSentence #inputSentence:focus {
+    border-color: #3268BD;
+    outline: none;
+    box-shadow: 0 0 8px rgba(50, 104, 189, 0.6);
+}
+.body-createSentence #inputSentence::placeholder {
+    color: #8492A6;
+}
+.body-createSentence #Dificulty {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border: 2px solid #363636;
+    border-radius: 6px;
+    background-color: #1A1A1A;
+    color: #FFFFFF;
+    font-size: 1.2em;
+    box-sizing: border-box;
+}
+.body-createSentence #Dificulty:focus {
+    border-color: #3268BD;
+    outline: none;
+    box-shadow: 0 0 8px rgba(50, 104, 189, 0.6);
+}
+.body-createSentence #Dificulty option {
+    background-color: #1A1A1A;
+    color: #FFFFFF;
+}
+.body-createSentence #createSentence {
+    background-color: #ED1D24; 
+    color: #FFFFFF; 
+    border: none;
+    padding: 15px 30px;
+    margin-top: 25px;
+    border-radius: 6px; 
+    font-weight: bold;
+    font-size: 1.1em;
+    width: 100%;
+    cursor: pointer;
+}
+.body-createSentence #createSentenceButton:hover {
+    background-color: #A50000;
+}
+.body-createSentence .success-message {
+    color: #4BB543;
+    font-weight: bold;
+    margin-top: 20px;
+}
+.body-createSentence .error-message {
+    color: #FF3333;
+    font-weight: bold;
+    margin-top: 20px;
+}
+*/

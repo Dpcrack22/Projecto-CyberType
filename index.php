@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if (isset($_SESSION['game_finished']) || isset($_SESSION['score']) || isset($_SESSION['bonus'])) {
+    unset($_SESSION['game_finished']);
+    unset($_SESSION['score']);
+    unset($_SESSION['bonus']);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,6 +18,17 @@
     <script src="script.js" defer></script>
 </head>
 <body class="body-index">
+    <header>
+        <img src="./IMG/Marvel_Logo.png" alt="Marvel Logo" class="marvel-logo">
+        <div class="user-info">
+            <?php
+            if (isset($_SESSION['playerName'])) {
+                echo '<span class="player-name">Jugador: ' . htmlspecialchars($_SESSION['playerName']) . '</span>';
+                echo '<a href="destroy_session.php" class="logout-link">Cerrar sesión</a>';
+            }
+            ?>
+        </div>
+    </header>
     <div class="hero-container">
         <img src="./IMG/IndexImg001.png" alt="Iron Man" class="side-img left-img">
 
@@ -15,7 +36,7 @@
             <h1>MarvelType</h1>
             <p id="gameDescription">En MarvelType pondrás a prueba tu velocidad y reflejos. Teclea cada frase con precisión y demuestra que tienes lo necesario para unirte a los héroes más poderosos del universo Marvel.</p>
             <div id="nameArea">
-                <input type="text" id="inputName" placeholder="Inserta tu nombre"/>
+                <input type="text" id="inputName" placeholder="Inserta tu nombre" value="<?php echo isset($_SESSION['playerName']) ? htmlspecialchars($_SESSION['playerName']) : ''; ?>"/>
                 <p id="infoText"></p>
             </div>
             <select id="selectDifficulty">

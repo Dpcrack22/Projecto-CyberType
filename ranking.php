@@ -18,6 +18,17 @@
         die("Error al guardar el ranking.");
     }
 ?>
+
+<?php
+session_start();
+
+if (isset($_SESSION['game_finished']) || isset($_SESSION['score']) || isset($_SESSION['bonus'])) {
+    unset($_SESSION['game_finished']);
+    unset($_SESSION['score']);
+    unset($_SESSION['bonus']);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -27,6 +38,18 @@
     <link rel="stylesheet" type="text/css" href="./styles.css?<?php echo time(); ?>" />
 </head>
 <body class="body-ranking">
+    <header>
+        <img src="./IMG/Marvel_Logo.png" alt="Marvel Logo" class="marvel-logo">
+        <div class="user-info">
+            <?php
+            if (isset($_SESSION['playerName'])) {
+                echo '<span class="player-name">Jugador: ' . htmlspecialchars($_SESSION['playerName']) . '</span>';
+            }
+            ?>
+            <a href="destroy_session.php" class="logout-link">Cerrar sesión</a>
+        </div>
+    </header>
+    </header>
     <h1>Ranking de Jugadores - MarvelType</h1>
     <table>
         <tr>

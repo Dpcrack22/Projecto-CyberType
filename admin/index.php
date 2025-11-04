@@ -13,7 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
-    <link rel="stylesheet" type="text/css" href="./styles.css?<?php echo time(); ?>" />
+    <link rel="stylesheet" type="text/css" href="/styles.css?<?php echo time(); ?>" />
 </head>
 <body class="body-adminIndex">
     <h1>Bienvenido a S.H.I.E.L.D</h1>
