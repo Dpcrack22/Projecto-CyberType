@@ -1,11 +1,12 @@
 <?php
-session_start();
+    session_name("jugadorSession");
+    session_start();
 
-if (isset($_SESSION['game_finished']) || isset($_SESSION['score']) || isset($_SESSION['bonus'])) {
-    unset($_SESSION['game_finished']);
-    unset($_SESSION['score']);
-    unset($_SESSION['bonus']);
-}
+    if (isset($_SESSION['game_finished']) || isset($_SESSION['score']) || isset($_SESSION['bonus'])) {
+        unset($_SESSION['game_finished']);
+        unset($_SESSION['score']);
+        unset($_SESSION['bonus']);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -29,6 +30,8 @@ if (isset($_SESSION['game_finished']) || isset($_SESSION['score']) || isset($_SE
             ?>
         </div>
     </header>
+    <div class="div-margin"></div>
+
     <div class="hero-container">
         <img src="./IMG/IndexImg001.png" alt="Iron Man" class="side-img left-img">
 
