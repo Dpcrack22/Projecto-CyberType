@@ -67,5 +67,6 @@
             $dificultad = '';
         }
     ?>
+    <script src="scriptCreateSentence.js"></script>
 </body>
 </html>

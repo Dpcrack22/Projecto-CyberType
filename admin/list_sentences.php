@@ -45,6 +45,7 @@ $archivo = '../sentences.txt';
         }
         ?>
     </table>
-    <button><a href="/admin/index.php">Volver atras</a></button>
+    <button id="ButtonListSentences"><a href="/admin/index.php">Volver atras</a></button>
+    <script src="scriptListSentences.js"></script>
 </body>
 </html>
