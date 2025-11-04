@@ -163,7 +163,7 @@
 */
 
 
-/* PARTE ADMIN LISTAR_FRASES.PHP */
+/* PARTE ADMIN LISTAR_FRASES.PHP
 
 .body-listarFrases {
     background-color: #141414;
@@ -178,7 +178,7 @@
     text-align: center;
 }
 
-/* PARTE ADMIN CREATE_SENTENCE.PHP */
+/* PARTE ADMIN CREATE_SENTENCE.PHP 
 .body-createSentence {
     background-color: #141414;
     color: #FFFFFF;
@@ -327,3 +327,4 @@
     font-weight: bold;
     margin-top: 20px;
 }
+*/
