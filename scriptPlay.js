@@ -116,7 +116,7 @@ function verificarEscritura(tecla) {
     updateCurrentLetter();
 
     if (posicionActual === fraseAleatoria.length) {
-        if (Math.random() < 0.01) { // 1% de probabilidad
+        if (Math.random() < 0.1 ) { // 1% de probabilidad
             thanosSnapTriggered = true;
             activateThanosSnap();
             setTimeout(() => {
