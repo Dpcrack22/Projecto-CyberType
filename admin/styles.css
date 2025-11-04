@@ -161,3 +161,83 @@
     background-color: #A50000;
 }
 */
+
+
+/* PARTE ADMIN LISTAR_FRASES.PHP */
+
+.body-listarFrases {
+    background-color: #141414;
+    color: #FFFFFF;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.body-listarFrases h1 {
+    color: #ED1D24;
+    font-size: 2.8em;
+    font-weight: 900;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+}
+
+.body-listarFrases table {
+    width: 70%;
+    border-collapse: collapse;
+    background-color: #242424;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(237, 29, 36, 0.4);
+    margin-bottom: 30px;
+}
+
+.body-listarFrases th, .body-ranking td {
+    padding: 15px 10px;
+    color: #FFFFFF;
+    font-size: 1.1em;
+}
+
+.body-listarFrases th {
+    background-color: #ED1D24;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.body-listarFrases tr:nth-child(even) {
+    background-color: #1A1A1A;
+}
+.body-listarFrases tr:nth-child(odd) {
+    background-color: #3c3c3c98;
+}
+
+.body-listarFrases tr:nth-child(even):hover {
+    background-color: #518bca72;
+}
+
+.body-listarFrases tr:nth-child(odd):hover {
+    background-color: #ed1d246a;
+}
+
+.body-listarFrases a {
+    display: inline-block;
+    background-color: #ED1D24;
+    color: #FFFFFF;
+    padding: 12px 35px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.body-listarFrases a:hover {
+    background-color: #A50000;
+}
