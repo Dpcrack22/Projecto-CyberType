@@ -1,4 +1,5 @@
 <?php
+    session_name("jugadorSession");
     session_start();
 
     if (!isset($_SESSION['playerName']) || !isset($_SESSION['score'])) {
@@ -49,7 +50,7 @@ if (isset($_SESSION['game_finished']) || isset($_SESSION['score']) || isset($_SE
             <a href="destroy_session.php" class="logout-link">Cerrar sesión</a>
         </div>
     </header>
-    </header>
+    
     <h1>Ranking de Jugadores - MarvelType</h1>
     <table>
         <tr>

@@ -138,10 +138,6 @@ header .user-info {
     color: #FFFFFF;
     font-size: 1em;
 }
-header .user-info span {
-    font-weight: bold;
-    color: #f78f3f;
-}
 .player-name {
     font-weight: bold;
     color: #f78f3f;
@@ -560,7 +556,7 @@ header .user-info span {
     cursor: pointer;
 }
 
-.body-ranking a:hover {
+.body-ranking button:hover {
     background-color: #A50000;
 }
 
@@ -829,7 +825,7 @@ header .user-info span {
     background-color: #ed1d246a;
 }
 
-.body-listarFrases a {
+.body-listarFrases #delete-link a {
     display: inline-block;
     background-color: #ED1D24;
     color: #FFFFFF;
@@ -842,7 +838,7 @@ header .user-info span {
     cursor: pointer;
 }
 
-.body-listarFrases a:hover {
+.body-listarFrases #delete-link a:hover {
     background-color: #A50000;
 }
 .body-createSentence #inputSentence {
@@ -910,6 +906,33 @@ header .user-info span {
     margin-top: 20px;
 }
 
+/* ADMIN HEADER STYLES */
+.admin-name {
+    font-weight: bold;
+    color:  	#518cca;
+    text-decoration: none;
+    margin-left: 15px;
+    margin-right: 20px;
+}
+.logout-link-admin {
+    display: inline-block;
+    background-color:	#518cca;
+    color: #FFFFFF;
+    padding: 12px 35px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    margin-right: 20px;
+}
+.logout-link-admin:hover {
+    background-color: #3268BD;
+}
+
+.div-margin{
+    height: 150px;
 #ButtonListSentences, #ButtonListSentences a{
     padding: 0;
     min-width: 320px;
