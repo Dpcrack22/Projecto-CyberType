@@ -1,4 +1,5 @@
 <?php
+    session_name("jugadorSession");
     session_start();
 
     if (isset($_POST['playerName'])) {

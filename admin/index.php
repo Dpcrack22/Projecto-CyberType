@@ -1,4 +1,5 @@
 <?php
+    session_name("adminSHIELD");
     session_start();
     
     // Si no estás logado, redirige al login

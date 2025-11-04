@@ -1,4 +1,5 @@
 <?php
+    session_name("jugadorSession");
     session_start();
     $_SESSION['game_finished'] = true;
 

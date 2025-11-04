@@ -1,13 +1,14 @@
 <?php
-session_start();
+    session_name("adminSHIELD");
+    session_start();
 
-// Si no estás logado, redirige al login
-if (empty($_SESSION['logado'])) {
-    header("Location: /admin/login.php");
-    exit;
-}
+    // Si no estás logado, redirige al login
+    if (empty($_SESSION['logado'])) {
+        header("Location: /admin/login.php");
+        exit;
+    }
 
-$archivo = '../sentences.txt';
+    $archivo = '../sentences.txt';
 ?>
 
 <!DOCTYPE html>

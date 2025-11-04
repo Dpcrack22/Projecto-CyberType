@@ -1,6 +1,8 @@
 <?php
+    session_name("jugadorSession");
     session_start();
-    if (!isset($_SESSION['game_finished']) || $_SESSION['game_finished'] !== true) {
+    
+    if (!isset($_SESSION['game_finished']) || $_SESSION['game_finished'] !== true || !isset($_SESSION['playerName'])) {
         header("Location: error403.php");
         exit;
     }

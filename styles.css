@@ -543,7 +543,7 @@ header .user-info {
     background-color: #ed1d246a;
 }
 
-.body-ranking a {
+.body-ranking .volverInicio {
     display: inline-block;
     background-color: #ED1D24;
     color: #FFFFFF;
@@ -556,7 +556,7 @@ header .user-info {
     cursor: pointer;
 }
 
-.body-ranking a:hover {
+.body-ranking .volverInicio:hover {
     background-color: #A50000;
 }
 

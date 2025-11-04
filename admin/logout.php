@@ -1,4 +1,5 @@
 <?php
+    session_name("adminSHIELD");
     session_start();
 
     // Solo destruye la sesión del admin

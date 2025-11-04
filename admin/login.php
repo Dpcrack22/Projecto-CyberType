@@ -1,4 +1,5 @@
 <?php
+    session_name("adminSHIELD");
     session_start();
 
     $credentials = file(__DIR__ . '/credentials.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);

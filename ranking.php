@@ -1,4 +1,5 @@
 <?php
+    session_name("jugadorSession");
     session_start();
 
     if (!isset($_SESSION['playerName']) || !isset($_SESSION['score'])) {
@@ -78,6 +79,6 @@ if (isset($_SESSION['game_finished']) || isset($_SESSION['score']) || isset($_SE
         ?>
     </table>
     <br>
-    <a href="index.php">Volver al inicio</a>
+    <a href="index.php" class="volverInicio">Volver al inicio</a>
 </body>
 </html>
