@@ -31,9 +31,10 @@
     <div class="div-margin"></div>
     <h1>Bienvenido a S.H.I.E.L.D</h1>
     <div class="botonesIndex">
-        <button class="botonLogout-admin"><a href="/admin/logout.php">Cerrar sesión</a></button>
-        <button class="botonListar-admin"><a href="/admin/listar_frases.php">Listar Frases</a></button>
-        <button class="botonAgregar-admin"><a href="/admin/create_sentence.php">Agregar Frase</a></button>
+        <button class="botonLogout-admin" id="cerrarSesionButton">Cerrar sesión</button>
+        <button class="botonListar-admin" id="listarFrasesButton">Listar Frases</button>
+        <button class="botonAgregar-admin" id="agregarFraseButton">Agregar Frase</button>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>

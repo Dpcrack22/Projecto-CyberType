@@ -11,10 +11,11 @@
     <div class="emoji-404">🚧</div>
     <h1>¡ERROR 404!</h1>
     <p>Parece que has tomado el camino equivocado hacia el Multiverso. Intenta volver al inicio.</p>
-    <a href="./index.php">Volver al Centro de Mando</a>
+    <button id="Button404">Volver al Centro de Mando</button>
     </div>
     <div class="image-div-404">
     <img src="/IMG/Marvel404.png" alt="Iron Man 404" class="image-404">
     </div>
+    <script src="script404.js"></script>
 </body>
 </html>

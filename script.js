@@ -2,6 +2,22 @@ const startGameButton = document.getElementById('startGameButton');
 const divArea = document.getElementById("nameArea");
 const infoText = document.getElementById("infoText");
 
+document.addEventListener("keydown", (event) => {
+    const activeElement = document.activeElement;
+    const isTyping = (
+        activeElement.tagName.toLowerCase() === "input" ||
+        activeElement.tagName.toLowerCase() === "textarea" ||
+        activeElement.isContentEditable
+    );
+
+    if (isTyping) return;
+
+    if (event.key.toLowerCase() === 'i') {
+        document.getElementById("startGameButton").click();
+    }
+});
+
+
 startGameButton.addEventListener('click', () => {
     const inputNameValue = document.getElementById("inputName").value;
     const selectDifficultyValue = document.getElementById("selectDifficulty").value;
