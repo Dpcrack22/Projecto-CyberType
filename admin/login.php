@@ -35,5 +35,6 @@
         <input type="password" name="password" id="passwordLogin" required placeholder="Contraseña..."><br><br>
         <button type="submit" vale="Entrar" id="loginButton">Iniciar</button>
     </form>
+    <script src="scriptLogin.js"></script>
 </body>
 </html>

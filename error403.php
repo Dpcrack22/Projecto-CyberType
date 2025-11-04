@@ -12,10 +12,11 @@
     <h1>¡ERROR 403!</h1>
     <p>Este nivel de autorización es solo para agentes de S.H.I.E.L.D.
         Parece que estás intentando entrar en un área clasificada, recluta.</p>
-    <a href="./index.php">Volver con los demas reclutas</a>
+    <button id="Button403">Volver con los demas reclutas</button>
     </div>
     <div class="image-div-403">
     <img src="/IMG/Marvel403.png" alt="Image Nick furry" class="image-403">
     </div>
+    <script src="script403.js"></script>
 </body>
 </html>
