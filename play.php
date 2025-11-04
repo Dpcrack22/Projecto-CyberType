@@ -39,7 +39,7 @@
     </div>
     <div id="bonusMessage"></div>
 
-    <script src="./scriptPlay.js" defer></script>
+    <script src="./scriptPlay.js?<?php echo time(); ?>" defer></script>
     <script>
         const fraseJuego = <?php echo json_encode($fraseAleatoria, JSON_UNESCAPED_UNICODE); ?>;
     </script>
