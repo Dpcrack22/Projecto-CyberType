@@ -78,12 +78,13 @@ function manejarTecla(e) {
 }
 
 function verificarEscritura(tecla) {
+    console.log("👉 Tecla pulsada:", tecla);
     const spans = inputOcult.querySelectorAll("span");
     const letraEsperada = fraseAleatoria[posicionActual];
 
     if (!letraEsperada) return;
 
-    if (tecla === letraEsperada) {
+    if (normalizar(tecla) === normalizar(letraEsperada)) {
         audioRight.pause();
         audioRight.currentTime = 0;
         audioRight.play().catch(() => {});
@@ -120,7 +121,7 @@ function verificarEscritura(tecla) {
 function activateThanosSnap() {
     console.log("💥 Modo Thanos activado: la mitad de las letras desaparecerán...");
 
-    const spans = Array.from(fraseDiv.querySelectorAll("span"));
+    const spans = Array.from(inputOcult.querySelectorAll("span"));
     const half = Math.floor(spans.length / 2);
     const shuffled = spans.sort(() => 0.5 - Math.random());
     const toRemove = shuffled.slice(0, half);
@@ -193,4 +194,8 @@ function easterEgg(bool) {
         }
     }
     console.log(puntuation);
+}
+
+function normalizar(texto) {
+    return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
