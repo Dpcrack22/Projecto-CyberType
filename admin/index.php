@@ -18,10 +18,10 @@
 <body class="body-adminIndex">
     <h1>Bienvenido a S.H.I.E.L.D</h1>
     <div class="botonesIndex">
-        <button class="botonLogout-admin" id="cerrarSesionButton">Cerrar sesión</button>
-        <button class="botonListar-admin" id="listarFrasesButton">Listar Frases</button>
-        <button class="botonAgregar-admin" id="agregarFraseButton">Agregar Frase</button>
+        <button class="botonLogout-admin" id="cerrarSesionButton"><a href="/admin/logout.php">Cerrar sesión</a></button>
+        <button class="botonListar-admin" id="listarFrasesButton"><a href="/admin/list_sentences.php">Listar Frases</a></button>
+        <button class="botonAgregar-admin" id="agregarFraseButton"><a href="/admin/create_sentence.php">Agregar Frase</a></button>
     </div>
-    <script src="script.js"></script>
+    <script src="/admin/script.js?<?php echo time(); ?>"></script>
 </body>
 </html>

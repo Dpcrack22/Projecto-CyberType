@@ -8,10 +8,10 @@ document.addEventListener("keydown", (event) => {
             window.location.href="logout.php";
             break;
         case "l":
-            window.location.href="listar_frases.php";
+            window.location.href="list_sentences.php";
             break;
         case "a":
-            window.location.href="agregar_frase.php";
+            window.location.href="create_sentence.php";
             break;
         default:
             break;

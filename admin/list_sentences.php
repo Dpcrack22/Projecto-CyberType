@@ -45,5 +45,6 @@ $archivo = '../sentences.txt';
         }
         ?>
     </table>
+    <button><a href="/admin/index.php">Volver atras</a></button>
 </body>
 </html>

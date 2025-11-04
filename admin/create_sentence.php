@@ -29,6 +29,8 @@
         </section>
     </form>
 
+    <button><a href="/admin/index.php">Volver atras</a></button>
+
     <?php
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $nuevaFrase = trim($_POST['inputSentence'] ?? '');
