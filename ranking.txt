@@ -7,3 +7,4 @@ Paco | 3740
 Bili | 3655
 Xavi | 1595
 Xavi | 3630
+Javi | 6560
