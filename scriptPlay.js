@@ -62,6 +62,16 @@ const intervalo = setInterval(() => {
 }, 1000);
 
 document.addEventListener("keydown", manejarTecla);
+document.addEventListener("input", manejarEntrada);
+
+function manejarEntrada(e) {
+    if (e.inputType === "insertCompositionText" || e.inputType === "insertText") {
+        const letra = e.data;
+        if (letra && letra.length === 1) {
+            verificarEscritura(letra);
+        }
+    }
+}
 
 function manejarTecla(e) {
     if (e.key.length !== 1 && e.key !== "Backspace") return;
