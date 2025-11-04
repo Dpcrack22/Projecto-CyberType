@@ -40,7 +40,7 @@
     <form method="post">
         <input type="text" name="usuario" id="userLogin" required placeholder="Usuario..."><br><br>
         <input type="password" name="password" id="passwordLogin" required placeholder="Contraseña..."><br><br>
-        <button type="submit" id="loginButton">Iniciar</button>
+        <button type="submit" id="loginButton"><u>I</u>niciar</button>
     </form>
     <script src="scriptLogin.js"></script>
 </body>

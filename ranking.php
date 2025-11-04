@@ -79,7 +79,7 @@ if (isset($_SESSION['game_finished']) || isset($_SESSION['score']) || isset($_SE
         ?>
     </table>
     <br>
-    <button id="RankingButton">Volver al inicio</button>
+    <button id="RankingButton"><u>V</u>olver al inicio</button>
     <script src="scriptRanking.js"></script>
 </body>
 </html>

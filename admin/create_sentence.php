@@ -43,7 +43,7 @@
         </section>
     </form>
 
-    <button class="btn-volverIndex"><a href="/admin/index.php">Volver atras</a></button>
+    <button class="btn-volverIndex"><a href="/admin/index.php"><u>V</u>olver atras</a></button>
 
     <?php
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
