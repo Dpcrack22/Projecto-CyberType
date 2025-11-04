@@ -166,6 +166,17 @@
 /* PARTE ADMIN LISTAR_FRASES.PHP */
 
 .body-listarFrases {
+    background-color: #141414;
+    color: #FFFFFF;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 40px 20px;
+    text-align: center;
+}
 
 /* PARTE ADMIN CREATE_SENTENCE.PHP */
 .body-createSentence {
@@ -183,6 +194,12 @@
 
 .body-listarFrases h1 {
     color: #ED1D24;
+    font-size: 2.8em;
+    font-weight: 900;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+}
 .body-createSentence h2 {
     color: #5f68ab;
     font-size: 2.8em;
