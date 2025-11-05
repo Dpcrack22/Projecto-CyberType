@@ -50,7 +50,11 @@
                     echo "<td>" . htmlspecialchars($dificultad) . "</td>";
                     echo "<td>" . htmlspecialchars($fraseIndividual) . "</td>";
                     // Quiero que la frase y la dificultad se pasen por POST en vez de GET
-                    echo "<td id='delete-link'><form action='delete_sentence.php' method='POST'><input type='hidden' name='dificultad' value='" . htmlspecialchars($dificultad) . "'><input type='hidden' name='frase' value='" . htmlspecialchars($fraseIndividual) . "'><input type='submit' value='Eliminar'></form></td>";
+                    echo "<form action='delete_sentence.php' method='POST'>";
+                    echo "<input type='hidden' name='dificultad' value='" . htmlspecialchars($dificultad) . "'>";
+                    echo "<input type='hidden' name='frase' value='" . htmlspecialchars($fraseIndividual) . "'>";
+                    echo "<td id='delete-link'><button type='submit'>Eliminar</button></td>";
+                    echo "</form>";
                     echo "</tr>";
                 }
             }

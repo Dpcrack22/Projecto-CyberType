@@ -11,9 +11,9 @@ if (empty($_SESSION['logado'])) {
 $archivo = '../sentences.txt';
 $mensaje = '';
 
-if (isset($_GET['dificultad']) && isset($_GET['frase'])) {
-    $dificultad = $_GET['dificultad'];
-    $fraseAEliminar = $_GET['frase'];
+if (isset($_POST['dificultad']) && isset($_POST['frase'])) {
+    $dificultad = $_POST['dificultad'];
+    $fraseAEliminar = $_POST['frase'];
 
     if (file_exists($archivo)) {
         $lineas = file($archivo, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
@@ -60,7 +60,7 @@ if (isset($_GET['dificultad']) && isset($_GET['frase'])) {
 
 echo "<script>
     alert(" . json_encode($mensaje) . ");
-    window.location.href = 'listar_frases.php';
+    window.location.href = '/admin/listar_frases.php';
 </script>";
 exit;
 ?>
