@@ -842,6 +842,12 @@ header .user-info {
 .body-listarFrases #delete-link button:hover {
     background-color: #A50000;
 }
+.body-listarFrases .mensaje-alerta {
+    color: #4BB543;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
 .body-createSentence #inputSentence {
     width: 100%;
     padding: 12px;

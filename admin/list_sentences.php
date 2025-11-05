@@ -33,6 +33,14 @@
     </header>
 
     <h1>Listado de frases</h1>
+    <div class="mensaje-alerta">
+        <?php
+        if (isset($_SESSION['mensaje'])) {
+            echo nl2br(htmlspecialchars($_SESSION['mensaje']));
+            unset($_SESSION['mensaje']);
+        }
+        ?>
+    </div>
     <table>
         <tr>
             <th>Dificultad</th>

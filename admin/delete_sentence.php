@@ -1,66 +1,63 @@
 <?php
-session_name("adminSHIELD");
-session_start();
+    session_name("adminSHIELD");
+    session_start();
 
-// Si no estás logado, redirige al login
-if (empty($_SESSION['logado'])) {
-    header("Location: /admin/login.php");
-    exit;
-}
+    // Si no estás logado, redirige al login
+    if (empty($_SESSION['logado'])) {
+        header("Location: /admin/login.php");
+        exit;
+    }
 
-$archivo = '../sentences.txt';
-$mensaje = '';
+    $archivo = '../sentences.txt';
+    $mensaje = '';
 
-if (isset($_POST['dificultad']) && isset($_POST['frase'])) {
-    $dificultad = $_POST['dificultad'];
-    $fraseAEliminar = $_POST['frase'];
+    if (isset($_POST['dificultad']) && isset($_POST['frase'])) {
+        $dificultad = $_POST['dificultad'];
+        $fraseAEliminar = $_POST['frase'];
 
-    if (file_exists($archivo)) {
-        $lineas = file($archivo, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-        $nuevasLineas = [];
-        $fraseEncontrada = false;
+        if (file_exists($archivo)) {
+            $lineas = file($archivo, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+            $nuevasLineas = [];
+            $fraseEncontrada = false;
 
-        foreach ($lineas as $linea) {
-            $parts = explode('|', $linea, 2);
-            $dif = isset($parts[0]) ? trim($parts[0]) : '';
-            $frases = isset($parts[1]) ? $parts[1] : '';
+            foreach ($lineas as $linea) {
+                $parts = explode('|', $linea, 2);
+                $dif = isset($parts[0]) ? trim($parts[0]) : '';
+                $frases = isset($parts[1]) ? $parts[1] : '';
 
-            $fraseArray = array_map('trim', explode(',', $frases));
-            $originalCount = count($fraseArray);
+                $fraseArray = array_map('trim', explode(',', $frases));
+                $originalCount = count($fraseArray);
 
-            if ($dif === $dificultad) {
-                $fraseArray = array_filter($fraseArray, function($f) use ($fraseAEliminar) {
-                    return trim($f) !== trim($fraseAEliminar);
-                });
+                if ($dif === $dificultad) {
+                    $fraseArray = array_filter($fraseArray, function($f) use ($fraseAEliminar) {
+                        return trim($f) !== trim($fraseAEliminar);
+                    });
 
-                if (count($fraseArray) < $originalCount) {
-                    $fraseEncontrada = true;
+                    if (count($fraseArray) < $originalCount) {
+                        $fraseEncontrada = true;
+                    }
+
+                    if (!empty($fraseArray)) {
+                        $nuevasLineas[] = $dif . '|' . implode(',', $fraseArray);
+                    }
+                } else {
+                    $nuevasLineas[] = $linea;
                 }
-
-                if (!empty($fraseArray)) {
-                    $nuevasLineas[] = $dif . '|' . implode(',', $fraseArray);
-                }
-            } else {
-                $nuevasLineas[] = $linea;
             }
-        }
 
-        if ($fraseEncontrada) {
-            file_put_contents($archivo, implode(PHP_EOL, $nuevasLineas) . PHP_EOL, LOCK_EX);
-            $mensaje = "La frase:\n\n“" . $fraseAEliminar . "”\n\nha sido eliminada correctamente.";
+            if ($fraseEncontrada) {
+                file_put_contents($archivo, implode(PHP_EOL, $nuevasLineas) . PHP_EOL, LOCK_EX);
+                $mensaje = "La frase: “" . $fraseAEliminar . "” ha sido eliminada correctamente.";
+            } else {
+                $mensaje = "No se encontró la frase a eliminar.";
+            }
         } else {
-            $mensaje = "No se encontró la frase a eliminar.";
+            $mensaje = "No se encontró el archivo de frases.";
         }
     } else {
-        $mensaje = "No se encontró el archivo de frases.";
+        $mensaje = "Parámetros inválidos o incompletos.";
     }
-} else {
-    $mensaje = "Parámetros inválidos o incompletos.";
-}
-
-echo "<script>
-    alert(" . json_encode($mensaje) . ");
-    window.location.href = '/admin/listar_frases.php';
-</script>";
-exit;
+    $_SESSION['mensaje'] = $mensaje;
+    header("Location: list_sentences.php");
+    exit;
 ?>
