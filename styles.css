@@ -589,7 +589,7 @@ header .user-info {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    min-height: 100vh;
+    min-height: 600px;
     padding: 40px 20px;
     text-align: center;
 }
@@ -688,7 +688,7 @@ header .user-info {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    min-height: 100vh;
+    min-height: 600px;
     padding: 40px 20px;
     text-align: center;
 }
@@ -765,7 +765,7 @@ header .user-info {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    min-height: 100vh;
+    min-height: 600px;
     padding: 40px 20px;
     text-align: center;
 }
