@@ -39,7 +39,7 @@
                 <option value="medio" name="Dificulty">Medio</option>
                 <option value="dificil" name="Dificulty">Difícil</option>
             </select>
-            <button type="submit" id="createSentence">Agregar Frase</button>
+            <button type="submit" id="createSentence"><u>A</u>gregar Frase</button>
         </section>
     </form>
 
