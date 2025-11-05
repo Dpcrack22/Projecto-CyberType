@@ -41,7 +41,6 @@
         <input type="hidden" name="bonus" value="<?= htmlspecialchars($bonus) ?>">
         <button class="botonEnviarRank-gameover" id="almacenarRankingButton" type="submit"><u>A</u>lmacenar Ranking</button>
     </form>
-
     <button class="botonVolverInicio-gameover" id="jugarDeNuevoButton" ><u>J</u>ugar de nuevo</button>
     </div>
     <script src="scriptGameover.js"></script>

@@ -3,5 +3,6 @@
     Require all denied
 </FilesMatch>
 
+
 # 🧱 Si alguien intenta acceder, muestra el error 403
 ErrorDocument 403 /error403.php

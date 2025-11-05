@@ -21,13 +21,11 @@
 ?>
 
 <?php
-session_start();
-
-if (isset($_SESSION['game_finished']) || isset($_SESSION['score']) || isset($_SESSION['bonus'])) {
-    unset($_SESSION['game_finished']);
-    unset($_SESSION['score']);
-    unset($_SESSION['bonus']);
-}
+    if (isset($_SESSION['game_finished']) || isset($_SESSION['score']) || isset($_SESSION['bonus'])) {
+        unset($_SESSION['game_finished']);
+        unset($_SESSION['score']);
+        unset($_SESSION['bonus']);
+    }
 ?>
 
 <!DOCTYPE html>

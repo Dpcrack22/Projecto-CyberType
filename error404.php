@@ -9,9 +9,9 @@
 <body class="body-404">
     <div>
     <div class="emoji-404">🚧</div>
-    <h1>¡ERROR 404!</h1>
-    <p>Parece que has tomado el camino equivocado hacia el Multiverso. Intenta volver al inicio.</p>
-    <button id="Button404"><u>V</u>olver al Centro de Mando</button>
+        <h1>¡ERROR 404!</h1>
+        <p>Parece que has tomado el camino equivocado hacia el Multiverso. Intenta volver al inicio.</p>
+        <button id="Button404"><u>V</u>olver al Centro de Mando</button>
     </div>
     <div class="image-div-404">
     <img src="/IMG/Marvel404.png" alt="Iron Man 404" class="image-404">

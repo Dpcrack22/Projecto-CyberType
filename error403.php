@@ -10,8 +10,7 @@
     <div>
     <div class="emoji-403">🚫</div>
     <h1>¡ERROR 403!</h1>
-    <p>Este nivel de autorización es solo para agentes de S.H.I.E.L.D.
-        Parece que estás intentando entrar en un área clasificada, recluta.</p>
+    <p>Este nivel de autorización es solo para agentes de S.H.I.E.L.D. Parece que estás intentando entrar en un área clasificada, recluta.</p>
     <button id="Button403"><u>V</u>olver con los demas reclutas</button>
     </div>
     <div class="image-div-403">
