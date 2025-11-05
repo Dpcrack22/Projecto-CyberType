@@ -16,6 +16,6 @@
     <div class="image-div-404">
     <img src="/IMG/Marvel404.png" alt="Iron Man 404" class="image-404">
     </div>
-    <script src="script404.js"></script>
+    <script src="/script404.js"></script>
 </body>
 </html>

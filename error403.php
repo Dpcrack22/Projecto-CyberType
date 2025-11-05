@@ -16,6 +16,6 @@
     <div class="image-div-403">
     <img src="/IMG/Marvel403.png" alt="Image Nick furry" class="image-403">
     </div>
-    <script src="script403.js"></script>
+    <script src="/script403.js"></script>
 </body>
 </html>
