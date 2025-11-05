@@ -1,3 +1,12 @@
-laly | -5035 | 7.95
-pepe | 6530 | 10.06
-xavi | -5000 | 10.39
+Iron Man | 10175
+Biel | 28010
+Iron Man | 150
+Thor | 5345
+Paco | 3740
+Bili | 3655
+Xavi | 1595
+Xavi | 3630
+Javi | 6560
+Javi | 2620
+Javi | 1500
+Paco | -1590

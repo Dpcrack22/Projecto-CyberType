@@ -1,5 +1,5 @@
-const fraseDiv = document.getElementById("frase");
-const inputOcult = document.getElementById("inputOcult");
+// Variables globales
+const inputOcult = document.getElementById("frase");
 const contadorDiv = document.getElementById("contador");
 const audioRight = new Audio("Right.mp3");
 const audioMiss = new Audio("Miss.wav");
@@ -22,15 +22,13 @@ let thanosSnapTriggered = false;
 
 function mostrarFrase() {
     fraseAleatoria = dificultadFrase;
-    fraseDiv.innerHTML = "";
+    inputOcult.innerHTML = "";
     posicionActual = 0;
-    
-    tiempoInicio = performance.now(); // Mide el tiempo que ha tardado en escribir la frase
 
     for (let letra of fraseAleatoria) {
         const span = document.createElement("span");
         span.textContent = letra;
-        fraseDiv.appendChild(span);
+        inputOcult.appendChild(span);
     }
 
     updateCurrentLetter();
@@ -39,7 +37,7 @@ function mostrarFrase() {
 }
 
 function updateCurrentLetter() {
-    const spans = fraseDiv.querySelectorAll("span");
+    const spans = inputOcult.querySelectorAll("span");  
     spans.forEach(span => span.classList.remove("currentLetter"));
     if (posicionActual < spans.length) {
         spans[posicionActual].classList.add("currentLetter");
@@ -63,75 +61,77 @@ const intervalo = setInterval(() => {
     }
 }, 1000);
 
-function verificarEscritura() {
-    const valor = inputOcult.value;
-    const spans = fraseDiv.querySelectorAll("span");
+document.addEventListener("keydown", manejarTecla);
+document.addEventListener("input", manejarEntrada);
 
-    totalLetrasEscritas = valor.length;
-    totalErrores = 0;
-
-    for (let i = 0; i < spans.length; i++) {
-        const letraEsperada = fraseAleatoria[i] || "";
-        const letraEscrita = valor[i] || "";
-
-        if (letraEscrita === "") {
-            spans[i].classList.remove("correcta", "incorrecta");
-        } else if (letraEscrita === letraEsperada) {
-            audioRight.pause();
-            audioMiss.pause();
-            audioRight.currentTime = 0;
-            audioRight.play().catch(() => {});
-            spans[i].classList.add("correcta");
-            spans[i].classList.remove("incorrecta");
-            puntuation += 10;
-        } else {
-            audioMiss.pause();
-            audioRight.pause();
-            audioMiss.currentTime = 0;
-            audioMiss.play().catch(() => {});
-            spans[i].classList.add("incorrecta");
-            spans[i].classList.remove("correcta");
-            puntuation -= 5;
-            totalErrores++;
+function manejarEntrada(e) {
+    if (e.inputType === "insertCompositionText" || e.inputType === "insertText") {
+        const letra = e.data;
+        if (letra && letra.length === 1) {
+            verificarEscritura(letra);
         }
     }
+}
 
-    if (valor.length > 0) {
-        const ultimaLetraIndex = valor.length - 1;
-        const ultimaLetraEsperada = fraseAleatoria[ultimaLetraIndex];
-        const ultimaLetraEscrita = valor[ultimaLetraIndex];
+function manejarTecla(e) {
+    if (e.key.length !== 1 && e.key !== "Backspace") return;
 
-        easterEgg(ultimaLetraEscrita === ultimaLetraEsperada);
+    e.preventDefault();
+
+    if (e.key === "Backspace") {
+        posicionActual = Math.max(0, posicionActual - 1);
+    } else {
+        verificarEscritura(e.key);
     }
 
-    posicionActual = valor.length;
+    updateCurrentLetter();
+}
+
+function verificarEscritura(tecla) {
+    console.log("👉 Tecla pulsada:", tecla);
+    const spans = inputOcult.querySelectorAll("span");
+    const letraEsperada = fraseAleatoria[posicionActual];
+
+    if (!letraEsperada) return;
+
+    if (normalizar(tecla) === normalizar(letraEsperada)) {
+        audioRight.pause();
+        audioRight.currentTime = 0;
+        audioRight.play().catch(() => {});
+        spans[posicionActual].classList.add("correcta");
+        spans[posicionActual].classList.remove("incorrecta");
+        puntuation += 10;
+        easterEgg(true);
+    } else {
+        audioMiss.pause();
+        audioMiss.currentTime = 0;
+        audioMiss.play().catch(() => {});
+        spans[posicionActual].classList.add("incorrecta");
+        spans[posicionActual].classList.remove("correcta");
+        puntuation -= 5;
+        easterEgg(false);
+    }
+
+    posicionActual++;
     updateCurrentLetter();
 
-    if (!thanosSnapTriggered && totalLetrasEscritas > 0) {
-        const errorRate = totalErrores / totalLetrasEscritas;
-        if (errorRate >= 0.5) {
+    if (posicionActual === fraseAleatoria.length) {
+        if (Math.random() < 0.1 ) { // 1% de probabilidad
             thanosSnapTriggered = true;
             activateThanosSnap();
-            puntuation = -5000;
             setTimeout(() => {
-                endGame(puntuation, ((performance.now() - tiempoInicio) / 1000).toFixed(2));
+                endGame(puntuation);
             }, 4000);
             return;
         }
-    }
-
-    if (valor.length === fraseAleatoria.length) {
-        const tiempoFin = performance.now();
-        const tiempoTotal = ((tiempoFin - tiempoInicio) / 1000).toFixed(2); // Tiempo en segundos con dos decimales
-
-        endGame(puntuation, tiempoTotal);
+        endGame(puntuation);
     }
 };
 
 function activateThanosSnap() {
     console.log("💥 Modo Thanos activado: la mitad de las letras desaparecerán...");
 
-    const spans = Array.from(fraseDiv.querySelectorAll("span"));
+    const spans = Array.from(inputOcult.querySelectorAll("span"));
     const half = Math.floor(spans.length / 2);
     const shuffled = spans.sort(() => 0.5 - Math.random());
     const toRemove = shuffled.slice(0, half);
@@ -150,14 +150,13 @@ function activateThanosSnap() {
 }
 inputOcult.addEventListener("input", verificarEscritura);
 
-function endGame(score, time) {
+function endGame(score) {
     fetch('finish_game.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
         body: "score=" + encodeURIComponent(score)
-        + "&time=" + encodeURIComponent(time)
         + "&bonus=" + encodeURIComponent(bonus)
     })
     .then(response => response.text())
@@ -205,4 +204,8 @@ function easterEgg(bool) {
         }
     }
     console.log(puntuation);
+}
+
+function normalizar(texto) {
+    return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }

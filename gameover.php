@@ -1,13 +1,14 @@
 <?php
+    session_name("jugadorSession");
     session_start();
-    if (!isset($_SESSION['game_finished']) || $_SESSION['game_finished'] !== true) {
+    
+    if (!isset($_SESSION['game_finished']) || $_SESSION['game_finished'] !== true || !isset($_SESSION['playerName'])) {
         header("Location: error403.php");
         exit;
     }
 
     $inputName = $_SESSION['playerName'] ?? 'Jugador desconocido';
     $score = $_SESSION['score'] ?? 0;
-    $time = $_SESSION['time'] ?? 0.0;
     $bonus = $_SESSION['bonus'] ?? 0;
 ?>
 <!DOCTYPE html>
@@ -19,20 +20,29 @@
     <link rel="stylesheet" type="text/css" href="./styles.css?<?php echo time(); ?>" />
 </head>
 <body class="body-gameover">
+    <header>
+        <img src="./IMG/Marvel_Logo.png" alt="Marvel Logo" class="marvel-logo">
+        <div class="user-info">
+            <?php
+            if (isset($_SESSION['playerName'])) {
+                echo '<span class="player-name">Jugador: ' . htmlspecialchars($_SESSION['playerName']) . '</span>';
+            }
+            ?>
+            <a href="destroy_session.php" class="logout-link">Cerrar sesión</a>
+        </div>
+    </header>
     <h1>💥 ¡Fin del juego, <?= htmlspecialchars($inputName) ?>! 💥</h1>
     <p>Tu puntuación final es: <?= htmlspecialchars($score) ?></p>
-    <p>Tiempo empleado: <?= htmlspecialchars($time) ?> segundos</p>
     <p>Bonus conseguidos: <?= htmlspecialchars($bonus) ?></p>
     <div class="botones-gameover">
     <form action="ranking.php" method="post">
         <input type="hidden" name="inputName" value="<?= htmlspecialchars($inputName) ?>">
         <input type="hidden" name="score" value="<?= htmlspecialchars($score) ?>">
-        <input type="hidden" name="time" value="<?= htmlspecialchars($time) ?>">
         <input type="hidden" name="bonus" value="<?= htmlspecialchars($bonus) ?>">
-        <button class="botonEnviarRank-gameover" type="submit">Almacenar Ranking</button>
+        <button class="botonEnviarRank-gameover" id="almacenarRankingButton" type="submit"><u>A</u>lmacenar Ranking</button>
     </form>
-
-    <button class="botonVolverInicio-gameover"><a href="index.php">Jugar de nuevo</a></button>
+    <button class="botonVolverInicio-gameover" id="jugarDeNuevoButton" ><u>J</u>ugar de nuevo</button>
     </div>
+    <script src="scriptGameover.js"></script>
 </body>
 </html>

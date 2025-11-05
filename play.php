@@ -1,4 +1,5 @@
 <?php
+    session_name("jugadorSession");
     session_start();
 
     if (isset($_POST['playerName'])) {
@@ -31,19 +32,28 @@
     <link rel="stylesheet" type="text/css" href="./styles.css?<?php echo time(); ?>" />
 </head>
 <body class="body-play">
+    <header>
+        <img src="./IMG/Marvel_Logo.png" alt="Marvel Logo" class="marvel-logo">
+        <div class="user-info">
+            <?php
+            if (isset($_SESSION['playerName'])) {
+                echo '<span class="player-name">Jugador: ' . htmlspecialchars($_SESSION['playerName']) . '</span>';
+            }
+            ?>
+            <a href="destroy_session.php" class="logout-link">Cerrar sesión</a>
+        </div>
+    </header>
     <h1 id="titulo-play">MarvelType</h1>
-    <h1 id="titulo-prepara">Preparate joven vengador!</h1>
+    <h1 id="titulo-prepara">¡Prepárate joven vengador!</h1>
     <div id="contador">3</div>
     <div id="fraseContainer">
-        <p><strong>Escribe la siguiente frase:</strong></p>
-        <p id="frase"></p>
-        <input type="text" id="inputOcult" autofocus autocomplete="off"/>
+        <div id="frase"></div>
     </div>
     <div id="bonusMessage"></div>
 
-    <script src="./scriptPlay.js" defer></script>
+    <script src="./scriptPlay.js?<?php echo time(); ?>" defer></script>
     <script>
-        const fraseJuego = <?php echo json_encode($fraseAleatoria); ?>;
+        const fraseJuego = <?php echo json_encode($fraseAleatoria, JSON_UNESCAPED_UNICODE); ?>;
     </script>
 
     <noscript>
