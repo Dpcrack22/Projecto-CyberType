@@ -48,7 +48,7 @@
                 <option value="dificil">Difícil</option>
             </select>
             <br>
-            <input type="button" id="startGameButton" value="Iniciar Juego"/>
+            <button type="button" id="startGameButton"><u>I</u>niciar Juego</button>
             <noscript>
                 <div class="no-js-warning">
                     ⚠️ El juego necesita javascript para funcionar. Por favor, habilita Javascript para empezar.
