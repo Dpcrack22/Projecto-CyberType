@@ -49,7 +49,8 @@
                     echo "<tr>";
                     echo "<td>" . htmlspecialchars($dificultad) . "</td>";
                     echo "<td>" . htmlspecialchars($fraseIndividual) . "</td>";
-                    echo "<td id='delete-link'><a href='delete_sentence.php?dificultad=" . urlencode($dificultad) . "&frase=" . urlencode($fraseIndividual) . "'>Eliminar</a></td>";
+                    // Quiero que la frase y la dificultad se pasen por POST en vez de GET
+                    echo "<td id='delete-link'><form action='delete_sentence.php' method='POST'><input type='hidden' name='dificultad' value='" . htmlspecialchars($dificultad) . "'><input type='hidden' name='frase' value='" . htmlspecialchars($fraseIndividual) . "'><input type='submit' value='Eliminar'></form></td>";
                     echo "</tr>";
                 }
             }

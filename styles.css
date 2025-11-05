@@ -825,7 +825,7 @@ header .user-info {
     background-color: #ed1d246a;
 }
 
-.body-listarFrases #delete-link a {
+.body-listarFrases #delete-link input[type="submit"] {
     display: inline-block;
     background-color: #ED1D24;
     color: #FFFFFF;
@@ -836,9 +836,10 @@ header .user-info {
     text-decoration: none;
     transition: background-color 0.3s ease;
     cursor: pointer;
+    border: none;
 }
 
-.body-listarFrases #delete-link a:hover {
+.body-listarFrases #delete-link input[type="submit"]:hover {
     background-color: #A50000;
 }
 .body-createSentence #inputSentence {
