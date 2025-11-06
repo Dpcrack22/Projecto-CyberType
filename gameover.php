@@ -43,6 +43,11 @@
     </form>
     <button class="botonVolverInicio-gameover" id="jugarDeNuevoButton" ><u>J</u>ugar de nuevo</button>
     </div>
+    <div class="imagenes-gameover">
+        <img src="./IMG/IndexImg001.png" alt="imagen de Capitán América" class="foto">
+        <img src="./IMG/IndexImg002.png" alt="imagen de Thor" class="foto">
+        <img src="./IMG/Marvel404.png" alt="imagen de Iron Man" class="foto">
+    </div>
     <script src="scriptGameover.js"></script>
 </body>
 </html>

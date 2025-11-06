@@ -480,6 +480,48 @@ header .user-info {
     color: #FFFFFF;
 }
 
+.imagenes-gameover {
+  position: absolute;
+  bottom: 100px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  gap: 10px; 
+  justify-content: space-around;
+  align-items: flex-end;
+  margin: 0;
+}
+
+.foto {
+  width: 150px;
+  height: auto;
+  opacity: 1;
+  animation: parpadeo 3s infinite;
+}
+
+.foto:nth-child(1) {
+  animation-delay: 0s;
+}
+.foto:nth-child(2) {
+  animation-delay: 1s;
+}
+.foto:nth-child(3) {
+  animation-delay: 2s;
+}
+
+@keyframes parpadeo {
+  0%, 33.33% {
+    opacity: 1; 
+  }
+  50%, 83.33% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
 /* RANKING PAGE STYLES */
 
 .body-ranking {
