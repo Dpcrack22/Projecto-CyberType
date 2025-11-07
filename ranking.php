@@ -50,27 +50,22 @@
     </header>
     
     <h1>Ranking de Jugadores - MarvelType</h1>
-    <table>
-        <tr>
-            <th>Posición</th>
-            <th>Nombre</th>
-            <th>Puntuación</th>
-        </tr>
-        <?php
-        $lineas = file($archivo, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-        usort($lineas, function($a, $b) {
-            list(, $scoreA,) = explode(" | ", $a);
-            list(, $scoreB,) = explode(" | ", $b);
-            return $scoreB - $scoreA;
-        });
+      <?php
+    // Leer ranking
+    $lineas = file($archivo, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
+    // Ordenar de mayor a menor puntuación
+    usort($lineas, function($a, $b) {
+        list(, $scoreA) = explode(" | ", $a);
+        list(, $scoreB) = explode(" | ", $b);
+        return $scoreB - $scoreA;
+    });
 
     // --- PAGINACIÓN ---
-    $porPagina = 25; // jugadores por página
+    $porPagina = 25;
     $total = count($lineas);
     $paginas = ceil($total / $porPagina);
 
-    // Página actual (por URL ?pagina=)
     $paginaActual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
     if ($paginaActual < 1) $paginaActual = 1;
     if ($paginaActual > $paginas) $paginaActual = $paginas;
@@ -99,6 +94,25 @@
         }
         ?>
     </table>
+
+    <!-- PAGINADOR -->
+    <div class="paginador">
+        <?php if ($paginaActual > 1): ?>
+            <a href="?pagina=<?php echo $paginaActual - 1; ?>">&laquo; Anterior</a>
+        <?php endif; ?>
+
+        <?php for ($i = 1; $i <= $paginas; $i++): ?>
+            <a href="?pagina=<?php echo $i; ?>" 
+               class="<?php echo ($i == $paginaActual) ? 'activo' : ''; ?>">
+               <?php echo $i; ?>
+            </a>
+        <?php endfor; ?>
+
+        <?php if ($paginaActual < $paginas): ?>
+            <a href="?pagina=<?php echo $paginaActual + 1; ?>">Siguiente &raquo;</a>
+        <?php endif; ?>
+    </div>
+
     <br>
     <button id="RankingButton"><u>V</u>olver al inicio</button>
     <script src="scriptRanking.js"></script>
