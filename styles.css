@@ -912,6 +912,36 @@ header .user-info {
     font-weight: bold;
     margin-top: 20px;
 }
+.body-createSentence form #sentenceImage {
+    display: none;
+}
+
+.label-imageUpload {
+    display: inline-block;
+    background-color:	#518cca;
+    color: #FFFFFF;
+    padding: 12px 35px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    margin-top: 25px;
+    width: 90%;
+}
+
+.file-name {
+    margin-top: 10px;
+    font-size: 1em;
+    color: #CCCCCC;
+    margin-left: 10px;
+}
+.body-createSentence form #sentenceImage:hover {
+    background-color: #3268BD;
+}
+/* Necesito hacer un estilo al botón que tiene el input file para que se vea bien, el que tiene por nombre Navegar */
+
 
 /* ADMIN HEADER STYLES */
 .admin-name {

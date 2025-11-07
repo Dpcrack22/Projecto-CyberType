@@ -54,9 +54,10 @@
                 list($dificultad, $frase) = explode('|', $linea);
                 $frasesIndividuales = explode(',', $frase);
                 foreach ($frasesIndividuales as $fraseIndividual) {
+                    list($soloFrase, $soloImagen) = explode('@@', $fraseIndividual . '@@');
                     echo "<tr>";
                     echo "<td>" . htmlspecialchars($dificultad) . "</td>";
-                    echo "<td>" . htmlspecialchars($fraseIndividual) . "</td>";
+                    echo "<td>" . htmlspecialchars($soloFrase) . "</td>";
                     // Quiero que la frase y la dificultad se pasen por POST en vez de GET
                     echo "<form action='delete_sentence.php' method='POST'>";
                     echo "<input type='hidden' name='dificultad' value='" . htmlspecialchars($dificultad) . "'>";
