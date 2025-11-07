@@ -1,14 +1,14 @@
 <?php
-    session_name("adminSHIELD");
-    session_start();
+session_name("adminSHIELD");
+session_start();
 
-    // Si no estás logado, redirige al login
-    if (empty($_SESSION['logado'])) {
-        header("Location: /admin/login.php");
-        exit;
-    }
+// Si no estás logado, redirige al login
+if (empty($_SESSION['logado'])) {
+    header("Location: /admin/login.php");
+    exit;
+}
 
-    $archivo = '../sentences.txt';
+$archivo = '../sentences.txt';
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +21,7 @@
 </head>
 <body class="body-listarFrases">
     <header>
-        <img src="../IMG/shield.png" alt="Marvel Logo" class="marvel-logo">
+        <img src="../IMG/shield.png" alt="SHIELD Logo" class="marvel-logo">
         <div class="user-info">
             <?php
             if (isset($_SESSION['usuario'])) {
@@ -41,37 +41,84 @@
         }
         ?>
     </div>
+
+    <?php
+    $todasFrases = [];
+
+    if (file_exists($archivo)) {
+        $lineas = file($archivo, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+
+        foreach ($lineas as $linea) {
+            list($dificultad, $fraseStr) = explode('|', $linea);
+            $frases = explode(',', $fraseStr);
+
+            foreach ($frases as $f) {
+                $todasFrases[] = [
+                    'dificultad' => trim($dificultad),
+                    'frase' => trim($f)
+                ];
+            }
+        }
+    }
+
+    // --- PAGINACIÓN ---
+    $porPagina = 25;
+    $total = count($todasFrases);
+    $paginas = max(1, ceil($total / $porPagina));
+
+    $paginaActual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+    if ($paginaActual < 1) $paginaActual = 1;
+    if ($paginaActual > $paginas) $paginaActual = $paginas;
+
+    $inicio = ($paginaActual - 1) * $porPagina;
+    $frasesPagina = array_slice($todasFrases, $inicio, $porPagina);
+    ?>
+
     <table>
         <tr>
             <th>Dificultad</th>
             <th>Frase</th>
             <th>Eliminación</th>
         </tr>
-        <?php
-        if (file_exists($archivo)) {
-            $lineas = file($archivo, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-            foreach ($lineas as $linea) {
-                list($dificultad, $frase) = explode('|', $linea);
-                $frasesIndividuales = explode(',', $frase);
-                foreach ($frasesIndividuales as $fraseIndividual) {
-                    echo "<tr>";
-                    echo "<td>" . htmlspecialchars($dificultad) . "</td>";
-                    echo "<td>" . htmlspecialchars($fraseIndividual) . "</td>";
-                    // Quiero que la frase y la dificultad se pasen por POST en vez de GET
-                    echo "<form action='delete_sentence.php' method='POST'>";
-                    echo "<input type='hidden' name='dificultad' value='" . htmlspecialchars($dificultad) . "'>";
-                    echo "<input type='hidden' name='frase' value='" . htmlspecialchars($fraseIndividual) . "'>";
-                    echo "<td id='delete-link'><button type='submit'>Eliminar</button></td>";
-                    echo "</form>";
-                    echo "</tr>";
-                }
-            }
-        } else {
-            echo "<tr><td colspan='3'>No se encontraron frases.</td></tr>";
-        }
-        ?>
+        <?php if ($total > 0): ?>
+            <?php foreach ($frasesPagina as $dato): ?>
+                <tr>
+                    <td><?php echo htmlspecialchars($dato['dificultad']); ?></td>
+                    <td><?php echo htmlspecialchars($dato['frase']); ?></td>
+                    <td id="delete-link">
+                        <form action="delete_sentence.php" method="POST">
+                            <input type="hidden" name="dificultad" value="<?php echo htmlspecialchars($dato['dificultad']); ?>">
+                            <input type="hidden" name="frase" value="<?php echo htmlspecialchars($dato['frase']); ?>">
+                            <button type="submit">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <tr><td colspan="3">No se encontraron frases.</td></tr>
+        <?php endif; ?>
     </table>
-    <button id="ButtonListSentences"><a href="/admin/index.php"><u>V</u>olver atras</a></button>
+
+    <!-- PAGINADOR -->
+    <div class="paginador">
+        <?php if ($paginaActual > 1): ?>
+            <a href="?pagina=<?php echo $paginaActual - 1; ?>">&laquo; Anterior</a>
+        <?php endif; ?>
+
+        <?php for ($i = 1; $i <= $paginas; $i++): ?>
+            <a href="?pagina=<?php echo $i; ?>" 
+               class="<?php echo ($i == $paginaActual) ? 'activo' : ''; ?>">
+               <?php echo $i; ?>
+            </a>
+        <?php endfor; ?>
+
+        <?php if ($paginaActual < $paginas): ?>
+            <a href="?pagina=<?php echo $paginaActual + 1; ?>">Siguiente &raquo;</a>
+        <?php endif; ?>
+    </div>
+
+    <br>
+    <button id="ButtonListSentences"><a href="/admin/index.php"><u>V</u>olver atrás</a></button>
     <script src="scriptListSentences.js"></script>
 </body>
 </html>
