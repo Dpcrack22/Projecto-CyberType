@@ -5,6 +5,7 @@ const audioRight = new Audio("Right.mp3");
 const audioMiss = new Audio("Miss.wav");
 const audioGameover = new Audio("gameover.wav");
 const bonusDiv = document.getElementById("bonusMessage");
+let fraseJuego = "";
 const dificultadFrase = document.getElementById("frase").textContent = fraseJuego;
 let puntuation = 0;
 let consectutiveRightHits = 0;
@@ -13,6 +14,7 @@ let bonus = 0;
 let contador = 3;
 let posicionActual = 0;
 let fraseAleatoria = "";
+let imagenJuego = "";
 
 
 // Prueba Chasquido
@@ -21,7 +23,16 @@ let totalErrores = 0;
 let thanosSnapTriggered = false;
 
 function mostrarFrase() {
-    fraseAleatoria = dificultadFrase;
+    const imageContainer = document.getElementById("imageContainer");
+    const fraseImg = document.getElementById("fraseImg");
+
+    if (typeof imagenJuego !== 'undefined' && imagenJuego.trim() !== "") {
+        fraseImg.src = "IMG/" + imagenJuego;
+    } else {
+        imageContainer.style.display = "none";
+    }
+
+    fraseAleatoria = fraseJuego;
     inputOcult.innerHTML = "";
     posicionActual = 0;
 
@@ -53,6 +64,7 @@ const intervalo = setInterval(() => {
     } else {
         clearInterval(intervalo);
         document.getElementById("contador").style.display = "none";
+        document.getElementById("imageContainer").style.display = "block";
         document.getElementById("fraseContainer").style.display = "block";
         document.getElementById("titulo-play").style.display = "block";
         document.getElementById("titulo-prepara").style.display = "none";
