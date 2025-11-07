@@ -2,8 +2,11 @@
     session_name("jugadorSession");
     session_start();
 
+    require_once(__DIR__ . "/admin/log_function.php");
+    
     if (isset($_POST['playerName'])) {
         $_SESSION['playerName'] = htmlspecialchars($_POST['playerName']);
+        registrarLog("Inicio de partida del jugador '{$_SESSION['playerName']}' con dificultad '{$_POST['difficulty']}'");
     }
 
     $difficulty = $_POST['difficulty'];
@@ -23,6 +26,8 @@
 
     $fraseAleatoria = $frasesFiltradas[array_rand($frasesFiltradas)];
 ?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

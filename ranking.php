@@ -2,7 +2,9 @@
 session_name("jugadorSession");
 session_start();
 
+require_once(__DIR__ . "/admin/log_function.php"); // 🔹 Importamos la función de logs
 $archivo = "./ranking.txt";
+
 
 // --- GUARDAR SOLO SI EXISTEN DATOS DE PARTIDA ---
 if (isset($_SESSION['playerName']) && isset($_SESSION['score'])) {
@@ -11,6 +13,8 @@ if (isset($_SESSION['playerName']) && isset($_SESSION['score'])) {
 
     $registro = "$playerName | $score" . PHP_EOL;
     file_put_contents($archivo, $registro, FILE_APPEND | LOCK_EX);
+
+    registrarLog("El jugador '$playerName' guardó su puntuación de $score puntos en el ranking.");
 
     // Limpiamos variables de partida (no el nombre del jugador)
     unset($_SESSION['score']);

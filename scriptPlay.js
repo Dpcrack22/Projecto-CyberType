@@ -32,6 +32,7 @@ function mostrarFrase() {
     }
 
     updateCurrentLetter();
+    startTime = performance.now();
     inputOcult.value = "";
     inputOcult.focus();
 }
@@ -124,6 +125,8 @@ function verificarEscritura(tecla) {
             }, 4000);
             return;
         }
+        const tiempoTranscurrido = ((performance.now() - startTime) / 1000).toFixed(2);
+        enviarLogTeclas(fraseAleatoria, fraseAleatoria, tiempoTranscurrido);
         endGame(puntuation);
     }
 };
@@ -149,6 +152,44 @@ function activateThanosSnap() {
     });
 }
 inputOcult.addEventListener("input", verificarEscritura);
+
+function enviarLogTeclas(fraseEscrita, fraseObjetivo, tiempo) {
+    const form = document.createElement("form");
+    form.method = "POST";
+    form.action = "./admin/log_keys.php";
+
+    const input1 = document.createElement("input");
+    input1.type = "hidden";
+    input1.name = "typedText";
+    input1.value = fraseEscrita;
+
+    const input2 = document.createElement("input");
+    input2.type = "hidden";
+    input2.name = "targetSentence";
+    input2.value = fraseObjetivo;
+
+    const input3 = document.createElement("input");
+    input3.type = "hidden";
+    input3.name = "elapsedTime";
+    input3.value = tiempo;
+
+    form.appendChild(input1);
+    form.appendChild(input2);
+    form.appendChild(input3);
+    document.body.appendChild(form);
+
+    // Enviar sin cambiar de página
+    form.target = "invisibleFrame";
+    let iframe = document.getElementById("invisibleFrame");
+    if (!iframe) {
+        iframe = document.createElement("iframe");
+        iframe.name = "invisibleFrame";
+        iframe.style.display = "none";
+        document.body.appendChild(iframe);
+    }
+
+    form.submit();
+}
 
 function endGame(score) {
     fetch('finish_game.php', {
