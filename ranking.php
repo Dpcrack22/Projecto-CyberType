@@ -6,7 +6,7 @@
     session_name("jugadorSession");
     session_start();
 
-    require_once(__DIR__ . "/admin/log_function.php"); // 🔹 Importamos la función de logs
+    require_once(__DIR__ . "/admin/log_function.php");
     $archivo = "./ranking.txt";
 
 

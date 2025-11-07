@@ -1,5 +1,5 @@
 <?php
-function registrar_log($archivoOrigen, $accion) {
+function registrarLog($archivoOrigen, $accion) {
     // Ruta absoluta al archivo de logs
     $rutaLogs = __DIR__ . "/logs.txt";
 
