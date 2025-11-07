@@ -70,7 +70,8 @@
 
                 if ($fraseAgregada) {
                     file_put_contents($archivo, implode(PHP_EOL, $lineas) . PHP_EOL);
-                    echo "<p class='success-message'>Frase agregada exitosamente.</p>";
+                    header("Location: /admin/list_sentences.php?highlight=" . urlencode($nuevaFrase));
+                    exit;
                 } else {
                     echo "<p class='error-message'>La frase ya existe en esta dificultad.</p>";
                 }

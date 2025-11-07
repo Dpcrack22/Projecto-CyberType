@@ -993,3 +993,10 @@ header .user-info {
     text-decoration: none;
     font-weight: bold;
 }
+
+
+/* ADMIN LIST SENTENCES STYLES */
+
+.resaltar-frase {
+    background-color: #f78f3f !important;
+}

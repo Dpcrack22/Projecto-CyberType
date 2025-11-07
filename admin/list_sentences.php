@@ -9,6 +9,8 @@
     }
 
     $archivo = '../sentences.txt';
+
+    $highlight = isset($_GET['highlight']) ? trim($_GET['highlight']) : '';
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +56,11 @@
                 list($dificultad, $frase) = explode('|', $linea);
                 $frasesIndividuales = explode(',', $frase);
                 foreach ($frasesIndividuales as $fraseIndividual) {
-                    echo "<tr>";
+
+                    $esDestacada = ($highlight && trim($fraseIndividual) === $highlight);
+                    $claseFila = $esDestacada ? "class='resaltar-frase'" : "";
+
+                    echo "<tr $claseFila>";
                     echo "<td>" . htmlspecialchars($dificultad) . "</td>";
                     echo "<td>" . htmlspecialchars($fraseIndividual) . "</td>";
                     // Quiero que la frase y la dificultad se pasen por POST en vez de GET
