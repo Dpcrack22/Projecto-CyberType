@@ -21,11 +21,23 @@
 ?>
 
 <?php
-    if (isset($_SESSION['game_finished']) || isset($_SESSION['score']) || isset($_SESSION['bonus'])) {
-        unset($_SESSION['game_finished']);
-        unset($_SESSION['score']);
-        unset($_SESSION['bonus']);
-    }
+    // Solo guardamos si hay datos de una partida reciente
+if (isset($_SESSION['playerName']) && isset($_SESSION['score'])) {
+    $playerName = $_SESSION['playerName'];
+    $score = $_SESSION['score'];
+
+    $registro = "$playerName | $score" . PHP_EOL;
+    file_put_contents($archivo, $registro, FILE_APPEND | LOCK_EX);
+
+    // Limpiamos las variables solo relacionadas con la partida
+    unset($_SESSION['game_finished']);
+    unset($_SESSION['score']);
+    unset($_SESSION['bonus']);
+} else {
+    // Si no hay score, solo mostramos el ranking sin guardar nada
+    $playerName = $_SESSION['playerName'] ?? "Invitado";
+}
+?>
 ?>
 
 <!DOCTYPE html>
