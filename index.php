@@ -6,9 +6,10 @@
     session_start();
 
     require_once(__DIR__ . "/admin/log_function.php");
+    $arch_act="index.php";
 
     if (isset($_SESSION['playerName'])) {
-        registrarLog("El jugador '{$_SESSION['playerName']}' accedió al menú principal.");
+        registrarLog($arch_act,"El jugador '{$_SESSION['playerName']}' accedió al menú principal.");
     }
 
     if (isset($_SESSION['game_finished']) || isset($_SESSION['score']) || isset($_SESSION['bonus'])) {
