@@ -63,8 +63,31 @@
             list(, $scoreB,) = explode(" | ", $b);
             return $scoreB - $scoreA;
         });
-        $posicion = 1;
-        foreach ($lineas as $linea) {
+
+
+    // --- PAGINACIÓN ---
+    $porPagina = 25; // jugadores por página
+    $total = count($lineas);
+    $paginas = ceil($total / $porPagina);
+
+    // Página actual (por URL ?pagina=)
+    $paginaActual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+    if ($paginaActual < 1) $paginaActual = 1;
+    if ($paginaActual > $paginas) $paginaActual = $paginas;
+
+    $inicio = ($paginaActual - 1) * $porPagina;
+    $jugadoresPagina = array_slice($lineas, $inicio, $porPagina);
+    ?>
+
+    <table>
+        <tr>
+            <th>Posición</th>
+            <th>Nombre</th>
+            <th>Puntuación</th>
+        </tr>
+        <?php
+        $posicion = $inicio + 1;
+        foreach ($jugadoresPagina as $linea) {
             list($nombre, $puntuacion) = explode(" | ", $linea);
             $resaltar = ($nombre === $playerName && $puntuacion == $score) ? 'class="resaltar"' : '';
             echo "<tr $resaltar>
