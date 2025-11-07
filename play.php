@@ -2,15 +2,16 @@
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
-    
+
     session_name("jugadorSession");
     session_start();
 
     require_once(__DIR__ . "/admin/log_function.php");
+    $arch_act = "play.php";
     
     if (isset($_POST['playerName'])) {
         $_SESSION['playerName'] = htmlspecialchars($_POST['playerName']);
-        registrarLog("Inicio de partida del jugador '{$_SESSION['playerName']}' con dificultad '{$_POST['difficulty']}'");
+        registrarLog($arch_act,"Inicio de partida del jugador '{$_SESSION['playerName']}' con dificultad '{$_POST['difficulty']}'");
     }
 
     $difficulty = $_POST['difficulty'];

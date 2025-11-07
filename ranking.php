@@ -7,6 +7,7 @@
     session_start();
 
     require_once(__DIR__ . "/admin/log_function.php");
+    $arch_act = "ranking.php";
     $archivo = "./ranking.txt";
 
 
@@ -18,7 +19,7 @@
         $registro = "$playerName | $score" . PHP_EOL;
         file_put_contents($archivo, $registro, FILE_APPEND | LOCK_EX);
 
-        registrarLog("El jugador '$playerName' guardó su puntuación de $score puntos en el ranking.");
+        registrarLog($arch_act,"El jugador '$playerName' guardó su puntuación de $score puntos en el ranking.");
 
         // Limpiamos variables de partida (no el nombre del jugador)
         unset($_SESSION['score']);
