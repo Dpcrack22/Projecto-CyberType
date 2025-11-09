@@ -10,13 +10,20 @@
     $inputName = $_SESSION['playerName'] ?? 'Jugador desconocido';
     $score = $_SESSION['score'] ?? 0;
     $bonus = $_SESSION['bonus'] ?? 0;
+
+    include __DIR__ . '/lang/lang.php';
+
+    $lang = isset($_GET['lang']) ? $_GET['lang'] : ($_SESSION['lang'] ?? 'es');
+    $_SESSION['lang'] = $lang;
+
+    $t = loadLanguage($lang);
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GameOver - MarvelType</title>
+    <title><?= $t['tituloGameOver'] ?></title>
     <link rel="stylesheet" type="text/css" href="./styles.css?<?php echo time(); ?>" />
 </head>
 <body class="body-gameover">
@@ -25,23 +32,23 @@
         <div class="user-info">
             <?php
             if (isset($_SESSION['playerName'])) {
-                echo '<span class="player-name">Jugador: ' . htmlspecialchars($_SESSION['playerName']) . '</span>';
+                echo '<span class="player-name">'. $t['jugador'] .': ' . htmlspecialchars($_SESSION['playerName']) . '</span>';
             }
             ?>
-            <a href="destroy_session.php" class="logout-link">Cerrar sesión</a>
+            <a href="destroy_session.php" class="logout-link"><?= $t['cerrarSesion'] ?></a>
         </div>
     </header>
-    <h1>💥 ¡Fin del juego, <?= htmlspecialchars($inputName) ?>! 💥</h1>
-    <p>Tu puntuación final es: <?= htmlspecialchars($score) ?></p>
-    <p>Bonus conseguidos: <?= htmlspecialchars($bonus) ?></p>
+    <h1><?= $t['h1GameOver'] ?>, <?= htmlspecialchars($inputName) ?>! 💥</h1>
+    <p><?= $t['puntuacionGameOver'] ?>: <?= htmlspecialchars($score) ?></p>
+    <p><?= $t['bonusGameOver'] ?>: <?= htmlspecialchars($bonus) ?></p>
     <div class="botones-gameover">
     <form action="ranking.php" method="post">
         <input type="hidden" name="inputName" value="<?= htmlspecialchars($inputName) ?>">
         <input type="hidden" name="score" value="<?= htmlspecialchars($score) ?>">
         <input type="hidden" name="bonus" value="<?= htmlspecialchars($bonus) ?>">
-        <button class="botonEnviarRank-gameover" id="almacenarRankingButton" type="submit"><u>A</u>lmacenar Ranking</button>
+        <button class="botonEnviarRank-gameover" id="almacenarRankingButton" type="submit"><?= $t['almacenarGameOver'] ?></button>
     </form>
-    <button class="botonVolverInicio-gameover" id="jugarDeNuevoButton" ><u>J</u>ugar de nuevo</button>
+    <button class="botonVolverInicio-gameover" id="jugarDeNuevoButton" ><?= $t['jugarGameOver'] ?></button>
     </div>
     <div class="imagenes-gameover">
         <img src="./IMG/IndexImg001.png" alt="imagen de Capitán América" class="foto">

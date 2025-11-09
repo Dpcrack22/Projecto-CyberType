@@ -9,6 +9,13 @@
     }
 
     $archivo = '../sentences.txt';
+
+    include __DIR__ . '/lang/lang.php';
+
+    $lang = isset($_GET['lang']) ? $_GET['lang'] : ($_SESSION['lang'] ?? 'es');
+    $_SESSION['lang'] = $lang;
+
+    $t = loadLanguage($lang);
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +23,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin listar frases</title>
+    <title><?= $t['tituloListSentence'] ?></title>
     <link rel="stylesheet" type="text/css" href="/styles.css?<?php echo time(); ?>" />
 </head>
 <body class="body-listarFrases">
@@ -25,19 +32,19 @@
         <div class="user-info">
             <?php
             if (isset($_SESSION['usuario'])) {
-                echo '<span class="admin-name">Administrador: ' . htmlspecialchars($_SESSION['usuario']) . '</span>';
-                echo '<a href="logout.php" class="logout-link-admin">Cerrar sesión</a>';
+                echo '<span class="admin-name">'. $t['administrador'] .': ' . htmlspecialchars($_SESSION['usuario']) . '</span>';
+                echo '<a href="logout.php" class="logout-link-admin">'. $t['cerrarSesion'] .'</a>';
             }
             ?>
         </div>
     </header>
 
-    <h1>Listado de frases</h1>
+    <h1><?= $t['h1ListSentence'] ?></h1>
     <table>
         <tr>
-            <th>Dificultad</th>
-            <th>Frase</th>
-            <th>Eliminación</th>
+            <th><?= $t['th1ListSentence'] ?></th>
+            <th><?= $t['th2ListSentence'] ?></th>
+            <th><?= $t['th3ListSentence'] ?></th>
         </tr>
         <?php
         if (file_exists($archivo)) {
@@ -49,16 +56,16 @@
                     echo "<tr>";
                     echo "<td>" . htmlspecialchars($dificultad) . "</td>";
                     echo "<td>" . htmlspecialchars($fraseIndividual) . "</td>";
-                    echo "<td id='delete-link'><a href='delete_sentence.php?dificultad=" . urlencode($dificultad) . "&frase=" . urlencode($fraseIndividual) . "'>Eliminar</a></td>";
+                    echo "<td id='delete-link'><a href='delete_sentence.php?dificultad=" . urlencode($dificultad) . "&frase=" . urlencode($fraseIndividual) . "'>". $t['botonEliminar'] ."</a></td>";
                     echo "</tr>";
                 }
             }
         } else {
-            echo "<tr><td colspan='3'>No se encontraron frases.</td></tr>";
+            echo "<tr><td colspan='3'>". $t['noFrases'] ."</td></tr>";
         }
         ?>
     </table>
-    <button id="ButtonListSentences"><a href="/admin/index.php"><u>V</u>olver atras</a></button>
+    <button id="ButtonListSentences"><a href="/admin/index.php"><?= $t['botonVolver'] ?></a></button>
     <script src="scriptListSentences.js"></script>
 </body>
 </html>

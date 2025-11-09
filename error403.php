@@ -1,17 +1,26 @@
+<?php
+    include __DIR__ . '/lang/lang.php';
+
+    $lang = isset($_GET['lang']) ? $_GET['lang'] : ($_SESSION['lang'] ?? 'es');
+    $_SESSION['lang'] = $lang;
+
+    $t = loadLanguage($lang);
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Error 403 - Accés denegat</title>
+    <title><?= $t['tituloError403'] ?></title>
     <link rel="stylesheet" type="text/css" href="/styles.css?<?php echo time(); ?>" />
 </head>
 <body class="body-403">
     <div>
     <div class="emoji-403">🚫</div>
-    <h1>¡ERROR 403!</h1>
-    <p>Este nivel de autorización es solo para agentes de S.H.I.E.L.D. Parece que estás intentando entrar en un área clasificada, recluta.</p>
-    <button id="Button403"><u>V</u>olver con los demas reclutas</button>
+    <h1><?= $t['h1Error403'] ?></h1>
+    <p><?= $t['parrafoError403'] ?></p>
+    <button id="Button403"><?= $t['botonError403'] ?></button>
     </div>
     <div class="image-div-403">
     <img src="/IMG/Marvel403.png" alt="Image Nick furry" class="image-403">

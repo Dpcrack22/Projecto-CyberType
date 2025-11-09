@@ -22,13 +22,20 @@
     }
 
     $fraseAleatoria = $frasesFiltradas[array_rand($frasesFiltradas)];
+
+    include __DIR__ . '/lang/lang.php';
+
+    $lang = isset($_GET['lang']) ? $_GET['lang'] : ($_SESSION['lang'] ?? 'es');
+    $_SESSION['lang'] = $lang;
+
+    $t = loadLanguage($lang);
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Play - MarvelType</title>
+    <title><?= $t['tituloPlay'] ?></title>
     <link rel="stylesheet" type="text/css" href="./styles.css?<?php echo time(); ?>" />
 </head>
 <body class="body-play">
@@ -37,14 +44,14 @@
         <div class="user-info">
             <?php
             if (isset($_SESSION['playerName'])) {
-                echo '<span class="player-name">Jugador: ' . htmlspecialchars($_SESSION['playerName']) . '</span>';
+                echo '<span class="player-name">'. $t['jugador'] .': ' . htmlspecialchars($_SESSION['playerName']) . '</span>';
             }
             ?>
-            <a href="destroy_session.php" class="logout-link">Cerrar sesión</a>
+            <a href="destroy_session.php" class="logout-link"><?= $t['cerrarSesion'] ?></a>
         </div>
     </header>
-    <h1 id="titulo-play">MarvelType</h1>
-    <h1 id="titulo-prepara">¡Prepárate joven vengador!</h1>
+    <h1 id="titulo-play"><?= $t['tituloh1Play'] ?></h1>
+    <h1 id="titulo-prepara"><?= $t['cuentaAtrasPlay'] ?></h1>
     <div id="contador">3</div>
     <div id="fraseContainer">
         <div id="frase"></div>
@@ -58,7 +65,7 @@
 
     <noscript>
         <div class="no-js-warning">
-            ⚠️ El juego necesita javascript para funcionar. Por favor, habilita Javascript para empezar.
+            <?= $t['noJSPlay'] ?>
         </div>
     </noscript>
 </body>

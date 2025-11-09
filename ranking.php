@@ -3,7 +3,7 @@
     session_start();
 
     if (!isset($_SESSION['playerName']) || !isset($_SESSION['score'])) {
-        die("No hay datos de jugador para guardar.");
+        die($t['dieRanking']);
     }
 
     $playerName = $_SESSION['playerName'];
@@ -18,6 +18,13 @@
     if (file_put_contents($archivo, $registro, FILE_APPEND | LOCK_EX) === false) {
         die("Error al guardar el ranking.");
     }
+
+    include __DIR__ . '/lang/lang.php';
+
+    $lang = isset($_GET['lang']) ? $_GET['lang'] : ($_SESSION['lang'] ?? 'es');
+    $_SESSION['lang'] = $lang;
+
+    $t = loadLanguage($lang);
 ?>
 
 <?php
@@ -33,7 +40,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ranking - MarvelType</title>
+    <title><?= $t['tituloRanking'] ?></title>
     <link rel="stylesheet" type="text/css" href="./styles.css?<?php echo time(); ?>" />
 </head>
 <body class="body-ranking">
@@ -42,19 +49,19 @@
         <div class="user-info">
             <?php
             if (isset($_SESSION['playerName'])) {
-                echo '<span class="player-name">Jugador: ' . htmlspecialchars($_SESSION['playerName']) . '</span>';
+                echo '<span class="player-name">'. $t['jugador'] .': ' . htmlspecialchars($_SESSION['playerName']) . '</span>';
             }
             ?>
-            <a href="destroy_session.php" class="logout-link">Cerrar sesión</a>
+            <a href="destroy_session.php" class="logout-link"><?= $t['cerrarSesion'] ?></a>
         </div>
     </header>
     
-    <h1>Ranking de Jugadores - MarvelType</h1>
+    <h1><?= $t['h1Ranking'] ?></h1>
     <table>
         <tr>
-            <th>Posición</th>
-            <th>Nombre</th>
-            <th>Puntuación</th>
+            <th><?= $t['th1Ranking'] ?></th>
+            <th><?= $t['th2Ranking'] ?></th>
+            <th><?= $t['th3Ranking'] ?></th>
         </tr>
         <?php
         $lineas = file($archivo, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
@@ -77,7 +84,7 @@
         ?>
     </table>
     <br>
-    <button id="RankingButton"><u>V</u>olver al inicio</button>
+    <button id="RankingButton"><?= $t['botonRanking'] ?></button>
     <script src="scriptRanking.js"></script>
 </body>
 </html>

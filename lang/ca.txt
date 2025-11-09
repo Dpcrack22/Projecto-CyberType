@@ -1,0 +1,81 @@
+tituloIndex=Inici - MarvelType
+tituloh1Index=MARVELTYPE
+descripcionIndex=A MarvelType posaràs a prova la teva velocitat i reflexos. Tecleja cada frase amb precisió i demostra que tens el que cal per unir-te als herois més poderosos de l’univers Marvel.
+placeholderIndex=Introdueix el teu nom
+option1Index=Fàcil
+option2Index=Mitjà
+option3Index=Difícil
+botonIndex=Inicia el joc
+
+
+tituloPlay=Joc - MarvelType
+tituloh1Play=MarvelType
+cuentaAtrasPlay=Prepara’t, jove venjador!
+noJSPlay=⚠️ El joc necessita JavaScript per funcionar. Si us plau, activa’l per començar.
+
+
+tituloGameOver=Fi del joc - MarvelType
+h1GameOver=💥 Fi del joc
+puntuacionGameOver=La teva puntuació final és
+bonusGameOver=Bonificacions aconseguides
+almacenarGameOver=Desar al rànquing
+jugarGameOver=Tornar a jugar
+dieRanking=No hi ha dades de jugador per desar.
+
+
+tituloRanking=Rànquing - MarvelType
+h1Ranking=Rànquing de Jugadors - MarvelType
+th1Ranking=Posició
+th2Ranking=Nom
+th3Ranking=Puntuació
+botonRanking=Tornar a l’inici
+
+
+tituloError403=Error 403 - Accés denegat
+h1Error403=ERROR 403!
+parrafoError403=Aquest nivell d’autorització és només per a agents de S.H.I.E.L.D. Sembla que estàs intentant accedir a una àrea classificada, recluta.
+botonError403=Tornar amb la resta de reclutes
+
+
+tituloError404=Error 404 - Pàgina no trobada
+h1Error404=ERROR 404!
+parrafoError404=Sembla que has pres el camí equivocat cap al Multivers. Intenta tornar a l’inici.
+botonError404=Tornar al Centre de Comandament
+
+
+tituloLogin=Inici de sessió d’administrador
+inicioSesionLogin=Inici de sessió
+placeholderUsuarioLogin=Usuari...
+placeholderContraseñaLogin=Contrasenya...
+botonLogin=Inicia
+
+
+tituloAdminIndex=Panell d’administració
+h1AdminIndex=Benvingut a S.H.I.E.L.D
+cerrarSesionAdminIndex=Tanca la sessió
+listarFraseAdminIndex=Llistar frases
+agregarFraseAdminIndex=Afegir frase
+
+
+tituloListSentence=Administrador - Llistar frases
+h1ListSentence=Llistat de frases
+th1ListSentence=Difícil
+th2ListSentence=Frase
+th3ListSentence=Eliminació
+botonEliminar=Elimina
+botonVolver=Torna enrere
+noFrases=No s’han trobat frases.
+
+
+tituloAdminCreate=Afegir Frases - Administrador
+placeholderAdminCreate=Introdueix una frase...
+option1AdminCreate=Fàcil
+option2AdminCreate=Mitjà
+option3AdminCreate=Difícil
+botonAgregarCreate=Afegir frase
+botonVolverCreate=Torna enrere
+
+
+administrador=Administrador
+jugador=Jugador
+cerrarSesion=Tanca la sessió

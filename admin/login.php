@@ -19,6 +19,13 @@
             $error = "Usuario o contraseña incorrectos.";
         }
     }
+
+    include __DIR__ . '/lang/lang.php';
+
+    $lang = isset($_GET['lang']) ? $_GET['lang'] : ($_SESSION['lang'] ?? 'es');
+    $_SESSION['lang'] = $lang;
+
+    $t = loadLanguage($lang);
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +33,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login</title>
+    <title><?= $t['tituloLogin'] ?></title>
     <link rel="stylesheet" type="text/css" href="/styles.css?<?php echo time(); ?>" />
 </head>
 <body class="body-loginAdmin">
@@ -35,12 +42,12 @@
     </header>
     <div class="div-margin"></div>
 
-    <h2>Login</h2>
+    <h2><?= $t['inicioSesionLogin'] ?></h2>
     <?php if (!empty($error)) echo "<p style='color:red;'>$error</p>"; ?>
     <form method="post">
-        <input type="text" name="usuario" id="userLogin" required placeholder="Usuario..."><br><br>
-        <input type="password" name="password" id="passwordLogin" required placeholder="Contraseña..."><br><br>
-        <button type="submit" id="loginButton"><u>I</u>niciar</button>
+        <input type="text" name="usuario" id="userLogin" required placeholder="<?= $t['placeholderUsuarioLogin'] ?>"><br><br>
+        <input type="password" name="password" id="passwordLogin" required placeholder="<?= $t['placeholderContraseñaLogin'] ?>"><br><br>
+        <button type="submit" id="loginButton"><?= $t['botonLogin'] ?></button>
     </form>
     <script src="scriptLogin.js"></script>
 </body>
