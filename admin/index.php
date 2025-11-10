@@ -34,6 +34,7 @@
         <button class="botonLogout-admin" id="cerrarSesionButton"><a href="/admin/logout.php"><u>C</u>errar sesión</a></button>
         <button class="botonListar-admin" id="listarFrasesButton"><a href="/admin/list_sentences.php"><u>L</u>istar Frases</a></button>
         <button class="botonAgregar-admin" id="agregarFraseButton"><a href="/admin/create_sentence.php"><u>A</u>gregar Frase</a></button>
+        <button class="botonAgregarImagen-admin" id="agregarImagenButton"><a href="/admin/add_image.php"><u>S</u>ubir Imagen</a></button>
     </div>
     <script src="/admin/script.js?<?php echo time(); ?>"></script>
 </body>

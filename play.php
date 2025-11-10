@@ -5,23 +5,7 @@
     if (isset($_POST['playerName'])) {
         $_SESSION['playerName'] = htmlspecialchars($_POST['playerName']);
     }
-
     $difficulty = $_POST['difficulty'];
-
-    $archivo = './sentences.txt';
-
-    $lineas = file($archivo, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-
-    $frasesFiltradas = [];
-    foreach ($lineas as $linea) {
-        list($nivelFrase, $frases) = explode('|', $linea, 2);
-        if ($nivelFrase === $difficulty) {
-            $frasesFiltradas = array_map('trim', explode(',', $frases));
-            break;
-        }
-    }
-
-    $fraseAleatoria = $frasesFiltradas[array_rand($frasesFiltradas)];
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -47,14 +31,40 @@
     <h1 id="titulo-play">MarvelType</h1>
     <h1 id="titulo-prepara">¡Prepárate joven vengador!</h1>
     <div id="contador">3</div>
+    <div id="imageContainer" style="display:none;">
+        <img id="fraseImg" src="" alt="Imagen asociada" />
+    </div>
     <div id="fraseContainer">
         <div id="frase"></div>
     </div>
+
     <div id="bonusMessage"></div>
 
     <script src="./scriptPlay.js?<?php echo time(); ?>" defer></script>
     <script>
-        const fraseJuego = <?php echo json_encode($fraseAleatoria, JSON_UNESCAPED_UNICODE); ?>;
+        const dificultadSeleccionada = "<?php echo $difficulty; ?>";
+        fetch('get_sentence.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: "difficulty=" + encodeURIComponent(dificultadSeleccionada)
+        })
+        .then(response => response.json())
+        .then(data => {
+            frasesJuego = data.map(item => item.frase);
+            imagenesJuego = data.map(item => item.imagen);
+
+            // Establecemos la primera frase e imagen:
+            fraseAleatoria = frasesJuego[0];
+            imagenJuego = imagenesJuego[0];
+
+            mostrarFrase();
+        })
+        .catch(error => {
+            console.error('Error al obtener la frase:', error);
+        });
+
     </script>
 
     <noscript>

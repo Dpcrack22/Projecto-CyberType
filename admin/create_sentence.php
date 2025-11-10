@@ -31,7 +31,7 @@
     <div class="div-margin"></div>
 
     <h1>Añadir Frases</h1>
-    <form action="create_sentence.php" method="POST">
+    <form action="create_sentence.php" method="POST" enctype="multipart/form-data">
         <section>
             <input type="text" id="inputSentence" name="inputSentence" placeholder="Introduce una frase..."/>
             <select id="Dificulty" name="Dificulty">
@@ -39,7 +39,12 @@
                 <option value="medio" name="Dificulty">Medio</option>
                 <option value="dificil" name="Dificulty">Difícil</option>
             </select>
+
             <button type="submit" id="createSentence"><u>A</u>gregar Frase</button>
+            
+            <input type="file" name="sentenceImage" accept="image/*" id="sentenceImage"/>
+            <label for="sentenceImage" class="label-imageUpload">Subir imagen</label>
+            <span id="fileName" class="file-name"></span>
         </section>
     </form>
 
@@ -49,6 +54,18 @@
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $nuevaFrase = trim($_POST['inputSentence'] ?? '');
             $dificultad = $_POST['Dificulty'] ?? '';
+
+            // Nombre de imagen (si se sube)
+            $nombreImagen = '';
+            if (!empty($_FILES['sentenceImage']['name'])) {
+                $nombreImagen = time() . '_' . basename($_FILES['sentenceImage']['name']);
+                $rutaImagen = __DIR__ . '/../IMG/' . $nombreImagen;
+                move_uploaded_file($_FILES['sentenceImage']['tmp_name'], $rutaImagen);
+            }
+
+            // Añadimos el separador @@ para asociar la imagen
+            $fraseGuardada = $nuevaFrase . '@@' . $nombreImagen;
+
             if (!empty($nuevaFrase) && in_array($dificultad, ['facil', 'medio', 'dificil'])) {
                 $archivo = __DIR__ . '/../sentences.txt';
                 $lineas = file($archivo, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
@@ -58,11 +75,18 @@
                     list($nivelFrase, $frases) = explode('|', $linea, 2);
                     if ($nivelFrase === $dificultad) {
                         $frasesArray = array_map('trim', explode(',', $frases));
-                        if (!in_array($nuevaFrase, $frasesArray)) {
-                            $frasesArray[] = $nuevaFrase;
-                            $linea = $nivelFrase . '|' . implode(',', $frasesArray);
-                            $fraseAgregada = true;
+                        
+                        foreach($frasesArray as $f) {
+                            if (explode('@@', $f)[0] === $nuevaFrase) {
+                                echo "<p class='error-message'>La frase ya existe en esta dificultad.</p>";
+                                return;
+                            }
                         }
+
+                        // Agregar
+                        $frasesArray[] = $fraseGuardada;
+                        $linea = $nivelFrase . '|' . implode(',', $frasesArray);
+                        $fraseAgregada = true;
                         break;
                     }
                 }

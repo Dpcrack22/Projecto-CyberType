@@ -245,6 +245,22 @@ header .user-info {
     display: none;
 }
 
+#imageContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+#fraseImg {
+    max-width: 350px;
+    max-height: 200px;
+    object-fit: contain;
+    border-radius: 10px;
+    border: 2px solid #ffffff60; 
+    box-shadow: 0 0 12px rgba(255,255,255,0.4);
+}
+
 .correcta {
     color: #518cca;
 }
@@ -620,7 +636,8 @@ header .user-info {
 
 .body-adminIndex .botonLogout-admin,
 .body-adminIndex .botonListar-admin,
-.body-adminIndex .botonAgregar-admin  {
+.body-adminIndex .botonAgregar-admin,
+.body-adminIndex .botonAgregarImagen-admin {
     display: inline-block;
     text-align: center;
     justify-content: center;
@@ -671,6 +688,23 @@ header .user-info {
     text-decoration: none;
     transition: background-color 0.3s ease;
     cursor: pointer;
+}
+
+.botonAgregarImagen-admin a {
+    display: inline-block;
+    background-color: #24513c;
+    color: #FFFFFF;
+    padding: 12px 35px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.botonAgregarImagen-admin a:hover {
+    background-color: #1b3d2e;
 }
 
 .botonLogout-admin a:hover {
@@ -761,6 +795,7 @@ header .user-info {
     padding: 40px 20px;
     text-align: center;
 }
+
 
 /* PARTE ADMIN CREATE_SENTENCE.PHP */
 .body-createSentence {
@@ -856,6 +891,178 @@ header .user-info {
     font-weight: bold;
     margin-top: 20px;
 }
+.body-createSentence form #sentenceImage {
+    display: none;
+}
+
+.label-imageUpload {
+    display: inline-block;
+    background-color:	#518cca;
+    color: #FFFFFF;
+    padding: 12px 35px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    margin-top: 25px;
+    width: 90%;
+}
+
+.file-name {
+    margin-top: 10px;
+    font-size: 1em;
+    color: #CCCCCC;
+    margin-left: 10px;
+}
+.body-createSentence form #sentenceImage:hover {
+    background-color: #3268BD;
+}
+
+/* ADMIN ADD_IMAGE.PHP STYLES */
+.body-addImage {
+    background-color: #141414;
+    color: #FFFFFF;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 600px;
+    padding: 40px 20px;
+    text-align: center;
+}
+.body-addImage h1 {
+    color: #ED1D24;
+    font-size: 2.8em;
+    font-weight: 900;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    margin-top: 30px;
+}
+.body-addImage form #sentenceImage {
+    display: none;
+}
+.label-imageUpload {
+    display: inline-block;
+    background-color:	#518cca;
+    color: #FFFFFF;
+    padding: 12px 35px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    margin-top: 25px;
+    width: 90%;
+}
+.body-addImage form #imageFile:hover {
+    background-color: #3268BD;
+}
+.body-addImage .file-name {
+    margin-top: 10px;
+    font-size: 1em;
+    color: #CCCCCC;
+    margin-left: 10px;
+}
+.body-addImage #uploadImageButton {
+    background-color: #ED1D24; 
+    color: #FFFFFF; 
+    border: none;
+    padding: 15px 30px;
+    margin-top: 25px;
+    border-radius: 6px; 
+    font-weight: bold;
+    font-size: 1.1em;
+    width: 100%;
+    cursor: pointer;
+}
+.body-addImage #uploadImageButton:hover {
+    background-color: #A50000;
+}
+.body-addImage .success-message {
+    color: #4BB543;
+    font-weight: bold;
+    margin-top: 20px;
+}
+.body-addImage .error-message {
+    color: #FF3333;
+    font-weight: bold;
+    margin-top: 20px;
+}
+.body-addImage .btn-volverIndex a{
+    padding: 0;
+    min-width: 320px;
+    min-height: 40px;
+    align-content: center;
+    font-size: 1.2em;
+    color: white;
+    font-size: 1.2em;
+    text-decoration: none;
+    cursor: pointer;
+}
+.body-addImage form select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border: 2px solid #363636;
+    border-radius: 6px;
+    background-color: #1A1A1A;
+    color: #FFFFFF;
+    font-size: 1.2em;
+    box-sizing: border-box;
+}
+.body-addImage form select:focus {
+    border-color: #3268BD;
+    outline: none;
+    box-shadow: 0 0 8px rgba(50, 104, 189, 0.6);
+}
+.body-addImage form label {
+    margin-top: 10px;
+    font-size: 1.2em;
+    display: block;
+    text-align: left;
+    color: #FFFFFF;
+}
+.body-addImage #btn-volverIndex {
+    margin-top: 30px;
+    background-color: #ED1D24;
+    border-radius: 10px;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    min-width: 320px;
+}
+.body-addImage #btn-volverIndex:hover {
+    background-color: #A50000;
+}
+.body-addImage #btn-volverIndex a{
+    color: white;
+    font-size: 1.2em;
+    text-decoration: none;
+    font-weight: bold;
+}
+.body-addImage .error-message {
+    color: #FF3333;
+    font-weight: bold;
+    margin-top: 20px;
+}
+.body-addImage form {
+    width: 100%;
+    max-width: 500px;
+    text-align: left;
+}
+.body-addImage form select option {
+    background-color: #1A1A1A;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 
 /* PARTE ADMIN LISTAR_FRASES.PHP */
 .body-listarFrases table {
