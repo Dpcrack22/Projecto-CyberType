@@ -13,6 +13,13 @@
     
     $lang = $_SESSION['lang_admin'] ?? 'es';
     $t = loadLanguage($lang);
+
+    $traducciones_dificultad = [
+    'es' => ['facil' => 'Fácil', 'medio' => 'Medio', 'dificil' => 'Difícil'],
+    'ca' => ['facil' => 'Fàcil', 'medio' => 'Mitjà', 'dificil' => 'Difícil'],
+    'en' => ['facil' => 'Easy', 'medio' => 'Medium', 'dificil' => 'Hard']
+];
+
     $archivo = '../sentences'.$lang.'.txt';
 ?>
 
@@ -52,7 +59,8 @@
                 $frasesIndividuales = explode(',', $frase);
                 foreach ($frasesIndividuales as $fraseIndividual) {
                     echo "<tr>";
-                    echo "<td>" . htmlspecialchars($dificultad) . "</td>";
+                    $nombreDificultad = $traducciones_dificultad[$lang][$dificultad] ?? $dificultad;
+                    echo "<td>" . htmlspecialchars($nombreDificultad) . "</td>";
                     echo "<td>" . htmlspecialchars($fraseIndividual) . "</td>";
                     echo "<td id='delete-link'><a href='delete_sentence.php?dificultad=" . urlencode($dificultad) . "&frase=" . urlencode($fraseIndividual) . "'>". $t['botonEliminar'] ."</a></td>";
                     echo "</tr>";
