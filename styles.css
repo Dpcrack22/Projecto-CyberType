@@ -1014,6 +1014,11 @@ header .user-info {
 }
 
 
+/* ADMIN LIST SENTENCES STYLES */
+
+.resaltar-frase {
+    background-color: #f78f3f !important;
+}
 /* LOGS PAGE STYLES */
 
 .body-logs {

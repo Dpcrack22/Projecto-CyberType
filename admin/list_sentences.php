@@ -86,6 +86,33 @@ registrarLog("admin/list_sentences.php", "El administrador '$usuario' accedió a
             <th>Frase</th>
             <th>Eliminación</th>
         </tr>
+        <?php
+        if (file_exists($archivo)) {
+            $lineas = file($archivo, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+            foreach ($lineas as $linea) {
+                list($dificultad, $frase) = explode('|', $linea);
+                $frasesIndividuales = explode(',', $frase);
+                foreach ($frasesIndividuales as $fraseIndividual) {
+
+                    $esDestacada = ($highlight && trim($fraseIndividual) === $highlight);
+                    $claseFila = $esDestacada ? "class='resaltar-frase'" : "";
+
+                    echo "<tr $claseFila>";
+                    echo "<td>" . htmlspecialchars($dificultad) . "</td>";
+                    echo "<td>" . htmlspecialchars($fraseIndividual) . "</td>";
+                    // Quiero que la frase y la dificultad se pasen por POST en vez de GET
+                    echo "<form action='delete_sentence.php' method='POST'>";
+                    echo "<input type='hidden' name='dificultad' value='" . htmlspecialchars($dificultad) . "'>";
+                    echo "<input type='hidden' name='frase' value='" . htmlspecialchars($fraseIndividual) . "'>";
+                    echo "<td id='delete-link'><button type='submit'>Eliminar</button></td>";
+                    echo "</form>";
+                    echo "</tr>";
+                }
+            }
+        } else {
+            echo "<tr><td colspan='3'>No se encontraron frases.</td></tr>";
+        }
+        ?>
         <?php if ($total > 0): ?>
             <?php foreach ($frasesPagina as $dato): ?>
                 <tr>
