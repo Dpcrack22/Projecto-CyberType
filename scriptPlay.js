@@ -5,8 +5,10 @@ const audioRight = new Audio("Right.mp3");
 const audioMiss = new Audio("Miss.wav");
 const audioGameover = new Audio("gameover.wav");
 const bonusDiv = document.getElementById("bonusMessage");
+const tiempoDiv = document.getElementById("tiempoTranscurrido");
 
-// Variables para Easter Egg/Bonus
+// Variables de juego modificables
+let puntuation = 0;
 let consectutiveRightHits = 0;
 let consectutiveWrongHits = 0;
 let bonus = 0;
@@ -18,6 +20,9 @@ let contador = 3;
 let indiceFraseActual = 0;
 let posicionActual = 0;
 let fraseAleatoria = "";
+let tiempoInicio = 0;
+let tiempoTranscurrido = 0;
+let intervalTiempo;
 let imagenJuego = "";
 let frasesJuego = [];
 let imagenesJuego = [];
@@ -44,6 +49,11 @@ function mostrarFrase() {
 
     inputOcult.innerHTML = "";
     posicionActual = 0;
+    tiempoInicio = performance.now();
+    intervalTiempo = setInterval(() => {
+        tiempoTranscurrido = Math.floor((performance.now() - tiempoInicio) / 1000).toFixed(2);
+        tiempoDiv.textContent = `Tiempo: ${tiempoTranscurrido} s`;
+    }, 100);
 
     for (let letra of fraseAleatoria) {
         const span = document.createElement("span");
@@ -77,6 +87,7 @@ const intervalo = setInterval(() => {
         document.getElementById("fraseContainer").style.display = "block";
         document.getElementById("titulo-play").style.display = "block";
         document.getElementById("titulo-prepara").style.display = "none";
+        document.getElementById("tiempoTranscurrido").style.display = "block";
 
         mostrarFrase();
     }
@@ -169,6 +180,19 @@ function verificarEscritura(tecla) {
     updateCurrentLetter();
 
     if (posicionActual === fraseAleatoria.length) {
+        const tiempoFinal = performance.now();
+        const tiempoTotal = ((tiempoFinal - tiempoInicio) / 1000).toFixed(2); // Tiempo completado con decimales
+        if (Math.random() < 0.1 ) { // 1% de probabilidad
+            thanosSnapTriggered = true;
+            activateThanosSnap();
+            setTimeout(() => {
+                endGame(puntuation, tiempoTotal);
+            }, 4000);
+            return;
+        }
+        clearInterval(intervalTiempo);
+
+        endGame(puntuation, tiempoTotal);
         cargarSiguienteFrase();
     }
 };
@@ -195,7 +219,7 @@ function activateThanosSnap() {
 }
 inputOcult.addEventListener("input", verificarEscritura);
 
-function endGame(score) {
+function endGame(score, tiempo) {
     fetch('finish_game.php', {
         method: 'POST',
         headers: {
@@ -203,6 +227,7 @@ function endGame(score) {
         },
         body: "score=" + encodeURIComponent(score)
         + "&bonus=" + encodeURIComponent(bonus)
+        + "&tiempo=" + encodeURIComponent(tiempo)
     })
     .then(response => response.text())
     .then(data => {
