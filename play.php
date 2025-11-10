@@ -34,6 +34,7 @@
 <body class="body-play">
     <header>
         <img src="./IMG/Marvel_Logo.png" alt="Marvel Logo" class="marvel-logo">
+        <div id="tiempoTranscurrido"></div>
         <div class="user-info">
             <?php
             if (isset($_SESSION['playerName'])) {

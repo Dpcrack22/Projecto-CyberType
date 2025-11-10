@@ -2,7 +2,7 @@
     session_name("jugadorSession");
     session_start();
     
-    if (!isset($_SESSION['game_finished']) || $_SESSION['game_finished'] !== true || !isset($_SESSION['playerName'])) {
+    if (!isset($_SESSION['game_finished']) || !isset($_SESSION['playerName']) || !isset($_SESSION['score']) || !isset($_SESSION['tiempo'])) {
         header("Location: error403.php");
         exit;
     }
@@ -10,6 +10,7 @@
     $inputName = $_SESSION['playerName'] ?? 'Jugador desconocido';
     $score = $_SESSION['score'] ?? 0;
     $bonus = $_SESSION['bonus'] ?? 0;
+    $tiempo = $_SESSION['tiempo'] ?? 0.0;
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -34,11 +35,13 @@
     <h1>💥 ¡Fin del juego, <?= htmlspecialchars($inputName) ?>! 💥</h1>
     <p>Tu puntuación final es: <?= htmlspecialchars($score) ?></p>
     <p>Bonus conseguidos: <?= htmlspecialchars($bonus) ?></p>
+    <p>Tiempo empleado: <?= htmlspecialchars($tiempo) ?> segundos</p>
     <div class="botones-gameover">
     <form action="ranking.php" method="post">
         <input type="hidden" name="inputName" value="<?= htmlspecialchars($inputName) ?>">
         <input type="hidden" name="score" value="<?= htmlspecialchars($score) ?>">
         <input type="hidden" name="bonus" value="<?= htmlspecialchars($bonus) ?>">
+        <input type="hidden" name="tiempo" value="<?= htmlspecialchars($tiempo) ?>">
         <button class="botonEnviarRank-gameover" id="almacenarRankingButton" type="submit"><u>A</u>lmacenar Ranking</button>
     </form>
     <button class="botonVolverInicio-gameover" id="jugarDeNuevoButton" ><u>J</u>ugar de nuevo</button>

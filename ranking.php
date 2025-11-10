@@ -8,11 +8,12 @@
 
     $playerName = $_SESSION['playerName'];
     $score = $_SESSION['score'];
+    $tiempo = $_SESSION['tiempo'];
 
     $archivo = "./ranking.txt";
 
     // Formato del registro
-    $registro = "$playerName | $score" . PHP_EOL;
+    $registro = "$playerName | $score | $tiempo" . PHP_EOL;
 
     // Abrir el archivo y escribir
     if (file_put_contents($archivo, $registro, FILE_APPEND | LOCK_EX) === false) {
@@ -25,6 +26,7 @@
         unset($_SESSION['game_finished']);
         unset($_SESSION['score']);
         unset($_SESSION['bonus']);
+        unset($_SESSION['tiempo']);
     }
 ?>
 
@@ -71,6 +73,7 @@
                     <td>$posicion</td>
                     <td>$nombre</td>
                     <td>$puntuacion</td>
+                    <td>$tiempo s</td>
                   </tr>";
             $posicion++;
         }
