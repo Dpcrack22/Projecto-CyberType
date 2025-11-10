@@ -614,7 +614,8 @@ header .user-info {
 
 .body-adminIndex .botonLogout-admin,
 .body-adminIndex .botonListar-admin,
-.body-adminIndex .botonAgregar-admin  {
+.body-adminIndex .botonAgregar-admin,
+.body-adminIndex .botonLogs-admin {
     display: inline-block;
     text-align: center;
     justify-content: center;
@@ -627,6 +628,21 @@ header .user-info {
     background-color: transparent;
     padding: 0;
 }
+
+
+.botonLogs-admin a {
+    display: inline-block;
+    color: #FFFFFF;
+    padding: 12px 35px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    background-color: #EDB800; 
+}
+
 
 .botonLogout-admin a {
     display: inline-block;
@@ -677,6 +693,9 @@ header .user-info {
 
 .botonAgregar-admin a:hover {
     background-color: #434a7d;
+}
+.botonLogs-admin a:hover {
+    background-color: #b88600;
 }
 
 /* PARTE ADMIN INDEX.PHP */
@@ -1058,32 +1077,7 @@ header .user-info {
     background-color: #ed1d246a;
 }
 
-.body-logs .paginador {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-}
 
-.body-logs .paginador a {
-    display: inline-block;
-    padding: 8px 14px;
-    background-color: #ED1D24;
-    color: #FFFFFF;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-.body-logs .paginador a:hover {
-    background-color: #A50000;
-}
-
-.body-logs .paginador a.activo {
-    background-color: #3268BD;
-}
 
 .body-logs button, .body-logs button a {
     margin-top: 20px;
@@ -1100,4 +1094,48 @@ header .user-info {
 
 .body-logs button a {
     color: white;
+}
+
+/* PAGINADOR LIST_SENTENCES Y RANKING */
+.body-listarFrases .paginador,
+.body-ranking .paginador,
+.body-logs .paginador {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.body-listarFrases .paginador a,
+.body-ranking .paginador a,
+.body-logs .paginador a {
+    display: inline-block;
+    padding: 10px 16px;
+    background-color: #ED1D24; /* rojo Marvel */
+    color: #FFFFFF;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.body-listarFrases .paginador a:hover,
+.body-ranking .paginador a:hover,
+.body-logs .paginador a:hover {
+    background-color: #A50000; /* rojo más oscuro al hover */
+}
+
+.body-listarFrases .paginador a.activo,
+.body-ranking .paginador a.activo,
+.body-logs .paginador a.activo {
+    background-color: #FFC82C; /* amarillo Marvel para página activa */
+    color: #1A1A1A;
+}
+
+.body-listarFrases .paginador a.activo:hover,
+.body-ranking .paginador a.activo:hover,
+.body-logs .paginador a.activo:hover {
+    background-color: #EDB800;
 }
