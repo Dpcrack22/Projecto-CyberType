@@ -993,3 +993,111 @@ header .user-info {
     text-decoration: none;
     font-weight: bold;
 }
+
+
+/* LOGS PAGE STYLES */
+
+.body-logs {
+    background-color: #141414;
+    color: #FFFFFF;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.body-logs h1 {
+    color: #ED1D24;
+    font-size: 2.8em;
+    font-weight: 900;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+}
+
+.body-logs table {
+    width: 80%;
+    border-collapse: collapse;
+    background-color: #242424;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(237, 29, 36, 0.4);
+    margin-bottom: 30px;
+}
+
+.body-logs th, .body-logs td {
+    padding: 12px 10px;
+    color: #FFFFFF;
+    font-size: 1.1em;
+}
+
+.body-logs th {
+    background-color: #ED1D24;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.body-logs tr:nth-child(even) {
+    background-color: #1A1A1A;
+}
+
+.body-logs tr:nth-child(odd) {
+    background-color: #3c3c3c98;
+}
+
+.body-logs tr:nth-child(even):hover {
+    background-color: #518bca72;
+}
+
+.body-logs tr:nth-child(odd):hover {
+    background-color: #ed1d246a;
+}
+
+.body-logs .paginador {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.body-logs .paginador a {
+    display: inline-block;
+    padding: 8px 14px;
+    background-color: #ED1D24;
+    color: #FFFFFF;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.body-logs .paginador a:hover {
+    background-color: #A50000;
+}
+
+.body-logs .paginador a.activo {
+    background-color: #3268BD;
+}
+
+.body-logs button, .body-logs button a {
+    margin-top: 20px;
+    background-color: #ED1D24;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    font-size: 1.2em;
+}
+
+.body-logs button a {
+    color: white;
+}
