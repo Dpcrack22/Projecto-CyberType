@@ -242,6 +242,7 @@ header .user-info {
     font-size: 1.2em;
     box-shadow: 0 0 8px rgba(50, 104, 189, 0.6);
     z-index: 1001;
+    display: none;
 }
 
 .correcta {

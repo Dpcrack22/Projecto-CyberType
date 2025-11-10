@@ -57,6 +57,7 @@
             <th>Posición</th>
             <th>Nombre</th>
             <th>Puntuación</th>
+            <th>Tiempo (s)</th>
         </tr>
         <?php
         $lineas = file($archivo, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
