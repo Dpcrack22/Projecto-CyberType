@@ -1,34 +1,31 @@
 <?php
+session_name("jugadorSession");
+session_start();
 
-    session_name("jugadorSession");
-    session_start();
+require_once(__DIR__ . "/admin/log_function.php");
+$arch_act = "play.php";
 
-    require_once(__DIR__ . "/admin/log_function.php");
-    $arch_act = "play.php";
-    
-    if (isset($_POST['playerName'])) {
-        $_SESSION['playerName'] = htmlspecialchars($_POST['playerName']);
-        registrarLog($arch_act,"Inicio de partida del jugador '{$_SESSION['playerName']}' con dificultad '{$_POST['difficulty']}'");
+if (isset($_POST['playerName'])) {
+    $_SESSION['playerName'] = htmlspecialchars($_POST['playerName']);
+    registrarLog($arch_act, "Inicio de partida del jugador '{$_SESSION['playerName']}' con dificultad '{$_POST['difficulty']}'");
+}
+
+$difficulty = $_POST['difficulty'] ?? 'normal';
+$archivo = './sentences.txt';
+
+$lineas = file($archivo, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+$frasesFiltradas = [];
+
+foreach ($lineas as $linea) {
+    list($nivelFrase, $frases) = explode('|', $linea, 2);
+    if ($nivelFrase === $difficulty) {
+        $frasesFiltradas = array_map('trim', explode(',', $frases));
+        break;
     }
+}
 
-    $difficulty = $_POST['difficulty'];
-
-    $archivo = './sentences.txt';
-
-    $lineas = file($archivo, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-
-    $frasesFiltradas = [];
-    foreach ($lineas as $linea) {
-        list($nivelFrase, $frases) = explode('|', $linea, 2);
-        if ($nivelFrase === $difficulty) {
-            $frasesFiltradas = array_map('trim', explode(',', $frases));
-            break;
-        }
-    }
-
-    $fraseAleatoria = $frasesFiltradas[array_rand($frasesFiltradas)];
+$fraseAleatoria = $frasesFiltradas[array_rand($frasesFiltradas)] ?? 'Error al cargar frase.';
 ?>
-
 
 <!DOCTYPE html>
 <html lang="es">

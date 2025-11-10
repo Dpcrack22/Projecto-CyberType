@@ -74,6 +74,8 @@ function manejarEntrada(e) {
     }
 }
 
+    
+
 function manejarTecla(e) {
     if (e.key.length !== 1 && e.key !== "Backspace") return;
 
@@ -103,6 +105,12 @@ function verificarEscritura(tecla) {
         spans[posicionActual].classList.remove("incorrecta");
         puntuation += 10;
         easterEgg(true);
+        console.log(tecla);
+        fetch("admin/log_keypress.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json; charset=UTF-8" },
+            body: JSON.stringify({ key: normalizar(tecla)})
+        });
     } else {
         audioMiss.pause();
         audioMiss.currentTime = 0;
@@ -111,6 +119,11 @@ function verificarEscritura(tecla) {
         spans[posicionActual].classList.remove("correcta");
         puntuation -= 5;
         easterEgg(false);
+        fetch("admin/log_keypress.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json; charset=UTF-8" },
+            body: JSON.stringify({ key: normalizar(tecla)})
+        });
     }
 
     posicionActual++;
