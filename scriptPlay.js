@@ -86,16 +86,33 @@ function createHiddenInput() {
         }
     });
 
-    // Keydown en el input: manejar Backspace y teclas simples
+    // Keydown en el input: manejar Backspace y teclas simples, bloquear control keys
     hiddenInput.addEventListener('keydown', (e) => {
         // No bloquear la composición
         if (isComposing) return;
-        if (e.key === 'Backspace') {
-            posicionActual = Math.max(0, posicionActual - 1);
+        
+        // Bloquear teclas de control (Escape, Tab, Delete, Enter) como si fueran errores
+        // para evitar que se borre accidentalmente
+        if (["Backspace","Escape", "Tab", "Delete", "Enter"].includes(e.key)) {
+            const spans = inputOcult.querySelectorAll("span");
+            audioMiss.pause();
+            audioMiss.currentTime = 0;
+            audioMiss.play().catch(() => {});
+            
+            if (posicionActual < spans.length) {
+                spans[posicionActual].classList.add("incorrecta");
+            }
+            easterEgg(false);
+            posicionActual++;
             updateCurrentLetter();
+            
+            if (posicionActual === fraseAleatoria.length) {
+                endGame(puntuation);
+            }
             e.preventDefault();
             return;
         }
+        
         if (e.key === 'Dead' || e.key.length !== 1) return;
         // Para teclas de un solo carácter (no dead-keys), procesar
         verificarEscritura(e.key);
