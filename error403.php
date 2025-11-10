@@ -1,4 +1,7 @@
 <?php
+    session_name("jugadorSession");
+    session_start();
+
     include __DIR__ . '/lang/lang.php';
 
     $lang = isset($_GET['lang']) ? $_GET['lang'] : ($_SESSION['lang'] ?? 'es');
@@ -6,6 +9,7 @@
 
     $t = loadLanguage($lang);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="es">

@@ -1,3 +1,3 @@
-facil|Wakanda forever,Avengers united,I don't want to go,Mr. Stark,Dormammu,I've come to bargain,Patience is a virtue,Mr. Parker,I am Iron Man
-medio|Reality can often be disappointing,With great power comes great responsibility,The shield doesn't make me Captain America, my decisions do,We don't choose our times but we choose how to face them,Even the smallest of us can make a big difference,Time is not a line, it's a circle,Iron Man is a loser
-dificil|No matter what happens tomorrow, promise me one thing: stay yourself,Hope is stronger than any Infinity Stone,Family is more than blood, it is choice
+facil|Wakanda forever,Avengers united,I don't want to go Mr. Stark,Dormammu I've come to bargain,Patience is a virtue Mr. Parker,I am Iron Man
+medio|Reality can often be disappointing,With great power comes great responsibility,The shield doesn't make me Captain America my decisions do,We don't choose our times but we choose how to face them,Even the smallest of us can make a big difference,Time is not a line it's a circle,Iron Man is a loser
+dificil|No matter what happens tomorrow promise me one thing: stay yourself,Hope is stronger than any Infinity Stone,Family is more than blood it is choice
