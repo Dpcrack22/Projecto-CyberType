@@ -234,6 +234,22 @@ header .user-info {
     box-sizing: border-box;
 }
 
+#imageContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+#fraseImg {
+    max-width: 350px;
+    max-height: 200px;
+    object-fit: contain;
+    border-radius: 10px;
+    border: 2px solid #ffffff60; 
+    box-shadow: 0 0 12px rgba(255,255,255,0.4);
+}
+
 .correcta {
     color: #518cca;
 }
