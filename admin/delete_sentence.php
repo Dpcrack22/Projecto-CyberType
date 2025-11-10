@@ -2,14 +2,19 @@
     session_name("adminSHIELD");
     session_start();
 
+    require_once(__DIR__ . "/log_function.php");
+
     // Si no estás logado, redirige al login
     if (empty($_SESSION['logado'])) {
+        registrarLog("admin/delete_sentence.php", "Intento de acceso no autorizado. Redirigido al login.");
         header("Location: /admin/login.php");
         exit;
     }
 
     $archivo = '../sentences.txt';
     $mensaje = '';
+
+    $usuario = $_SESSION['usuario'] ?? 'Desconocido';
 
     if (isset($_POST['dificultad']) && isset($_POST['frase'])) {
         $dificultad = $_POST['dificultad'];
@@ -48,14 +53,20 @@
             if ($fraseEncontrada) {
                 file_put_contents($archivo, implode(PHP_EOL, $nuevasLineas) . PHP_EOL, LOCK_EX);
                 $mensaje = "La frase: “" . $fraseAEliminar . "” ha sido eliminada correctamente.";
+                registrarLog("admin/delete_sentence.php", "El administrador '$usuario' eliminó la frase '$fraseAEliminar' de dificultad '$dificultad'.");
             } else {
                 $mensaje = "No se encontró la frase a eliminar.";
+                registrarLog("admin/delete_sentence.php", "El administrador '$usuario' intentó eliminar una frase inexistente: '$fraseAEliminar' (dificultad '$dificultad').");
+
             }
         } else {
             $mensaje = "No se encontró el archivo de frases.";
+            registrarLog("admin/delete_sentence.php", "El administrador '$usuario' intentó eliminar una frase pero no existe el archivo de frases.");
         }
     } else {
         $mensaje = "Parámetros inválidos o incompletos.";
+        registrarLog("admin/delete_sentence.php", "El administrador '$usuario' envió parámetros inválidos en la eliminación de frases.");
+
     }
     $_SESSION['mensaje'] = $mensaje;
     header("Location: list_sentences.php");

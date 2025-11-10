@@ -2,6 +2,10 @@
     session_name("adminSHIELD");
     session_start();
 
+    require_once(__DIR__ . "/log_function.php");
+    registrarLog("admin/login.php", "Alguien accedio al login.php.");
+
+
     $credentials = file(__DIR__ . '/credentials.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     $usuario_correcto = $credentials[0] ?? '';
     $password_correcta = $credentials[1] ?? '';
@@ -13,12 +17,18 @@
         if ($usuario === $usuario_correcto && $password === $password_correcta) {
             $_SESSION['usuario'] = $usuario;
             $_SESSION['logado'] = true; // Guardar Sesión
+
+            registrarLog("admin/login.php", "El administrador '$usuario' inició sesión correctamente.");
+
             header("Location: /admin/index.php"); // Redeirigr al panel
             exit;
         } else {
+            registrarLog("admin/login.php", "Intento de inicio de sesión fallido con usuario '$usuario'.");
             $error = "Usuario o contraseña incorrectos.";
         }
     }
+
+
 ?>
 
 <!DOCTYPE html>

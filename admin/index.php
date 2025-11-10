@@ -2,11 +2,16 @@
     session_name("adminSHIELD");
     session_start();
     
+    require_once(__DIR__ . "/log_function.php");
+
     // Si no estás logado, redirige al login
     if (empty($_SESSION['logado'])) {
         header("Location: /admin/login.php");
         exit;
     }
+
+    $usuario = $_SESSION['usuario'] ?? 'Desconocido';
+    registrarLog("admin/index.php", "El administrador '$usuario' accedió al panel principal.");
 ?>
 <!DOCTYPE html>
 <html lang="es">
