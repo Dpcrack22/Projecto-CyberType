@@ -13,6 +13,9 @@ document.addEventListener("keydown", (event) => {
         case "a":
             window.location.href="/admin/create_sentence.php";
             break;
+        case "s":
+            window.location.href="/admin/add_image.php";
+            break;
         default:
             break;
     }
