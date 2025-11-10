@@ -114,7 +114,29 @@ function cargarSiguienteFrase() {
         endGame(puntuation);
         return;
     } else {
-        mostrarFrase();
+        contador = 3;
+        contadorDiv.style.display = "block";
+        contadorDiv.textContent = contador;
+        document.getElementById("imageContainer").style.display = "none";
+        document.getElementById("fraseContainer").style.display = "none";
+        document.getElementById("titulo-play").style.display = "none";
+
+        const intervalo = setInterval(() => {
+            contador--;
+            if (contador > 0) {
+                contadorDiv.textContent = contador;
+            } else if (contador === 0) {
+                contadorDiv.textContent = "YA!";
+            } else {
+                clearInterval(intervalo);
+                document.getElementById("contador").style.display = "none";
+                document.getElementById("imageContainer").style.display = "block";
+                document.getElementById("fraseContainer").style.display = "block";
+                document.getElementById("titulo-play").style.display = "block";
+
+                mostrarFrase();
+            }
+        }, 1000);
     }
 }
 
@@ -125,7 +147,7 @@ function verificarEscritura(tecla) {
 
     if (!letraEsperada) return;
 
-    if (normalizar(tecla) === normalizar(letraEsperada)) {
+    if (tecla === letraEsperada) {
         audioRight.pause();
         audioRight.currentTime = 0;
         audioRight.play().catch(() => {});
@@ -227,8 +249,4 @@ function easterEgg(bool) {
         }
     }
     console.log(puntuation);
-}
-
-function normalizar(texto) {
-    return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
