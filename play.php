@@ -6,9 +6,16 @@
         $_SESSION['playerName'] = htmlspecialchars($_POST['playerName']);
     }
 
+    include __DIR__ . '/lang/lang.php';
+
+    $lang = isset($_GET['lang']) ? $_GET['lang'] : ($_SESSION['lang'] ?? 'es');
+    $_SESSION['lang'] = $lang;
+
+    $t = loadLanguage($lang);
+
     $difficulty = $_POST['difficulty'];
 
-    $archivo = './sentences.txt';
+    $archivo = './sentences'.$lang.'.txt';
 
     $lineas = file($archivo, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
@@ -23,12 +30,6 @@
 
     $fraseAleatoria = $frasesFiltradas[array_rand($frasesFiltradas)];
 
-    include __DIR__ . '/lang/lang.php';
-
-    $lang = isset($_GET['lang']) ? $_GET['lang'] : ($_SESSION['lang'] ?? 'es');
-    $_SESSION['lang'] = $lang;
-
-    $t = loadLanguage($lang);
 ?>
 <!DOCTYPE html>
 <html lang="es">

@@ -55,7 +55,7 @@
             $nuevaFrase = trim($_POST['inputSentence'] ?? '');
             $dificultad = $_POST['Dificulty'] ?? '';
             if (!empty($nuevaFrase) && in_array($dificultad, ['facil', 'medio', 'dificil'])) {
-                $archivo = __DIR__ . '/../sentences.txt';
+                $archivo = __DIR__ . '/../sentences'.$lang.'.txt';
                 $lineas = file($archivo, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
                 $fraseAgregada = false;
 

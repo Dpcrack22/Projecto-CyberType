@@ -8,12 +8,12 @@
         exit;
     }
 
-    $archivo = '../sentences.txt';
-
+    
     include __DIR__ . '/../lang/lang.php';
-
+    
     $lang = $_SESSION['lang_admin'] ?? 'es';
     $t = loadLanguage($lang);
+    $archivo = '../sentences'.$lang.'.txt';
 ?>
 
 <!DOCTYPE html>

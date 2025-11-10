@@ -8,7 +8,9 @@ if (empty($_SESSION['logado'])) {
     exit;
 }
 
-$archivo = '../sentences.txt';
+$lang = $_SESSION['lang_admin'] ?? 'es';
+
+$archivo = __DIR__ . '/../sentences' . $lang . '.txt';
 $mensaje = '';
 
 if (isset($_GET['dificultad']) && isset($_GET['frase'])) {
