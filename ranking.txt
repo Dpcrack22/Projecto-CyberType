@@ -68,4 +68,4 @@ Hela | 5370
 Skurge | 3220
 Valkyrie | 5030
 Korg | 3550
-Gorr | 5190
+Gorr | 5190Paco | 2655

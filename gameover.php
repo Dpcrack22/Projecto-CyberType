@@ -1,8 +1,17 @@
 <?php
     session_name("jugadorSession");
     session_start();
+
+    require_once(__DIR__ . "/admin/log_function.php");
+    $arch_act = "gameover.php";
     
-    if (!isset($_SESSION['game_finished']) || $_SESSION['game_finished'] !== true || !isset($_SESSION['playerName'])) {
+    if (isset($_SESSION['game_finished']) && $_SESSION['game_finished'] === true && isset($_SESSION['playerName'])) {
+        $nombreJugador = htmlspecialchars($_SESSION['playerName']);
+        $puntuacion = $_SESSION['score'] ?? 0;
+        $bonus = $_SESSION['bonus'] ?? 0;
+
+        registrarLog($arch_act,"El jugador '$nombreJugador' terminó la partida con $puntuacion puntos y $bonus bonus.");
+    } else {
         header("Location: error403.php");
         exit;
     }

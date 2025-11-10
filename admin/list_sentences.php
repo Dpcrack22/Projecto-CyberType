@@ -2,13 +2,19 @@
 session_name("adminSHIELD");
 session_start();
 
+require_once(__DIR__ . "/log_function.php");
+
 // Si no estás logado, redirige al login
 if (empty($_SESSION['logado'])) {
+    registrarLog("admin/list_sentences.php", "Intento de acceso sin sesión activa. Redirigido al login.");
     header("Location: /admin/login.php");
     exit;
 }
-
+$usuario = $_SESSION['usuario'] ?? 'Desconocido';
 $archivo = '../sentences.txt';
+
+$paginaActual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+registrarLog("admin/list_sentences.php", "El administrador '$usuario' accedió al listado de frases (página $paginaActual).");
 ?>
 
 <!DOCTYPE html>

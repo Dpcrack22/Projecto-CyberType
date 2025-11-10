@@ -1,24 +1,29 @@
 <?php
-session_name("jugadorSession");
-session_start();
+    session_name("jugadorSession");
+    session_start();
 
-$archivo = "./ranking.txt";
+    require_once(__DIR__ . "/admin/log_function.php");
+    $arch_act = "ranking.php";
+    $archivo = "./ranking.txt";
 
-// --- GUARDAR SOLO SI EXISTEN DATOS DE PARTIDA ---
-if (isset($_SESSION['playerName']) && isset($_SESSION['score'])) {
-    $playerName = $_SESSION['playerName'];
-    $score = $_SESSION['score'];
 
-    $registro = "$playerName | $score" . PHP_EOL;
-    file_put_contents($archivo, $registro, FILE_APPEND | LOCK_EX);
+    // --- GUARDAR SOLO SI EXISTEN DATOS DE PARTIDA ---
+    if (isset($_SESSION['playerName']) && isset($_SESSION['score'])) {
+        $playerName = $_SESSION['playerName'];
+        $score = $_SESSION['score'];
 
-    // Limpiamos variables de partida (no el nombre del jugador)
-    unset($_SESSION['score']);
-    unset($_SESSION['game_finished']);
-    unset($_SESSION['bonus']);
-}
+        $registro = "$playerName | $score" . PHP_EOL;
+        file_put_contents($archivo, $registro, FILE_APPEND | LOCK_EX);
 
-$playerName = $_SESSION['playerName'] ?? "Invitado";
+        registrarLog($arch_act,"El jugador '$playerName' guardó su puntuación de $score puntos en el ranking.");
+
+        // Limpiamos variables de partida (no el nombre del jugador)
+        unset($_SESSION['score']);
+        unset($_SESSION['game_finished']);
+        unset($_SESSION['bonus']);
+    }
+
+    $playerName = $_SESSION['playerName'] ?? "Invitado";
 ?>
 
 <!DOCTYPE html>

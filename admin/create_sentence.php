@@ -1,12 +1,19 @@
 <?php
     session_name("adminSHIELD");
     session_start();
+
+    require_once(__DIR__ . "/log_function.php");
+    
     
     // Si no estás logado, redirige al login
     if (empty($_SESSION['logado'])) {
+        registrarLog("admin/create_sentence.php", "Intento de acceso no autorizado. Redirigido al login.");
         header("Location: /admin/login.php");
         exit;
     }
+
+    $usuario = $_SESSION['usuario'] ?? 'Desconocido';
+    registrarLog("admin/create_sentence.php", "El administrador '$usuario' accedió a la página de creación de frases.");
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -71,12 +78,15 @@
                 if ($fraseAgregada) {
                     file_put_contents($archivo, implode(PHP_EOL, $lineas) . PHP_EOL);
                     echo "<p class='success-message'>Frase agregada exitosamente.</p>";
+                    registrarLog("admin/create_sentence.php", "El administrador '$usuario' añadió la frase '$nuevaFrase' a dificultad '$dificultad'.");
+
                 } else {
                     echo "<p class='error-message'>La frase ya existe en esta dificultad.</p>";
+                    registrarLog("admin/create_sentence.php", "El administrador '$usuario' intentó añadir una frase duplicada: '$nuevaFrase' (dificultad '$dificultad').");
                 }
             } else {
                 echo "<p class='error-message'>Por favor, introduce una frase válida y selecciona una dificultad.</p>";
-            }
+                registrarLog("admin/create_sentence.php", "El administrador '$usuario' intentó añadir una frase vacía o con dificultad no válida.");            }
             $nuevaFrase = '';
             $dificultad = '';
         }
