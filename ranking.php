@@ -8,12 +8,12 @@
 
     $playerName = $_SESSION['playerName'];
     $score = $_SESSION['score'];
-    $tiempo = $_SESSION['tiempo'];
+    $time = $_SESSION['tiempo'];
 
     $archivo = "./ranking.txt";
 
     // Formato del registro
-    $registro = "$playerName | $score | $tiempo" . PHP_EOL;
+    $registro = "$playerName | $score | $time" . PHP_EOL;
 
     // Abrir el archivo y escribir
     if (file_put_contents($archivo, $registro, FILE_APPEND | LOCK_EX) === false) {
@@ -68,8 +68,8 @@
         });
         $posicion = 1;
         foreach ($lineas as $linea) {
-            list($nombre, $puntuacion) = explode(" | ", $linea);
-            $resaltar = ($nombre === $playerName && $puntuacion == $score) ? 'class="resaltar"' : '';
+            list($nombre, $puntuacion, $tiempo) = explode(" | ", $linea);
+            $resaltar = ($nombre === $playerName && $puntuacion === $score && $tiempo === $time) ? 'class="resaltar"' : '';
             echo "<tr $resaltar>
                     <td>$posicion</td>
                     <td>$nombre</td>

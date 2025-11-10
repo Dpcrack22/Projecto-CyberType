@@ -27,7 +27,6 @@ let imagenJuego = "";
 let frasesJuego = [];
 let imagenesJuego = [];
 let fraseJuego = "";
-let puntuation = 0;
 
 // Prueba Chasquido
 let totalLetrasEscritas = 0;
@@ -49,11 +48,6 @@ function mostrarFrase() {
 
     inputOcult.innerHTML = "";
     posicionActual = 0;
-    tiempoInicio = performance.now();
-    intervalTiempo = setInterval(() => {
-        tiempoTranscurrido = Math.floor((performance.now() - tiempoInicio) / 1000).toFixed(2);
-        tiempoDiv.textContent = `Tiempo: ${tiempoTranscurrido} s`;
-    }, 100);
 
     for (let letra of fraseAleatoria) {
         const span = document.createElement("span");
@@ -88,6 +82,11 @@ const intervalo = setInterval(() => {
         document.getElementById("titulo-play").style.display = "block";
         document.getElementById("titulo-prepara").style.display = "none";
         document.getElementById("tiempoTranscurrido").style.display = "block";
+        tiempoInicio = performance.now();
+        intervalTiempo = setInterval(() => {
+            tiempoTranscurrido = Math.floor((performance.now() - tiempoInicio) / 1000).toFixed(2);
+            tiempoDiv.textContent = `Tiempo: ${tiempoTranscurrido} s`;
+        }, 100);
 
         mostrarFrase();
     }
@@ -122,7 +121,18 @@ function manejarTecla(e) {
 function cargarSiguienteFrase() {
     indiceFraseActual++;
     if (indiceFraseActual >= frasesJuego.length) {
-        endGame(puntuation);
+        const tiempoFinal = performance.now();
+        const tiempoTotal = ((tiempoFinal - tiempoInicio) / 1000).toFixed(2); // Tiempo completado con decimales
+        if (Math.random() < 0.1 ) { // 1% de probabilidad
+            thanosSnapTriggered = true;
+            activateThanosSnap();
+            setTimeout(() => {
+                endGame(puntuation, tiempoTotal);
+            }, 4000);
+            return;
+        }
+        clearInterval(intervalTiempo);
+        endGame(puntuation, tiempoTotal);
         return;
     } else {
         contador = 3;
@@ -180,19 +190,6 @@ function verificarEscritura(tecla) {
     updateCurrentLetter();
 
     if (posicionActual === fraseAleatoria.length) {
-        const tiempoFinal = performance.now();
-        const tiempoTotal = ((tiempoFinal - tiempoInicio) / 1000).toFixed(2); // Tiempo completado con decimales
-        if (Math.random() < 0.1 ) { // 1% de probabilidad
-            thanosSnapTriggered = true;
-            activateThanosSnap();
-            setTimeout(() => {
-                endGame(puntuation, tiempoTotal);
-            }, 4000);
-            return;
-        }
-        clearInterval(intervalTiempo);
-
-        endGame(puntuation, tiempoTotal);
         cargarSiguienteFrase();
     }
 };

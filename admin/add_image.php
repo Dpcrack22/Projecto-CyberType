@@ -67,12 +67,13 @@
         <input type="file" name="sentenceImage" accept="image/*" id="sentenceImage" required/>
         <label for="sentenceImage" class="label-imageUpload">Subir imagen</label>
         <br><br>
+        <button type="submit" id="uploadImageButton">Actualizar Frase</button>
     </form>
     <?php
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $fraseSeleccionada = trim($_POST['frase']);
             $dificultad = trim($_POST['dificultad']); // Ahora viene del hidden input
-            $imagen = $_FILES['newImage'];
+            $imagen = $_FILES['sentenceImage'];
 
             if ($imagen['error'] === UPLOAD_ERR_OK) {
                 $nombreImagen = basename($imagen['name']);
