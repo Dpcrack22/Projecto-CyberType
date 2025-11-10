@@ -14,6 +14,10 @@ let contador = 3;
 let posicionActual = 0;
 let fraseAleatoria = "";
 
+// Input oculto para capturar composition/input (acentos) correctamente
+let hiddenInput = null;
+let isComposing = false;
+
 
 // Prueba Chasquido
 let totalLetrasEscritas = 0;
@@ -33,8 +37,79 @@ function mostrarFrase() {
 
     updateCurrentLetter();
     startTime = performance.now();
-    inputOcult.value = "";
-    inputOcult.focus();
+    // Crear y enfocar un input oculto para recibir la composición de acentos
+    createHiddenInput();
+    hiddenInput.value = "";
+    hiddenInput.focus();
+}
+
+function createHiddenInput() {
+    if (hiddenInput) return;
+    hiddenInput = document.createElement('input');
+    hiddenInput.type = 'text';
+    hiddenInput.id = 'hiddenInput';
+    hiddenInput.autocomplete = 'off';
+    hiddenInput.autocorrect = 'off';
+    hiddenInput.autocapitalize = 'off';
+    hiddenInput.spellcheck = false;
+    hiddenInput.style.position = 'absolute';
+    hiddenInput.style.left = '-9999px';
+    hiddenInput.style.width = '1px';
+    hiddenInput.style.height = '1px';
+    hiddenInput.style.opacity = '0';
+    document.body.appendChild(hiddenInput);
+
+    // Composición (dead-keys / IME)
+    hiddenInput.addEventListener('compositionstart', () => {
+        isComposing = true;
+    });
+
+    hiddenInput.addEventListener('compositionend', (e) => {
+        isComposing = false;
+        const composed = (e.data !== undefined) ? e.data : hiddenInput.value;
+        if (composed) {
+            for (let ch of composed) {
+                if (ch.length === 1) verificarEscritura(ch);
+            }
+            hiddenInput.value = '';
+        }
+    });
+
+    // Input normal (no composición)
+    hiddenInput.addEventListener('input', (e) => {
+        if (isComposing) return; // compositionend ya lo maneja
+        if (e.data) {
+            for (let ch of e.data) {
+                if (ch.length === 1) verificarEscritura(ch);
+            }
+            hiddenInput.value = '';
+        }
+    });
+
+    // Keydown en el input: manejar Backspace y teclas simples
+    hiddenInput.addEventListener('keydown', (e) => {
+        // No bloquear la composición
+        if (isComposing) return;
+        if (e.key === 'Backspace') {
+            posicionActual = Math.max(0, posicionActual - 1);
+            updateCurrentLetter();
+            e.preventDefault();
+            return;
+        }
+        if (e.key === 'Dead' || e.key.length !== 1) return;
+        // Para teclas de un solo carácter (no dead-keys), procesar
+        verificarEscritura(e.key);
+        updateCurrentLetter();
+        e.preventDefault();
+    });
+
+    // Al hacer click en el contenedor, asegurar foco en el input oculto
+    const fraseContainerEl = document.getElementById('fraseContainer');
+    if (fraseContainerEl) {
+        fraseContainerEl.addEventListener('click', () => {
+            hiddenInput.focus();
+        });
+    }
 }
 
 function updateCurrentLetter() {
@@ -62,8 +137,8 @@ const intervalo = setInterval(() => {
     }
 }, 1000);
 
-document.addEventListener("keydown", manejarTecla);
-document.addEventListener("input", manejarEntrada);
+// Los eventos de teclado y composición los manejaremos desde un input
+// oculto creado al empezar la partida (ver `createHiddenInput`).
 
 function manejarEntrada(e) {
     if (e.inputType === "insertCompositionText" || e.inputType === "insertText") {
@@ -77,17 +152,26 @@ function manejarEntrada(e) {
     
 
 function manejarTecla(e) {
-    if (e.key.length !== 1 && e.key !== "Backspace") return;
-
-    e.preventDefault();
+    // Evitar procesar teclas que no generan caracteres o que forman composición
+    // (p. ej. dead keys usadas para acentos). No hacemos preventDefault para
+    // permitir la composición nativa del navegador/teclado.
+    if (e.key === 'Shift' || e.key === 'Control' || e.key === 'Alt' || e.key === 'Meta') return;
 
     if (e.key === "Backspace") {
         posicionActual = Math.max(0, posicionActual - 1);
-    } else {
-        verificarEscritura(e.key);
+        updateCurrentLetter();
+        return;
     }
 
-    updateCurrentLetter();
+    // 'Dead' es el valor común para teclas muertas (acentos). Ignorar; la
+    // letra compuesta llegará vía evento `input`/`compositionend` si procede.
+    if (e.key === 'Dead') return;
+
+    // Sólo procesar teclas de un solo carácter
+    if (e.key.length === 1) {
+        verificarEscritura(e.key);
+        updateCurrentLetter();
+    }
 }
 
 function verificarEscritura(tecla) {
@@ -106,11 +190,8 @@ function verificarEscritura(tecla) {
         puntuation += 10;
         easterEgg(true);
         console.log(tecla);
-        fetch("admin/log_keypress.php", {
-            method: "POST",
-            headers: { "Content-Type": "application/json; charset=UTF-8" },
-            body: JSON.stringify({ key: normalizar(tecla)})
-        });
+        // Registrar la tecla pulsada con información sobre acento y la tecla esperada
+        enviarLogKeypress(tecla, letraEsperada, true);
     } else {
         audioMiss.pause();
         audioMiss.currentTime = 0;
@@ -119,11 +200,8 @@ function verificarEscritura(tecla) {
         spans[posicionActual].classList.remove("correcta");
         puntuation -= 5;
         easterEgg(false);
-        fetch("admin/log_keypress.php", {
-            method: "POST",
-            headers: { "Content-Type": "application/json; charset=UTF-8" },
-            body: JSON.stringify({ key: normalizar(tecla)})
-        });
+        // Registrar la tecla pulsada (incorrecta)
+        enviarLogKeypress(tecla, letraEsperada, false);
     }
 
     posicionActual++;
@@ -164,7 +242,11 @@ function activateThanosSnap() {
         }, i * 100);
     });
 }
-inputOcult.addEventListener("input", verificarEscritura);
+// El listener directo que llamaba verificarEscritura con el evento estaba
+// pasando el objeto Event en vez de la letra. Ya manejamos la entrada a
+// través de `manejarEntrada`, así que lo eliminamos para evitar comportamiento
+// inesperado con acentos/composición.
+
 
 function enviarLogTeclas(fraseEscrita, fraseObjetivo, tiempo) {
     const form = document.createElement("form");
@@ -261,5 +343,35 @@ function easterEgg(bool) {
 }
 
 function normalizar(texto) {
-    return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    // No eliminar diacríticos: queremos distinguir 'a' de 'á'.
+    // Usar NFC para normalizar la forma compuesta (evita discrepancias
+    // entre caracteres compuestos y descompuestos) pero conservar los acentos.
+    if (typeof texto !== 'string') return texto;
+    return texto.normalize("NFC");
+}
+
+// Detecta si un carácter (o string) contiene marcas diacríticas (acentos)
+function tieneAcento(texto) {
+    if (typeof texto !== 'string' || texto.length === 0) return false;
+    // Normalizar a NFD para separar base + marcas, y buscar marcas Unicode
+    return /[\u0300-\u036f]/.test(texto.normalize('NFD'));
+}
+
+// Enviar registro de tecla al servidor incluyendo si tiene acento y la tecla esperada
+function enviarLogKeypress(tecla, expected, correct) {
+    const payload = {
+        key: tecla, // lo que ha escrito el usuario
+        normalizedKey: normalizar(tecla),
+        hasAccent: tieneAcento(tecla),
+        expected: expected,
+        normalizedExpected: normalizar(expected),
+        correct: !!correct,
+        timestamp: new Date().toISOString()
+    };
+
+    fetch("admin/log_keypress.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json; charset=UTF-8" },
+        body: JSON.stringify(payload)
+    }).catch(() => {});
 }
