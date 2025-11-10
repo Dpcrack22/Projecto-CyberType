@@ -41,16 +41,27 @@
 
     <script src="./scriptPlay.js?<?php echo time(); ?>" defer></script>
     <script>
-        fetch("./get_sentence.php", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: "difficulty=" + encodeURIComponent("<?php echo $difficulty; ?>")
+        const dificultadSeleccionada = "<?php echo $difficulty; ?>";
+        fetch('get_sentence.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: "difficulty=" + encodeURIComponent(dificultadSeleccionada)
         })
-        .then(res => res.json())
+        .then(response => response.json())
         .then(data => {
-            fraseJuego = data.frase;
-            imagenJuego = data.imagen;
+            frasesJuego = data.map(item => item.frase);
+            imagenesJuego = data.map(item => item.imagen);
+
+            // Establecemos la primera frase e imagen:
+            fraseAleatoria = frasesJuego[0];
+            imagenJuego = imagenesJuego[0];
+
             mostrarFrase();
+        })
+        .catch(error => {
+            console.error('Error al obtener la frase:', error);
         });
 
     </script>

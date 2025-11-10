@@ -5,17 +5,24 @@ const audioRight = new Audio("Right.mp3");
 const audioMiss = new Audio("Miss.wav");
 const audioGameover = new Audio("gameover.wav");
 const bonusDiv = document.getElementById("bonusMessage");
-let fraseJuego = "";
-const dificultadFrase = document.getElementById("frase").textContent = fraseJuego;
-let puntuation = 0;
+
+// Variables para Easter Egg/Bonus
 let consectutiveRightHits = 0;
 let consectutiveWrongHits = 0;
 let bonus = 0;
+
+// Contador de inicio
 let contador = 3;
+
+// Frases y estado del juego
+let indiceFraseActual = 0;
 let posicionActual = 0;
 let fraseAleatoria = "";
 let imagenJuego = "";
-
+let frasesJuego = [];
+let imagenesJuego = [];
+let fraseJuego = "";
+let puntuation = 0;
 
 // Prueba Chasquido
 let totalLetrasEscritas = 0;
@@ -26,13 +33,15 @@ function mostrarFrase() {
     const imageContainer = document.getElementById("imageContainer");
     const fraseImg = document.getElementById("fraseImg");
 
+    fraseAleatoria = frasesJuego[indiceFraseActual] || "";
+    imagenJuego = imagenesJuego[indiceFraseActual] || "";
+
     if (typeof imagenJuego !== 'undefined' && imagenJuego.trim() !== "") {
         fraseImg.src = "IMG/" + imagenJuego;
     } else {
         imageContainer.style.display = "none";
     }
 
-    fraseAleatoria = fraseJuego;
     inputOcult.innerHTML = "";
     posicionActual = 0;
 
@@ -99,6 +108,16 @@ function manejarTecla(e) {
     updateCurrentLetter();
 }
 
+function cargarSiguienteFrase() {
+    indiceFraseActual++;
+    if (indiceFraseActual >= frasesJuego.length) {
+        endGame(puntuation);
+        return;
+    } else {
+        mostrarFrase();
+    }
+}
+
 function verificarEscritura(tecla) {
     console.log("👉 Tecla pulsada:", tecla);
     const spans = inputOcult.querySelectorAll("span");
@@ -128,15 +147,7 @@ function verificarEscritura(tecla) {
     updateCurrentLetter();
 
     if (posicionActual === fraseAleatoria.length) {
-        if (Math.random() < 0.1 ) { // 1% de probabilidad
-            thanosSnapTriggered = true;
-            activateThanosSnap();
-            setTimeout(() => {
-                endGame(puntuation);
-            }, 4000);
-            return;
-        }
-        endGame(puntuation);
+        cargarSiguienteFrase();
     }
 };
 
