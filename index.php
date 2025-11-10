@@ -2,17 +2,19 @@
     session_name("jugadorSession");
     session_start();
 
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lang'])) {
+        $_SESSION['lang'] = $_POST['lang'];
+        header("Location: " . strtok($_SERVER["REQUEST_URI"], '?')); 
+        exit;
+    }
+
     if (isset($_SESSION['game_finished']) || isset($_SESSION['score']) || isset($_SESSION['bonus'])) {
-        unset($_SESSION['game_finished']);
-        unset($_SESSION['score']);
-        unset($_SESSION['bonus']);
+        unset($_SESSION['game_finished'], $_SESSION['score'], $_SESSION['bonus']);
     }
 
     include __DIR__ . '/lang/lang.php';
 
-    $lang = isset($_GET['lang']) ? $_GET['lang'] : ($_SESSION['lang'] ?? 'es');
-    $_SESSION['lang'] = $lang;
-
+    $lang = $_SESSION['lang'] ?? 'es';
     $t = loadLanguage($lang);
 ?>
 
@@ -31,12 +33,23 @@
         <div class="user-info">
             <?php
             if (isset($_SESSION['playerName'])) {
-                echo '<span class="player-name">Jugador: ' . htmlspecialchars($_SESSION['playerName']) . '</span>';
+                echo '<span class="player-name">'. $t['jugador'] .': ' . htmlspecialchars($_SESSION['playerName']) . '</span>';
                 echo '<a href="destroy_session.php" class="logout-link">'. $t['cerrarSesion'] .'</a>';
             }
             ?>
         </div>
+
+        <form method="post" id="langForm" class="lang-selector">
+            <select name="lang" id="langSelect" onchange="document.getElementById('langForm').submit()">
+                <option value="es" <?= $lang === 'es' ? 'selected' : '' ?>><?= $t['idioma1Index']  ?></option>
+                <option value="ca" <?= $lang === 'ca' ? 'selected' : '' ?>><?= $t['idioma2Index']  ?></option>
+                <option value="en" <?= $lang === 'en' ? 'selected' : '' ?>><?= $t['idioma3Index']  ?></option>
+            </select>
+        </form>
+
     </header>
+
+
     <div class="div-margin"></div>
 
     <div class="hero-container">
@@ -58,7 +71,7 @@
             <button type="button" id="startGameButton"><?= $t['botonIndex'] ?></button>
             <noscript>
                 <div class="no-js-warning">
-                    ⚠️ El juego necesita javascript para funcionar. Por favor, habilita Javascript para empezar.
+                    <?= $t['noJSPlay'] ?>
                 </div>
                 <script>
                     document.getElementById('startGameButton').style.display = 'none';

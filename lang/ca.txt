@@ -6,6 +6,9 @@ option1Index=Fàcil
 option2Index=Mitjà
 option3Index=Difícil
 botonIndex=Inicia el joc
+idioma1Index=Espanyol
+idioma2Index=Català
+idioma3Index=Anglès
 
 
 tituloPlay=Joc - MarvelType
@@ -48,6 +51,7 @@ inicioSesionLogin=Inici de sessió
 placeholderUsuarioLogin=Usuari...
 placeholderContraseñaLogin=Contrasenya...
 botonLogin=Inicia
+errorLogin=Usuari o contrasenya incorrectes.
 
 
 tituloAdminIndex=Panell d’administració
@@ -68,12 +72,16 @@ noFrases=No s’han trobat frases.
 
 
 tituloAdminCreate=Afegir Frases - Administrador
+h1Create=Afegir Frases
 placeholderAdminCreate=Introdueix una frase...
 option1AdminCreate=Fàcil
 option2AdminCreate=Mitjà
 option3AdminCreate=Difícil
 botonAgregarCreate=Afegir frase
 botonVolverCreate=Torna enrere
+parrafo1Create=Frase afegida correctament.
+parrafo2Create=La frase ja existeix en aquesta dificultat.
+parrafo3Create=Si us plau, introdueix una frase vàlida i selecciona una dificultat.
 
 
 administrador=Administrador

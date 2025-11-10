@@ -6,6 +6,9 @@ option1Index=Easy
 option2Index=Medium
 option3Index=Hard
 botonIndex=Start Game
+idioma1Index=Spanish
+idioma2Index=Catalan
+idioma3Index=English
 
 
 tituloPlay=Play - MarvelType
@@ -48,6 +51,7 @@ inicioSesionLogin=Login
 placeholderUsuarioLogin=Username...
 placeholderContraseñaLogin=Password...
 botonLogin=Sign In
+errorLogin=Incorrect username or password.
 
 
 tituloAdminIndex=Admin Panel
@@ -68,12 +72,16 @@ noFrases=No phrases found.
 
 
 tituloAdminCreate=Add Phrases - Admin
+h1Create=Add Phrases
 placeholderAdminCreate=Enter a phrase...
 option1AdminCreate=Easy
 option2AdminCreate=Medium
 option3AdminCreate=Hard
 botonAgregarCreate=Add Phrase
 botonVolverCreate=Go Back
+parrafo1Create=Sentence added successfully.
+parrafo2Create=The sentence already exists at this difficulty.
+parrafo3Create=Please enter a valid sentence and select a difficulty.
 
 
 administrador=Administrator

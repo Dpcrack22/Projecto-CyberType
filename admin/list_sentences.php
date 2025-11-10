@@ -10,11 +10,9 @@
 
     $archivo = '../sentences.txt';
 
-    include __DIR__ . '/lang/lang.php';
+    include __DIR__ . '/../lang/lang.php';
 
-    $lang = isset($_GET['lang']) ? $_GET['lang'] : ($_SESSION['lang'] ?? 'es');
-    $_SESSION['lang'] = $lang;
-
+    $lang = $_SESSION['lang_admin'] ?? 'es';
     $t = loadLanguage($lang);
 ?>
 

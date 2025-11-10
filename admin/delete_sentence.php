@@ -1,4 +1,5 @@
 <?php
+session_name("adminSHIELD");
 session_start();
 
 // Si no estás logado, redirige al login
@@ -59,7 +60,7 @@ if (isset($_GET['dificultad']) && isset($_GET['frase'])) {
 
 echo "<script>
     alert(" . json_encode($mensaje) . ");
-    window.location.href = 'listar_frases.php';
+    window.location.href = 'index.php';
 </script>";
 exit;
 ?>

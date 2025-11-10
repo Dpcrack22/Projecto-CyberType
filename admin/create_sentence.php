@@ -8,11 +8,9 @@
         exit;
     }
 
-    include __DIR__ . '/lang/lang.php';
+    include __DIR__ . '/../lang/lang.php';
 
-    $lang = isset($_GET['lang']) ? $_GET['lang'] : ($_SESSION['lang'] ?? 'es');
-    $_SESSION['lang'] = $lang;
-
+    $lang = $_SESSION['lang_admin'] ?? 'es';
     $t = loadLanguage($lang);
 ?>
 <!DOCTYPE html>
@@ -37,7 +35,7 @@
     </header>
     <div class="div-margin"></div>
 
-    <h1>Añadir Frases</h1>
+    <h1><?= $t['h1Create'] ?></h1>
     <form action="create_sentence.php" method="POST">
         <section>
             <input type="text" id="inputSentence" name="inputSentence" placeholder="<?= $t['placeholderAdminCreate'] ?>"/>
@@ -77,12 +75,12 @@
 
                 if ($fraseAgregada) {
                     file_put_contents($archivo, implode(PHP_EOL, $lineas) . PHP_EOL);
-                    echo "<p class='success-message'>Frase agregada exitosamente.</p>";
+                    echo "<p class='success-message'>" . $t['parrafo1Create'] . "</p>";
                 } else {
-                    echo "<p class='error-message'>La frase ya existe en esta dificultad.</p>";
+                    echo "<p class='error-message'>" . $t['parrafo2Create'] . "</p>";
                 }
             } else {
-                echo "<p class='error-message'>Por favor, introduce una frase válida y selecciona una dificultad.</p>";
+                echo "<p class='error-message'>" . $t['parrafo3Create'] . "</p>";
             }
             $nuevaFrase = '';
             $dificultad = '';

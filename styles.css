@@ -162,6 +162,24 @@ header .user-info {
     background-color: #d16b2a;
 }
 
+.lang-selector {
+    position: absolute;
+    right: 30px;
+    top: 15px;
+    z-index: 9999;
+}
+
+.lang-selector select {
+    border: 1px solid #555;
+    background-color: #1A1A1A;
+    color: #fff;
+    font-size: 1rem;
+    padding: 5px 10px;
+    border-radius: 6px;
+}
+
+
+
 /* PLAY PAGE STYLES */
 
 .body-play {
