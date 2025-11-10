@@ -589,7 +589,7 @@ header .user-info {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    min-height: 100vh;
+    min-height: 600px;
     padding: 40px 20px;
     text-align: center;
 }
@@ -688,7 +688,7 @@ header .user-info {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    min-height: 100vh;
+    min-height: 600px;
     padding: 40px 20px;
     text-align: center;
 }
@@ -765,7 +765,7 @@ header .user-info {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    min-height: 100vh;
+    min-height: 600px;
     padding: 40px 20px;
     text-align: center;
 }
@@ -825,7 +825,7 @@ header .user-info {
     background-color: #ed1d246a;
 }
 
-.body-listarFrases #delete-link a {
+.body-listarFrases #delete-link button {
     display: inline-block;
     background-color: #ED1D24;
     color: #FFFFFF;
@@ -836,11 +836,18 @@ header .user-info {
     text-decoration: none;
     transition: background-color 0.3s ease;
     cursor: pointer;
+    border: none;
 }
 
-.body-listarFrases #delete-link a:hover {
+.body-listarFrases #delete-link button:hover {
     background-color: #A50000;
 }
+.body-listarFrases .mensaje-alerta {
+    color: #4BB543;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
 .body-createSentence #inputSentence {
     width: 100%;
     padding: 12px;
@@ -985,4 +992,11 @@ header .user-info {
     font-size: 1.2em;
     text-decoration: none;
     font-weight: bold;
+}
+
+
+/* ADMIN LIST SENTENCES STYLES */
+
+.resaltar-frase {
+    background-color: #f78f3f !important;
 }

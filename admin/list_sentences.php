@@ -9,6 +9,8 @@
     }
 
     $archivo = '../sentences.txt';
+
+    $highlight = isset($_GET['highlight']) ? trim($_GET['highlight']) : '';
 ?>
 
 <!DOCTYPE html>
@@ -33,6 +35,14 @@
     </header>
 
     <h1>Listado de frases</h1>
+    <div class="mensaje-alerta">
+        <?php
+        if (isset($_SESSION['mensaje'])) {
+            echo nl2br(htmlspecialchars($_SESSION['mensaje']));
+            unset($_SESSION['mensaje']);
+        }
+        ?>
+    </div>
     <table>
         <tr>
             <th>Dificultad</th>
@@ -46,10 +56,19 @@
                 list($dificultad, $frase) = explode('|', $linea);
                 $frasesIndividuales = explode(',', $frase);
                 foreach ($frasesIndividuales as $fraseIndividual) {
-                    echo "<tr>";
+
+                    $esDestacada = ($highlight && trim($fraseIndividual) === $highlight);
+                    $claseFila = $esDestacada ? "class='resaltar-frase'" : "";
+
+                    echo "<tr $claseFila>";
                     echo "<td>" . htmlspecialchars($dificultad) . "</td>";
                     echo "<td>" . htmlspecialchars($fraseIndividual) . "</td>";
-                    echo "<td id='delete-link'><a href='delete_sentence.php?dificultad=" . urlencode($dificultad) . "&frase=" . urlencode($fraseIndividual) . "'>Eliminar</a></td>";
+                    // Quiero que la frase y la dificultad se pasen por POST en vez de GET
+                    echo "<form action='delete_sentence.php' method='POST'>";
+                    echo "<input type='hidden' name='dificultad' value='" . htmlspecialchars($dificultad) . "'>";
+                    echo "<input type='hidden' name='frase' value='" . htmlspecialchars($fraseIndividual) . "'>";
+                    echo "<td id='delete-link'><button type='submit'>Eliminar</button></td>";
+                    echo "</form>";
                     echo "</tr>";
                 }
             }

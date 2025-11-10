@@ -39,7 +39,7 @@
                 <option value="medio" name="Dificulty">Medio</option>
                 <option value="dificil" name="Dificulty">Difícil</option>
             </select>
-            <button type="submit" id="createSentence">Agregar Frase</button>
+            <button type="submit" id="createSentence"><u>A</u>gregar Frase</button>
         </section>
     </form>
 
@@ -70,7 +70,8 @@
 
                 if ($fraseAgregada) {
                     file_put_contents($archivo, implode(PHP_EOL, $lineas) . PHP_EOL);
-                    echo "<p class='success-message'>Frase agregada exitosamente.</p>";
+                    header("Location: /admin/list_sentences.php?highlight=" . urlencode($nuevaFrase));
+                    exit;
                 } else {
                     echo "<p class='error-message'>La frase ya existe en esta dificultad.</p>";
                 }

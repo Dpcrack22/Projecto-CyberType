@@ -74,15 +74,36 @@ function manejarEntrada(e) {
 }
 
 function manejarTecla(e) {
-    if (e.key.length !== 1 && e.key !== "Backspace") return;
+    if (e.key.length !== 1 && e.key !== "Backspace" && e.key !== "Escape" && e.key !== "Tab" && e.key !== "Delete" && e.key !== "Enter") return;
 
     e.preventDefault();
 
-    if (e.key === "Backspace") {
-        posicionActual = Math.max(0, posicionActual - 1);
-    } else {
-        verificarEscritura(e.key);
-    }
+    if (["Backspace", "Escape", "Tab", "Delete", "Enter"].includes(e.key)) {
+        const spans = inputOcult.querySelectorAll("span");
+
+        audioMiss.pause();
+        audioMiss.currentTime = 0;
+        audioMiss.play().catch(() => {});
+
+        if (posicionActual < spans.length) {
+            spans[posicionActual].classList.add("incorrecta");
+        }
+
+        easterEgg(false);
+
+        posicionActual++;
+
+        updateCurrentLetter();
+
+        if (posicionActual === fraseAleatoria.length) {
+            endGame(puntuation);
+        }
+
+        return;
+    } 
+        
+    verificarEscritura(e.key);
+
 
     updateCurrentLetter();
 }
