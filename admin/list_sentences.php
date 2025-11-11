@@ -59,10 +59,9 @@ registrarLog("admin/list_sentences.php", "El administrador '$usuario' accedió a
             $frases = explode(',', $fraseStr);
 
             foreach ($frases as $f) {
-                list($soloFrase, $soloImagen) = explode('@@', $f . '@@');
                 $todasFrases[] = [
                     'dificultad' => trim($dificultad),
-                    'frase' => trim($soloFrase)
+                    'frase' => trim($f)
                 ];
             }
         }
@@ -91,7 +90,12 @@ registrarLog("admin/list_sentences.php", "El administrador '$usuario' accedió a
             <?php foreach ($frasesPagina as $dato): ?>
                 <tr>
                     <td><?php echo htmlspecialchars($dato['dificultad']); ?></td>
-                    <td><?php echo htmlspecialchars($dato['frase']); ?></td>
+                    <td>
+                        <?php 
+                            $mostrarFrase = explode('@@', $dato['frase'])[0]; 
+                            echo htmlspecialchars($mostrarFrase);
+                        ?>
+                    </td>
                     <td id="delete-link">
                         <form action="delete_sentence.php" method="POST">
                             <input type="hidden" name="dificultad" value="<?php echo htmlspecialchars($dato['dificultad']); ?>">

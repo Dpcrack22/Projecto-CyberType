@@ -33,6 +33,8 @@
                 $fraseArray = array_map('trim', explode(',', $frases));
                 $originalCount = count($fraseArray);
 
+                list($soloFrase, $soloImagen) = explode('@@', $fraseAEliminar . '@@');
+
                 if ($dif === $dificultad) {
                     $fraseArray = array_filter($fraseArray, function($f) use ($fraseAEliminar) {
                         return trim($f) !== trim($fraseAEliminar);
@@ -52,8 +54,8 @@
 
             if ($fraseEncontrada) {
                 file_put_contents($archivo, implode(PHP_EOL, $nuevasLineas) . PHP_EOL, LOCK_EX);
-                $mensaje = "La frase: “" . $fraseAEliminar . "” ha sido eliminada correctamente.";
-                registrarLog("admin/delete_sentence.php", "El administrador '$usuario' eliminó la frase '$fraseAEliminar' de dificultad '$dificultad'.");
+                $mensaje = "La frase: “" . $soloFrase . "” ha sido eliminada correctamente.";
+                registrarLog("admin/delete_sentence.php", "El administrador '$usuario' eliminó la frase '$soloFrase' de dificultad '$dificultad'.");
             } else {
                 $mensaje = "No se encontró la frase a eliminar.";
                 registrarLog("admin/delete_sentence.php", "El administrador '$usuario' intentó eliminar una frase inexistente: '$fraseAEliminar' (dificultad '$dificultad').");
