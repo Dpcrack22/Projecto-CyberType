@@ -70,3 +70,5 @@ Valkyrie | 5030
 Korg | 3550
 Gorr | 5190Paco | 2655
 Paco | 1060
+Bili | -12700
+Bili | 6310 | 23.58

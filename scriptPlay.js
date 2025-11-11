@@ -186,9 +186,6 @@ const intervalo = setInterval(() => {
     }
 }, 1000);
 
-// Los eventos de teclado y composición los manejaremos desde un input
-// oculto creado al empezar la partida (ver `createHiddenInput`).
-
 function manejarEntrada(e) {
     if (e.inputType === "insertCompositionText" || e.inputType === "insertText") {
         const letra = e.data;
@@ -237,6 +234,7 @@ function cargarSiguienteFrase() {
             return;
         }
         clearInterval(intervalTiempo);
+        enviarLogTeclas(fraseAleatoria, fraseAleatoria, tiempoTranscurrido);
         endGame(puntuation, tiempoTotal);
         return;
     } else {
@@ -300,17 +298,6 @@ function verificarEscritura(tecla) {
     updateCurrentLetter();
 
     if (posicionActual === fraseAleatoria.length) {
-        if (Math.random() < 0.1 ) { // 1% de probabilidad
-            thanosSnapTriggered = true;
-            activateThanosSnap();
-            setTimeout(() => {
-                endGame(puntuation);
-            }, 4000);
-            return;
-        }
-        const tiempoTranscurrido = ((performance.now() - startTime) / 1000).toFixed(2);
-        enviarLogTeclas(fraseAleatoria, fraseAleatoria, tiempoTranscurrido);
-        endGame(puntuation);
         cargarSiguienteFrase();
     }
 };
@@ -335,11 +322,6 @@ function activateThanosSnap() {
         }, i * 100);
     });
 }
-// El listener directo que llamaba verificarEscritura con el evento estaba
-// pasando el objeto Event en vez de la letra. Ya manejamos la entrada a
-// través de `manejarEntrada`, así que lo eliminamos para evitar comportamiento
-// inesperado con acentos/composición.
-
 
 function enviarLogTeclas(fraseEscrita, fraseObjetivo, tiempo) {
     const form = document.createElement("form");
@@ -437,9 +419,6 @@ function easterEgg(bool) {
 }
 
 function normalizar(texto) {
-    // No eliminar diacríticos: queremos distinguir 'a' de 'á'.
-    // Usar NFC para normalizar la forma compuesta (evita discrepancias
-    // entre caracteres compuestos y descompuestos) pero conservar los acentos.
     if (typeof texto !== 'string') return texto;
     return texto.normalize("NFC");
 }

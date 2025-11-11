@@ -11,7 +11,8 @@
         $bonus = $_SESSION['bonus'] ?? 0;
 
         registrarLog($arch_act,"El jugador '$nombreJugador' terminó la partida con $puntuacion puntos y $bonus bonus.");
-    } else {
+    }
+    
     if (!isset($_SESSION['game_finished']) || !isset($_SESSION['playerName']) || !isset($_SESSION['score']) || !isset($_SESSION['tiempo'])) {
         header("Location: error403.php");
         exit;
