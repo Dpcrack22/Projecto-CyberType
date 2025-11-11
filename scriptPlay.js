@@ -12,6 +12,7 @@ let puntuation = 0;
 let consectutiveRightHits = 0;
 let consectutiveWrongHits = 0;
 let bonus = 0;
+let multiplicador = 1;
 
 // Contador de inicio
 let contador = 3;
@@ -375,9 +376,10 @@ function endGame(score, tiempo) {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: "score=" + encodeURIComponent(score)
+        body: "score=" + encodeURIComponent(score * multiplicador)
         + "&bonus=" + encodeURIComponent(bonus)
         + "&tiempo=" + encodeURIComponent(tiempo)
+        + "&multiplicador=" + encodeURIComponent(multiplicador)
     })
     .then(response => response.text())
     .then(data => {
@@ -393,7 +395,7 @@ function endGame(score, tiempo) {
 
 
 function mostrarBonus() {
-    bonusDiv.textContent = "BONUS!";
+    bonusDiv.textContent = "Bonus x" + multiplicador + "!";
     bonusDiv.style.display = "block";
 
     setTimeout(() => {
@@ -411,14 +413,18 @@ function easterEgg(bool) {
             consectutiveRightHits = 0;
             puntuation += 200;
             bonus++;
+            multiplicador++;
             mostrarBonus();
         }
     } else {
         consectutiveRightHits = 0;
         consectutiveWrongHits++;
         puntuation -= 20;
+        if (consectutiveWrongHits >= 2 && multiplicador > 1) {
+            multiplicador--;
+            mostrarBonus();
+        }
         if (consectutiveWrongHits === 5) {
-            consectutiveWrongHits = 0;
             puntuation -= 200;
             bonus--;
         }

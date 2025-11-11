@@ -18,5 +18,8 @@
     if (isset($_POST['bonus'])) {
         $_SESSION['bonus'] = intval($_POST['bonus']);
     }
+    if (isset($_POST['multiplicador'])) {
+        $_SESSION['multiplicador'] = intval($_POST['multiplicador']);
+    }
     echo "OK";
 ?>

@@ -22,6 +22,7 @@
     $score = $_SESSION['score'] ?? 0;
     $bonus = $_SESSION['bonus'] ?? 0;
     $tiempo = $_SESSION['tiempo'] ?? 0.0;
+    $multiplicador = $_SESSION['multiplicador'] ?? 1;
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -47,6 +48,7 @@
     <p>Tu puntuación final es: <?= htmlspecialchars($score) ?></p>
     <p>Bonus conseguidos: <?= htmlspecialchars($bonus) ?></p>
     <p>Tiempo empleado: <?= htmlspecialchars($tiempo) ?> segundos</p>
+    <p>Multiplicador final: x<?= htmlspecialchars($multiplicador) ?></p>
     <div class="botones-gameover">
     <form action="ranking.php" method="post">
         <input type="hidden" name="inputName" value="<?= htmlspecialchars($inputName) ?>">
