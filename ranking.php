@@ -4,6 +4,13 @@
 
     require_once(__DIR__ . "/admin/log_function.php");
     $arch_act = "ranking.php";
+    if (!isset($_SESSION['playerName']) || !isset($_SESSION['score'])) {
+        die($t['dieRanking']);
+    }
+
+    $playerName = $_SESSION['playerName'];
+    $score = $_SESSION['score'];
+
     $archivo = "./ranking.txt";
 
     // --- GUARDAR SOLO SI EXISTEN DATOS DE PARTIDA ---
@@ -14,6 +21,18 @@
 
         $registro = "$playerName | $score | $time" . PHP_EOL;
         file_put_contents($archivo, $registro, FILE_APPEND | LOCK_EX);
+    // Abrir el archivo y escribir
+    if (file_put_contents($archivo, $registro, FILE_APPEND | LOCK_EX) === false) {
+        die("Error al guardar el ranking.");
+    }
+
+    include __DIR__ . '/lang/lang.php';
+
+    $lang = isset($_GET['lang']) ? $_GET['lang'] : ($_SESSION['lang'] ?? 'es');
+    $_SESSION['lang'] = $lang;
+
+    $t = loadLanguage($lang);
+?>
 
         registrarLog($arch_act,"El jugador '$playerName' guardó su puntuación de $score puntos en el ranking.");
 
@@ -32,7 +51,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ranking - MarvelType</title>
+    <title><?= $t['tituloRanking'] ?></title>
     <link rel="stylesheet" type="text/css" href="./styles.css?<?php echo time(); ?>" />
 </head>
 <body class="body-ranking">
@@ -49,6 +68,23 @@
     <h1>Ranking de Jugadores - MarvelType</h1>
     <?php
     if (file_exists($archivo)) {
+            <?php
+            if (isset($_SESSION['playerName'])) {
+                echo '<span class="player-name">'. $t['jugador'] .': ' . htmlspecialchars($_SESSION['playerName']) . '</span>';
+            }
+            ?>
+            <a href="destroy_session.php" class="logout-link"><?= $t['cerrarSesion'] ?></a>
+        </div>
+    </header>
+    
+    <h1><?= $t['h1Ranking'] ?></h1>
+    <table>
+        <tr>
+            <th><?= $t['th1Ranking'] ?></th>
+            <th><?= $t['th2Ranking'] ?></th>
+            <th><?= $t['th3Ranking'] ?></th>
+        </tr>
+        <?php
         $lineas = file($archivo, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
         // Ordenar de mayor a menor puntuación
@@ -115,7 +151,7 @@
     ?>
 
     <br>
-    <button id="RankingButton"><u>V</u>olver al inicio</button>
+    <button id="RankingButton"><?= $t['botonRanking'] ?></button>
     <script src="scriptRanking.js"></script>
 </body>
 </html>

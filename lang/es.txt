@@ -1,0 +1,90 @@
+tituloIndex=Inicio - MarvelType
+tituloh1Index=MARVELTYPE
+descripcionIndex=En MarvelType pondrás a prueba tu velocidad y reflejos. Teclea cada frase con precisión y demuestra que tienes lo necesario para unirte a los héroes más poderosos del universo Marvel.
+placeholderIndex=Inserta tu nombre
+option1Index=Fácil
+option2Index=Medio
+option3Index=Difícil
+botonIndex=Iniciar Juego
+idioma1Index=Español
+idioma2Index=Catalán
+idioma3Index=Inglés
+
+
+tituloPlay=Play - MarvelType
+tituloh1Play=MarvelType
+cuentaAtrasPlay=¡Prepárate joven vengador!
+noJSPlay=⚠️ El juego necesita javascript para funcionar. Por favor, habilita Javascript para empezar.
+
+
+tituloGameOver=GameOver - MarvelType
+h1GameOver=💥 ¡Fin del juego
+puntuacionGameOver=Tu puntuación final es
+bonusGameOver=Bonus conseguidos
+almacenarGameOver=Almacenar Ranking
+jugarGameOver=Jugar de nuevo
+dieRanking=No hay datos de jugador para guardar.
+
+
+tituloRanking=Ranking - MarvelType
+h1Ranking=Ranking de Jugadores - MarvelType
+th1Ranking=Posición
+th2Ranking=Nombre
+th3Ranking=Puntuación
+botonRanking=Volver al inicio
+
+
+tituloError403=Error 403 - Accés denegat
+h1Error403=¡ERROR 403!
+parrafoError403=Este nivel de autorización es solo para agentes de S.H.I.E.L.D. Parece que estás intentando entrar en un área clasificada, recluta.
+botonError403=Volver con los demas reclutas
+
+
+tituloError404=Error 404 - Página no encontrada
+h1Error404=¡ERROR 404!
+parrafoError404=Parece que has tomado el camino equivocado hacia el Multiverso. Intenta volver al inicio.
+botonError404=Volver al Centro de Mando
+
+
+tituloLogin=Admin Inicio de sesión
+inicioSesionLogin=Inicio de sesión
+placeholderUsuarioLogin=Usuario...
+placeholderContraseñaLogin=Contraseña...
+botonLogin=Iniciar
+errorLogin=Usuario o contraseña incorrectos.
+
+
+tituloAdminIndex=Admin Panel
+h1AdminIndex=Bienvenido a S.H.I.E.L.D
+cerrarSesionAdminIndex=Cerrar sesión
+listarFraseAdminIndex=Listar Frases
+agregarFraseAdminIndex=Agregar Frase
+
+
+tituloListSentence=Admin listar frases
+h1ListSentence=Listado de frases
+th1ListSentence=Dificultad
+th2ListSentence=Frase
+th3ListSentence=Eliminación
+botonEliminar=Eliminar
+botonVolver=Volver atrás
+noFrases=No se encontraron frases.
+
+
+tituloAdminCreate=Añadir Frases - Admin
+h1Create=Añadir Frases
+placeholderAdminCreate=Introduce una frase...
+option1AdminCreate=Fácil
+option2AdminCreate=Medio
+option3AdminCreate=Difícil
+botonAgregarCreate=Agregar Frase
+botonVolverCreate=Volver atrás
+parrafo1Create=Frase agregada exitosamente.
+parrafo2Create=La frase ya existe en esta dificultad.
+parrafo3Create=Por favor, introduce una frase válida y selecciona una dificultad.
+
+
+
+administrador=Administrador
+jugador=Jugador
+cerrarSesion=Cerrar sesión
