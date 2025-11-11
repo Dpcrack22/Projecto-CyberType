@@ -313,3 +313,30 @@
 2025-11-11 | 14:58:27 | 127.0.0.1 | index.php | El jugador 'Bili' accedió al menú principal.
 2025-11-11 | 14:58:28 | 127.0.0.1 | localhost:8080 | El jugador 'Bili' cerró sesión.
 2025-11-11 | 14:58:29 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-11 | 15:11:01 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-11 | 15:11:05 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2025-11-11 | 15:11:10 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2025-11-11 | 15:11:10 | 127.0.0.1 | admin/login.php | El administrador 'admin' inició sesión correctamente.
+2025-11-11 | 15:11:10 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-11 | 15:11:13 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 15:11:14 | 127.0.0.1 | admin/delete_sentence.php | El administrador 'admin' intentó eliminar una frase inexistente: 'Wakanda por siempre' (dificultad 'facil').
+2025-11-11 | 15:11:14 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 15:12:31 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 15:12:32 | 127.0.0.1 | admin/delete_sentence.php | El administrador 'admin' eliminó la frase 'Wakanda por siempre@@blackpanther.jpeg' de dificultad 'facil'.
+2025-11-11 | 15:12:32 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 15:13:30 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 15:13:33 | 127.0.0.1 | admin/delete_sentence.php | El administrador 'admin' eliminó la frase 'Vengadores Unidos' de dificultad 'facil'.
+2025-11-11 | 15:13:33 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 15:13:55 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 15:16:32 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-11 | 15:16:39 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-11 | 15:16:40 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 15:17:46 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 15:18:02 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 15:29:11 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 15:38:30 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 15:38:43 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 15:38:50 | 127.0.0.1 | admin/delete_sentence.php | El administrador 'admin' eliminó la frase 'Wakanda por siempre' de dificultad 'facil'.
+2025-11-11 | 15:38:50 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 15:38:55 | 127.0.0.1 | admin/delete_sentence.php | El administrador 'admin' intentó eliminar una frase inexistente: 'Iron Man és un pringado' (dificultad 'facil').
+2025-11-11 | 15:38:55 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
