@@ -16,6 +16,8 @@ document.addEventListener("keydown", (event) => {
             break;
         case "v":
             window.location.href="/admin/logs.php";
+        case "s":
+            window.location.href="/admin/add_image.php";
             break;
         default:
             break;

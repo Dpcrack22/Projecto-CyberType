@@ -98,8 +98,10 @@ registrarLog("admin/list_sentences.php", "El administrador '$usuario' accedió a
                     $claseFila = $esDestacada ? "class='resaltar-frase'" : "";
 
                     echo "<tr $claseFila>";
+                    list($soloFrase, $soloImagen) = explode('@@', $fraseIndividual . '@@');
+                    echo "<tr>";
                     echo "<td>" . htmlspecialchars($dificultad) . "</td>";
-                    echo "<td>" . htmlspecialchars($fraseIndividual) . "</td>";
+                    echo "<td>" . htmlspecialchars($soloFrase) . "</td>";
                     // Quiero que la frase y la dificultad se pasen por POST en vez de GET
                     echo "<form action='delete_sentence.php' method='POST'>";
                     echo "<input type='hidden' name='dificultad' value='" . htmlspecialchars($dificultad) . "'>";

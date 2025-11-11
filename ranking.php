@@ -6,6 +6,9 @@
     $arch_act = "ranking.php";
     $archivo = "./ranking.txt";
 
+    $playerName = $_SESSION['playerName'];
+    $score = $_SESSION['score'];
+    $time = $_SESSION['tiempo'];
 
     // --- GUARDAR SOLO SI EXISTEN DATOS DE PARTIDA ---
     if (isset($_SESSION['playerName']) && isset($_SESSION['score'])) {
@@ -14,6 +17,8 @@
 
         $registro = "$playerName | $score" . PHP_EOL;
         file_put_contents($archivo, $registro, FILE_APPEND | LOCK_EX);
+    // Formato del registro
+    $registro = "$playerName | $score | $time" . PHP_EOL;
 
         registrarLog($arch_act,"El jugador '$playerName' guardó su puntuación de $score puntos en el ranking.");
 
@@ -21,6 +26,7 @@
         unset($_SESSION['score']);
         unset($_SESSION['game_finished']);
         unset($_SESSION['bonus']);
+        unset($_SESSION['tiempo']);
     }
 
     $playerName = $_SESSION['playerName'] ?? "Invitado";
@@ -49,6 +55,14 @@
 
     <?php
     if (file_exists($archivo)) {
+    <table>
+        <tr>
+            <th>Posición</th>
+            <th>Nombre</th>
+            <th>Puntuación</th>
+            <th>Tiempo (s)</th>
+        </tr>
+        <?php
         $lineas = file($archivo, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
         // Ordenar de mayor a menor puntuación
@@ -114,6 +128,20 @@
     }
     ?>
 
+        $posicion = 1;
+        foreach ($lineas as $linea) {
+            list($nombre, $puntuacion, $tiempo) = explode(" | ", $linea);
+            $resaltar = ($nombre === $playerName && $puntuacion === $score && $tiempo === $time) ? 'class="resaltar"' : '';
+            echo "<tr $resaltar>
+                    <td>$posicion</td>
+                    <td>$nombre</td>
+                    <td>$puntuacion</td>
+                    <td>$tiempo s</td>
+                  </tr>";
+            $posicion++;
+        }
+        ?>
+    </table>
     <br>
     <button id="RankingButton"><u>V</u>olver al inicio</button>
     <script src="scriptRanking.js"></script>
