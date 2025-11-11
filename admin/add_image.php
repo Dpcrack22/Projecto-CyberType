@@ -15,6 +15,8 @@
     include __DIR__ . '/../lang/lang.php';
     $lang = $_SESSION['lang_admin'] ?? 'es';
     $t = loadLanguage($lang);
+
+    registrarLog("admin/add_image.php", "El administrador '$usuario' accedió a la página de subida de imágenes.");
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -88,6 +90,8 @@
                 $rutaDestino = '../IMG/' . $nombreImagen;
 
                 if (move_uploaded_file($imagen['tmp_name'], $rutaDestino)) {
+                    registrarLog("admin/add_image.php", "Imagen '$nombreImagen' subida correctamente al servidor. Tamaño: " . round(filesize($rutaDestino) / 1024, 2) . " KB.");
+                    
                     $archivo = '../sentences'.$lang.'.txt';
                     $lineas = file($archivo, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
                     $encontrado = false;
@@ -115,15 +119,18 @@
                     if ($encontrado) {
                         file_put_contents($archivo, implode(PHP_EOL, $lineas) . PHP_EOL);
                         echo "<p class='success-message'>" . $t['mensajeExitoAddImage'] . "</p>";
-                        registrarLog("admin/add_image.php", "El administrador '$usuario' asoció una imagen a la frase '$fraseSeleccionada'.");
+                        registrarLog("admin/add_image.php", "El administrador '$usuario' asoció exitosamente la imagen '$nombreImagen' a la frase '$fraseSeleccionada' (dificultad '$dificultad'). Archivo de frases actualizado correctamente.");
                     } else {
                         echo "<p class='error-message'>" . $t['mensajeErrorFraseAddImage'] . "</p>";
+                        registrarLog("admin/add_image.php", "El administrador '$usuario' intentó asociar una imagen a una frase no encontrada: '$fraseSeleccionada'.");
                     }
                 } else {
                     echo "<p class='error-message'>" . $t['mensajeErrorMoverAddImage'] . "</p>";
+                    registrarLog("admin/add_image.php", "El administrador '$usuario' intentó subir una imagen pero falló al moverla: '$nombreImagen'.");
                 }
             } else {
                 echo "<p class='error-message'>" . $t['mensajeErrorSubidaAddImage'] . "</p>";
+                registrarLog("admin/add_image.php", "El administrador '$usuario' intentó subir una imagen pero la subida falló (código de error: {$imagen['error']}).");
             }
         }
     ?>
