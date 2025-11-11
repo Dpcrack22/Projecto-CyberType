@@ -6,7 +6,6 @@ const audioMiss = new Audio("Miss.wav");
 const audioGameover = new Audio("gameover.wav");
 const bonusDiv = document.getElementById("bonusMessage");
 const tiempoDiv = document.getElementById("tiempoTranscurrido");
-const vidasJuego = document.getElementById("vidas").style.display = "none";
 
 // Variables de juego modificables
 let puntuation = 0;
@@ -43,6 +42,16 @@ let thanosSnapTriggered = false;
 let totalFrases = 0;
 let progressLabel = null;
 let progressFill = null;
+
+// Modo Permadeath
+let vidas = 5;
+const vidasElem = document.querySelectorAll(".vida");
+
+function actualizarVidas() {
+    for (let i = 0; i < vidasElem.length; i++) {
+        vidasElem[i].style.display = i < vidas ? "inline" : "none";
+    }
+}
 
 
 function mostrarFrase() {
@@ -301,6 +310,27 @@ function verificarEscritura(tecla) {
         easterEgg(false);
         // Registrar la tecla pulsada (incorrecta)
         enviarLogKeypress(tecla, letraEsperada, false);
+        totalErrores++;
+        vidas--;
+        actualizarVidas();
+
+        if (totalErrores === 5) {
+            const tiempoFinal = performance.now();
+            const tiempoTotal = ((tiempoFinal - tiempoInicio) / 1000).toFixed(2); // Tiempo completado con decimales
+            if (Math.random() < 0.1 ) { // 1% de probabilidad
+                thanosSnapTriggered = true;
+                activateThanosSnap();
+                setTimeout(() => {
+                    endGame(puntuation, tiempoTotal);
+                }, 4000);
+                return;
+            }
+            clearInterval(intervalTiempo);
+            enviarLogTeclas(fraseAleatoria, fraseAleatoria, tiempoTranscurrido);
+            endGame(puntuation, tiempoTotal);
+            return;
+        }
+
     }
 
     posicionActual++;

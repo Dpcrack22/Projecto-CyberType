@@ -25,10 +25,7 @@ foreach ($lineas as $linea) {
 }
 
 $fraseAleatoria = $frasesFiltradas[array_rand($frasesFiltradas)] ?? 'Error al cargar frase.';
-if (isset($_POST['playerName'])) {
-    $_SESSION['playerName'] = htmlspecialchars($_POST['playerName']);
-}
-$difficulty = $_POST['difficulty'];
+$modoPermadeath = !empty($_POST['permadeathCheckbox']); // true si está marcado
 ?>
 
 <!DOCTYPE html>
@@ -44,6 +41,13 @@ $difficulty = $_POST['difficulty'];
 <body class="body-play">
     <header>
         <img src="./IMG/Marvel_Logo.png" alt="Marvel Logo" class="marvel-logo">
+        <div id="vidas">
+            <img src="./IMG/escudo.png" class="vida" alt="vida">
+            <img src="./IMG/escudo.png" class="vida" alt="vida">
+            <img src="./IMG/escudo.png" class="vida" alt="vida">
+            <img src="./IMG/escudo.png" class="vida" alt="vida">
+            <img src="./IMG/escudo.png" class="vida" alt="vida">
+        </div>
         <div id="tiempoTranscurrido"></div>
         <div class="user-info">
             <?php
@@ -71,8 +75,11 @@ $difficulty = $_POST['difficulty'];
             <div id="progressFill"></div>
         </div>
     </div>
-
-    <script src="./scriptPlay.js?<?php echo time(); ?>" defer></script>
+    <?php if ($modoPermadeath): ?>
+        <script src="./scriptPlayPerma.js?<?php echo time(); ?>" defer></script>
+    <?php else: ?>
+        <script src="./scriptPlay.js?<?php echo time(); ?>" defer></script>
+    <?php endif; ?>
     <script>
         const dificultadSeleccionada = "<?php echo $difficulty; ?>";
         fetch('get_sentence.php', {
@@ -113,5 +120,4 @@ $difficulty = $_POST['difficulty'];
         </div>
     </noscript>
 </body>
-
 </html>

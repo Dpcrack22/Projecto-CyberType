@@ -56,6 +56,10 @@
                 <option value="medio">Medio</option>
                 <option value="dificil">Difícil</option>
             </select>
+            <label>
+                <input type="checkbox" id="checkbox" value="1">
+                Modo Permadeath
+            </label>
             <br>
             <button type="button" id="startGameButton"><u>I</u>niciar Juego</button>
             <noscript>

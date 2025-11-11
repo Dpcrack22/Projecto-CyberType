@@ -245,6 +245,30 @@ header .user-info {
     display: none;
 }
 
+
+.body-play header #vidas {
+    display: flex;
+    justify-content: center;   
+    align-items: center;       
+    gap: 10px;                 
+    margin: 0;                 
+    padding: 0 10px;           
+}
+
+.body-play header .vida {
+    width: 45px;              
+    height: 45px;              
+    object-fit: contain;       
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background-color: transparent;
+    cursor: default;           
+}
+
+.body-play header .vida:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(237, 29, 36, 0.6);
+}
+
 #imageContainer {
     display: flex;
     justify-content: center;
