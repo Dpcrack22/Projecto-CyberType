@@ -313,6 +313,37 @@
 2025-11-11 | 14:58:27 | 127.0.0.1 | index.php | El jugador 'Bili' accedió al menú principal.
 2025-11-11 | 14:58:28 | 127.0.0.1 | localhost:8080 | El jugador 'Bili' cerró sesión.
 2025-11-11 | 14:58:29 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-11 | 15:18:09 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-11 | 15:18:13 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2025-11-11 | 15:18:19 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2025-11-11 | 15:18:19 | 127.0.0.1 | admin/login.php | El administrador 'admin' inició sesión correctamente.
+2025-11-11 | 15:18:19 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-11 | 15:18:22 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 15:19:21 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 15:22:17 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 15:23:35 | 127.0.0.1 | admin/delete_sentence.php | El administrador 'admin' intentó eliminar una frase inexistente: 'Wakanda por siempre' (dificultad 'facil').
+2025-11-11 | 15:23:35 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 15:24:17 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 15:24:19 | 127.0.0.1 | admin/delete_sentence.php | El administrador 'admin' intentó eliminar una frase inexistente: 'Wakanda por siempre' (dificultad 'facil').
+2025-11-11 | 15:24:19 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 15:24:38 | 127.0.0.1 | admin/delete_sentence.php | El administrador 'admin' intentó eliminar una frase inexistente: 'Wakanda por siempre' (dificultad 'facil').
+2025-11-11 | 15:24:38 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 15:29:40 | 127.0.0.1 | admin/delete_sentence.php | El administrador 'admin' eliminó la frase 'Vengadores Unidos' de dificultad 'facil'.
+2025-11-11 | 15:29:40 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 15:31:09 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 15:31:33 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 15:31:35 | 127.0.0.1 | admin/delete_sentence.php | El administrador 'admin' intentó eliminar una frase inexistente: 'Wakanda por siempre' (dificultad 'facil').
+2025-11-11 | 15:31:35 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 15:31:52 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 15:33:24 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 15:33:25 | 127.0.0.1 | admin/delete_sentence.php | El administrador 'admin' intentó eliminar una frase inexistente: 'Wakanda por siempre' (dificultad 'facil').
+2025-11-11 | 15:33:25 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 15:34:45 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 15:34:47 | 127.0.0.1 | admin/delete_sentence.php | El administrador 'admin' intentó eliminar una frase inexistente: 'Wakanda por siempre' (dificultad 'facil').
+2025-11-11 | 15:34:47 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 15:35:02 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 15:35:04 | 127.0.0.1 | admin/delete_sentence.php | El administrador 'admin' intentó eliminar una frase inexistente: 'Wakanda por siempre' (dificultad 'facil').
+2025-11-11 | 15:35:04 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
 2025-11-11 | 15:11:01 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
 2025-11-11 | 15:11:05 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
 2025-11-11 | 15:11:10 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.

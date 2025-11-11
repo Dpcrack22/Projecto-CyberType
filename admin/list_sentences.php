@@ -59,9 +59,14 @@ registrarLog("admin/list_sentences.php", "El administrador '$usuario' accedió a
             $frases = explode(',', $fraseStr);
 
             foreach ($frases as $f) {
+                $esDestacada = ($highlight && trim($f) === $highlight);
+                $claseFila = $esDestacada ? "class='resaltar-frase'" : "";
+
+                echo "<tr $claseFila>";
+                list($soloFrase, $soloImagen) = explode('@@', $f . '@@');
                 $todasFrases[] = [
                     'dificultad' => trim($dificultad),
-                    'frase' => trim($f)
+                    'frase' => trim($soloFrase)
                 ];
             }
         }
