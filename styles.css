@@ -1323,6 +1323,7 @@ header .user-info {
     align-items: center;
     gap: 10px;
     margin-bottom: 30px;
+    flex-wrap: wrap;
 }
 
 .body-listarFrases .paginador a,
