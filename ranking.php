@@ -11,8 +11,9 @@
         $playerName = $_SESSION['playerName'];
         $score = $_SESSION['score'];
         $time = $_SESSION['tiempo'];
+        $perma = $_SESSION['perma'];
 
-        $registro = "$playerName | $score | $time" . PHP_EOL;
+        $registro = "$playerName | $score | $time | $perma " . PHP_EOL;
         file_put_contents($archivo, $registro, FILE_APPEND | LOCK_EX);
 
         registrarLog($arch_act,"El jugador '$playerName' guardó su puntuación de $score puntos en el ranking.");
@@ -22,6 +23,7 @@
         unset($_SESSION['game_finished']);
         unset($_SESSION['bonus']);
         unset($_SESSION['tiempo']);
+        unset($_SESSION['perma']);
     }
 
     $playerName = $_SESSION['playerName'] ?? "Invitado";
@@ -76,17 +78,19 @@
                 <th>Nombre</th>
                 <th>Puntuación</th>
                 <th>Tiempo (s)</th>
+                <th>Permadeath</th>
             </tr>
             <?php
             $posicion = $inicio + 1;
             foreach ($jugadoresPagina as $linea) {
-                list($nombre, $puntuacion, $tiempo) = explode(" | ", $linea);
-                $resaltar = ($nombre === $playerName && $puntuacion === $score && $tiempo === $time) ? 'class="resaltar"' : '';
+                list($nombre, $puntuacion, $tiempo, $permadeath) = explode(" | ", $linea);
+                $resaltar = ($nombre === $playerName && $puntuacion === $score && $tiempo === $time && $permadeath === $perma) ? 'class="resaltar"' : '';
                 echo "<tr $resaltar>
                         <td>$posicion</td>
                         <td>$nombre</td>
                         <td>$puntuacion</td>
                         <td>$tiempo s</td>
+                        <td>$permadeath</td>
                     </tr>";
                 $posicion++;
             }

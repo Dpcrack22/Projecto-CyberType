@@ -114,9 +114,6 @@
     max-width: 500px;
 }
 
-/* Estilos para el header con la imagen, y la sesión iniciada */
-/* El header se reutiliza en todas las páginas después de iniciar sesión */
-/* Debe quedar arriba como si fuera una cabecera fija */
 header {
     background-color: #1A1A1A;
     padding: 10px 20px;
