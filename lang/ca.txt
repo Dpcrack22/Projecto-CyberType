@@ -13,8 +13,11 @@ idioma3Index=Anglès
 
 tituloPlay=Joc - MarvelType
 tituloh1Play=MarvelType
-cuentaAtrasPlay=Prepara’t, jove venjador!
-noJSPlay=⚠️ El joc necessita JavaScript per funcionar. Si us plau, activa’l per començar.
+cuentaAtrasPlay=Prepara't, jove venjador!
+noJSPlay=⚠️ El joc necessita JavaScript per funcionar. Si us plau, activa'l per començar.
+yaPlay=¡A JUGAR!
+thanosActivarPlay=💥 Mode Thanos activat: la meitat de les lletres desapareixeran...
+thanosMensajePlay=💀 Thanos ha chasquat els dits... la meitat es desintegra i el teu joc s'acaba.
 
 
 tituloGameOver=Fi del joc - MarvelType

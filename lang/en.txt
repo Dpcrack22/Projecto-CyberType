@@ -15,6 +15,9 @@ tituloPlay=Play - MarvelType
 tituloh1Play=MarvelType
 cuentaAtrasPlay=Get ready, young Avenger!
 noJSPlay=⚠️ The game requires JavaScript to work. Please enable it to start.
+yaPlay=GO!
+thanosActivarPlay=💥 Thanos Mode activated: half the letters will disappear...
+thanosMensajePlay=💀 Thanos snapped his fingers... half disintegrates and your game is over.
 
 
 tituloGameOver=Game Over - MarvelType

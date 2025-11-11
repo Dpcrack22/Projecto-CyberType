@@ -86,6 +86,13 @@ $fraseAleatoria = $frasesFiltradas[array_rand($frasesFiltradas)] ?? 'Error al ca
     <script>
         const dificultadSeleccionada = "<?= $difficulty ?>";
         const langSeleccionado = "<?= $lang ?>";
+        
+        // Traducciones para el juego
+        const gameTranslations = {
+            yaPlay: "<?= $t['yaPlay'] ?>",
+            thanosActivarPlay: "<?= $t['thanosActivarPlay'] ?>",
+            thanosMensajePlay: "<?= $t['thanosMensajePlay'] ?>"
+        };
 
         fetch('get_sentence.php', {
             method: 'POST',

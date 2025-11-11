@@ -15,6 +15,9 @@ tituloPlay=Play - MarvelType
 tituloh1Play=MarvelType
 cuentaAtrasPlay=¡Prepárate joven vengador!
 noJSPlay=⚠️ El juego necesita javascript para funcionar. Por favor, habilita Javascript para empezar.
+yaPlay=¡YA!
+thanosActivarPlay=💥 Modo Thanos activado: la mitad de las letras desaparecerán...
+thanosMensajePlay=💀 Thanos ha chasqueado los dedos... la mitad se desintegra y tu partida se acabó.
 
 
 tituloGameOver=GameOver - MarvelType

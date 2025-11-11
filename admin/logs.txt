@@ -1,5 +1,0 @@
-2025-11-11 | 18:58:18 | 127.0.0.1 | index.php | El jugador 'Paco' accedió al menú principal.
-2025-11-11 | 18:58:26 | 127.0.0.1 | localhost:8080 | El jugador 'Paco' cerró sesión.
-2025-11-11 | 18:58:26 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
-2025-11-11 | 18:58:29 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
-2025-11-11 | 18:58:29 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
