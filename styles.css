@@ -637,6 +637,7 @@ header .user-info {
 .body-adminIndex .botonLogout-admin,
 .body-adminIndex .botonListar-admin,
 .body-adminIndex .botonAgregar-admin,
+.body-adminIndex .botonLogs-admin,
 .body-adminIndex .botonAgregarImagen-admin {
     display: inline-block;
     text-align: center;
@@ -650,6 +651,21 @@ header .user-info {
     background-color: transparent;
     padding: 0;
 }
+
+
+.botonLogs-admin a {
+    display: inline-block;
+    color: #FFFFFF;
+    padding: 12px 35px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    background-color: #EDB800; 
+}
+
 
 .botonLogout-admin a {
     display: inline-block;
@@ -717,6 +733,9 @@ header .user-info {
 
 .botonAgregar-admin a:hover {
     background-color: #434a7d;
+}
+.botonLogs-admin a:hover {
+    background-color: #b88600;
 }
 
 /* PARTE ADMIN LOGIN.PHP */
@@ -1205,4 +1224,136 @@ header .user-info {
     font-size: 1.2em;
     text-decoration: none;
     font-weight: bold;
+}
+
+
+/* ADMIN LIST SENTENCES STYLES */
+
+.resaltar-frase {
+    background-color: #f78f3f !important;
+}
+/* LOGS PAGE STYLES */
+
+.body-logs {
+    background-color: #141414;
+    color: #FFFFFF;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.body-logs h1 {
+    color: #ED1D24;
+    font-size: 2.8em;
+    font-weight: 900;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+}
+
+.body-logs table {
+    width: 80%;
+    border-collapse: collapse;
+    background-color: #242424;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(237, 29, 36, 0.4);
+    margin-bottom: 30px;
+}
+
+.body-logs th, .body-logs td {
+    padding: 12px 10px;
+    color: #FFFFFF;
+    font-size: 1.1em;
+}
+
+.body-logs th {
+    background-color: #ED1D24;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.body-logs tr:nth-child(even) {
+    background-color: #1A1A1A;
+}
+
+.body-logs tr:nth-child(odd) {
+    background-color: #3c3c3c98;
+}
+
+.body-logs tr:nth-child(even):hover {
+    background-color: #518bca72;
+}
+
+.body-logs tr:nth-child(odd):hover {
+    background-color: #ed1d246a;
+}
+
+
+
+.body-logs button, .body-logs button a {
+    margin-top: 20px;
+    background-color: #ED1D24;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    font-size: 1.2em;
+}
+
+.body-logs button a {
+    color: white;
+}
+
+/* PAGINADOR LIST_SENTENCES Y RANKING */
+.body-listarFrases .paginador,
+.body-ranking .paginador,
+.body-logs .paginador {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.body-listarFrases .paginador a,
+.body-ranking .paginador a,
+.body-logs .paginador a {
+    display: inline-block;
+    padding: 10px 16px;
+    background-color: #ED1D24; /* rojo Marvel */
+    color: #FFFFFF;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.body-listarFrases .paginador a:hover,
+.body-ranking .paginador a:hover,
+.body-logs .paginador a:hover {
+    background-color: #A50000; /* rojo más oscuro al hover */
+}
+
+.body-listarFrases .paginador a.activo,
+.body-ranking .paginador a.activo,
+.body-logs .paginador a.activo {
+    background-color: #FFC82C; /* amarillo Marvel para página activa */
+    color: #1A1A1A;
+}
+
+.body-listarFrases .paginador a.activo:hover,
+.body-ranking .paginador a.activo:hover,
+.body-logs .paginador a.activo:hover {
+    background-color: #EDB800;
 }
