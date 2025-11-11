@@ -1,6 +1,7 @@
 const cerrarSesionButton = document.getElementById("cerrarSesionButton");
 const listarFrasesButton = document.getElementById("listarFrasesButton");
 const agregarFraseButton = document.getElementById("agregarFraseButton");
+const logsButton = document.getElementById("verLogsButton");
 
 document.addEventListener("keydown", (event) => {
     switch (event.key.toLowerCase()) {
@@ -12,6 +13,12 @@ document.addEventListener("keydown", (event) => {
             break;
         case "a":
             window.location.href="/admin/create_sentence.php";
+            break;
+        case "v":
+            window.location.href="/admin/logs.php";
+            break;
+        case "s":
+            window.location.href="/admin/add_image.php";
             break;
         default:
             break;
