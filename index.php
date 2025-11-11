@@ -9,6 +9,8 @@
         registrarLog($arch_act,"El jugador '{$_SESSION['playerName']}' accedió al menú principal.");
     }else{
         registrarLog($arch_act,"El jugador 'Unknown' accedió al menú principal.");
+    }
+    
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lang'])) {
         $_SESSION['lang'] = $_POST['lang'];
         header("Location: " . strtok($_SERVER["REQUEST_URI"], '?')); 

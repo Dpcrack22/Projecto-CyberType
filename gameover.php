@@ -50,20 +50,17 @@
             <a href="destroy_session.php" class="logout-link"><?= $t['cerrarSesion'] ?></a>
         </div>
     </header>
-    <h1>💥 ¡Fin del juego, <?= htmlspecialchars($inputName) ?>! 💥</h1>
-    <p>Tu puntuación final es: <?= htmlspecialchars($score) ?></p>
-    <p>Bonus conseguidos: <?= htmlspecialchars($bonus) ?></p>
-    <p>Tiempo empleado: <?= htmlspecialchars($tiempo) ?> segundos</p>
     <h1><?= $t['h1GameOver'] ?>, <?= htmlspecialchars($inputName) ?>! 💥</h1>
     <p><?= $t['puntuacionGameOver'] ?>: <?= htmlspecialchars($score) ?></p>
     <p><?= $t['bonusGameOver'] ?>: <?= htmlspecialchars($bonus) ?></p>
+    <p><?= $t['tiempoGameOver'] ?>: <?= htmlspecialchars($tiempo) ?> s</p>
+
     <div class="botones-gameover">
     <form action="ranking.php" method="post">
         <input type="hidden" name="inputName" value="<?= htmlspecialchars($inputName) ?>">
         <input type="hidden" name="score" value="<?= htmlspecialchars($score) ?>">
         <input type="hidden" name="bonus" value="<?= htmlspecialchars($bonus) ?>">
         <input type="hidden" name="tiempo" value="<?= htmlspecialchars($tiempo) ?>">
-        <button class="botonEnviarRank-gameover" id="almacenarRankingButton" type="submit"><u>A</u>lmacenar Ranking</button>
         <button class="botonEnviarRank-gameover" id="almacenarRankingButton" type="submit"><?= $t['almacenarGameOver'] ?></button>
     </form>
     <button class="botonVolverInicio-gameover" id="jugarDeNuevoButton" ><?= $t['jugarGameOver'] ?></button>

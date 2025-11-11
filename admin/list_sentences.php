@@ -51,7 +51,6 @@ registrarLog("admin/list_sentences.php", "El administrador '$usuario' accedió a
         </div>
     </header>
 
-    <h1>Listado de frases</h1>
     <div class="mensaje-alerta">
         <?php
         if (isset($_SESSION['mensaje'])) {
@@ -60,6 +59,8 @@ registrarLog("admin/list_sentences.php", "El administrador '$usuario' accedió a
         }
         ?>
     </div>
+
+    <h1><?= $t['h1ListSentence'] ?></h1>
 
     <?php
     $todasFrases = [];
@@ -92,8 +93,6 @@ registrarLog("admin/list_sentences.php", "El administrador '$usuario' accedió a
     $inicio = ($paginaActual - 1) * $porPagina;
     $frasesPagina = array_slice($todasFrases, $inicio, $porPagina);
     ?>
-
-    <h1><?= $t['h1ListSentence'] ?></h1>
     <table>
         <tr>
             <th><?= $t['th1ListSentence'] ?></th>
@@ -114,56 +113,35 @@ registrarLog("admin/list_sentences.php", "El administrador '$usuario' accedió a
                         <form action="delete_sentence.php" method="POST">
                             <input type="hidden" name="dificultad" value="<?php echo htmlspecialchars($dato['dificultad']); ?>">
                             <input type="hidden" name="frase" value="<?php echo htmlspecialchars($dato['frase']); ?>">
-                            <button type="submit">Eliminar</button>
+                            <button type="submit"><?= $t['botonEliminar'] ?></button>
                         </form>
                     </td>
                 </tr>
             <?php endforeach; ?>
         <?php else: ?>
-            <tr><td colspan="3">No se encontraron frases.</td></tr>
+            <tr><td colspan="3"><?= $t['noFrases'] ?></td></tr>
         <?php endif; ?>
     </table>
 
     <!-- PAGINADOR -->
     <div class="paginador">
         <?php if ($paginaActual > 1): ?>
-            <a href="?pagina=<?php echo $paginaActual - 1; ?>">&laquo; Anterior</a>
+            <a href="?pagina=<?php echo $paginaActual - 1; ?>&lang=<?= $lang ?>">&laquo; <?= $t['anterior'] ?? 'Anterior' ?></a>
         <?php endif; ?>
 
         <?php for ($i = 1; $i <= $paginas; $i++): ?>
-            <a href="?pagina=<?php echo $i; ?>" 
+            <a href="?pagina=<?php echo $i; ?>&lang=<?= $lang ?>" 
                class="<?php echo ($i == $paginaActual) ? 'activo' : ''; ?>">
                <?php echo $i; ?>
             </a>
         <?php endfor; ?>
 
         <?php if ($paginaActual < $paginas): ?>
-            <a href="?pagina=<?php echo $paginaActual + 1; ?>">Siguiente &raquo;</a>
+            <a href="?pagina=<?php echo $paginaActual + 1; ?>&lang=<?= $lang ?>"><?= $t['siguiente'] ?? 'Siguiente' ?> &raquo;</a>
         <?php endif; ?>
     </div>
 
     <br>
-    <button id="ButtonListSentences"><a href="/admin/index.php"><u>V</u>olver atrás</a></button>
-        <?php
-        if (file_exists($archivo)) {
-            $lineas = file($archivo, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-            foreach ($lineas as $linea) {
-                list($dificultad, $frase) = explode('|', $linea);
-                $frasesIndividuales = explode(',', $frase);
-                foreach ($frasesIndividuales as $fraseIndividual) {
-                    echo "<tr>";
-                    $nombreDificultad = $traducciones_dificultad[$lang][$dificultad] ?? $dificultad;
-                    echo "<td>" . htmlspecialchars($nombreDificultad) . "</td>";
-                    echo "<td>" . htmlspecialchars($fraseIndividual) . "</td>";
-                    echo "<td id='delete-link'><a href='delete_sentence.php?dificultad=" . urlencode($dificultad) . "&frase=" . urlencode($fraseIndividual) . "'>". $t['botonEliminar'] ."</a></td>";
-                    echo "</tr>";
-                }
-            }
-        } else {
-            echo "<tr><td colspan='3'>". $t['noFrases'] ."</td></tr>";
-        }
-        ?>
-    </table>
     <button id="ButtonListSentences"><a href="/admin/index.php"><?= $t['botonVolver'] ?></a></button>
     <script src="scriptListSentences.js"></script>
 </body>

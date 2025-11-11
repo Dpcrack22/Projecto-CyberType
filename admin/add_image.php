@@ -2,18 +2,26 @@
     session_name("adminSHIELD");
     session_start();
     
+    require_once(__DIR__ . "/log_function.php");
+
     // Si no estás logado, redirige al login
     if (empty($_SESSION['logado'])) {
         header("Location: /admin/login.php");
         exit;
     }
+
+    $usuario = $_SESSION['usuario'] ?? 'Desconocido';
+    
+    include __DIR__ . '/../lang/lang.php';
+    $lang = $_SESSION['lang_admin'] ?? 'es';
+    $t = loadLanguage($lang);
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subir Imagen - Admin</title>
+    <title><?= $t['tituloAdminAddImage'] ?></title>
     <link rel="stylesheet" type="text/css" href="/styles.css?<?php echo time(); ?>" />
 </head>
 <body class="body-addImage">
@@ -22,24 +30,24 @@
         <div class="user-info">
             <?php
             if (isset($_SESSION['usuario'])) {
-                echo '<span class="admin-name">Administrador: ' . htmlspecialchars($_SESSION['usuario']) . '</span>';
-                echo '<a href="logout.php" class="logout-link-admin">Cerrar sesión</a>';
+                echo '<span class="admin-name">'. $t['administrador'] .': ' . htmlspecialchars($_SESSION['usuario']) . '</span>';
+                echo '<a href="logout.php" class="logout-link-admin">'. $t['cerrarSesion'] .'</a>';
             }
             ?>
         </div>
     </header>
-    <h1>Subir Imagen a Frase Existente</h1>
+    <h1><?= $t['h1AdminAddImage'] ?></h1>
     <form action="add_image.php" method="POST" enctype="multipart/form-data">
-        <label for="dificultad">Selecciona la dificultad de la frase:</label>
+        <label for="dificultad"><?= $t['labelDificultadAddImage'] ?></label>
         <select id="dificultad" name="dificultad" required>
-            <option value="facil">Fácil</option>
-            <option value="medio">Medio</option>
-            <option value="dificil">Difícil</option>
+            <option value="facil"><?= $t['option1AdminCreate'] ?></option>
+            <option value="medio"><?= $t['option2AdminCreate'] ?></option>
+            <option value="dificil"><?= $t['option3AdminCreate'] ?></option>
         </select>
         <br><br>
-        <label for="frase">Frase:</label>
+        <label for="frase"><?= $t['labelFraseAddImage'] ?></label>
         <?php
-            $archivo = '../sentences.txt';
+            $archivo = '../sentences'.$lang.'.txt';
             $frasesOptions = [];
 
             if (file_exists($archivo)) {
@@ -63,24 +71,24 @@
             </script>
         </select>
         <br><br>
-        <label for="newImage">Selecciona una imagen:</label>
+        <label for="newImage"><?= $t['labelImagenAddImage'] ?></label>
         <input type="file" name="sentenceImage" accept="image/*" id="sentenceImage" required/>
-        <label for="sentenceImage" class="label-imageUpload">Subir imagen</label>
+        <label for="sentenceImage" class="label-imageUpload"><?= $t['subirImagenAdminIndex'] ?></label>
         <br><br>
-        <button type="submit" id="uploadImageButton">Actualizar Frase</button>
+        <button type="submit" id="uploadImageButton"><?= $t['botonActualizarAddImage'] ?></button>
     </form>
     <?php
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $fraseSeleccionada = trim($_POST['frase']);
-            $dificultad = trim($_POST['dificultad']); // Ahora viene del hidden input
+            $dificultad = trim($_POST['dificultad']);
             $imagen = $_FILES['sentenceImage'];
 
             if ($imagen['error'] === UPLOAD_ERR_OK) {
-                $nombreImagen = basename($imagen['name']);
+                $nombreImagen = time() . '_' . basename($imagen['name']);
                 $rutaDestino = '../IMG/' . $nombreImagen;
 
                 if (move_uploaded_file($imagen['tmp_name'], $rutaDestino)) {
-                    $archivo = '../sentences.txt';
+                    $archivo = '../sentences'.$lang.'.txt';
                     $lineas = file($archivo, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
                     $encontrado = false;
 
@@ -106,20 +114,21 @@
 
                     if ($encontrado) {
                         file_put_contents($archivo, implode(PHP_EOL, $lineas) . PHP_EOL);
-                        echo "<p>Imagen subida y asociada correctamente a la frase.</p>";
+                        echo "<p class='success-message'>" . $t['mensajeExitoAddImage'] . "</p>";
+                        registrarLog("admin/add_image.php", "El administrador '$usuario' asoció una imagen a la frase '$fraseSeleccionada'.");
                     } else {
-                        echo "<p>No se encontró la frase seleccionada en el archivo.</p>";
+                        echo "<p class='error-message'>" . $t['mensajeErrorFraseAddImage'] . "</p>";
                     }
                 } else {
-                    echo "<p>Error al mover la imagen subida.</p>";
+                    echo "<p class='error-message'>" . $t['mensajeErrorMoverAddImage'] . "</p>";
                 }
             } else {
-                echo "<p>Error en la subida de la imagen.</p>";
+                echo "<p class='error-message'>" . $t['mensajeErrorSubidaAddImage'] . "</p>";
             }
         }
     ?>
 
-    <button id="btn-volverIndex"><a href="/admin/index.php"><u>V</u>olver atras</a></button>
+    <button id="btn-volverIndex"><a href="/admin/index.php"><?= $t['botonVolver'] ?></a></button>
     <script src="scriptUploadImage.js"></script>
     <script>
         const selectDificultad = document.getElementById('dificultad');

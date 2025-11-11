@@ -161,22 +161,6 @@ header .user-info {
     background-color: #d16b2a;
 }
 
-.lang-selector {
-    position: absolute;
-    right: 30px;
-    top: 15px;
-    z-index: 9999;
-}
-
-.lang-selector select {
-    border: 1px solid #555;
-    background-color: #1A1A1A;
-    color: #fff;
-    font-size: 1rem;
-    padding: 5px 10px;
-    border-radius: 6px;
-}
-
 
 
 /* PLAY PAGE STYLES */
@@ -1457,4 +1441,29 @@ header .user-info {
     height: 100%;
     background: linear-gradient(90deg, #ED1D24, #FFCB05);
     transition: width 0.3s ease;
+}
+
+/* Selector de idioma */
+.lang-selector {
+    position: fixed;       /* fijo en la pantalla */
+    bottom: 20px;          /* 20px desde abajo */
+    right: 20px;           /* 20px desde la derecha */
+    z-index: 1000;         /* por encima de otros elementos */
+    background-color: rgba(0,0,0,0.6); /* semi-transparente para visibilidad */
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
+.lang-selector select {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.lang-selector select:focus {
+    outline: none;
 }

@@ -1420,3 +1420,539 @@
 2025-11-11 | 16:28:03 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'ú'
 2025-11-11 | 16:28:03 | 127.0.0.1 | gameover.php | El jugador 'Paco' terminó la partida con 16555 puntos y 30 bonus.
 2025-11-11 | 16:28:07 | 127.0.0.1 | index.php | El jugador 'Paco' accedió al menú principal.
+2025-11-11 | 17:05:02 | 127.0.0.1 | index.php | El jugador 'Paco' accedió al menú principal.
+2025-11-11 | 17:05:08 | 127.0.0.1 | localhost:8080 | El jugador 'Paco' cerró sesión.
+2025-11-11 | 17:05:08 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-11 | 17:07:55 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-11 | 17:08:06 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-11 | 17:08:06 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-11 | 17:08:09 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-11 | 17:08:09 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-11 | 17:08:11 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-11 | 17:08:11 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-11 | 17:08:13 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-11 | 17:08:13 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-11 | 17:08:16 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-11 | 17:08:16 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-11 | 17:08:19 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-11 | 17:08:19 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-11 | 17:08:23 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-11 | 17:08:23 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-11 | 17:08:27 | 127.0.0.1 | play.php | Inicio de partida del jugador 'Paco' con dificultad 'facil'
+2025-11-11 | 17:08:37 | 127.0.0.1 | play.php | Inicio de partida del jugador 'Paco' con dificultad 'facil'
+2025-11-11 | 17:08:45 | 127.0.0.1 | play.php | Inicio de partida del jugador 'Paco' con dificultad 'facil'
+2025-11-11 | 17:09:31 | 127.0.0.1 | index.php | El jugador 'Paco' accedió al menú principal.
+2025-11-11 | 17:09:32 | 127.0.0.1 | index.php | El jugador 'Paco' accedió al menú principal.
+2025-11-11 | 17:09:32 | 127.0.0.1 | index.php | El jugador 'Paco' accedió al menú principal.
+2025-11-11 | 17:09:34 | 127.0.0.1 | play.php | Inicio de partida del jugador 'Paco' con dificultad 'facil'
+2025-11-11 | 17:09:39 | 127.0.0.1 | play.php | Inicio de partida del jugador 'Paco' con dificultad 'medio'
+2025-11-11 | 17:09:48 | 127.0.0.1 | play.php | Inicio de partida del jugador 'Paco' con dificultad 'dificil'
+2025-11-11 | 17:16:46 | 127.0.0.1 | play.php | Inicio de partida del jugador 'Paco' con dificultad 'dificil'
+2025-11-11 | 17:21:05 | 127.0.0.1 | play.php | Inicio de partida del jugador 'Paco' con dificultad 'dificil'
+2025-11-11 | 17:21:14 | 127.0.0.1 | play.php | Inicio de partida del jugador 'Paco' con dificultad 'dificil'
+2025-11-11 | 17:21:19 | 127.0.0.1 | play.php | Inicio de partida del jugador 'Paco' con dificultad 'dificil'
+2025-11-11 | 17:21:39 | 127.0.0.1 | play.php | Inicio de partida del jugador 'Paco' con dificultad 'facil'
+2025-11-11 | 17:21:50 | 127.0.0.1 | play.php | Inicio de partida del jugador 'Paco' con dificultad 'facil'
+2025-11-11 | 17:29:05 | 127.0.0.1 | play.php | Inicio de partida del jugador 'Paco' con dificultad 'dificil'
+2025-11-11 | 17:29:13 | 127.0.0.1 | play.php | El jugador 'Paco' cerró sesión.
+2025-11-11 | 17:29:13 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-11 | 17:29:16 | 127.0.0.1 | play.php | Inicio de partida del jugador 'Paco' con dificultad 'facil'
+2025-11-11 | 17:30:28 | 127.0.0.1 | play.php | Inicio de partida del jugador 'Paco' con dificultad 'facil'
+2025-11-11 | 17:30:45 | 127.0.0.1 | index.php | El jugador 'Paco' accedió al menú principal.
+2025-11-11 | 17:30:52 | 127.0.0.1 | play.php | Inicio de partida del jugador 'Paco' con dificultad 'facil'
+2025-11-11 | 17:31:26 | 127.0.0.1 | play.php | El jugador 'Paco' cerró sesión.
+2025-11-11 | 17:31:26 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-11 | 17:31:43 | 127.0.0.1 | play.php | Inicio de partida del jugador 'Paco' con dificultad 'facil'
+2025-11-11 | 17:32:49 | 127.0.0.1 | play.php | Inicio de partida del jugador 'Paco' con dificultad 'facil'
+2025-11-11 | 17:32:52 | 127.0.0.1 | play.php | Inicio de partida del jugador 'Paco' con dificultad 'facil'
+2025-11-11 | 17:32:55 | 127.0.0.1 | play.php | Inicio de partida del jugador 'Paco' con dificultad 'facil'
+2025-11-11 | 17:33:09 | 127.0.0.1 | play.php | Inicio de partida del jugador 'Paco' con dificultad 'facil'
+2025-11-11 | 17:36:28 | 127.0.0.1 | play.php | Inicio de partida del jugador 'Paco' con dificultad 'facil'
+2025-11-11 | 17:39:20 | 127.0.0.1 | play.php | Inicio de partida del jugador 'Paco' con dificultad 'facil'
+2025-11-11 | 17:39:31 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:32 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:32 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:32 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:32 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:32 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:32 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:32 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:32 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:32 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:32 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:32 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:32 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:32 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:32 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:32 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:32 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:32 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:32 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:32 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:32 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:32 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:32 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:32 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:32 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:32 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:32 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:32 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:32 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:37 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'm'
+2025-11-11 | 17:39:37 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'm'
+2025-11-11 | 17:39:37 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'm'
+2025-11-11 | 17:39:38 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'm'
+2025-11-11 | 17:39:38 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'm'
+2025-11-11 | 17:39:38 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'm'
+2025-11-11 | 17:39:38 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'm'
+2025-11-11 | 17:39:38 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'm'
+2025-11-11 | 17:39:38 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'm'
+2025-11-11 | 17:39:38 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'm'
+2025-11-11 | 17:39:38 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'm'
+2025-11-11 | 17:39:38 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'm'
+2025-11-11 | 17:39:38 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'm'
+2025-11-11 | 17:39:38 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'm'
+2025-11-11 | 17:39:38 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'm'
+2025-11-11 | 17:39:38 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'm'
+2025-11-11 | 17:39:38 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'm'
+2025-11-11 | 17:39:38 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'm'
+2025-11-11 | 17:39:38 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'm'
+2025-11-11 | 17:39:38 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'm'
+2025-11-11 | 17:39:38 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'm'
+2025-11-11 | 17:39:38 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'm'
+2025-11-11 | 17:39:38 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'm'
+2025-11-11 | 17:39:38 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'm'
+2025-11-11 | 17:39:38 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'm'
+2025-11-11 | 17:39:38 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'm'
+2025-11-11 | 17:39:38 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'm'
+2025-11-11 | 17:39:42 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:42 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:42 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:42 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:42 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:42 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:42 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:42 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:42 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:43 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:43 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:43 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:43 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:43 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:43 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:43 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:43 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:43 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:43 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:43 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:43 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:43 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:43 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:43 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:43 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:43 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:43 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:43 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:43 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:43 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:43 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:43 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:43 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:43 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:43 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:43 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:43 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:43 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:43 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 17:39:43 | 127.0.0.1 | gameover.php | El jugador 'Paco' terminó la partida con -5890 puntos y -18 bonus.
+2025-11-11 | 17:39:44 | 127.0.0.1 | index.php | El jugador 'Paco' accedió al menú principal.
+2025-11-11 | 17:39:51 | 127.0.0.1 | index.php | El jugador 'Paco' accedió al menú principal.
+2025-11-11 | 17:39:51 | 127.0.0.1 | index.php | El jugador 'Paco' accedió al menú principal.
+2025-11-11 | 17:39:52 | 127.0.0.1 | play.php | Inicio de partida del jugador 'Paco' con dificultad 'facil'
+2025-11-11 | 17:40:06 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'I'
+2025-11-11 | 17:40:06 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla ' '
+2025-11-11 | 17:40:06 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'a'
+2025-11-11 | 17:40:06 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'm'
+2025-11-11 | 17:40:07 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla ' '
+2025-11-11 | 17:40:07 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'I'
+2025-11-11 | 17:40:07 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'r'
+2025-11-11 | 17:40:07 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'o'
+2025-11-11 | 17:40:07 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'n'
+2025-11-11 | 17:40:08 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla ' '
+2025-11-11 | 17:40:08 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'M'
+2025-11-11 | 17:40:08 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'a'
+2025-11-11 | 17:40:08 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'n'
+2025-11-11 | 17:40:14 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'P'
+2025-11-11 | 17:40:14 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'a'
+2025-11-11 | 17:40:14 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 't'
+2025-11-11 | 17:40:14 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'i'
+2025-11-11 | 17:40:15 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'e'
+2025-11-11 | 17:40:15 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'n'
+2025-11-11 | 17:40:15 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'c'
+2025-11-11 | 17:40:15 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'e'
+2025-11-11 | 17:40:15 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla ' '
+2025-11-11 | 17:40:16 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 's'
+2025-11-11 | 17:40:16 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'i'
+2025-11-11 | 17:40:19 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla ' '
+2025-11-11 | 17:40:19 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'v'
+2025-11-11 | 17:40:19 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'i'
+2025-11-11 | 17:40:19 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'r'
+2025-11-11 | 17:40:20 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 't'
+2025-11-11 | 17:40:20 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'u'
+2025-11-11 | 17:40:20 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'e'
+2025-11-11 | 17:40:20 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla ' '
+2025-11-11 | 17:40:21 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'M'
+2025-11-11 | 17:40:21 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'r'
+2025-11-11 | 17:40:22 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla '.'
+2025-11-11 | 17:40:22 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla ' '
+2025-11-11 | 17:40:24 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'P'
+2025-11-11 | 17:40:24 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'a'
+2025-11-11 | 17:40:24 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'r'
+2025-11-11 | 17:40:25 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'k'
+2025-11-11 | 17:40:25 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'e'
+2025-11-11 | 17:40:25 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'r'
+2025-11-11 | 17:40:29 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'k'
+2025-11-11 | 17:40:30 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'k'
+2025-11-11 | 17:40:30 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'k'
+2025-11-11 | 17:40:30 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'k'
+2025-11-11 | 17:40:30 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'k'
+2025-11-11 | 17:40:30 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'k'
+2025-11-11 | 17:40:30 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'k'
+2025-11-11 | 17:40:30 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'k'
+2025-11-11 | 17:40:30 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'k'
+2025-11-11 | 17:40:30 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'k'
+2025-11-11 | 17:40:30 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'k'
+2025-11-11 | 17:40:30 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'k'
+2025-11-11 | 17:40:30 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'k'
+2025-11-11 | 17:40:30 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'k'
+2025-11-11 | 17:40:30 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'k'
+2025-11-11 | 17:40:30 | 127.0.0.1 | gameover.php | El jugador 'Paco' terminó la partida con 3020 puntos y 5 bonus.
+2025-11-11 | 17:42:13 | 127.0.0.1 | gameover.php | El jugador 'Paco' terminó la partida con 3020 puntos y 5 bonus.
+2025-11-11 | 17:44:30 | 127.0.0.1 | gameover.php | El jugador 'Paco' terminó la partida con 3020 puntos y 5 bonus.
+2025-11-11 | 17:45:05 | 127.0.0.1 | gameover.php | El jugador 'Paco' terminó la partida con 3020 puntos y 5 bonus.
+2025-11-11 | 17:45:26 | 127.0.0.1 | index.php | El jugador 'Paco' accedió al menú principal.
+2025-11-11 | 17:45:36 | 127.0.0.1 | index.php | El jugador 'Paco' accedió al menú principal.
+2025-11-11 | 17:45:36 | 127.0.0.1 | index.php | El jugador 'Paco' accedió al menú principal.
+2025-11-11 | 17:45:38 | 127.0.0.1 | play.php | Inicio de partida del jugador 'Paco' con dificultad 'facil'
+2025-11-11 | 17:45:50 | 127.0.0.1 | play.php | Inicio de partida del jugador 'Paco' con dificultad 'facil'
+2025-11-11 | 17:46:16 | 127.0.0.1 | play.php | Inicio de partida del jugador 'Paco' con dificultad 'facil'
+2025-11-11 | 17:46:23 | 127.0.0.1 | play.php | Inicio de partida del jugador 'Paco' con dificultad 'facil'
+2025-11-11 | 17:55:34 | 127.0.0.1 | play.php | Inicio de partida del jugador 'Paco' con dificultad 'facil'
+2025-11-11 | 17:55:41 | 127.0.0.1 | play.php | Inicio de partida del jugador 'Paco' con dificultad 'facil'
+2025-11-11 | 17:55:47 | 127.0.0.1 | play.php | Inicio de partida del jugador 'Paco' con dificultad 'facil'
+2025-11-11 | 17:55:53 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'y'
+2025-11-11 | 17:55:54 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'y'
+2025-11-11 | 17:55:54 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'y'
+2025-11-11 | 17:55:54 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'y'
+2025-11-11 | 17:55:54 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'y'
+2025-11-11 | 17:55:54 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'y'
+2025-11-11 | 17:55:54 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'y'
+2025-11-11 | 17:55:54 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'y'
+2025-11-11 | 17:55:54 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'y'
+2025-11-11 | 17:55:54 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'y'
+2025-11-11 | 17:55:54 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'y'
+2025-11-11 | 17:55:54 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'y'
+2025-11-11 | 17:55:54 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'y'
+2025-11-11 | 17:55:54 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'y'
+2025-11-11 | 17:55:54 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'y'
+2025-11-11 | 17:55:59 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'Q'
+2025-11-11 | 17:56:01 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'k'
+2025-11-11 | 17:56:01 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'a'
+2025-11-11 | 17:56:01 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'n'
+2025-11-11 | 17:56:02 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'd'
+2025-11-11 | 17:56:02 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'a'
+2025-11-11 | 17:56:02 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla ' '
+2025-11-11 | 17:56:02 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'p'
+2025-11-11 | 17:56:03 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'o'
+2025-11-11 | 17:56:03 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'r'
+2025-11-11 | 17:56:03 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla ' '
+2025-11-11 | 17:56:03 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 's'
+2025-11-11 | 17:56:03 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'i'
+2025-11-11 | 17:56:03 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'e'
+2025-11-11 | 17:56:03 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'm'
+2025-11-11 | 17:56:03 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'p'
+2025-11-11 | 17:56:03 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'r'
+2025-11-11 | 17:56:03 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'e'
+2025-11-11 | 17:56:08 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'V'
+2025-11-11 | 17:56:09 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'e'
+2025-11-11 | 17:56:09 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'n'
+2025-11-11 | 17:56:09 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'g'
+2025-11-11 | 17:56:09 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'a'
+2025-11-11 | 17:56:09 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'd'
+2025-11-11 | 17:56:10 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'o'
+2025-11-11 | 17:56:10 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'r'
+2025-11-11 | 17:56:10 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'e'
+2025-11-11 | 17:56:10 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 's'
+2025-11-11 | 17:56:10 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla ' '
+2025-11-11 | 17:56:11 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'u'
+2025-11-11 | 17:56:11 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'n'
+2025-11-11 | 17:56:11 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'i'
+2025-11-11 | 17:56:11 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'd'
+2025-11-11 | 17:56:11 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'o'
+2025-11-11 | 17:56:11 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 's'
+2025-11-11 | 17:56:11 | 127.0.0.1 | gameover.php | El jugador 'Paco' terminó la partida con 2305 puntos y 3 bonus.
+2025-11-11 | 18:02:51 | 127.0.0.1 | ranking.php | El jugador 'Paco' guardó su puntuación de 2305 puntos en el ranking.
+2025-11-11 | 18:05:50 | 127.0.0.1 | index.php | El jugador 'Paco' accedió al menú principal.
+2025-11-11 | 18:05:54 | 127.0.0.1 | play.php | Inicio de partida del jugador 'Paco' con dificultad 'facil'
+2025-11-11 | 18:06:04 | 127.0.0.1 | play.php | Inicio de partida del jugador 'Paco' con dificultad 'facil'
+2025-11-11 | 18:06:09 | 127.0.0.1 | play.php | Inicio de partida del jugador 'Paco' con dificultad 'facil'
+2025-11-11 | 18:06:14 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:15 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:15 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:15 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:15 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:15 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:15 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:15 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:15 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:15 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:15 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:15 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:15 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:15 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:15 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:15 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:15 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:19 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:19 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:19 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:19 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:19 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:19 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:19 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:19 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:19 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:19 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:19 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:19 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:19 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:19 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:19 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:19 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:20 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:20 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:20 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:24 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:24 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:24 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:24 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:24 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:24 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:24 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:24 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:24 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:24 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:24 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:24 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:24 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:24 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:24 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:24 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:24 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:24 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:24 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:24 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:24 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:24 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:24 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:24 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:24 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:24 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:24 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:24 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:24 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:06:24 | 127.0.0.1 | gameover.php | El jugador 'Paco' terminó la partida con -3940 puntos y -12 bonus.
+2025-11-11 | 18:06:26 | 127.0.0.1 | ranking.php | El jugador 'Paco' guardó su puntuación de -3940 puntos en el ranking.
+2025-11-11 | 18:09:51 | 127.0.0.1 | index.php | El jugador 'Paco' accedió al menú principal.
+2025-11-11 | 18:09:53 | 127.0.0.1 | play.php | Inicio de partida del jugador 'Paco' con dificultad 'facil'
+2025-11-11 | 18:09:56 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'j'
+2025-11-11 | 18:09:56 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:56 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:56 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:56 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:56 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:56 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:56 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:56 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:56 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:56 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:56 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:56 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:56 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:56 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:57 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:57 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:59 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:59 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:59 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:59 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:59 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:59 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:59 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:59 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:59 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:59 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:59 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:59 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:59 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:59 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:59 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:59 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:59 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:59 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:59 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:59 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:59 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:59 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:59 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:59 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:59 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:59 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:59 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:59 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:59 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:09:59 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:00 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:00 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:00 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:00 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:00 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:00 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:00 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:00 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:00 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:00 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:00 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:00 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:00 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:00 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:00 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:00 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:00 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:00 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:00 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:00 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:00 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:00 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:00 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:00 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:00 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:00 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:00 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:00 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:00 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:00 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:00 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:04 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:04 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:05 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:05 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:05 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:05 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:05 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:05 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:05 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:05 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:05 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:05 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:05 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:05 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:05 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:05 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:05 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:05 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:05 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:05 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:05 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:05 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:05 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:05 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:05 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:05 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:05 | 127.0.0.1 | log_keypress.php | El jugador 'Paco' pulsó la tecla 'h'
+2025-11-11 | 18:10:05 | 127.0.0.1 | gameover.php | El jugador 'Paco' terminó la partida con -6825 puntos y -21 bonus.
+2025-11-11 | 18:10:07 | 127.0.0.1 | ranking.php | El jugador 'Paco' guardó su puntuación de -6825 puntos en el ranking.
+2025-11-11 | 18:14:53 | 127.0.0.1 | ranking.php?pagina=2&lang=es | El jugador 'Paco' cerró sesión.
+2025-11-11 | 18:14:53 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-11 | 18:14:57 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-11 | 18:14:57 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-11 | 18:15:21 | 127.0.0.1 | ranking.php?pagina=2&lang=en | Un usuario sin sesión activa intentó cerrar sesión.
+2025-11-11 | 18:15:21 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-11 | 18:15:24 | 127.0.0.1 | play.php | Inicio de partida del jugador 'paco' con dificultad 'facil'
+2025-11-11 | 18:15:38 | 127.0.0.1 | index.php | El jugador 'paco' accedió al menú principal.
+2025-11-11 | 18:16:35 | 127.0.0.1 | index.php | El jugador 'paco' cerró sesión.
+2025-11-11 | 18:16:35 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-11 | 18:16:47 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2025-11-11 | 18:18:00 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2025-11-11 | 18:18:00 | 127.0.0.1 | admin/login.php | Intento de inicio de sesión fallido con usuario ''.
+2025-11-11 | 18:18:00 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2025-11-11 | 18:18:02 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2025-11-11 | 18:18:02 | 127.0.0.1 | admin/login.php | Intento de inicio de sesión fallido con usuario ''.
+2025-11-11 | 18:18:02 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2025-11-11 | 18:18:04 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2025-11-11 | 18:18:04 | 127.0.0.1 | admin/login.php | Intento de inicio de sesión fallido con usuario ''.
+2025-11-11 | 18:18:04 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2025-11-11 | 18:18:10 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2025-11-11 | 18:18:10 | 127.0.0.1 | admin/login.php | El administrador 'admin' inició sesión correctamente.
+2025-11-11 | 18:18:10 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-11 | 18:20:33 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-11 | 18:20:36 | 127.0.0.1 | admin/logout.php | El administrador 'admin' cerró sesión.
+2025-11-11 | 18:20:36 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2025-11-11 | 18:20:42 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2025-11-11 | 18:20:42 | 127.0.0.1 | admin/login.php | El administrador 'admin' inició sesión correctamente.
+2025-11-11 | 18:20:42 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-11 | 18:20:45 | 127.0.0.1 | admin/logout.php | El administrador 'admin' cerró sesión.
+2025-11-11 | 18:20:45 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2025-11-11 | 18:20:47 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2025-11-11 | 18:20:47 | 127.0.0.1 | admin/login.php | Intento de inicio de sesión fallido con usuario ''.
+2025-11-11 | 18:20:47 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2025-11-11 | 18:20:51 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2025-11-11 | 18:20:51 | 127.0.0.1 | admin/login.php | El administrador 'admin' inició sesión correctamente.
+2025-11-11 | 18:20:51 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-11 | 18:21:00 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 18:21:16 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-11 | 18:21:21 | 127.0.0.1 | admin/logs.php | El administrador 'admin' accedió a los logs (página 1).
+2025-11-11 | 18:21:27 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-11 | 18:21:30 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-11 | 18:22:27 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 18:25:04 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 18:25:06 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 2).
+2025-11-11 | 18:25:12 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 18:25:14 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-11 | 18:26:18 | 127.0.0.1 | admin/create_sentence.php | El administrador 'admin' accedió a la página de creación de frases.
+2025-11-11 | 18:26:28 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-11 | 18:26:29 | 127.0.0.1 | admin/logout.php | El administrador 'admin' cerró sesión.
+2025-11-11 | 18:26:29 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2025-11-11 | 18:26:34 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2025-11-11 | 18:26:34 | 127.0.0.1 | admin/login.php | Intento de inicio de sesión fallido con usuario 'admin'.
+2025-11-11 | 18:26:41 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2025-11-11 | 18:26:41 | 127.0.0.1 | admin/login.php | El administrador 'admin' inició sesión correctamente.
+2025-11-11 | 18:26:41 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-11 | 18:26:42 | 127.0.0.1 | admin/create_sentence.php | El administrador 'admin' accedió a la página de creación de frases.
+2025-11-11 | 18:26:45 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-11 | 18:26:47 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 18:26:49 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 2).
+2025-11-11 | 18:26:50 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-11 | 18:26:51 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-11 | 18:26:58 | 127.0.0.1 | admin/logs.php | El administrador 'admin' accedió a los logs (página 1).
+2025-11-11 | 18:28:58 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-11 | 18:29:00 | 127.0.0.1 | admin/logout.php | El administrador 'admin' cerró sesión.
+2025-11-11 | 18:29:00 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2025-11-11 | 18:29:06 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2025-11-11 | 18:29:06 | 127.0.0.1 | admin/login.php | El administrador 'admin' inició sesión correctamente.
+2025-11-11 | 18:29:06 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-11 | 18:29:09 | 127.0.0.1 | admin/logout.php | El administrador 'admin' cerró sesión.
+2025-11-11 | 18:29:09 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2025-11-11 | 18:29:19 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2025-11-11 | 18:29:19 | 127.0.0.1 | admin/login.php | Intento de inicio de sesión fallido con usuario ''.
+2025-11-11 | 18:29:19 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2025-11-11 | 18:29:24 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2025-11-11 | 18:29:24 | 127.0.0.1 | admin/login.php | El administrador 'admin' inició sesión correctamente.
+2025-11-11 | 18:29:24 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-11 | 18:29:29 | 127.0.0.1 | admin/logs.php | El administrador 'admin' accedió a los logs (página 1).
+2025-11-11 | 18:30:36 | 127.0.0.1 | admin/logs.php | El administrador 'admin' accedió a los logs (página 2).
+2025-11-11 | 18:31:24 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-11 | 18:31:40 | 127.0.0.1 | admin/logs.php | El administrador 'admin' accedió a los logs (página 1).
+2025-11-11 | 18:31:49 | 127.0.0.1 | admin/logs.php | El administrador 'admin' accedió a los logs (página 42).
+2025-11-11 | 18:31:58 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-11 | 18:33:46 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.

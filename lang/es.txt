@@ -24,6 +24,7 @@ bonusGameOver=Bonus conseguidos
 almacenarGameOver=Almacenar Ranking
 jugarGameOver=Jugar de nuevo
 dieRanking=No hay datos de jugador para guardar.
+tiempoGameOver=Tiempo empleado:
 
 
 tituloRanking=Ranking - MarvelType
@@ -59,6 +60,25 @@ h1AdminIndex=Bienvenido a S.H.I.E.L.D
 cerrarSesionAdminIndex=Cerrar sesión
 listarFraseAdminIndex=Listar Frases
 agregarFraseAdminIndex=Agregar Frase
+verLogsAdminIndex=Ver Logs
+subirImagenAdminIndex=Subir Imagen
+
+
+tituloAdminLogs=Admin Logs
+h1AdminLogs=Logs del Sistema
+noLogsAdminLogs=No hay logs para mostrar.
+
+
+tituloAdminAddImage=Subir Imagen - Admin
+h1AdminAddImage=Subir Imagen a Frase Existente
+labelDificultadAddImage=Selecciona la dificultad de la frase:
+labelFraseAddImage=Frase:
+labelImagenAddImage=Selecciona una imagen:
+botonActualizarAddImage=Actualizar Frase
+mensajeExitoAddImage=Imagen subida y asociada correctamente a la frase.
+mensajeErrorFraseAddImage=No se encontró la frase seleccionada en el archivo.
+mensajeErrorMoverAddImage=Error al mover la imagen subida.
+mensajeErrorSubidaAddImage=Error en la subida de la imagen.
 
 
 tituloListSentence=Admin listar frases

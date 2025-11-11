@@ -42,20 +42,19 @@
     <div class="div-margin"></div>
 
     <h1><?= $t['h1Create'] ?></h1>
-    <form action="create_sentence.php" method="POST">
+    <form action="create_sentence.php" method="POST" enctype="multipart/form-data">
         <section>
             <input type="text" id="inputSentence" name="inputSentence" placeholder="<?= $t['placeholderAdminCreate'] ?>"/>
             <select id="Dificulty" name="Dificulty">
-                <option value="facil" name="Dificulty"><?= $t['option1AdminCreate'] ?></option>
-                <option value="medio" name="Dificulty"><?= $t['option2AdminCreate'] ?></option>
-                <option value="dificil" name="Dificulty"><?= $t['option3AdminCreate'] ?></option>
+                <option value="facil"><?= $t['option1AdminCreate'] ?></option>
+                <option value="medio"><?= $t['option2AdminCreate'] ?></option>
+                <option value="dificil"><?= $t['option3AdminCreate'] ?></option>
             </select>
 
-            <button type="submit" id="createSentence"><u>A</u>gregar Frase</button>
-            
             <input type="file" name="sentenceImage" accept="image/*" id="sentenceImage"/>
-            <label for="sentenceImage" class="label-imageUpload">Subir imagen</label>
+            <label for="sentenceImage" class="label-imageUpload"><?= $t['subirImagenAdminIndex'] ?></label>
             <span id="fileName" class="file-name"></span>
+            
             <button type="submit" id="createSentence"><?= $t['botonAgregarCreate'] ?></button>
         </section>
     </form>
@@ -90,8 +89,9 @@
                         
                         foreach($frasesArray as $f) {
                             if (explode('@@', $f)[0] === $nuevaFrase) {
-                                echo "<p class='error-message'>La frase ya existe en esta dificultad.</p>";
-                                return;
+                                echo "<p class='error-message'>" . $t['parrafo2Create'] . "</p>";
+                                registrarLog("admin/create_sentence.php", "El administrador '$usuario' intentó añadir una frase duplicada: '$nuevaFrase' (dificultad '$dificultad').");
+                                die();
                             }
                         }
 
@@ -106,25 +106,16 @@
 
                 if ($fraseAgregada) {
                     file_put_contents($archivo, implode(PHP_EOL, $lineas) . PHP_EOL);
-                    echo "<p class='success-message'>Frase agregada exitosamente.</p>";
+                    echo "<p class='success-message'>" . $t['parrafo1Create'] . "</p>";
                     registrarLog("admin/create_sentence.php", "El administrador '$usuario' añadió la frase '$nuevaFrase' a dificultad '$dificultad'.");
-
                 } else {
-                    echo "<p class='error-message'>La frase ya existe en esta dificultad.</p>";
+                    echo "<p class='error-message'>" . $t['parrafo2Create'] . "</p>";
                     registrarLog("admin/create_sentence.php", "El administrador '$usuario' intentó añadir una frase duplicada: '$nuevaFrase' (dificultad '$dificultad').");
                 }
             } else {
-                echo "<p class='error-message'>Por favor, introduce una frase válida y selecciona una dificultad.</p>";
-                registrarLog("admin/create_sentence.php", "El administrador '$usuario' intentó añadir una frase vacía o con dificultad no válida.");            }
-                    echo "<p class='success-message'>" . $t['parrafo1Create'] . "</p>";
-                } else {
-                    echo "<p class='error-message'>" . $t['parrafo2Create'] . "</p>";
-                }
-            } else {
                 echo "<p class='error-message'>" . $t['parrafo3Create'] . "</p>";
+                registrarLog("admin/create_sentence.php", "El administrador '$usuario' intentó añadir una frase vacía o con dificultad no válida.");
             }
-            $nuevaFrase = '';
-            $dificultad = '';
         }
     ?>
     <script src="scriptCreateSentence.js"></script>

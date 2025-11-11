@@ -51,14 +51,12 @@ registrarLog("admin/index.php", "El administrador '$usuario' accedió al panel p
     <div class="div-margin"></div>
     <h1><?= $t['h1AdminIndex'] ?></h1>
     <div class="botonesIndex">
-        <button class="botonLogout-admin" id="cerrarSesionButton"><a href="/admin/logout.php"><u>C</u>errar sesión</a></button>
-        <button class="botonListar-admin" id="listarFrasesButton"><a href="/admin/list_sentences.php"><u>L</u>istar Frases</a></button>
-        <button class="botonAgregar-admin" id="agregarFraseButton"><a href="/admin/create_sentence.php"><u>A</u>gregar Frase</a></button>
-        <button class="botonLogs-admin" id="verLogsButton"><a href="/admin/logs.php"><u>V</u>er Logs</a></button>
-        <button class="botonAgregarImagen-admin" id="agregarImagenButton"><a href="/admin/add_image.php"><u>S</u>ubir Imagen</a></button>
         <button class="botonLogout-admin" id="cerrarSesionButton"><a href="/admin/logout.php"><?= $t['cerrarSesionAdminIndex'] ?></a></button>
         <button class="botonListar-admin" id="listarFrasesButton"><a href="/admin/list_sentences.php"><?= $t['listarFraseAdminIndex'] ?></a></button>
         <button class="botonAgregar-admin" id="agregarFraseButton"><a href="/admin/create_sentence.php"><?= $t['agregarFraseAdminIndex'] ?></a></button>
+        <button class="botonLogs-admin" id="verLogsButton"><a href="/admin/logs.php"><?= $t['verLogsAdminIndex'] ?></a></button>
+        <button class="botonAgregarImagen-admin" id="agregarImagenButton"><a href="/admin/add_image.php"><?= $t['subirImagenAdminIndex'] ?></a></button>
+
     </div>
     <script src="/admin/script.js?<?php echo time(); ?>"></script>
 </body>

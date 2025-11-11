@@ -1,44 +1,47 @@
 <?php
-    session_name("jugadorSession");
-    session_start();
+session_name("jugadorSession");
+session_start();
 
-    $difficulty = $_POST['difficulty'] ?? '';
+$lang = $_POST['lang'] ?? $_SESSION['lang'] ?? 'es';
+$_SESSION['lang'] = $lang;
 
-    $archivo = './sentences.txt';
-    $lineas = file($archivo, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+$difficulty = $_POST['difficulty'] ?? 'facil';
 
-    $frasesFiltradas = [];
-    foreach ($lineas as $linea) {
-        list($nivelFrase, $frases) = explode('|', $linea, 2);
-        if ($nivelFrase === $difficulty) {
-            $frasesFiltradas = array_map('trim', explode(',', $frases));
-            shuffle($frasesFiltradas);
-            break;
-        }
+$archivo = "./sentences{$lang}.txt";
+if (!file_exists($archivo)) {
+    echo json_encode([]);
+    exit;
+}
+
+$lineas = file($archivo, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+$frasesFiltradas = [];
+
+foreach ($lineas as $linea) {
+    if (strpos($linea, '|') === false) continue;
+    list($nivelFrase, $frases) = explode('|', $linea, 2);
+    if ($nivelFrase === $difficulty) {
+        $frasesFiltradas = array_map('trim', explode(',', $frases));
+        shuffle($frasesFiltradas);
+        break;
     }
+}
 
-    if ($difficulty === 'facil') {
-        $numFrases = 3;
-    } elseif ($difficulty === 'medio') {
-        $numFrases = 4;
-    } elseif ($difficulty === 'dificil') {
-        $numFrases = 5;
-    } else {
-        $numFrases = 0;
-    }
+$numFrases = match($difficulty) {
+    'facil' => 3,
+    'medio' => 4,
+    'dificil' => 5,
+    default => 3
+};
 
-    $frasesAleatorias = array_slice($frasesFiltradas, 0, $numFrases);
-    $resultados = [];
-    foreach ($frasesAleatorias as $frase) {
-        $partes = explode('@@', $frase);
-        $soloFrase = $partes[0];
-        $soloImagen = isset($partes[1]) ? trim($partes[1]) : '';
+$frasesAleatorias = array_slice($frasesFiltradas, 0, $numFrases);
+$resultados = [];
 
-        $resultados[] = [
-            "frase" => $soloFrase,
-            "imagen" => $soloImagen
-        ];
-    }
+foreach ($frasesAleatorias as $frase) {
+    $partes = explode('@@', $frase);
+    $resultados[] = [
+        "frase" => $partes[0],
+        "imagen" => isset($partes[1]) ? trim($partes[1]) : ''
+    ];
+}
 
-    echo json_encode($resultados);
-?>
+echo json_encode($resultados);

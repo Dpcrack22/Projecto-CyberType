@@ -24,6 +24,7 @@ bonusGameOver=Bonuses achieved
 almacenarGameOver=Save to Ranking
 jugarGameOver=Play Again
 dieRanking=No player data to save.
+tiempoGameOver=Your time is:
 
 
 tituloRanking=Ranking - MarvelType
@@ -59,6 +60,25 @@ h1AdminIndex=Welcome to S.H.I.E.L.D
 cerrarSesionAdminIndex=Log Out
 listarFraseAdminIndex=List Phrases
 agregarFraseAdminIndex=Add Phrase
+verLogsAdminIndex=View Logs
+subirImagenAdminIndex=Upload Image
+
+
+tituloAdminLogs=Admin Logs
+h1AdminLogs=System Logs
+noLogsAdminLogs=No logs to display.
+
+
+tituloAdminAddImage=Upload Image - Admin
+h1AdminAddImage=Upload Image to Existing Phrase
+labelDificultadAddImage=Select the difficulty of the phrase:
+labelFraseAddImage=Phrase:
+labelImagenAddImage=Select an image:
+botonActualizarAddImage=Update Phrase
+mensajeExitoAddImage=Image uploaded and associated correctly to the phrase.
+mensajeErrorFraseAddImage=The selected phrase was not found in the file.
+mensajeErrorMoverAddImage=Error moving the uploaded image.
+mensajeErrorSubidaAddImage=Error uploading the image.
 
 
 tituloListSentence=Admin - List Phrases

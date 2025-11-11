@@ -24,6 +24,7 @@ bonusGameOver=Bonificacions aconseguides
 almacenarGameOver=Desar al rànquing
 jugarGameOver=Tornar a jugar
 dieRanking=No hi ha dades de jugador per desar.
+tiempoGameOver=Temps empleat:
 
 
 tituloRanking=Rànquing - MarvelType
@@ -54,11 +55,30 @@ botonLogin=Inicia
 errorLogin=Usuari o contrasenya incorrectes.
 
 
-tituloAdminIndex=Panell d’administració
+tituloAdminIndex=Panell d'administració
 h1AdminIndex=Benvingut a S.H.I.E.L.D
 cerrarSesionAdminIndex=Tanca la sessió
 listarFraseAdminIndex=Llistar frases
 agregarFraseAdminIndex=Afegir frase
+verLogsAdminIndex=Veure registres
+subirImagenAdminIndex=Pujar imatge
+
+
+tituloAdminLogs=Registres d'administrador
+h1AdminLogs=Registres del Sistema
+noLogsAdminLogs=No hi ha registres per mostrar.
+
+
+tituloAdminAddImage=Pujar Imatge - Admin
+h1AdminAddImage=Pujar Imatge a Frase Existent
+labelDificultadAddImage=Selecciona la dificultat de la frase:
+labelFraseAddImage=Frase:
+labelImagenAddImage=Selecciona una imatge:
+botonActualizarAddImage=Actualitzar Frase
+mensajeExitoAddImage=Imatge pujada i associada correctament a la frase.
+mensajeErrorFraseAddImage=No s'ha trobat la frase seleccionada en l'arxiu.
+mensajeErrorMoverAddImage=Error en moure la imatge pujada.
+mensajeErrorSubidaAddImage=Error en la pujada de la imatge.
 
 
 tituloListSentence=Administrador - Llistar frases
