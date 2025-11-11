@@ -59,10 +59,9 @@ registrarLog("admin/list_sentences.php", "El administrador '$usuario' accedió a
             $frases = explode(',', $fraseStr);
 
             foreach ($frases as $f) {
-                list($soloFrase, $soloImagen) = explode('@@', $f . '@@');
                 $todasFrases[] = [
                     'dificultad' => trim($dificultad),
-                    'frase' => trim($soloFrase)
+                    'frase' => trim($f)
                 ];
             }
         }
