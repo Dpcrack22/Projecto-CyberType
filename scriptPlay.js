@@ -38,6 +38,12 @@ let totalLetrasEscritas = 0;
 let totalErrores = 0;
 let thanosSnapTriggered = false;
 
+// Barra de progreso
+let totalFrases = 0;
+let progressLabel = null;
+let progressFill = null;
+
+
 function mostrarFrase() {
     const imageContainer = document.getElementById("imageContainer");
     const fraseImg = document.getElementById("fraseImg");
@@ -66,6 +72,8 @@ function mostrarFrase() {
     createHiddenInput();
     hiddenInput.value = "";
     hiddenInput.focus();
+    updateProgress(); // actualizar barra (cada vez que mostramos una frase)
+
 }
 
 function createHiddenInput() {
@@ -447,4 +455,20 @@ function enviarLogKeypress(tecla, expected, correct) {
         headers: { "Content-Type": "application/json; charset=UTF-8" },
         body: JSON.stringify(payload)
     }).catch(() => {});
+}
+
+// Funciones barra de progreso
+
+function initProgressBar() {
+    progressLabel = document.getElementById('progressLabel');
+    progressFill = document.getElementById('progressFill');
+    updateProgress();
+}
+
+function updateProgress() {
+    if (!progressLabel || !progressFill) return;
+    const current = Math.min(indiceFraseActual + 1, totalFrases);
+    progressLabel.textContent = `Frase ${current} / ${totalFrases}`;
+    const pct = totalFrases > 0 ? Math.round((current / totalFrases) * 100) : 0;
+    progressFill.style.width = `${pct}%`;
 }
