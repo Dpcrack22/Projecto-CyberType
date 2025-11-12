@@ -185,7 +185,7 @@ const intervalo = setInterval(() => {
     if (contador > 0) {
         contadorDiv.textContent = contador;
     } else if (contador === 0) {
-        contadorDiv.textContent = gameTranslations.yaPlay || "YA!";
+        contadorDiv.textContent = "YA!";
     } else {
         clearInterval(intervalo);
         document.getElementById("contador").style.display = "none";
@@ -268,7 +268,7 @@ function cargarSiguienteFrase() {
             if (contador > 0) {
                 contadorDiv.textContent = contador;
             } else if (contador === 0) {
-                contadorDiv.textContent = gameTranslations.yaPlay || "YA!";
+                contadorDiv.textContent = "YA!";
             } else {
                 clearInterval(intervalo);
                 document.getElementById("contador").style.display = "none";
@@ -330,6 +330,7 @@ function verificarEscritura(tecla) {
             endGame(puntuation, tiempoTotal);
             return;
         }
+
     }
 
     posicionActual++;
@@ -341,7 +342,7 @@ function verificarEscritura(tecla) {
 };
 
 function activateThanosSnap() {
-    console.log(gameTranslations.thanosActivarPlay || "💥 Modo Thanos activado: la mitad de las letras desaparecerán...");
+    console.log("💥 Modo Thanos activado: la mitad de las letras desaparecerán...");
 
     const spans = Array.from(inputOcult.querySelectorAll("span"));
     const half = Math.floor(spans.length / 2);
@@ -350,7 +351,7 @@ function activateThanosSnap() {
 
     new Audio('snap.mp3').play();
 
-    alert(gameTranslations.thanosMensajePlay || "💀 Thanos ha chasqueado los dedos... la mitad se desintegra y tu partida se acabó.");
+    alert("💀 Thanos ha chasqueado los dedos... la mitad se desintegra y tu partida se acabó.");
 
     // Efecto visual
     toRemove.forEach((span, i) => {
