@@ -9,6 +9,8 @@
         $nombreJugador = htmlspecialchars($_SESSION['playerName']);
         $puntuacion = $_SESSION['score'] ?? 0;
         $bonus = $_SESSION['bonus'] ?? 0;
+        $tiempo = $_SESSION['tiempo'] ?? 0.0;
+        $perma = $_SESSION['permadeathCheckbox'] ?? "No Activado";
 
         registrarLog($arch_act,"El jugador '$nombreJugador' terminó la partida con $puntuacion puntos y $bonus bonus.");
     }
@@ -29,6 +31,7 @@
     $_SESSION['lang'] = $lang;
 
     $t = loadLanguage($lang);
+    $permadeath = $_SESSION['permadeathCheckbox'] ?? "No Activado";
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -54,13 +57,14 @@
     <p><?= $t['puntuacionGameOver'] ?>: <?= htmlspecialchars($score) ?></p>
     <p><?= $t['bonusGameOver'] ?>: <?= htmlspecialchars($bonus) ?></p>
     <p><?= $t['tiempoGameOver'] ?>: <?= htmlspecialchars($tiempo) ?> s</p>
-
+    <p>Permadeath: <?= htmlspecialchars($permadeath) ?></p>
     <div class="botones-gameover">
     <form action="ranking.php" method="post">
         <input type="hidden" name="inputName" value="<?= htmlspecialchars($inputName) ?>">
         <input type="hidden" name="score" value="<?= htmlspecialchars($score) ?>">
         <input type="hidden" name="bonus" value="<?= htmlspecialchars($bonus) ?>">
         <input type="hidden" name="tiempo" value="<?= htmlspecialchars($tiempo) ?>">
+        <input type="hidden" name="perma" value="<?= htmlspecialchars($permadeath) ?>">
         <button class="botonEnviarRank-gameover" id="almacenarRankingButton" type="submit"><?= $t['almacenarGameOver'] ?></button>
     </form>
     <button class="botonVolverInicio-gameover" id="jugarDeNuevoButton" ><?= $t['jugarGameOver'] ?></button>

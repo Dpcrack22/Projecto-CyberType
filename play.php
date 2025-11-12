@@ -39,8 +39,10 @@ foreach ($lineas as $linea) {
 
 // Elegir frase aleatoria
 $fraseAleatoria = $frasesFiltradas[array_rand($frasesFiltradas)] ?? 'Error al cargar frase.';
-?>
 
+$difficulty = $_POST['difficulty'] ?? 'medio';
+$modoPermadeath = !empty($_POST['permadeathCheckbox']); // true si está marcado
+?>
 <!DOCTYPE html>
 <html lang="<?= $lang ?>">
 
@@ -54,6 +56,13 @@ $fraseAleatoria = $frasesFiltradas[array_rand($frasesFiltradas)] ?? 'Error al ca
 <body class="body-play">
     <header>
         <img src="./IMG/Marvel_Logo.png" alt="Marvel Logo" class="marvel-logo">
+        <div id="vidas">
+            <img src="./IMG/escudo.png" class="vida" alt="vida">
+            <img src="./IMG/escudo.png" class="vida" alt="vida">
+            <img src="./IMG/escudo.png" class="vida" alt="vida">
+            <img src="./IMG/escudo.png" class="vida" alt="vida">
+            <img src="./IMG/escudo.png" class="vida" alt="vida">
+        </div>
         <div id="tiempoTranscurrido"></div>
         <div class="user-info">
             <?php if (isset($_SESSION['playerName'])): ?>
@@ -81,8 +90,11 @@ $fraseAleatoria = $frasesFiltradas[array_rand($frasesFiltradas)] ?? 'Error al ca
             <div id="progressFill"></div>
         </div>
     </div>
-
-    <script src="./scriptPlay.js?<?php echo time(); ?>" defer></script>
+    <?php if ($modoPermadeath): ?>
+        <script src="./scriptPlayPerma.js?<?php echo time(); ?>" defer></script>
+    <?php else: ?>
+        <script src="./scriptPlay.js?<?php echo time(); ?>" defer></script>
+    <?php endif; ?>
     <script>
         const dificultadSeleccionada = "<?= $difficulty ?>";
         const langSeleccionado = "<?= $lang ?>";
@@ -120,7 +132,44 @@ $fraseAleatoria = $frasesFiltradas[array_rand($frasesFiltradas)] ?? 'Error al ca
             mostrarFrase();
         })
         .catch(error => console.error('Error al obtener la frase:', error));
+        const modoPermadeath = <?php echo $modoPermadeath ? 'true' : 'false'; ?>;
+        document.addEventListener('DOMContentLoaded', () => {
+            const dificultadSeleccionada = "<?php echo $difficulty; ?>";
+            console.log("🧠 Dificultad enviada al servidor:", dificultadSeleccionada);
+
+            fetch('get_sentence.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: "difficulty=" + encodeURIComponent(dificultadSeleccionada)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("✅ JSON recibido:", data);
+
+                const allFrases = data.map(item => item.frase || "");
+                const allImagenes = data.map(item => item.imagen || "");
+
+                let n;
+                if (dificultadSeleccionada === 'facil') n = 3;
+                else if (dificultadSeleccionada === 'medio') n = 4;
+                else if (dificultadSeleccionada === 'dificil') n = 5;
+                else n = 3;
+
+                frasesJuego = allFrases.slice(0, n);
+                imagenesJuego = allImagenes.slice(0, n);
+                totalFrases = frasesJuego.length;
+                indiceFraseActual = 0;
+
+                console.log("✅ Frases cargadas:", frasesJuego);
+                initProgressBar();
+                mostrarFrase();
+            })
+            .catch(error => {
+                console.error('Error al obtener la frase:', error);
+            });
+        });
     </script>
+
 
     <noscript>
         <div class="no-js-warning"><?= $t['noJSPlay'] ?></div>

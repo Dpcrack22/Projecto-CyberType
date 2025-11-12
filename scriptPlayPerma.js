@@ -6,7 +6,6 @@ const audioMiss = new Audio("Miss.wav");
 const audioGameover = new Audio("gameover.wav");
 const bonusDiv = document.getElementById("bonusMessage");
 const tiempoDiv = document.getElementById("tiempoTranscurrido");
-const vidasJuego = document.getElementById("vidas").style.display = "none";
 
 // Variables de juego modificables
 let puntuation = 0;
@@ -43,6 +42,16 @@ let thanosSnapTriggered = false;
 let totalFrases = 0;
 let progressLabel = null;
 let progressFill = null;
+
+// Modo Permadeath
+let vidas = 5;
+const vidasElem = document.querySelectorAll(".vida");
+
+function actualizarVidas() {
+    for (let i = 0; i < vidasElem.length; i++) {
+        vidasElem[i].style.display = i < vidas ? "inline" : "none";
+    }
+}
 
 
 function mostrarFrase() {
@@ -176,7 +185,7 @@ const intervalo = setInterval(() => {
     if (contador > 0) {
         contadorDiv.textContent = contador;
     } else if (contador === 0) {
-        contadorDiv.textContent = gameTranslations.yaPlay || "YA!";
+        contadorDiv.textContent = "YA!";
     } else {
         clearInterval(intervalo);
         document.getElementById("contador").style.display = "none";
@@ -259,7 +268,7 @@ function cargarSiguienteFrase() {
             if (contador > 0) {
                 contadorDiv.textContent = contador;
             } else if (contador === 0) {
-                contadorDiv.textContent = gameTranslations.yaPlay || "YA!";
+                contadorDiv.textContent = "YA!";
             } else {
                 clearInterval(intervalo);
                 document.getElementById("contador").style.display = "none";
@@ -286,7 +295,7 @@ function verificarEscritura(tecla) {
         audioRight.play().catch(() => {});
         spans[posicionActual].classList.add("correcta");
         spans[posicionActual].classList.remove("incorrecta");
-        puntuation += 10;
+        puntuation += 25;
         easterEgg(true);
         console.log(tecla);
         // Registrar la tecla pulsada con información sobre acento y la tecla esperada
@@ -297,10 +306,31 @@ function verificarEscritura(tecla) {
         audioMiss.play().catch(() => {});
         spans[posicionActual].classList.add("incorrecta");
         spans[posicionActual].classList.remove("correcta");
-        puntuation -= 5;
+        puntuation -= 10;
         easterEgg(false);
         // Registrar la tecla pulsada (incorrecta)
         enviarLogKeypress(tecla, letraEsperada, false);
+        totalErrores++;
+        vidas--;
+        actualizarVidas();
+
+        if (totalErrores === 5) {
+            const tiempoFinal = performance.now();
+            const tiempoTotal = ((tiempoFinal - tiempoInicio) / 1000).toFixed(2); // Tiempo completado con decimales
+            if (Math.random() < 0.1 ) { // 1% de probabilidad
+                thanosSnapTriggered = true;
+                activateThanosSnap();
+                setTimeout(() => {
+                    endGame(puntuation, tiempoTotal);
+                }, 4000);
+                return;
+            }
+            clearInterval(intervalTiempo);
+            enviarLogTeclas(fraseAleatoria, fraseAleatoria, tiempoTranscurrido);
+            endGame(puntuation, tiempoTotal);
+            return;
+        }
+
     }
 
     posicionActual++;
@@ -312,7 +342,7 @@ function verificarEscritura(tecla) {
 };
 
 function activateThanosSnap() {
-    console.log(gameTranslations.thanosActivarPlay || "💥 Modo Thanos activado: la mitad de las letras desaparecerán...");
+    console.log("💥 Modo Thanos activado: la mitad de las letras desaparecerán...");
 
     const spans = Array.from(inputOcult.querySelectorAll("span"));
     const half = Math.floor(spans.length / 2);
@@ -321,7 +351,7 @@ function activateThanosSnap() {
 
     new Audio('snap.mp3').play();
 
-    alert(gameTranslations.thanosMensajePlay || "💀 Thanos ha chasqueado los dedos... la mitad se desintegra y tu partida se acabó.");
+    alert("💀 Thanos ha chasqueado los dedos... la mitad se desintegra y tu partida se acabó.");
 
     // Efecto visual
     toRemove.forEach((span, i) => {
@@ -379,6 +409,7 @@ function endGame(score, tiempo) {
         body: "score=" + encodeURIComponent(score)
         + "&bonus=" + encodeURIComponent(bonus)
         + "&tiempo=" + encodeURIComponent(tiempo)
+        + "&permadeath=" + (modoPermadeath ? "Activado" : "No Activado")
     })
     .then(response => response.text())
     .then(data => {

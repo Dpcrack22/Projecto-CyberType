@@ -7,6 +7,12 @@
         $_SESSION['playerName'] = htmlspecialchars($_POST['playerName']);
     }
 
+    if (isset($_POST['permadeath'])) {
+        $_SESSION['permadeathCheckbox'] = htmlspecialchars($_POST['permadeath']);
+    } else {
+        $_SESSION['permadeathCheckbox'] = "No Activado";
+    }
+
     if (isset($_POST['score'])) {
         $_SESSION['score'] = intval($_POST['score']);
     }

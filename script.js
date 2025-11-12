@@ -21,6 +21,8 @@ document.addEventListener("keydown", (event) => {
 startGameButton.addEventListener('click', () => {
     const inputNameValue = document.getElementById("inputName").value;
     const selectDifficultyValue = document.getElementById("selectDifficulty").value;
+    const permadeathCheckbox = document.getElementById("checkbox");
+    const permadeathValue = permadeathCheckbox.checked ? 1 : 0;
 
     if (inputNameValue.trim() === "") {
         infoText.style.color = "red";
@@ -46,6 +48,13 @@ startGameButton.addEventListener('click', () => {
         difficultyInput.name = "difficulty";
         difficultyInput.value = selectDifficultyValue;
         form.appendChild(difficultyInput);
+
+        // Crear input hidden para si hay permadeath o no
+        const permaInput = document.createElement("input");
+        permaInput.type = "hidden";
+        permaInput.name = "permadeathCheckbox";
+        permaInput.value = permadeathValue;
+        form.appendChild(permaInput);
 
         // Añadir el formulario al body y enviarlo
         document.body.appendChild(form);

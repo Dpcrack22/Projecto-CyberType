@@ -76,6 +76,10 @@
                 <option value="medio"><?= $t['option2Index'] ?></option>
                 <option value="dificil"><?= $t['option3Index'] ?></option>
             </select>
+            <label>
+                <input type="checkbox" id="checkbox" value="1">
+                Modo Permadeath
+            </label>
             <br>
             <button type="button" id="startGameButton"><?= $t['botonIndex'] ?></button>
             <noscript>

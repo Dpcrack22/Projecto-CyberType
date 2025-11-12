@@ -75,3 +75,11 @@ Bili | 6310 | 23.58
 pACO | -7165 | 14.77
 Ñaco | -1905 | 35.73Paco | -3940 | 11.43
 Paco | -6825 | 6.03
+Bili | 6045 | 22.56 | No Activado 
+Bili | 8215 | 25.8 | No Activado 
+Bili | 7535 | 26.83 | No Activado 
+Bili | 295 | 3.1 |  
+Bili | 2235 | 12.06 |  
+Bili | -325 | 0.77 | No Activado
+Bili | 1175 | 9.15 | Activado
+Bili | 23210 | 62.92 | No Activado

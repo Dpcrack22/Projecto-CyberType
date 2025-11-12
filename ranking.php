@@ -4,7 +4,7 @@
 
     require_once(__DIR__ . "/admin/log_function.php");
     $arch_act = "ranking.php";
-    $archivo = "./ranking.txt";
+    $archivo = __DIR__ . "/ranking.txt";
 
     // Cargar idioma
     include __DIR__ . '/lang/lang.php';
@@ -17,22 +17,25 @@
         $playerName = $_SESSION['playerName'];
         $score = $_SESSION['score'];
         $time = $_SESSION['tiempo'];
+    $playerName = $_POST['inputName'] ?? ($_SESSION['playerName'] ?? 'Invitado');
+    $score = $_POST['score'] ?? ($_SESSION['score'] ?? 0);
+    $time = $_POST['tiempo'] ?? ($_SESSION['tiempo'] ?? 0.0);
+    $perma = $_POST['perma'] ?? ($_SESSION['permadeathCheckbox'] ?? 'No Activado');
 
-        $registro = "$playerName | $score | $time" . PHP_EOL;
+    // --- GUARDAR SOLO SI EXISTEN DATOS DE PARTIDA ---
+    if (!empty($playerName) && isset($score) && isset($time)) {
+        $registro = "$playerName | $score | $time | $perma" . PHP_EOL;
         file_put_contents($archivo, $registro, FILE_APPEND | LOCK_EX);
-
         registrarLog($arch_act,"El jugador '$playerName' guardó su puntuación de $score puntos en el ranking.");
 
-        // Limpiamos variables de partida (no el nombre del jugador)
+        // Limpiar solo las variables de partida de la sesión, no el nombre del jugador
         unset($_SESSION['score']);
         unset($_SESSION['game_finished']);
         unset($_SESSION['bonus']);
         unset($_SESSION['tiempo']);
+        unset($_SESSION['permadeathCheckbox']);
     }
-
-    $playerName = $_SESSION['playerName'] ?? "Invitado";
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -106,6 +109,36 @@
         <?php if ($paginaActual > 1): ?>
             <a href="?pagina=<?= $paginaActual - 1 ?>&lang=<?= $lang ?>">&laquo; <?= $t['anterior'] ?? 'Anterior' ?></a>
         <?php endif; ?>
+    ?>
+        <table>
+            <tr>
+                <th>Posición</th>
+                <th>Nombre</th>
+                <th>Puntuación</th>
+                <th>Tiempo (s)</th>
+                <th>Permadeath</th>
+            </tr>
+            <?php
+            $posicion = $inicio + 1;
+            foreach ($jugadoresPagina as $linea) {
+                list($nombre, $puntuacion, $tiempo, $permadeath) = explode(" | ", $linea);
+                $resaltar = ($nombre === $playerName && (int)$puntuacion === (int)$score && (float)$tiempo === (float)$time && $permadeath === $perma) ? 'class="resaltar"' : '';
+                echo "<tr $resaltar>
+                        <td>$posicion</td>
+                        <td>$nombre</td>
+                        <td>$puntuacion</td>
+                        <td>$tiempo s</td>
+                        <td>$permadeath</td>
+                    </tr>";
+                $posicion++;
+            }
+            ?>
+        </table>
+        <!-- PAGINADOR -->
+        <div class="paginador">
+            <?php if ($paginaActual > 1): ?>
+                <a href="?pagina=<?= $paginaActual - 1 ?>">&laquo; Anterior</a>
+            <?php endif; ?>
 
         <?php for ($i = 1; $i <= $paginas; $i++): ?>
             <a href="?pagina=<?= $i ?>&lang=<?= $lang ?>" class="<?= ($i == $paginaActual) ? 'activo' : '' ?>">
