@@ -17,6 +17,10 @@ $archivoLogs = __DIR__ . '/logs.txt';
 $paginaActual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
 registrarLog("admin/logs.php", "El administrador '$usuario' accedió a los logs (página $paginaActual).");
 
+include __DIR__ . '/../lang/lang.php';
+$lang = $_SESSION['lang_admin'] ?? 'es';
+$t = loadLanguage($lang);
+
 $todosLogs = [];
 if (file_exists($archivoLogs)) {
     $lineas = file($archivoLogs, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
@@ -41,7 +45,7 @@ $logsPagina = array_slice($todosLogs, $inicio, $porPagina);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Logs</title>
+    <title><?= $t['tituloAdminLogs'] ?></title>
     <link rel="stylesheet" type="text/css" href="/styles.css?<?php echo time(); ?>" />
 </head>
 
@@ -51,14 +55,14 @@ $logsPagina = array_slice($todosLogs, $inicio, $porPagina);
         <div class="user-info">
             <?php
             if (isset($_SESSION['usuario'])) {
-                echo '<span class="admin-name">Administrador: ' . htmlspecialchars($_SESSION['usuario']) . '</span>';
-                echo '<a href="logout.php" class="logout-link-admin">Cerrar sesión</a>';
+                echo '<span class="admin-name">'. $t['administrador'] .': ' . htmlspecialchars($_SESSION['usuario']) . '</span>';
+                echo '<a href="logout.php" class="logout-link-admin">'. $t['cerrarSesion'] .'</a>';
             }
             ?>
         </div>
     </header>
 
-    <h1>Logs del sistema</h1>
+    <h1><?= $t['h1AdminLogs'] ?></h1>
 
     <table>
         <tr>
@@ -88,7 +92,7 @@ $logsPagina = array_slice($todosLogs, $inicio, $porPagina);
             <?php endforeach; ?>
         <?php else: ?>
             <tr>
-                <td colspan="5">No hay logs para mostrar.</td>
+                <td colspan="5"><?= $t['noLogsAdminLogs'] ?></td>
             </tr>
         <?php endif; ?>
     </table>
@@ -96,22 +100,22 @@ $logsPagina = array_slice($todosLogs, $inicio, $porPagina);
     <!-- PAGINADOR -->
     <div class="paginador">
         <?php if ($paginaActual > 1): ?>
-            <a href="?pagina=<?php echo $paginaActual - 1; ?>">&laquo; Anterior</a>
+            <a href="?pagina=<?php echo $paginaActual - 1; ?>&lang=<?= $lang ?>">&laquo; <?= $t['anterior'] ?? 'Anterior' ?></a>
         <?php endif; ?>
 
         <?php for ($i = 1; $i <= $paginas; $i++): ?>
-            <a href="?pagina=<?php echo $i; ?>" class="<?php echo ($i == $paginaActual) ? 'activo' : ''; ?>">
+            <a href="?pagina=<?php echo $i; ?>&lang=<?= $lang ?>" class="<?php echo ($i == $paginaActual) ? 'activo' : ''; ?>">
                 <?php echo $i; ?>
             </a>
         <?php endfor; ?>
 
         <?php if ($paginaActual < $paginas): ?>
-            <a href="?pagina=<?php echo $paginaActual + 1; ?>">Siguiente &raquo;</a>
+            <a href="?pagina=<?php echo $paginaActual + 1; ?>&lang=<?= $lang ?>"><?= $t['siguiente'] ?? 'Siguiente' ?> &raquo;</a>
         <?php endif; ?>
     </div>
 
     <br>
-    <button id="ButtonLogs"><a href="/admin/index.php"><u>V</u>olver al panel</a></button>
+    <button id="ButtonLogs"><a href="/admin/index.php"><?= $t['botonVolver'] ?></a></button>
     <script src="scriptListSentences.js"></script>
 
 

@@ -11,8 +11,10 @@
         exit;
     }
 
-    $archivo = '../sentences.txt';
-    $mensaje = '';
+$lang = $_SESSION['lang_admin'] ?? 'es';
+
+$archivo = __DIR__ . '/../sentences' . $lang . '.txt';
+$mensaje = '';
 
     $usuario = $_SESSION['usuario'] ?? 'Desconocido';
 
@@ -73,4 +75,9 @@
     $_SESSION['mensaje'] = $mensaje;
     header("Location: list_sentences.php");
     exit;
+echo "<script>
+    alert(" . json_encode($mensaje) . ");
+    window.location.href = 'index.php';
+</script>";
+exit;
 ?>

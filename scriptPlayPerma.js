@@ -6,21 +6,15 @@ const audioMiss = new Audio("Miss.wav");
 const audioGameover = new Audio("gameover.wav");
 const bonusDiv = document.getElementById("bonusMessage");
 const tiempoDiv = document.getElementById("tiempoTranscurrido");
-const vidasJuego = document.getElementById("vidas").style.display = "none";
 
 // Variables de juego modificables
 let puntuation = 0;
 let consectutiveRightHits = 0;
 let consectutiveWrongHits = 0;
 let bonus = 0;
-let multiplicador = 1;
 
 // Contador de inicio
 let contador = 3;
-
-// Barra de progreso 3 segundos
-let comboTimer;
-let timeLeft = 3;
 
 // Frases y estado del juego
 let indiceFraseActual = 0;
@@ -49,6 +43,16 @@ let totalFrases = 0;
 let progressLabel = null;
 let progressFill = null;
 
+// Modo Permadeath
+let vidas = 5;
+const vidasElem = document.querySelectorAll(".vida");
+
+function actualizarVidas() {
+    for (let i = 0; i < vidasElem.length; i++) {
+        vidasElem[i].style.display = i < vidas ? "inline" : "none";
+    }
+}
+
 
 function mostrarFrase() {
     const imageContainer = document.getElementById("imageContainer");
@@ -73,13 +77,13 @@ function mostrarFrase() {
     }
 
     updateCurrentLetter();
-
+    startTime = performance.now();
     // Crear y enfocar un input oculto para recibir la composición de acentos
     createHiddenInput();
     hiddenInput.value = "";
     hiddenInput.focus();
     updateProgress(); // actualizar barra (cada vez que mostramos una frase)
-    
+
 }
 
 function createHiddenInput() {
@@ -197,7 +201,6 @@ const intervalo = setInterval(() => {
         }, 100);
 
         mostrarFrase();
-        startTime();
     }
 }, 1000);
 
@@ -253,7 +256,6 @@ function cargarSiguienteFrase() {
         endGame(puntuation, tiempoTotal);
         return;
     } else {
-        pauseTime();
         contador = 3;
         contadorDiv.style.display = "block";
         contadorDiv.textContent = contador;
@@ -275,7 +277,6 @@ function cargarSiguienteFrase() {
                 document.getElementById("titulo-play").style.display = "block";
 
                 mostrarFrase();
-                startTime();
             }
         }, 1000);
     }
@@ -294,8 +295,7 @@ function verificarEscritura(tecla) {
         audioRight.play().catch(() => {});
         spans[posicionActual].classList.add("correcta");
         spans[posicionActual].classList.remove("incorrecta");
-        puntuation += 10;
-        startTime(); // Reiniciar barra de progreso 3 segundos
+        puntuation += 25;
         easterEgg(true);
         console.log(tecla);
         // Registrar la tecla pulsada con información sobre acento y la tecla esperada
@@ -306,11 +306,30 @@ function verificarEscritura(tecla) {
         audioMiss.play().catch(() => {});
         spans[posicionActual].classList.add("incorrecta");
         spans[posicionActual].classList.remove("correcta");
-        puntuation -= 5;
-        startTime(); // Reiniciar barra de progreso 3 segundos
+        puntuation -= 10;
         easterEgg(false);
         // Registrar la tecla pulsada (incorrecta)
         enviarLogKeypress(tecla, letraEsperada, false);
+        totalErrores++;
+        vidas--;
+        actualizarVidas();
+
+        if (vidas === 0) {
+            const tiempoFinal = performance.now();
+            const tiempoTotal = ((tiempoFinal - tiempoInicio) / 1000).toFixed(2); // Tiempo completado con decimales
+            if (Math.random() < 0.1 ) { // 1% de probabilidad
+                thanosSnapTriggered = true;
+                activateThanosSnap();
+                setTimeout(() => {
+                    endGame(puntuation, tiempoTotal);
+                }, 4000);
+                return;
+            }
+            clearInterval(intervalTiempo);
+            enviarLogTeclas(fraseAleatoria, fraseAleatoria, tiempoTranscurrido);
+            endGame(puntuation, tiempoTotal);
+            return;
+        }
     }
 
     posicionActual++;
@@ -386,18 +405,17 @@ function endGame(score, tiempo) {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: "score=" + encodeURIComponent(score * multiplicador)
+        body: "score=" + encodeURIComponent(score)
         + "&bonus=" + encodeURIComponent(bonus)
         + "&tiempo=" + encodeURIComponent(tiempo)
-        + "&multiplicador=" + encodeURIComponent(multiplicador)
+        + "&permadeath=" + (modoPermadeath ? "Activado" : "No Activado")
     })
     .then(response => response.text())
     .then(data => {
-        if (data === "OK") {
-            // Redirigir una vez se haya establecido la sesión
+         if (data.trim() === "OK") {
             window.location.href = "gameover.php";
         } else {
-            console.error("Error al finalizar el juego en el servidor.");
+            console.error("Error al finalizar el juego en el servidor:", data);
         }
     })
     .catch(error => console.error("Error al comunicarse con el servidor:", error));
@@ -405,7 +423,7 @@ function endGame(score, tiempo) {
 
 
 function mostrarBonus() {
-    bonusDiv.textContent = "Bonus x" + multiplicador + "!";
+    bonusDiv.textContent = "BONUS!";
     bonusDiv.style.display = "block";
 
     setTimeout(() => {
@@ -423,18 +441,14 @@ function easterEgg(bool) {
             consectutiveRightHits = 0;
             puntuation += 200;
             bonus++;
-            multiplicador++;
             mostrarBonus();
         }
     } else {
         consectutiveRightHits = 0;
         consectutiveWrongHits++;
         puntuation -= 20;
-        if (consectutiveWrongHits >= 2 && multiplicador > 1) {
-            multiplicador--;
-            mostrarBonus();
-        }
         if (consectutiveWrongHits === 5) {
+            consectutiveWrongHits = 0;
             puntuation -= 200;
             bonus--;
         }
@@ -487,29 +501,4 @@ function updateProgress() {
     progressLabel.textContent = `Frase ${current} / ${totalFrases}`;
     const pct = totalFrases > 0 ? Math.round((current / totalFrases) * 100) : 0;
     progressFill.style.width = `${pct}%`;
-}
-
-
-// Funciones barra de progreso 3 segundos
-
-function startTime() {
-    clearInterval(comboTimer);
-    timeLeft = 3;
-    const bar = document.getElementById("tiempoRestanteFill");
-    bar.style.width = "100%";
-
-    comboTimer = setInterval(() => {
-        timeLeft -= 0.1;
-        const percent = Math.max(0, (timeLeft / 3) * 100);
-        bar.style.width = percent + "%";
-
-        if (timeLeft <= 0) {
-            clearInterval(comboTimer);
-            multiplicador = 1;
-        }
-    }, 100);
-}
-
-function pauseTime() {
-    clearInterval(comboTimer); 
 }
