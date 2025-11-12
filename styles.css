@@ -1316,6 +1316,8 @@ header .user-info {
     color: #4BB543;
     font-weight: bold;
     margin-bottom: 20px;
+    display: block;
+    padding: 10px 0;
 }
 
 /* ADMIN HEADER STYLES */

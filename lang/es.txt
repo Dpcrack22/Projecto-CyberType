@@ -103,6 +103,11 @@ botonEliminar=Eliminar
 botonVolver=Volver atrás
 noFrases=No se encontraron frases.
 
+mensajeEliminacionExito=La frase ha sido eliminada correctamente.
+mensajeEliminacionNoEncontrada=No se encontró la frase a eliminar.
+mensajeEliminacionArchivoNoEncontrado=No se encontró el archivo de frases.
+mensajeEliminacionParametrosInvalidos=Parámetros inválidos o incompletos.
+
 
 tituloAdminCreate=Añadir Frases - Admin
 h1Create=Añadir Frases

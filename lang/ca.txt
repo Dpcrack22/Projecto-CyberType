@@ -91,7 +91,12 @@ th2ListSentence=Frase
 th3ListSentence=Eliminació
 botonEliminar=Elimina
 botonVolver=Torna enrere
-noFrases=No s’han trobat frases.
+noFrases=No s'han trobat frases.
+
+mensajeEliminacionExito=La frase ha estat eliminada correctament.
+mensajeEliminacionNoEncontrada=No s'ha trobat la frase a eliminar.
+mensajeEliminacionArchivoNoEncontrado=No s'ha trobat l'arxiu de frases.
+mensajeEliminacionParametrosInvalidos=Paràmetres no vàlids o incomplets.
 
 
 tituloAdminCreate=Afegir Frases - Administrador

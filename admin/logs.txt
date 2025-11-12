@@ -307,3 +307,59 @@
 2025-11-12 | 19:45:04 | 127.0.0.1 | ranking.php | El jugador 'Bili' guardó su puntuación de -350 puntos en el ranking.
 2025-11-12 | 19:45:08 | 127.0.0.1 | ranking.php | El jugador 'Bili' guardó su puntuación de 0 puntos en el ranking.
 2025-11-12 | 19:45:16 | 127.0.0.1 | index.php | El jugador 'Bili' accedió al menú principal.
+2025-11-12 | 19:48:50 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-12 | 19:48:56 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2025-11-12 | 19:49:01 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2025-11-12 | 19:49:01 | 127.0.0.1 | admin/login.php | El administrador 'admin' inició sesión correctamente.
+2025-11-12 | 19:49:01 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-12 | 19:49:03 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-12 | 19:49:11 | 127.0.0.1 | admin/delete_sentence.php | El administrador 'admin' eliminó la frase 'La paciencia es una virtud señor Parker' de dificultad 'facil'.
+2025-11-12 | 19:49:11 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-12 | 19:49:14 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-12 | 19:49:15 | 127.0.0.1 | admin/create_sentence.php | El administrador 'admin' accedió a la página de creación de frases.
+2025-11-12 | 19:49:19 | 127.0.0.1 | admin/create_sentence.php | El administrador 'admin' accedió a la página de creación de frases.
+2025-11-12 | 19:49:19 | 127.0.0.1 | admin/create_sentence.php | El administrador 'admin' añadió la frase 'La paciencia es una virtud señor Parker' a dificultad 'facil'.
+2025-11-12 | 19:50:33 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-12 | 19:50:34 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-12 | 19:50:45 | 127.0.0.1 | admin/delete_sentence.php | El administrador 'admin' eliminó la frase 'La paciencia es una virtud señor Parker' de dificultad 'facil'.
+2025-11-12 | 19:50:45 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-12 | 19:50:47 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-12 | 19:50:49 | 127.0.0.1 | admin/create_sentence.php | El administrador 'admin' accedió a la página de creación de frases.
+2025-11-12 | 19:50:51 | 127.0.0.1 | admin/create_sentence.php | El administrador 'admin' accedió a la página de creación de frases.
+2025-11-12 | 19:50:51 | 127.0.0.1 | admin/create_sentence.php | El administrador 'admin' añadió la frase 'La paciencia es una virtud señor Parker' a dificultad 'facil'.
+2025-11-12 | 19:51:08 | 127.0.0.1 | admin/create_sentence.php | El administrador 'admin' accedió a la página de creación de frases.
+2025-11-12 | 19:51:08 | 127.0.0.1 | admin/create_sentence.php | El administrador 'admin' intentó añadir una frase duplicada: 'La paciencia es una virtud señor Parker' (dificultad 'facil').
+2025-11-12 | 19:51:11 | 127.0.0.1 | admin/create_sentence.php | El administrador 'admin' accedió a la página de creación de frases.
+2025-11-12 | 19:51:13 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-12 | 19:51:14 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-12 | 19:51:15 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-12 | 19:52:06 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-12 | 19:52:07 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-12 | 19:52:07 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-12 | 19:52:09 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-12 | 19:52:20 | 127.0.0.1 | admin/delete_sentence.php | El administrador 'admin' eliminó la frase 'La paciencia es una virtud señor Parker' de dificultad 'facil'.
+2025-11-12 | 19:52:20 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-12 | 19:52:59 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-12 | 19:53:02 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-12 | 19:53:03 | 127.0.0.1 | admin/create_sentence.php | El administrador 'admin' accedió a la página de creación de frases.
+2025-11-12 | 19:53:05 | 127.0.0.1 | admin/create_sentence.php | El administrador 'admin' accedió a la página de creación de frases.
+2025-11-12 | 19:53:05 | 127.0.0.1 | admin/create_sentence.php | El administrador 'admin' añadió la frase 'La paciencia es una virtud señor Parker' a dificultad 'facil'.
+2025-11-12 | 19:53:07 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-12 | 19:53:09 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-12 | 19:53:11 | 127.0.0.1 | admin/delete_sentence.php | El administrador 'admin' eliminó la frase 'La paciencia es una virtud señor Parker' de dificultad 'facil'.
+2025-11-12 | 19:53:11 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-12 | 19:53:37 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-12 | 19:53:39 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-12 | 19:53:41 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-12 | 19:53:42 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-12 | 19:53:43 | 127.0.0.1 | admin/create_sentence.php | El administrador 'admin' accedió a la página de creación de frases.
+2025-11-12 | 19:54:06 | 127.0.0.1 | admin/create_sentence.php | El administrador 'admin' accedió a la página de creación de frases.
+2025-11-12 | 19:54:06 | 127.0.0.1 | admin/create_sentence.php | El administrador 'admin' añadió la frase 'La paciencia es una virtud señor Parker' a dificultad 'facil'.
+2025-11-12 | 19:54:08 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-12 | 19:54:09 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-12 | 19:54:11 | 127.0.0.1 | admin/delete_sentence.php | El administrador 'admin' eliminó la frase 'La paciencia es una virtud señor Parker' de dificultad 'facil'.
+2025-11-12 | 19:54:11 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-12 | 19:54:15 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-12 | 19:54:17 | 127.0.0.1 | admin/create_sentence.php | El administrador 'admin' accedió a la página de creación de frases.
+2025-11-12 | 19:54:19 | 127.0.0.1 | admin/create_sentence.php | El administrador 'admin' accedió a la página de creación de frases.
+2025-11-12 | 19:54:19 | 127.0.0.1 | admin/create_sentence.php | El administrador 'admin' añadió la frase 'La paciencia es una virtud señor Parker' a dificultad 'facil'.

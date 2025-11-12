@@ -104,6 +104,11 @@ botonEliminar=Delete
 botonVolver=Go Back
 noFrases=No phrases found.
 
+mensajeEliminacionExito=The phrase has been deleted successfully.
+mensajeEliminacionNoEncontrada=The phrase to delete was not found.
+mensajeEliminacionArchivoNoEncontrado=The phrases file was not found.
+mensajeEliminacionParametrosInvalidos=Invalid or incomplete parameters.
+
 
 tituloAdminCreate=Add Phrases - Admin
 h1Create=Add Phrases

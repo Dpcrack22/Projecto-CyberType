@@ -11,12 +11,16 @@
         exit;
     }
 
-$lang = $_SESSION['lang_admin'] ?? 'es';
+    // Cargar idioma y traducciones
+    include __DIR__ . '/../lang/lang.php';
+    $lang = $_SESSION['lang_admin'] ?? 'es';
+    $_SESSION['lang_admin'] = $lang;  // Asegurar que el idioma se guarda en sesión
+    $t = loadLanguage($lang);
 
-$archivo = __DIR__ . '/../sentences' . $lang . '.txt';
-$mensaje = '';
-
+    $archivo = __DIR__ . '/../sentences' . $lang . '.txt';
+    $mensaje = '';
     $usuario = $_SESSION['usuario'] ?? 'Desconocido';
+    $fraseEncontrada = false;
 
     if (isset($_POST['dificultad']) && isset($_POST['frase'])) {
         $dificultad = $_POST['dificultad'];
@@ -56,28 +60,23 @@ $mensaje = '';
 
             if ($fraseEncontrada) {
                 file_put_contents($archivo, implode(PHP_EOL, $nuevasLineas) . PHP_EOL, LOCK_EX);
-                $mensaje = "La frase: “" . $soloFrase . "” ha sido eliminada correctamente.";
+                $mensaje = $t['mensajeEliminacionExito'];
                 registrarLog("admin/delete_sentence.php", "El administrador '$usuario' eliminó la frase '$soloFrase' de dificultad '$dificultad'.");
             } else {
-                $mensaje = "No se encontró la frase a eliminar.";
+                $mensaje = $t['mensajeEliminacionNoEncontrada'];
                 registrarLog("admin/delete_sentence.php", "El administrador '$usuario' intentó eliminar una frase inexistente: '$fraseAEliminar' (dificultad '$dificultad').");
-
             }
         } else {
-            $mensaje = "No se encontró el archivo de frases.";
+            $mensaje = $t['mensajeEliminacionArchivoNoEncontrado'];
             registrarLog("admin/delete_sentence.php", "El administrador '$usuario' intentó eliminar una frase pero no existe el archivo de frases.");
         }
     } else {
-        $mensaje = "Parámetros inválidos o incompletos.";
+        $mensaje = $t['mensajeEliminacionParametrosInvalidos'];
         registrarLog("admin/delete_sentence.php", "El administrador '$usuario' envió parámetros inválidos en la eliminación de frases.");
-
     }
+    
     $_SESSION['mensaje'] = $mensaje;
+    $_SESSION['tipo_mensaje'] = $fraseEncontrada ? 'exito' : 'error';
     header("Location: list_sentences.php");
     exit;
-echo "<script>
-    alert(" . json_encode($mensaje) . ");
-    window.location.href = 'index.php';
-</script>";
-exit;
 ?>

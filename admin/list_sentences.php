@@ -51,16 +51,19 @@ registrarLog("admin/list_sentences.php", "El administrador '$usuario' accedió a
         </div>
     </header>
 
+    
+
+    <h1><?= $t['h1ListSentence'] ?></h1>
+
     <div class="mensaje-alerta">
         <?php
         if (isset($_SESSION['mensaje'])) {
-            echo nl2br(htmlspecialchars($_SESSION['mensaje']));
+            echo htmlspecialchars($_SESSION['mensaje']);
             unset($_SESSION['mensaje']);
+            unset($_SESSION['tipo_mensaje']);
         }
         ?>
     </div>
-
-    <h1><?= $t['h1ListSentence'] ?></h1>
 
     <?php
     $todasFrases = [];
