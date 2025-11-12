@@ -98,3 +98,5 @@ Paco | 0 | 0 | No Activado
 Paco | 0 | 0 | No Activado
 Paco | 0 | 0 | No Activado
 Paco | 0 | 0 | No Activado
+Paco | -920 | 14.34 | No Activado
+Paco | 3930 | 27.28 | No Activado
