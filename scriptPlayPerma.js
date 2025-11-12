@@ -12,6 +12,7 @@ let puntuation = 0;
 let consectutiveRightHits = 0;
 let consectutiveWrongHits = 0;
 let bonus = 0;
+let multiplicador = 1;
 
 // Contador de inicio
 let contador = 3;
@@ -37,11 +38,16 @@ let fraseJuego = "";
 let totalLetrasEscritas = 0;
 let totalErrores = 0;
 let thanosSnapTriggered = false;
+let thanosActive = false;
 
 // Barra de progreso
 let totalFrases = 0;
 let progressLabel = null;
 let progressFill = null;
+
+// Barra de progreso 3 segundos
+let comboTimer;
+let timeLeft = 3;
 
 // Modo Permadeath
 let vidas = 5;
@@ -77,7 +83,7 @@ function mostrarFrase() {
     }
 
     updateCurrentLetter();
-    startTime = performance.now();
+
     // Crear y enfocar un input oculto para recibir la composición de acentos
     createHiddenInput();
     hiddenInput.value = "";
@@ -201,6 +207,7 @@ const intervalo = setInterval(() => {
         }, 100);
 
         mostrarFrase();
+        startTime();
     }
 }, 1000);
 
@@ -256,6 +263,7 @@ function cargarSiguienteFrase() {
         endGame(puntuation, tiempoTotal);
         return;
     } else {
+        pauseTime();
         contador = 3;
         contadorDiv.style.display = "block";
         contadorDiv.textContent = contador;
@@ -277,6 +285,7 @@ function cargarSiguienteFrase() {
                 document.getElementById("titulo-play").style.display = "block";
 
                 mostrarFrase();
+                startTime();
             }
         }, 1000);
     }
@@ -296,6 +305,7 @@ function verificarEscritura(tecla) {
         spans[posicionActual].classList.add("correcta");
         spans[posicionActual].classList.remove("incorrecta");
         puntuation += 25;
+        startTime();
         easterEgg(true);
         console.log(tecla);
         // Registrar la tecla pulsada con información sobre acento y la tecla esperada
@@ -307,6 +317,7 @@ function verificarEscritura(tecla) {
         spans[posicionActual].classList.add("incorrecta");
         spans[posicionActual].classList.remove("correcta");
         puntuation -= 10;
+        startTime();
         easterEgg(false);
         // Registrar la tecla pulsada (incorrecta)
         enviarLogKeypress(tecla, letraEsperada, false);
@@ -352,6 +363,9 @@ function activateThanosSnap() {
 
     alert(gameTranslations.thanosMensajePlay || "💀 Thanos ha chasqueado los dedos... la mitad se desintegra y tu partida se acabó.");
 
+    thanosActive = true;
+    pauseTime();
+    
     // Efecto visual
     toRemove.forEach((span, i) => {
         setTimeout(() => {
@@ -405,10 +419,11 @@ function endGame(score, tiempo) {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: "score=" + encodeURIComponent(score)
+        body: "score=" + encodeURIComponent(score * multiplicador)
         + "&bonus=" + encodeURIComponent(bonus)
         + "&tiempo=" + encodeURIComponent(tiempo)
-        + "&permadeath=" + (modoPermadeath ? "Activado" : "No Activado")
+        + "&multiplicador=" + encodeURIComponent(multiplicador)
+        + "&permadeath=" + (modoPermadeath ? "1" : "0")
     })
     .then(response => response.text())
     .then(data => {
@@ -423,7 +438,7 @@ function endGame(score, tiempo) {
 
 
 function mostrarBonus() {
-    bonusDiv.textContent = "BONUS!";
+    bonusDiv.textContent = "Bonus x" + multiplicador + "!";
     bonusDiv.style.display = "block";
 
     setTimeout(() => {
@@ -441,14 +456,18 @@ function easterEgg(bool) {
             consectutiveRightHits = 0;
             puntuation += 200;
             bonus++;
+            multiplicador++;
             mostrarBonus();
         }
     } else {
         consectutiveRightHits = 0;
         consectutiveWrongHits++;
         puntuation -= 20;
+        if (consectutiveWrongHits >= 2 && multiplicador > 1) {
+            multiplicador--;
+            mostrarBonus();
+        }
         if (consectutiveWrongHits === 5) {
-            consectutiveWrongHits = 0;
             puntuation -= 200;
             bonus--;
         }
@@ -501,4 +520,31 @@ function updateProgress() {
     progressLabel.textContent = `Frase ${current} / ${totalFrases}`;
     const pct = totalFrases > 0 ? Math.round((current / totalFrases) * 100) : 0;
     progressFill.style.width = `${pct}%`;
+}
+
+// Funciones barra de progreso 3 segundos
+
+function startTime() {
+    // If Thanos mode is active, do not (re)start the combo/progress timer
+    if (thanosActive) return;
+
+    clearInterval(comboTimer);
+    timeLeft = 3;
+    const bar = document.getElementById("tiempoRestanteFill");
+    bar.style.width = "100%";
+
+    comboTimer = setInterval(() => {
+        timeLeft -= 0.1;
+        const percent = Math.max(0, (timeLeft / 3) * 100);
+        bar.style.width = percent + "%";
+
+        if (timeLeft <= 0) {
+            clearInterval(comboTimer);
+            multiplicador = 1;
+        }
+    }, 100);
+}
+
+function pauseTime() {
+    clearInterval(comboTimer); 
 }

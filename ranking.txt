@@ -94,3 +94,5 @@ Gamora2 | 4060 | 22.55 | Activado
 Drax2 | 3820 | 21.20 | No Activado
 Nebula2 | 4220 | 23.50 | No Activado
 Vision2 | 4380 | 24.30 | No Activado
+Bili | -350 | 1.01 | 1
+Bili | 0 | 0 | 0

@@ -20,7 +20,7 @@
     }
 
     $difficulty = $_POST['difficulty'] ?? 'medio';
-    $modoPermadeath = !empty($_POST['permadeathCheckbox']); // true si está marcado
+    $modoPermadeath = !empty($_POST['permadeathCheckbox']) && $_POST['permadeathCheckbox'] != '0'; // true si está marcado
 ?>
 <!DOCTYPE html>
 <html lang="<?= $lang ?>">
@@ -69,11 +69,12 @@
             <div id="progressFill"></div>
         </div>
     </div>
-    <script>const modoPermadeath = <?php echo $modoPermadeath ? 'true' : 'false'; ?>;</script>
+    
     <div id="barraProgresoTiempo">
         <div id="tiempoRestanteFill"></div>
     </div>
 
+    <script>const modoPermadeath = <?php echo $modoPermadeath ? 'true' : 'false'; ?>;</script>
     <script>
         const gameTranslations = {
                 yaPlay: "<?= $t['yaPlay'] ?>",
