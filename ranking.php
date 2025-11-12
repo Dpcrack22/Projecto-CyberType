@@ -119,10 +119,10 @@
         ?>
     </table>
     
-   <!-- PAGINADOR -->
+    <!-- PAGINADOR -->
     <div class="paginador">
         <?php if ($paginaActual > 1): ?>
-            <a href="?pagina=<?= $paginaActual - 1 ?>&lang=<?= $lang ?>">&laquo; <?= $t['anterior'] ?? 'Anterior' ?></a>
+            <a href="?pagina=<?= $paginaActual - 1 ?>&lang=<?= $lang ?>">&laquo; <?= $t['anterior'] ?></a>
         <?php endif; ?>
 
         <?php for ($i = 1; $i <= $paginas; $i++): ?>
@@ -132,7 +132,7 @@
         <?php endfor; ?>
 
         <?php if ($paginaActual < $paginas): ?>
-            <a href="?pagina=<?= $paginaActual + 1 ?>&lang=<?= $lang ?>"><?= $t['siguiente'] ?? 'Siguiente' ?> &raquo;</a>
+            <a href="?pagina=<?= $paginaActual + 1 ?>&lang=<?= $lang ?>"><?= $t['siguiente'] ?> &raquo;</a>
         <?php endif; ?>
     </div>
     <?php

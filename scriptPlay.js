@@ -30,6 +30,7 @@ let fraseAleatoria = "";
 // Input oculto para capturar composition/input (acentos) correctamente
 let hiddenInput = null;
 let isComposing = false;
+let skipNextInput = false;
 
 let tiempoInicio = 0;
 let tiempoTranscurrido = 0;
@@ -113,11 +114,17 @@ function createHiddenInput() {
             }
             hiddenInput.value = '';
         }
+        // Skip the input event that fires immediately after compositionend to prevent double processing
+        skipNextInput = true;
     });
 
     // Input normal (no composición)
     hiddenInput.addEventListener('input', (e) => {
         if (isComposing) return; // compositionend ya lo maneja
+        if (skipNextInput) {
+            skipNextInput = false;
+            return;
+        }
         if (e.data) {
             for (let ch of e.data) {
                 if (ch.length === 1) verificarEscritura(ch);

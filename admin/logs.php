@@ -100,7 +100,7 @@ $logsPagina = array_slice($todosLogs, $inicio, $porPagina);
     <!-- PAGINADOR -->
     <div class="paginador">
         <?php if ($paginaActual > 1): ?>
-            <a href="?pagina=<?php echo $paginaActual - 1; ?>&lang=<?= $lang ?>">&laquo; <?= $t['anterior'] ?? 'Anterior' ?></a>
+            <a href="?pagina=<?php echo $paginaActual - 1; ?>&lang=<?= $lang ?>">&laquo; <?= $t['anterior'] ?></a>
         <?php endif; ?>
 
         <?php for ($i = 1; $i <= $paginas; $i++): ?>
@@ -110,7 +110,7 @@ $logsPagina = array_slice($todosLogs, $inicio, $porPagina);
         <?php endfor; ?>
 
         <?php if ($paginaActual < $paginas): ?>
-            <a href="?pagina=<?php echo $paginaActual + 1; ?>&lang=<?= $lang ?>"><?= $t['siguiente'] ?? 'Siguiente' ?> &raquo;</a>
+            <a href="?pagina=<?php echo $paginaActual + 1; ?>&lang=<?= $lang ?>"><?= $t['siguiente'] ?> &raquo;</a>
         <?php endif; ?>
     </div>
 
