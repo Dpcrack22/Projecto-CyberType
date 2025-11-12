@@ -1,17 +1,30 @@
+<?php
+    session_name("jugadorSession");
+    session_start();
+
+    include __DIR__ . '/lang/lang.php';
+
+    $lang = isset($_GET['lang']) ? $_GET['lang'] : ($_SESSION['lang'] ?? 'es');
+    $_SESSION['lang'] = $lang;
+
+    $t = loadLanguage($lang);
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Error 404 - Page not found</title>
+    <title><?= $t['tituloError404'] ?></title>
     <link rel="stylesheet" type="text/css" href="/styles.css?<?php echo time(); ?>" />
 </head>
 <body class="body-404">
     <div>
     <div class="emoji-404">🚧</div>
-        <h1>¡ERROR 404!</h1>
-        <p>Parece que has tomado el camino equivocado hacia el Multiverso. Intenta volver al inicio.</p>
-        <button id="Button404"><u>V</u>olver al Centro de Mando</button>
+        <h1><?= $t['h1Error404'] ?></h1>
+        <p><?= $t['parrafoError404'] ?></p>
+        <button id="Button404"><?= $t['botonError404'] ?></button>
     </div>
     <div class="image-div-404">
     <img src="/IMG/Marvel404.png" alt="Iron Man 404" class="image-404">

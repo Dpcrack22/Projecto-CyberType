@@ -1,5 +1,4 @@
 /* INDEX PAGE STYLES */
-
 .body-index {
     background-color: #141414; 
     color: #FFFFFF; 
@@ -86,6 +85,94 @@
     background-color: #A50000;
 }
 
+/* Checkbox Permadeath personalizado */
+.body-index section label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: white;
+    user-select: none;
+    margin-top: 15px;
+}
+
+/* Ocultamos el checkbox nativo */
+.body-index section label input[type="checkbox"] {
+    display: none;
+}
+
+/* Creamos el toggle visual */
+.body-index section label::before {
+    content: '';
+    display: inline-block;
+    width: 50px;
+    height: 25px;
+    background-color: #363636; /* fondo gris oscuro */
+    border-radius: 15px;
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+/* El círculo interno */
+.body-index section label::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 21px;
+    height: 21px;
+    background-color: #ED1D24; /* rojo Marvel */
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+/* Compatibilidad moderna: toggle cuando está activo */
+.body-index section label:has(input[type="checkbox"]:checked)::before {
+    background-color: #ED1D24; /* fondo rojo */
+}
+
+.body-index section label:has(input[type="checkbox"]:checked)::after {
+    transform: translateX(25px); /* movemos el círculo a la derecha */
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 8px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #555;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 220px;
+    background-color: #333;
+    color: #fff;
+    text-align: left;
+    padding: 8px;
+    border-radius: 4px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Posición arriba del ícono */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
 .hero-container {
     display: flex;
     align-items: center;
@@ -115,9 +202,6 @@
     max-width: 500px;
 }
 
-/* EEstilos para el header con la imagen, y la sesión iniciada */
-/* El header se reutiliza en todas las páginas después de iniciar sesión */
-/* Debe quedar arriba como si fuera una cabecera fija */
 header {
     background-color: #1A1A1A;
     padding: 10px 20px;
@@ -162,8 +246,9 @@ header .user-info {
     background-color: #d16b2a;
 }
 
-/* PLAY PAGE STYLES */
 
+
+/* PLAY PAGE STYLES */
 .body-play {
     background-color: #141414; 
     color: #FFFFFF; 
@@ -233,6 +318,59 @@ header .user-info {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     box-sizing: border-box;
 }
+.body-play #tiempoTranscurrido {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    background-color: #1A1A1A;
+    color: #FFFFFF;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 1.2em;
+    box-shadow: 0 0 8px rgba(50, 104, 189, 0.6);
+    z-index: 1001;
+    display: none;
+}
+
+
+.body-play header #vidas {
+    display: flex;
+    justify-content: center;   
+    align-items: center;       
+    gap: 10px;                 
+    margin: 0;                 
+    padding: 0 10px;           
+}
+
+.body-play header .vida {
+    width: 45px;              
+    height: 45px;              
+    object-fit: contain;       
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background-color: transparent;
+    cursor: default;           
+}
+
+.body-play header .vida:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(237, 29, 36, 0.6);
+}
+
+#imageContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+#fraseImg {
+    max-width: 350px;
+    max-height: 200px;
+    object-fit: contain;
+    border-radius: 10px;
+    border: 2px solid #ffffff60; 
+    box-shadow: 0 0 12px rgba(255,255,255,0.4);
+}
 
 .correcta {
     color: #518cca;
@@ -274,8 +412,27 @@ header .user-info {
     box-shadow: 0 0 20px rgba(237, 29, 36, 0.6);
 }
 
-/* 404 PAGE STYLES */
+#barraProgresoTiempo {
+    position:fixed;
+    bottom: 30px;
+    width: 250px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 40px auto;
+    box-shadow: 0 0 6px rgba(0,0,0,0.3);
+    z-index: 9999;
+}
 
+#tiempoRestanteFill {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, limegreen, yellow);
+    transition: width 0.1s linear;
+}
+
+/* 404 PAGE STYLES */
 .body-404{
     display: flex;    
     height: 700px;
@@ -339,7 +496,6 @@ header .user-info {
 }
 
 /* 403 PAGE STYLES */
-
 .body-403{
     display: flex;    
     height: 700px;
@@ -402,7 +558,6 @@ header .user-info {
 }
 
 /* GameOver PAGE STYLES */
-
 .body-gameover {
     background-color: #141414; 
     color: #FFFFFF; 
@@ -480,8 +635,49 @@ header .user-info {
     color: #FFFFFF;
 }
 
-/* RANKING PAGE STYLES */
+.imagenes-gameover {
+  position: absolute;
+  bottom: 100px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  gap: 10px; 
+  justify-content: space-around;
+  align-items: flex-end;
+  margin: 0;
+}
 
+.foto {
+  width: 150px;
+  height: auto;
+  opacity: 1;
+  animation: parpadeo 3s infinite;
+}
+
+.foto:nth-child(1) {
+  animation-delay: 0s;
+}
+.foto:nth-child(2) {
+  animation-delay: 1s;
+}
+.foto:nth-child(3) {
+  animation-delay: 2s;
+}
+
+@keyframes parpadeo {
+  0%, 33.33% {
+    opacity: 1; 
+  }
+  50%, 83.33% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+/* RANKING PAGE STYLES */
 .body-ranking {
     background-color: #141414;
     color: #FFFFFF;
@@ -579,7 +775,6 @@ header .user-info {
 }
 
 /* ADMIN STYLES */
-
 /* PARTE ADMIN INDEX.PHP */
 .body-adminIndex {
     background-color: #141414;
@@ -614,7 +809,9 @@ header .user-info {
 
 .body-adminIndex .botonLogout-admin,
 .body-adminIndex .botonListar-admin,
-.body-adminIndex .botonAgregar-admin  {
+.body-adminIndex .botonAgregar-admin,
+.body-adminIndex .botonLogs-admin,
+.body-adminIndex .botonAgregarImagen-admin {
     display: inline-block;
     text-align: center;
     justify-content: center;
@@ -627,6 +824,21 @@ header .user-info {
     background-color: transparent;
     padding: 0;
 }
+
+
+.botonLogs-admin a {
+    display: inline-block;
+    color: #FFFFFF;
+    padding: 12px 35px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    background-color: #EDB800; 
+}
+
 
 .botonLogout-admin a {
     display: inline-block;
@@ -667,6 +879,23 @@ header .user-info {
     cursor: pointer;
 }
 
+.botonAgregarImagen-admin a {
+    display: inline-block;
+    background-color: #24513c;
+    color: #FFFFFF;
+    padding: 12px 35px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.botonAgregarImagen-admin a:hover {
+    background-color: #1b3d2e;
+}
+
 .botonLogout-admin a:hover {
     background-color: #A50000;
 }
@@ -678,8 +907,11 @@ header .user-info {
 .botonAgregar-admin a:hover {
     background-color: #434a7d;
 }
+.botonLogs-admin a:hover {
+    background-color: #b88600;
+}
 
-/* PARTE ADMIN INDEX.PHP */
+/* PARTE ADMIN LOGIN.PHP */
 .body-loginAdmin {
     background-color: #141414;
     color: #FFFFFF;
@@ -756,6 +988,7 @@ header .user-info {
     text-align: center;
 }
 
+
 /* PARTE ADMIN CREATE_SENTENCE.PHP */
 .body-createSentence {
     background-color: #141414;
@@ -786,68 +1019,6 @@ header .user-info {
     text-transform: uppercase;
     letter-spacing: 6px;
 }
-
-.body-listarFrases table {
-    width: 70%;
-    border-collapse: collapse;
-    background-color: #242424;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(237, 29, 36, 0.4);
-    margin-bottom: 30px;
-}
-
-.body-listarFrases th, .body-ranking td {
-    padding: 15px 10px;
-    color: #FFFFFF;
-    font-size: 1.1em;
-}
-
-.body-listarFrases th {
-    background-color: #ED1D24;
-    color: #FFFFFF;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.body-listarFrases tr:nth-child(even) {
-    background-color: #1A1A1A;
-}
-.body-listarFrases tr:nth-child(odd) {
-    background-color: #3c3c3c98;
-}
-
-.body-listarFrases tr:nth-child(even):hover {
-    background-color: #518bca72;
-}
-
-.body-listarFrases tr:nth-child(odd):hover {
-    background-color: #ed1d246a;
-}
-
-.body-listarFrases #delete-link button {
-    display: inline-block;
-    background-color: #ED1D24;
-    color: #FFFFFF;
-    padding: 12px 20px;
-    border-radius: 6px;
-    font-weight: bold;
-    font-size: 1.1em;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-    cursor: pointer;
-    border: none;
-}
-
-.body-listarFrases #delete-link button:hover {
-    background-color: #A50000;
-}
-.body-listarFrases .mensaje-alerta {
-    color: #4BB543;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
 .body-createSentence #inputSentence {
     width: 100%;
     padding: 12px;
@@ -911,6 +1082,242 @@ header .user-info {
     color: #FF3333;
     font-weight: bold;
     margin-top: 20px;
+}
+.body-createSentence form #sentenceImage {
+    display: none;
+}
+
+.label-imageUpload {
+    display: inline-block;
+    background-color:	#518cca;
+    color: #FFFFFF;
+    padding: 12px 35px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    margin-top: 25px;
+    width: 90%;
+}
+
+.file-name {
+    margin-top: 10px;
+    font-size: 1em;
+    color: #CCCCCC;
+    margin-left: 10px;
+}
+.body-createSentence form #sentenceImage:hover {
+    background-color: #3268BD;
+}
+
+/* ADMIN ADD_IMAGE.PHP STYLES */
+.body-addImage {
+    background-color: #141414;
+    color: #FFFFFF;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 600px;
+    padding: 40px 20px;
+    text-align: center;
+}
+.body-addImage h1 {
+    color: #ED1D24;
+    font-size: 2.8em;
+    font-weight: 900;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    margin-top: 100px;
+}
+.body-addImage form #sentenceImage {
+    display: none;
+}
+.label-imageUpload {
+    display: inline-block;
+    background-color:	#518cca;
+    color: #FFFFFF;
+    padding: 12px 35px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    margin-top: 25px;
+    width: 90%;
+}
+.body-addImage form #imageFile:hover {
+    background-color: #3268BD;
+}
+.body-addImage .file-name {
+    margin-top: 10px;
+    font-size: 1em;
+    color: #CCCCCC;
+    margin-left: 10px;
+}
+.body-addImage #uploadImageButton {
+    background-color: #ED1D24; 
+    color: #FFFFFF; 
+    border: none;
+    padding: 15px 30px;
+    margin-top: 25px;
+    border-radius: 6px; 
+    font-weight: bold;
+    font-size: 1.1em;
+    width: 100%;
+    cursor: pointer;
+}
+.body-addImage #uploadImageButton:hover {
+    background-color: #A50000;
+}
+.body-addImage .success-message {
+    color: #4BB543;
+    font-weight: bold;
+    margin-top: 20px;
+}
+.body-addImage .error-message {
+    color: #FF3333;
+    font-weight: bold;
+    margin-top: 20px;
+}
+.body-addImage .btn-volverIndex a{
+    padding: 0;
+    min-width: 320px;
+    min-height: 40px;
+    align-content: center;
+    font-size: 1.2em;
+    color: white;
+    font-size: 1.2em;
+    text-decoration: none;
+    cursor: pointer;
+}
+.body-addImage form select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border: 2px solid #363636;
+    border-radius: 6px;
+    background-color: #1A1A1A;
+    color: #FFFFFF;
+    font-size: 1.2em;
+    box-sizing: border-box;
+}
+.body-addImage form select:focus {
+    border-color: #3268BD;
+    outline: none;
+    box-shadow: 0 0 8px rgba(50, 104, 189, 0.6);
+}
+.body-addImage form label {
+    margin-top: 10px;
+    font-size: 1.2em;
+    display: block;
+    text-align: left;
+    color: #FFFFFF;
+}
+.body-addImage #btn-volverIndex {
+    margin-top: 30px;
+    background-color: #ED1D24;
+    border-radius: 10px;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    min-width: 320px;
+}
+.body-addImage #btn-volverIndex:hover {
+    background-color: #A50000;
+}
+.body-addImage #btn-volverIndex a{
+    color: white;
+    font-size: 1.2em;
+    text-decoration: none;
+    font-weight: bold;
+}
+.body-addImage .error-message {
+    color: #FF3333;
+    font-weight: bold;
+    margin-top: 20px;
+}
+.body-addImage form {
+    width: 100%;
+    max-width: 500px;
+    text-align: left;
+}
+.body-addImage form select option {
+    background-color: #1A1A1A;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/* PARTE ADMIN LISTAR_FRASES.PHP */
+.body-listarFrases table {
+    width: 70%;
+    border-collapse: collapse;
+    background-color: #242424;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(237, 29, 36, 0.4);
+    margin-bottom: 30px;
+}
+
+.body-listarFrases th, .body-ranking td {
+    padding: 15px 10px;
+    color: #FFFFFF;
+    font-size: 1.1em;
+}
+
+.body-listarFrases th {
+    background-color: #ED1D24;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.body-listarFrases tr:nth-child(even) {
+    background-color: #1A1A1A;
+}
+.body-listarFrases tr:nth-child(odd) {
+    background-color: #3c3c3c98;
+}
+
+.body-listarFrases tr:nth-child(even):hover {
+    background-color: #518bca72;
+}
+
+.body-listarFrases tr:nth-child(odd):hover {
+    background-color: #ed1d246a;
+}
+
+.body-listarFrases #delete-link button {
+    display: inline-block;
+    background-color: #ED1D24;
+    color: #FFFFFF;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.body-listarFrases #delete-link button:hover {
+    background-color: #A50000;
+}
+.body-listarFrases .mensaje-alerta {
+    color: #4BB543;
+    font-weight: bold;
+    margin-bottom: 20px;
+    display: block;
+    padding: 10px 0;
 }
 
 /* ADMIN HEADER STYLES */
@@ -992,4 +1399,202 @@ header .user-info {
     font-size: 1.2em;
     text-decoration: none;
     font-weight: bold;
+}
+
+
+/* ADMIN LIST SENTENCES STYLES */
+
+.resaltar-frase {
+    background-color: #f78f3f !important;
+}
+/* LOGS PAGE STYLES */
+
+.body-logs {
+    background-color: #141414;
+    color: #FFFFFF;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.body-logs h1 {
+    color: #ED1D24;
+    font-size: 2.8em;
+    font-weight: 900;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+}
+
+.body-logs table {
+    width: 80%;
+    border-collapse: collapse;
+    background-color: #242424;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(237, 29, 36, 0.4);
+    margin-bottom: 30px;
+}
+
+.body-logs th, .body-logs td {
+    padding: 12px 10px;
+    color: #FFFFFF;
+    font-size: 1.1em;
+}
+
+.body-logs th {
+    background-color: #ED1D24;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.body-logs tr:nth-child(even) {
+    background-color: #1A1A1A;
+}
+
+.body-logs tr:nth-child(odd) {
+    background-color: #3c3c3c98;
+}
+
+.body-logs tr:nth-child(even):hover {
+    background-color: #518bca72;
+}
+
+.body-logs tr:nth-child(odd):hover {
+    background-color: #ed1d246a;
+}
+
+
+
+.body-logs button, .body-logs button a {
+    margin-top: 20px;
+    background-color: #ED1D24;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    font-size: 1.2em;
+}
+
+.body-logs button a {
+    color: white;
+}
+
+/* PAGINADOR LIST_SENTENCES Y RANKING */
+.body-listarFrases .paginador,
+.body-ranking .paginador,
+.body-logs .paginador {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.body-listarFrases .paginador a,
+.body-ranking .paginador a,
+.body-logs .paginador a {
+    display: inline-block;
+    padding: 10px 16px;
+    background-color: #ED1D24; /* rojo Marvel */
+    color: #FFFFFF;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.body-listarFrases .paginador a:hover,
+.body-ranking .paginador a:hover,
+.body-logs .paginador a:hover {
+    background-color: #A50000; /* rojo más oscuro al hover */
+}
+
+.body-listarFrases .paginador a.activo,
+.body-ranking .paginador a.activo,
+.body-logs .paginador a.activo {
+    background-color: #FFC82C; /* amarillo Marvel para página activa */
+    color: #1A1A1A;
+}
+
+.body-listarFrases .paginador a.activo:hover,
+.body-ranking .paginador a.activo:hover,
+.body-logs .paginador a.activo:hover {
+    background-color: #EDB800;
+}
+
+/* Progres bar styles */
+/* === BARRA DE PROGRESO (Marvel Style) === */
+#progressContainer {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 220px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid #ED1D24; /* rojo Marvel */
+    border-radius: 8px;
+    padding: 8px;
+    z-index: 1000;
+    color: white;
+    font-family: "Orbitron", sans-serif;
+    font-size: 14px;
+    text-align: center;
+    box-shadow: 0 0 8px rgba(237, 29, 36, 0.6);
+}
+
+#progressLabel {
+    margin-bottom: 4px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+#progressBar {
+    width: 100%;
+    height: 10px;
+    background-color: #333;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+#progressFill {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #ED1D24, #FFCB05);
+    transition: width 0.3s ease;
+}
+
+/* Selector de idioma */
+.lang-selector {
+    position: fixed;       /* fijo en la pantalla */
+    bottom: 20px;          /* 20px desde abajo */
+    right: 20px;           /* 20px desde la derecha */
+    z-index: 1000;         /* por encima de otros elementos */
+    background-color: rgba(0,0,0,0.6); /* semi-transparente para visibilidad */
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
+.lang-selector select {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.lang-selector select:focus {
+    outline: none;
 }

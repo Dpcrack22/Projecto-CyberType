@@ -1,5 +1,5 @@
-const createSentence = document.getElementById("createSentence");
-const btnBack = document.querySelector('.btn-volverIndex');
+const uploadBtn = document.getElementById('uploadImageButton');
+const backBtn = document.getElementById('btn-volverIndex');
 
 const getVisibleElement = (btn) => btn ? (btn.querySelector('a') || btn) : null;
 const getFirstLetter = (el) => el ? ((el.innerText || el.textContent || '').trim().charAt(0) || '').toLowerCase() : '';
@@ -12,13 +12,13 @@ const underlineFirstLetter = (el) => {
     el.innerHTML = `<u>${first}</u>${rest}`;
 };
 
-const visibleBack = getVisibleElement(btnBack);
+const visibleBack = getVisibleElement(backBtn);
 underlineFirstLetter(visibleBack);
 
-document.addEventListener("keydown", (event) => {
+document.addEventListener('keydown', (event) => {
     const activeElement = document.activeElement;
     const isTyping = (
-        activeElement && (activeElement.tagName && (activeElement.tagName.toLowerCase() === "input" || activeElement.tagName.toLowerCase() === "textarea") || activeElement.isContentEditable)
+        activeElement && (activeElement.tagName && (activeElement.tagName.toLowerCase() === 'input' || activeElement.tagName.toLowerCase() === 'textarea') || activeElement.isContentEditable)
     );
     if (isTyping) return;
 
@@ -27,12 +27,12 @@ document.addEventListener("keydown", (event) => {
 
     if (backKey && key === backKey) {
         event.preventDefault();
-        // If the back element contains an anchor, follow it; otherwise navigate to admin index
-        const anchor = btnBack && btnBack.querySelector('a');
+        const anchor = backBtn && backBtn.querySelector('a');
         if (anchor && anchor.getAttribute('href')) {
             window.location.href = anchor.getAttribute('href');
         } else {
             window.location.href = '/admin/index.php';
         }
     }
+    // Do NOT create a keyboard shortcut for the upload button (user requested upload without hotkey)
 });
