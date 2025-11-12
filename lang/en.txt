@@ -1,0 +1,112 @@
+tituloIndex=Home - MarvelType
+tituloh1Index=MARVELTYPE
+descripcionIndex=In MarvelType, you’ll test your speed and reflexes. Type each phrase accurately and prove you have what it takes to join the most powerful heroes in the Marvel Universe.
+placeholderIndex=Enter your name
+option1Index=Easy
+option2Index=Medium
+option3Index=Hard
+botonIndex=Start Game
+idioma1Index=Spanish
+idioma2Index=Catalan
+idioma3Index=English
+
+
+tituloPlay=Play - MarvelType
+tituloh1Play=MarvelType
+cuentaAtrasPlay=Get ready, young Avenger!
+noJSPlay=⚠️ The game requires JavaScript to work. Please enable it to start.
+yaPlay=GO!
+thanosActivarPlay=💥 Thanos Mode activated: half the letters will disappear...
+thanosMensajePlay=💀 Thanos snapped his fingers... half disintegrates and your game is over.
+
+
+tituloGameOver=Game Over - MarvelType
+h1GameOver=💥 Game Over
+puntuacionGameOver=Your final score is
+bonusGameOver=Bonuses achieved
+almacenarGameOver=Save to Ranking
+jugarGameOver=Play Again
+dieRanking=No player data to save.
+tiempoGameOver=Your time is:
+
+
+tituloRanking=Ranking - MarvelType
+h1Ranking=Player Ranking - MarvelType
+th1Ranking=Position
+th2Ranking=Name
+th3Ranking=Score
+botonRanking=Return to Home
+
+
+tituloError403=Error 403 - Access Denied
+h1Error403=ERROR 403!
+parrafoError403=This authorization level is only for S.H.I.E.L.D. agents. It seems you're trying to enter a classified area, recruit.
+botonError403=Return to the others
+
+
+tituloError404=Error 404 - Page Not Found
+h1Error404=ERROR 404!
+parrafoError404=Looks like you’ve taken the wrong path into the Multiverse. Try returning to the homepage.
+botonError404=Return to Command Center
+
+
+tituloLogin=Admin Login
+inicioSesionLogin=Login
+placeholderUsuarioLogin=Username...
+placeholderContraseñaLogin=Password...
+botonLogin=Sign In
+errorLogin=Incorrect username or password.
+
+
+tituloAdminIndex=Admin Panel
+h1AdminIndex=Welcome to S.H.I.E.L.D
+cerrarSesionAdminIndex=Log Out
+listarFraseAdminIndex=List Phrases
+agregarFraseAdminIndex=Add Phrase
+verLogsAdminIndex=View Logs
+subirImagenAdminIndex=Upload Image
+
+
+tituloAdminLogs=Admin Logs
+h1AdminLogs=System Logs
+noLogsAdminLogs=No logs to display.
+
+
+tituloAdminAddImage=Upload Image - Admin
+h1AdminAddImage=Upload Image to Existing Phrase
+labelDificultadAddImage=Select the difficulty of the phrase:
+labelFraseAddImage=Phrase:
+labelImagenAddImage=Select an image:
+botonActualizarAddImage=Update Phrase
+mensajeExitoAddImage=Image uploaded and associated correctly to the phrase.
+mensajeErrorFraseAddImage=The selected phrase was not found in the file.
+mensajeErrorMoverAddImage=Error moving the uploaded image.
+mensajeErrorSubidaAddImage=Error uploading the image.
+
+
+tituloListSentence=Admin - List Phrases
+h1ListSentence=Phrase List
+th1ListSentence=Difficulty
+th2ListSentence=Phrase
+th3ListSentence=Delete
+botonEliminar=Delete
+botonVolver=Go Back
+noFrases=No phrases found.
+
+
+tituloAdminCreate=Add Phrases - Admin
+h1Create=Add Phrases
+placeholderAdminCreate=Enter a phrase...
+option1AdminCreate=Easy
+option2AdminCreate=Medium
+option3AdminCreate=Hard
+botonAgregarCreate=Add Phrase
+botonVolverCreate=Go Back
+parrafo1Create=Sentence added successfully.
+parrafo2Create=The sentence already exists at this difficulty.
+parrafo3Create=Please enter a valid sentence and select a difficulty.
+
+
+administrador=Administrator
+jugador=Player
+cerrarSesion=Log Out

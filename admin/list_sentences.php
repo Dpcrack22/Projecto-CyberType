@@ -15,6 +15,19 @@ $archivo = '../sentences.txt';
 
 $paginaActual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
 registrarLog("admin/list_sentences.php", "El administrador '$usuario' accedió al listado de frases (página $paginaActual).");
+    
+    include __DIR__ . '/../lang/lang.php';
+    
+    $lang = $_SESSION['lang_admin'] ?? 'es';
+    $t = loadLanguage($lang);
+
+    $traducciones_dificultad = [
+    'es' => ['facil' => 'Fácil', 'medio' => 'Medio', 'dificil' => 'Difícil'],
+    'ca' => ['facil' => 'Fàcil', 'medio' => 'Mitjà', 'dificil' => 'Difícil'],
+    'en' => ['facil' => 'Easy', 'medio' => 'Medium', 'dificil' => 'Hard']
+];
+
+    $archivo = '../sentences'.$lang.'.txt';
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +35,7 @@ registrarLog("admin/list_sentences.php", "El administrador '$usuario' accedió a
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin listar frases</title>
+    <title><?= $t['tituloListSentence'] ?></title>
     <link rel="stylesheet" type="text/css" href="/styles.css?<?php echo time(); ?>" />
 </head>
 <body class="body-listarFrases">
@@ -31,14 +44,13 @@ registrarLog("admin/list_sentences.php", "El administrador '$usuario' accedió a
         <div class="user-info">
             <?php
             if (isset($_SESSION['usuario'])) {
-                echo '<span class="admin-name">Administrador: ' . htmlspecialchars($_SESSION['usuario']) . '</span>';
-                echo '<a href="logout.php" class="logout-link-admin">Cerrar sesión</a>';
+                echo '<span class="admin-name">'. $t['administrador'] .': ' . htmlspecialchars($_SESSION['usuario']) . '</span>';
+                echo '<a href="logout.php" class="logout-link-admin">'. $t['cerrarSesion'] .'</a>';
             }
             ?>
         </div>
     </header>
 
-    <h1>Listado de frases</h1>
     <div class="mensaje-alerta">
         <?php
         if (isset($_SESSION['mensaje'])) {
@@ -47,6 +59,8 @@ registrarLog("admin/list_sentences.php", "El administrador '$usuario' accedió a
         }
         ?>
     </div>
+
+    <h1><?= $t['h1ListSentence'] ?></h1>
 
     <?php
     $todasFrases = [];
@@ -79,12 +93,11 @@ registrarLog("admin/list_sentences.php", "El administrador '$usuario' accedió a
     $inicio = ($paginaActual - 1) * $porPagina;
     $frasesPagina = array_slice($todasFrases, $inicio, $porPagina);
     ?>
-
     <table>
         <tr>
-            <th>Dificultad</th>
-            <th>Frase</th>
-            <th>Eliminación</th>
+            <th><?= $t['th1ListSentence'] ?></th>
+            <th><?= $t['th2ListSentence'] ?></th>
+            <th><?= $t['th3ListSentence'] ?></th>
         </tr>
         <?php if ($total > 0): ?>
             <?php foreach ($frasesPagina as $dato): ?>
@@ -100,36 +113,36 @@ registrarLog("admin/list_sentences.php", "El administrador '$usuario' accedió a
                         <form action="delete_sentence.php" method="POST">
                             <input type="hidden" name="dificultad" value="<?php echo htmlspecialchars($dato['dificultad']); ?>">
                             <input type="hidden" name="frase" value="<?php echo htmlspecialchars($dato['frase']); ?>">
-                            <button type="submit">Eliminar</button>
+                            <button type="submit"><?= $t['botonEliminar'] ?></button>
                         </form>
                     </td>
                 </tr>
             <?php endforeach; ?>
         <?php else: ?>
-            <tr><td colspan="3">No se encontraron frases.</td></tr>
+            <tr><td colspan="3"><?= $t['noFrases'] ?></td></tr>
         <?php endif; ?>
     </table>
 
     <!-- PAGINADOR -->
     <div class="paginador">
         <?php if ($paginaActual > 1): ?>
-            <a href="?pagina=<?php echo $paginaActual - 1; ?>">&laquo; Anterior</a>
+            <a href="?pagina=<?php echo $paginaActual - 1; ?>&lang=<?= $lang ?>">&laquo; <?= $t['anterior'] ?? 'Anterior' ?></a>
         <?php endif; ?>
 
         <?php for ($i = 1; $i <= $paginas; $i++): ?>
-            <a href="?pagina=<?php echo $i; ?>" 
+            <a href="?pagina=<?php echo $i; ?>&lang=<?= $lang ?>" 
                class="<?php echo ($i == $paginaActual) ? 'activo' : ''; ?>">
                <?php echo $i; ?>
             </a>
         <?php endfor; ?>
 
         <?php if ($paginaActual < $paginas): ?>
-            <a href="?pagina=<?php echo $paginaActual + 1; ?>">Siguiente &raquo;</a>
+            <a href="?pagina=<?php echo $paginaActual + 1; ?>&lang=<?= $lang ?>"><?= $t['siguiente'] ?? 'Siguiente' ?> &raquo;</a>
         <?php endif; ?>
     </div>
 
     <br>
-    <button id="ButtonListSentences"><a href="/admin/index.php"><u>V</u>olver atrás</a></button>
+    <button id="ButtonListSentences"><a href="/admin/index.php"><?= $t['botonVolver'] ?></a></button>
     <script src="scriptListSentences.js"></script>
 </body>
 </html>

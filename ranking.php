@@ -6,6 +6,17 @@
     $arch_act = "ranking.php";
     $archivo = __DIR__ . "/ranking.txt";
 
+    // Cargar idioma
+    include __DIR__ . '/lang/lang.php';
+    $lang = isset($_GET['lang']) ? $_GET['lang'] : ($_SESSION['lang'] ?? 'es');
+    $_SESSION['lang'] = $lang;
+    $t = loadLanguage($lang);
+
+    // --- GUARDAR SOLO SI EXISTEN DATOS DE PARTIDA ---
+    if (isset($_SESSION['playerName']) && isset($_SESSION['score']) && isset($_SESSION['tiempo'])) {
+        $playerName = $_SESSION['playerName'];
+        $score = $_SESSION['score'];
+        $time = $_SESSION['tiempo'];
     $playerName = $_POST['inputName'] ?? ($_SESSION['playerName'] ?? 'Invitado');
     $score = $_POST['score'] ?? ($_SESSION['score'] ?? 0);
     $time = $_POST['tiempo'] ?? ($_SESSION['tiempo'] ?? 0.0);
@@ -30,7 +41,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ranking - MarvelType</title>
+    <title><?= $t['tituloRanking'] ?></title>
     <link rel="stylesheet" type="text/css" href="./styles.css?<?php echo time(); ?>" />
 </head>
 <body class="body-ranking">
@@ -38,15 +49,25 @@
         <img src="./IMG/Marvel_Logo.png" alt="Marvel Logo" class="marvel-logo">
         <div class="user-info">
             <?php if (isset($_SESSION['playerName'])): ?>
-                <span class="player-name">Jugador: <?= htmlspecialchars($_SESSION['playerName']) ?></span>
+                <span class="player-name"><?= $t['jugador'] ?>: <?= htmlspecialchars($_SESSION['playerName']) ?></span>
             <?php endif; ?>
-            <a href="destroy_session.php" class="logout-link">Cerrar sesión</a>
+            <a href="destroy_session.php" class="logout-link"><?= $t['cerrarSesion'] ?></a>
         </div>
     </header>
     
-    <h1>Ranking de Jugadores - MarvelType</h1>
+    <h1><?= $t['h1Ranking'] ?></h1>
+    
     <?php
-    if (file_exists($archivo)) {
+        if (file_exists($archivo)) {
+    ?>
+    <table>
+        <tr>
+            <th><?= $t['th1Ranking'] ?></th>
+            <th><?= $t['th2Ranking'] ?></th>
+            <th><?= $t['th3Ranking'] ?></th>
+            <th>Tiempo (s)</th>
+        </tr>
+        <?php
         $lineas = file($archivo, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
         // Ordenar de mayor a menor puntuación
@@ -67,6 +88,27 @@
 
         $inicio = ($paginaActual - 1) * $porPagina;
         $jugadoresPagina = array_slice($lineas, $inicio, $porPagina);
+        
+        $posicion = $inicio + 1;
+        foreach ($jugadoresPagina as $linea) {
+            list($nombre, $puntuacion, $tiempo) = explode(" | ", $linea);
+            $resaltar = ($nombre === $playerName && $puntuacion === $score && $tiempo === $time) ? 'class="resaltar"' : '';
+            echo "<tr $resaltar>
+                    <td>$posicion</td>
+                    <td>$nombre</td>
+                    <td>$puntuacion</td>
+                    <td>$tiempo s</td>
+                </tr>";
+            $posicion++;
+        }
+        ?>
+    </table>
+    
+    <!-- PAGINADOR -->
+    <div class="paginador">
+        <?php if ($paginaActual > 1): ?>
+            <a href="?pagina=<?= $paginaActual - 1 ?>&lang=<?= $lang ?>">&laquo; <?= $t['anterior'] ?? 'Anterior' ?></a>
+        <?php endif; ?>
     ?>
         <table>
             <tr>
@@ -98,24 +140,24 @@
                 <a href="?pagina=<?= $paginaActual - 1 ?>">&laquo; Anterior</a>
             <?php endif; ?>
 
-            <?php for ($i = 1; $i <= $paginas; $i++): ?>
-                <a href="?pagina=<?= $i ?>" class="<?= ($i == $paginaActual) ? 'activo' : '' ?>">
-                    <?= $i ?>
-                </a>
-            <?php endfor; ?>
+        <?php for ($i = 1; $i <= $paginas; $i++): ?>
+            <a href="?pagina=<?= $i ?>&lang=<?= $lang ?>" class="<?= ($i == $paginaActual) ? 'activo' : '' ?>">
+                <?= $i ?>
+            </a>
+        <?php endfor; ?>
 
-            <?php if ($paginaActual < $paginas): ?>
-                <a href="?pagina=<?= $paginaActual + 1 ?>">Siguiente &raquo;</a>
-            <?php endif; ?>
-        </div>
+        <?php if ($paginaActual < $paginas): ?>
+            <a href="?pagina=<?= $paginaActual + 1 ?>&lang=<?= $lang ?>"><?= $t['siguiente'] ?? 'Siguiente' ?> &raquo;</a>
+        <?php endif; ?>
+    </div>
     <?php
     } else {
-        echo "<p>No hay registros aún.</p>";
+        echo "<p>" . ($t['sinRegistros'] ?? 'No hay registros aún.') . "</p>";
     }
     ?>
 
     <br>
-    <button id="RankingButton"><u>V</u>olver al inicio</button>
+    <button id="RankingButton"><?= $t['botonRanking'] ?></button>
     <script src="scriptRanking.js"></script>
 </body>
 </html>

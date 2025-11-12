@@ -210,6 +210,8 @@ header .user-info {
     background-color: #d16b2a;
 }
 
+
+
 /* PLAY PAGE STYLES */
 .body-play {
     background-color: #141414; 
@@ -576,6 +578,48 @@ header .user-info {
     text-decoration: none;
     color: #FFFFFF;
 }
+
+.imagenes-gameover {
+  position: absolute;
+  bottom: 100px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  gap: 10px; 
+  justify-content: space-around;
+  align-items: flex-end;
+  margin: 0;
+}
+
+.foto {
+  width: 150px;
+  height: auto;
+  opacity: 1;
+  animation: parpadeo 3s infinite;
+}
+
+.foto:nth-child(1) {
+  animation-delay: 0s;
+}
+.foto:nth-child(2) {
+  animation-delay: 1s;
+}
+.foto:nth-child(3) {
+  animation-delay: 2s;
+}
+
+@keyframes parpadeo {
+  0%, 33.33% {
+    opacity: 1; 
+  }
+  50%, 83.33% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 
 /* RANKING PAGE STYLES */
 .body-ranking {
@@ -1470,4 +1514,29 @@ header .user-info {
     height: 100%;
     background: linear-gradient(90deg, #ED1D24, #FFCB05);
     transition: width 0.3s ease;
+}
+
+/* Selector de idioma */
+.lang-selector {
+    position: fixed;       /* fijo en la pantalla */
+    bottom: 20px;          /* 20px desde abajo */
+    right: 20px;           /* 20px desde la derecha */
+    z-index: 1000;         /* por encima de otros elementos */
+    background-color: rgba(0,0,0,0.6); /* semi-transparente para visibilidad */
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
+.lang-selector select {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.lang-selector select:focus {
+    outline: none;
 }
