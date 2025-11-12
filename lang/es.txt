@@ -121,3 +121,4 @@ parrafo3Create=Por favor, introduce una frase válida y selecciona una dificulta
 administrador=Administrador
 jugador=Jugador
 cerrarSesion=Cerrar sesión
+tooltipPermadeath=El modo permadeath es el mismo juego, pero tienes 5 vidas. Si fallas 5 veces, el juego terminará automáticamente.

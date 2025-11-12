@@ -78,7 +78,12 @@
             </select>
             <label>
                 <input type="checkbox" id="checkbox" value="1">
-                Modo Permadeath
+                <?= $t['labelPermadeath'] ?>
+                <span class="tooltip">?
+                    <span class="tooltiptext">
+                        <?= $t['tooltipPermadeath'] ?>
+                    </span>
+                </span>
             </label>
             <br>
             <button type="button" id="startGameButton"><?= $t['botonIndex'] ?></button>

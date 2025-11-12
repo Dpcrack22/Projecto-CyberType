@@ -98,6 +98,7 @@ tituloListSentence=Admin - List Phrases
 h1ListSentence=Phrase List
 th1ListSentence=Difficulty
 th2ListSentence=Phrase
+tooltipPermadeath=Permadeath mode is the same game, but you have 5 lives. If you fail 5 times, the game will end automatically.
 th3ListSentence=Delete
 botonEliminar=Delete
 botonVolver=Go Back

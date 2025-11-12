@@ -1,0 +1,8 @@
+2025-11-12 | 19:03:19 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-12 | 19:05:48 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-12 | 19:05:51 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-12 | 19:05:51 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-12 | 19:05:54 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-12 | 19:05:54 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-12 | 19:06:01 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-12 | 19:06:01 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.

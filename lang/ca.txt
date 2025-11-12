@@ -98,6 +98,7 @@ tituloAdminCreate=Afegir Frases - Administrador
 h1Create=Afegir Frases
 placeholderAdminCreate=Introdueix una frase...
 option1AdminCreate=Fàcil
+tooltipPermadeath=El mode permadeath és el mateix joc, però tens 5 vides. Si fracasses 5 vegades, el joc finalitzarà automàticament.
 option2AdminCreate=Mitjà
 option3AdminCreate=Difícil
 botonAgregarCreate=Afegir frase
