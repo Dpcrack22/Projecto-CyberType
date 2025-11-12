@@ -295,7 +295,7 @@ function verificarEscritura(tecla) {
         audioRight.play().catch(() => {});
         spans[posicionActual].classList.add("correcta");
         spans[posicionActual].classList.remove("incorrecta");
-        puntuation += 10;
+        puntuation += 25;
         easterEgg(true);
         console.log(tecla);
         // Registrar la tecla pulsada con información sobre acento y la tecla esperada
@@ -306,7 +306,7 @@ function verificarEscritura(tecla) {
         audioMiss.play().catch(() => {});
         spans[posicionActual].classList.add("incorrecta");
         spans[posicionActual].classList.remove("correcta");
-        puntuation -= 5;
+        puntuation -= 10;
         easterEgg(false);
         // Registrar la tecla pulsada (incorrecta)
         enviarLogKeypress(tecla, letraEsperada, false);
@@ -409,6 +409,7 @@ function endGame(score, tiempo) {
         body: "score=" + encodeURIComponent(score)
         + "&bonus=" + encodeURIComponent(bonus)
         + "&tiempo=" + encodeURIComponent(tiempo)
+        + "&permadeath=" + (modoPermadeath ? "Activado" : "No Activado")
     })
     .then(response => response.text())
     .then(data => {

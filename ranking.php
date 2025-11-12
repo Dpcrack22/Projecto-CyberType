@@ -4,31 +4,27 @@
 
     require_once(__DIR__ . "/admin/log_function.php");
     $arch_act = "ranking.php";
-    $archivo = "./ranking.txt";
+    $archivo = __DIR__ . "/ranking.txt";
+
+    $playerName = $_POST['inputName'] ?? ($_SESSION['playerName'] ?? 'Invitado');
+    $score = $_POST['score'] ?? ($_SESSION['score'] ?? 0);
+    $time = $_POST['tiempo'] ?? ($_SESSION['tiempo'] ?? 0.0);
+    $perma = $_POST['perma'] ?? ($_SESSION['permadeathCheckbox'] ?? 'No Activado');
 
     // --- GUARDAR SOLO SI EXISTEN DATOS DE PARTIDA ---
-    if (isset($_SESSION['playerName']) && isset($_SESSION['score']) && isset($_SESSION['tiempo'])) {
-        $playerName = $_SESSION['playerName'];
-        $score = $_SESSION['score'];
-        $time = $_SESSION['tiempo'];
-        $perma = $_SESSION['perma'];
-
-        $registro = "$playerName | $score | $time | $perma " . PHP_EOL;
+    if (!empty($playerName) && isset($score) && isset($time)) {
+        $registro = "$playerName | $score | $time | $perma" . PHP_EOL;
         file_put_contents($archivo, $registro, FILE_APPEND | LOCK_EX);
-
         registrarLog($arch_act,"El jugador '$playerName' guardó su puntuación de $score puntos en el ranking.");
 
-        // Limpiamos variables de partida (no el nombre del jugador)
+        // Limpiar solo las variables de partida de la sesión, no el nombre del jugador
         unset($_SESSION['score']);
         unset($_SESSION['game_finished']);
         unset($_SESSION['bonus']);
         unset($_SESSION['tiempo']);
-        unset($_SESSION['perma']);
+        unset($_SESSION['permadeathCheckbox']);
     }
-
-    $playerName = $_SESSION['playerName'] ?? "Invitado";
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -84,7 +80,7 @@
             $posicion = $inicio + 1;
             foreach ($jugadoresPagina as $linea) {
                 list($nombre, $puntuacion, $tiempo, $permadeath) = explode(" | ", $linea);
-                $resaltar = ($nombre === $playerName && $puntuacion === $score && $tiempo === $time && $permadeath === $perma) ? 'class="resaltar"' : '';
+                $resaltar = ($nombre === $playerName && (int)$puntuacion === (int)$score && (float)$tiempo === (float)$time && $permadeath === $perma) ? 'class="resaltar"' : '';
                 echo "<tr $resaltar>
                         <td>$posicion</td>
                         <td>$nombre</td>

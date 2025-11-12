@@ -3,3 +3,5 @@ Bili | 8215 | 25.8 | No Activado
 Bili | 7535 | 26.83 | No Activado 
 Bili | 295 | 3.1 |  
 Bili | 2235 | 12.06 |  
+Bili | -325 | 0.77 | No Activado
+Bili | 1175 | 9.15 | Activado

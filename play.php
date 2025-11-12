@@ -10,24 +10,10 @@ if (isset($_POST['playerName'])) {
     registrarLog($arch_act, "Inicio de partida del jugador '{$_SESSION['playerName']}' con dificultad '{$_POST['difficulty']}'");
 }
 
-$difficulty = $_POST['difficulty'] ?? 'normal';
-$archivo = './sentences.txt';
 
-$lineas = file($archivo, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-$frasesFiltradas = [];
-
-foreach ($lineas as $linea) {
-    list($nivelFrase, $frases) = explode('|', $linea, 2);
-    if ($nivelFrase === $difficulty) {
-        $frasesFiltradas = array_map('trim', explode(',', $frases));
-        break;
-    }
-}
-
-$fraseAleatoria = $frasesFiltradas[array_rand($frasesFiltradas)] ?? 'Error al cargar frase.';
+$difficulty = $_POST['difficulty'] ?? 'medio';
 $modoPermadeath = !empty($_POST['permadeathCheckbox']); // true si está marcado
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -81,16 +67,20 @@ $modoPermadeath = !empty($_POST['permadeathCheckbox']); // true si está marcado
         <script src="./scriptPlay.js?<?php echo time(); ?>" defer></script>
     <?php endif; ?>
     <script>
-        const dificultadSeleccionada = "<?php echo $difficulty; ?>";
-        fetch('get_sentence.php', {
+        const modoPermadeath = <?php echo $modoPermadeath ? 'true' : 'false'; ?>;
+        document.addEventListener('DOMContentLoaded', () => {
+            const dificultadSeleccionada = "<?php echo $difficulty; ?>";
+            console.log("🧠 Dificultad enviada al servidor:", dificultadSeleccionada);
+
+            fetch('get_sentence.php', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: "difficulty=" + encodeURIComponent(dificultadSeleccionada)
             })
             .then(response => response.json())
             .then(data => {
+                console.log("✅ JSON recibido:", data);
+
                 const allFrases = data.map(item => item.frase || "");
                 const allImagenes = data.map(item => item.imagen || "");
 
@@ -100,19 +90,21 @@ $modoPermadeath = !empty($_POST['permadeathCheckbox']); // true si está marcado
                 else if (dificultadSeleccionada === 'dificil') n = 5;
                 else n = 3;
 
-                // tomar las primeras n frases o menos si no hay suficientes
                 frasesJuego = allFrases.slice(0, n);
                 imagenesJuego = allImagenes.slice(0, n);
                 totalFrases = frasesJuego.length;
                 indiceFraseActual = 0;
 
+                console.log("✅ Frases cargadas:", frasesJuego);
                 initProgressBar();
                 mostrarFrase();
             })
             .catch(error => {
                 console.error('Error al obtener la frase:', error);
             });
+        });
     </script>
+
 
     <noscript>
         <div class="no-js-warning">
