@@ -32,6 +32,7 @@
 
     $t = loadLanguage($lang);
     $permadeath = $_SESSION['permadeathCheckbox'] ?? "No Activado";
+    $multiplicador = $_SESSION['multiplicador'] ?? 1;
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -58,6 +59,7 @@
     <p><?= $t['bonusGameOver'] ?>: <?= htmlspecialchars($bonus) ?></p>
     <p><?= $t['tiempoGameOver'] ?> <?= htmlspecialchars($tiempo) ?> s</p>
     <p>Permadeath: <?= htmlspecialchars($permadeath) ?></p>
+    <p>Multiplicador final: x<?= htmlspecialchars($multiplicador) ?></p>
     <div class="botones-gameover">
     <form action="ranking.php" method="post">
         <input type="hidden" name="inputName" value="<?= htmlspecialchars($inputName) ?>">

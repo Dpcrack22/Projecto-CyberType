@@ -70,6 +70,11 @@
         </div>
     </div>
     <script>const modoPermadeath = <?php echo $modoPermadeath ? 'true' : 'false'; ?>;</script>
+    <div id="barraProgresoTiempo">
+        <div id="tiempoRestanteFill"></div>
+    </div>
+
+    <script src="./scriptPlay.js?<?php echo time(); ?>" defer></script>
     <script>
         const gameTranslations = {
                 yaPlay: "<?= $t['yaPlay'] ?>",
