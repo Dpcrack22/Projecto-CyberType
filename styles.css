@@ -301,6 +301,23 @@ header .user-info {
     box-shadow: 0 0 20px rgba(237, 29, 36, 0.6);
 }
 
+#barraProgresoTiempo {
+    width: 200px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 40px auto;
+    box-shadow: 0 0 6px rgba(0,0,0,0.3);
+}
+
+#tiempoRestanteFill {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, limegreen, yellow);
+    transition: width 0.1s linear;
+}
+
 /* 404 PAGE STYLES */
 .body-404{
     display: flex;    

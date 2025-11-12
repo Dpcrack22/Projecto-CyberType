@@ -71,6 +71,9 @@ $difficulty = $_POST['difficulty'];
             <div id="progressFill"></div>
         </div>
     </div>
+    <div id="barraProgresoTiempo">
+        <div id="tiempoRestanteFill"></div>
+    </div>
 
     <script src="./scriptPlay.js?<?php echo time(); ?>" defer></script>
     <script>
