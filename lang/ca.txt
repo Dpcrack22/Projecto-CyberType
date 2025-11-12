@@ -110,3 +110,13 @@ parrafo3Create=Si us plau, introdueix una frase vàlida i selecciona una dificul
 administrador=Administrador
 jugador=Jugador
 cerrarSesion=Tanca la sessió
+
+th4Ranking=Temps (s)
+th5Ranking=Permadeath
+anterior=Anterior
+siguiente=Següent
+segundos=s
+labelPermadeath=Permadeath
+labelMultiplicador=Multiplicador final
+permadeathActivated=Activat
+permadeathDeactivated=No activat

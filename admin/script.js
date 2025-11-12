@@ -1,6 +1,7 @@
 const listarFrasesButton = document.getElementById("listarFrasesButton");
 const agregarFraseButton = document.getElementById("agregarFraseButton");
 const logsButton = document.getElementById("verLogsButton");
+const agregarImagenButton = document.getElementById("agregarImagenButton");
 
 const getVisibleElement = (btn) => btn ? (btn.querySelector('a') || btn) : null;
 const getFirstLetter = (element) => {
@@ -20,6 +21,7 @@ const underlineFirstLetter = (element) => {
 const visibleList = getVisibleElement(listarFrasesButton);
 const visibleAdd = getVisibleElement(agregarFraseButton);
 const visibleLogs = getVisibleElement(logsButton);
+const visibleImg = getVisibleElement(agregarImagenButton);
 
 underlineFirstLetter(visibleList);
 underlineFirstLetter(visibleAdd);
@@ -56,5 +58,9 @@ agregarFraseButton && agregarFraseButton.addEventListener("click", () => {
 
 logsButton && logsButton.addEventListener("click", () => {
     window.location.href="/admin/logs.php";
+});
+
+agregarImagenButton && agregarImagenButton.addEventListener("click", () => {
+    window.location.href="/admin/add_image.php";
 });
 

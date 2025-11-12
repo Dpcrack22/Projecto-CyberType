@@ -7,10 +7,12 @@
         $_SESSION['playerName'] = htmlspecialchars($_POST['playerName']);
     }
 
+    // Store permadeath as a normalized flag ('1' = activated, '0' = deactivated)
     if (isset($_POST['permadeath'])) {
-        $_SESSION['permadeathCheckbox'] = htmlspecialchars($_POST['permadeath']);
+        // Expecting '1' or truthy value from client
+        $_SESSION['permadeathCheckbox'] = ($_POST['permadeath'] === '1' || $_POST['permadeath'] === 1 || $_POST['permadeath'] === true) ? '1' : '0';
     } else {
-        $_SESSION['permadeathCheckbox'] = "No Activado";
+        $_SESSION['permadeathCheckbox'] = '0';
     }
 
     if (isset($_POST['score'])) {

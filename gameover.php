@@ -31,11 +31,11 @@
     $_SESSION['lang'] = $lang;
 
     $t = loadLanguage($lang);
-    $permadeath = $_SESSION['permadeathCheckbox'] ?? "No Activado";
+    $permadeathFlag = $_SESSION['permadeathCheckbox'] ?? '0';
     $multiplicador = $_SESSION['multiplicador'] ?? 1;
 ?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="<?= $lang ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,16 +57,16 @@
     <h1><?= $t['h1GameOver'] ?>, <?= htmlspecialchars($inputName) ?>! 💥</h1>
     <p><?= $t['puntuacionGameOver'] ?>: <?= htmlspecialchars($score) ?></p>
     <p><?= $t['bonusGameOver'] ?>: <?= htmlspecialchars($bonus) ?></p>
-    <p><?= $t['tiempoGameOver'] ?> <?= htmlspecialchars($tiempo) ?> s</p>
-    <p>Permadeath: <?= htmlspecialchars($permadeath) ?></p>
-    <p>Multiplicador final: x<?= htmlspecialchars($multiplicador) ?></p>
+    <p><?= $t['tiempoGameOver'] ?> <?= htmlspecialchars($tiempo) ?> <?= $t['segundos'] ?? 's' ?></p>
+    <p><?= $t['labelPermadeath'] ?? 'Permadeath' ?>: <?= ($permadeathFlag === '1') ? htmlspecialchars($t['permadeathActivated'] ?? 'Activado') : htmlspecialchars($t['permadeathDeactivated'] ?? 'No activado') ?></p>
+    <p><?= $t['labelMultiplicador'] ?? 'Multiplicador final' ?>: x<?= htmlspecialchars($multiplicador) ?></p>
     <div class="botones-gameover">
     <form action="ranking.php" method="post">
         <input type="hidden" name="inputName" value="<?= htmlspecialchars($inputName) ?>">
         <input type="hidden" name="score" value="<?= htmlspecialchars($score) ?>">
         <input type="hidden" name="bonus" value="<?= htmlspecialchars($bonus) ?>">
-        <input type="hidden" name="tiempo" value="<?= htmlspecialchars($tiempo) ?>">
-        <input type="hidden" name="perma" value="<?= htmlspecialchars($permadeath) ?>">
+    <input type="hidden" name="tiempo" value="<?= htmlspecialchars($tiempo) ?>">
+    <input type="hidden" name="perma" value="<?= htmlspecialchars($permadeathFlag) ?>">
         <button class="botonEnviarRank-gameover" id="almacenarRankingButton" type="submit"><?= $t['almacenarGameOver'] ?></button>
     </form>
     <button class="botonVolverInicio-gameover" id="jugarDeNuevoButton" ><?= $t['jugarGameOver'] ?></button>

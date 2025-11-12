@@ -43,6 +43,7 @@ let fraseJuego = "";
 let totalLetrasEscritas = 0;
 let totalErrores = 0;
 let thanosSnapTriggered = false;
+let thanosActive = false;
 
 // Barra de progreso
 let totalFrases = 0;
@@ -333,6 +334,10 @@ function activateThanosSnap() {
 
     alert(gameTranslations.thanosMensajePlay || "💀 Thanos ha chasqueado los dedos... la mitad se desintegra y tu partida se acabó.");
 
+    // Stop/pause the 3-second combo/progress bar when Thanos activates
+    thanosActive = true;
+    pauseTime();
+
     // Efecto visual
     toRemove.forEach((span, i) => {
         setTimeout(() => {
@@ -493,6 +498,9 @@ function updateProgress() {
 // Funciones barra de progreso 3 segundos
 
 function startTime() {
+    // If Thanos mode is active, do not (re)start the combo/progress timer
+    if (thanosActive) return;
+
     clearInterval(comboTimer);
     timeLeft = 3;
     const bar = document.getElementById("tiempoRestanteFill");

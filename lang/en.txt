@@ -71,6 +71,16 @@ tituloAdminLogs=Admin Logs
 h1AdminLogs=System Logs
 noLogsAdminLogs=No logs to display.
 
+th4Ranking=Time (s)
+th5Ranking=Permadeath
+anterior=Previous
+siguiente=Next
+segundos=s
+labelPermadeath=Permadeath
+labelMultiplicador=Final multiplier
+permadeathActivated=Activated
+permadeathDeactivated=Not activated
+
 
 tituloAdminAddImage=Upload Image - Admin
 h1AdminAddImage=Upload Image to Existing Phrase

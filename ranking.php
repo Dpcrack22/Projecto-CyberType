@@ -16,7 +16,8 @@
     $playerName = $_POST['inputName'] ?? ($_SESSION['playerName'] ?? 'Invitado');
     $score = $_POST['score'] ?? ($_SESSION['score'] ?? 0);
     $time = $_POST['tiempo'] ?? ($_SESSION['tiempo'] ?? 0.0);
-    $perma = $_POST['perma'] ?? ($_SESSION['permadeathCheckbox'] ?? 'No Activado');
+    // Expect permadeath as normalized flag '1' or '0'
+    $perma = $_POST['perma'] ?? ($_SESSION['permadeathCheckbox'] ?? '0');
 
     // --- GUARDAR SOLO SI EXISTEN DATOS DE PARTIDA ---
     if (!empty($playerName) && isset($score) && isset($time)) {
@@ -33,7 +34,7 @@
     }
 ?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="<?= $lang ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,8 +58,8 @@
             <th><?= $t['th1Ranking'] ?></th>
             <th><?= $t['th2Ranking'] ?></th>
             <th><?= $t['th3Ranking'] ?></th>
-            <th>Tiempo (s)</th>
-            <th>Permadeath</th>
+            <th><?= $t['th4Ranking'] ?></th>
+            <th><?= $t['th5Ranking'] ?></th>
         </tr>
         <?php
         $lineas = [];
@@ -90,12 +91,28 @@
                 $datos = array_pad(explode(" | ", $linea), 4, '');
                 list($nombre, $puntuacion, $tiempo, $permadeath) = $datos;
                 $resaltar = ($nombre === $playerName && (int)$puntuacion === (int)$score && (float)$tiempo === (float)$time && $permadeath === $perma) ? 'class="resaltar"' : '';
+
+                // Normalize display of permadeath (handle both new '1'/'0' flags and older text values)
+                $rawPerm = trim($permadeath);
+                $lowPerm = strtolower($rawPerm);
+                if ($rawPerm === '1' || $lowPerm === '1' || $lowPerm === 'true') {
+                    $displayPerm = $t['permadeathActivated'] ?? 'Activado';
+                } elseif ($rawPerm === '0' || $lowPerm === '0' || $lowPerm === 'false') {
+                    $displayPerm = $t['permadeathDeactivated'] ?? 'No activado';
+                } elseif (strpos($lowPerm, 'activ') !== false) {
+                    $displayPerm = $t['permadeathActivated'] ?? 'Activado';
+                } elseif (strpos($lowPerm, 'no') !== false || strpos($lowPerm, 'desact') !== false) {
+                    $displayPerm = $t['permadeathDeactivated'] ?? 'No activado';
+                } else {
+                    $displayPerm = htmlspecialchars($rawPerm);
+                }
+
                 echo "<tr $resaltar>
-                        <td>$posicion</td>
-                        <td>$nombre</td>
-                        <td>$puntuacion</td>
-                        <td>$tiempo s</td>
-                        <td>$permadeath</td>
+                        <td>" . htmlspecialchars($posicion) . "</td>
+                        <td>" . htmlspecialchars($nombre) . "</td>
+                        <td>" . htmlspecialchars($puntuacion) . "</td>
+                        <td>" . htmlspecialchars($tiempo) . " " . htmlspecialchars($t['segundos'] ?? 's') . "</td>
+                        <td>" . htmlspecialchars($displayPerm) . "</td>
                     </tr>";
                 $posicion++;
             }
@@ -105,7 +122,7 @@
    <!-- PAGINADOR -->
     <div class="paginador">
         <?php if ($paginaActual > 1): ?>
-            <a href="?pagina=<?= $paginaActual - 1 ?>">&laquo; Anterior</a>
+            <a href="?pagina=<?= $paginaActual - 1 ?>&lang=<?= $lang ?>">&laquo; <?= $t['anterior'] ?? 'Anterior' ?></a>
         <?php endif; ?>
 
         <?php for ($i = 1; $i <= $paginas; $i++): ?>
