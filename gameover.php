@@ -56,7 +56,7 @@
     <h1><?= $t['h1GameOver'] ?>, <?= htmlspecialchars($inputName) ?>! 💥</h1>
     <p><?= $t['puntuacionGameOver'] ?>: <?= htmlspecialchars($score) ?></p>
     <p><?= $t['bonusGameOver'] ?>: <?= htmlspecialchars($bonus) ?></p>
-    <p><?= $t['tiempoGameOver'] ?>: <?= htmlspecialchars($tiempo) ?> s</p>
+    <p><?= $t['tiempoGameOver'] ?> <?= htmlspecialchars($tiempo) ?> s</p>
     <p>Permadeath: <?= htmlspecialchars($permadeath) ?></p>
     <div class="botones-gameover">
     <form action="ranking.php" method="post">

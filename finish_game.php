@@ -25,4 +25,3 @@
         $_SESSION['bonus'] = intval($_POST['bonus']);
     }
     echo "OK";
-?>

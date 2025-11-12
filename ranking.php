@@ -11,12 +11,8 @@
     $lang = isset($_GET['lang']) ? $_GET['lang'] : ($_SESSION['lang'] ?? 'es');
     $_SESSION['lang'] = $lang;
     $t = loadLanguage($lang);
-
-    // --- GUARDAR SOLO SI EXISTEN DATOS DE PARTIDA ---
-    if (isset($_SESSION['playerName']) && isset($_SESSION['score']) && isset($_SESSION['tiempo'])) {
-        $playerName = $_SESSION['playerName'];
-        $score = $_SESSION['score'];
-        $time = $_SESSION['tiempo'];
+    
+    // Almacenar Datos
     $playerName = $_POST['inputName'] ?? ($_SESSION['playerName'] ?? 'Invitado');
     $score = $_POST['score'] ?? ($_SESSION['score'] ?? 0);
     $time = $_POST['tiempo'] ?? ($_SESSION['tiempo'] ?? 0.0);
@@ -56,72 +52,43 @@
     </header>
     
     <h1><?= $t['h1Ranking'] ?></h1>
-    
-    <?php
-        if (file_exists($archivo)) {
-    ?>
     <table>
         <tr>
             <th><?= $t['th1Ranking'] ?></th>
             <th><?= $t['th2Ranking'] ?></th>
             <th><?= $t['th3Ranking'] ?></th>
             <th>Tiempo (s)</th>
+            <th>Permadeath</th>
         </tr>
         <?php
-        $lineas = file($archivo, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        $lineas = [];
+        if (file_exists($archivo)) {
+            $lineas = file($archivo, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
-        // Ordenar de mayor a menor puntuación
-        usort($lineas, function($a, $b) {
-            list(, $scoreA) = explode(" | ", $a);
-            list(, $scoreB) = explode(" | ", $b);
-            return $scoreB - $scoreA;
-        });
+            // Ordenar de mayor a menor puntuación
+            usort($lineas, function($a, $b) {
+                list(, $scoreA) = explode(" | ", $a);
+                list(, $scoreB) = explode(" | ", $b);
+                return (int)$scoreB - (int)$scoreA; // <-- cast a int
+            });
 
-        // --- PAGINACIÓN ---
-        $porPagina = 25;
-        $total = count($lineas);
-        $paginas = ceil($total / $porPagina);
 
-        $paginaActual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
-        if ($paginaActual < 1) $paginaActual = 1;
-        if ($paginaActual > $paginas) $paginaActual = $paginas;
+            // --- PAGINACIÓN ---
+            $porPagina = 25;
+            $total = count($lineas);
+            $paginas = ceil($total / $porPagina);
 
-        $inicio = ($paginaActual - 1) * $porPagina;
-        $jugadoresPagina = array_slice($lineas, $inicio, $porPagina);
-        
-        $posicion = $inicio + 1;
-        foreach ($jugadoresPagina as $linea) {
-            list($nombre, $puntuacion, $tiempo) = explode(" | ", $linea);
-            $resaltar = ($nombre === $playerName && $puntuacion === $score && $tiempo === $time) ? 'class="resaltar"' : '';
-            echo "<tr $resaltar>
-                    <td>$posicion</td>
-                    <td>$nombre</td>
-                    <td>$puntuacion</td>
-                    <td>$tiempo s</td>
-                </tr>";
-            $posicion++;
-        }
-        ?>
-    </table>
-    
-    <!-- PAGINADOR -->
-    <div class="paginador">
-        <?php if ($paginaActual > 1): ?>
-            <a href="?pagina=<?= $paginaActual - 1 ?>&lang=<?= $lang ?>">&laquo; <?= $t['anterior'] ?? 'Anterior' ?></a>
-        <?php endif; ?>
-    ?>
-        <table>
-            <tr>
-                <th>Posición</th>
-                <th>Nombre</th>
-                <th>Puntuación</th>
-                <th>Tiempo (s)</th>
-                <th>Permadeath</th>
-            </tr>
-            <?php
+            $paginaActual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
+            if ($paginaActual < 1) $paginaActual = 1;
+            if ($paginaActual > $paginas) $paginaActual = $paginas;
+
+            $inicio = ($paginaActual - 1) * $porPagina;
+            $jugadoresPagina = array_slice($lineas, $inicio, $porPagina);
+
             $posicion = $inicio + 1;
             foreach ($jugadoresPagina as $linea) {
-                list($nombre, $puntuacion, $tiempo, $permadeath) = explode(" | ", $linea);
+                $datos = array_pad(explode(" | ", $linea), 4, '');
+                list($nombre, $puntuacion, $tiempo, $permadeath) = $datos;
                 $resaltar = ($nombre === $playerName && (int)$puntuacion === (int)$score && (float)$tiempo === (float)$time && $permadeath === $perma) ? 'class="resaltar"' : '';
                 echo "<tr $resaltar>
                         <td>$posicion</td>
@@ -132,13 +99,14 @@
                     </tr>";
                 $posicion++;
             }
-            ?>
-        </table>
-        <!-- PAGINADOR -->
-        <div class="paginador">
-            <?php if ($paginaActual > 1): ?>
-                <a href="?pagina=<?= $paginaActual - 1 ?>">&laquo; Anterior</a>
-            <?php endif; ?>
+        ?>
+    </table>
+    
+   <!-- PAGINADOR -->
+    <div class="paginador">
+        <?php if ($paginaActual > 1): ?>
+            <a href="?pagina=<?= $paginaActual - 1 ?>">&laquo; Anterior</a>
+        <?php endif; ?>
 
         <?php for ($i = 1; $i <= $paginas; $i++): ?>
             <a href="?pagina=<?= $i ?>&lang=<?= $lang ?>" class="<?= ($i == $paginaActual) ? 'activo' : '' ?>">

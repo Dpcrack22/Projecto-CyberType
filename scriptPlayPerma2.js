@@ -185,7 +185,7 @@ const intervalo = setInterval(() => {
     if (contador > 0) {
         contadorDiv.textContent = contador;
     } else if (contador === 0) {
-        contadorDiv.textContent = gameTranslations.yaPlay || "YA!";
+        contadorDiv.textContent = "YA!";
     } else {
         clearInterval(intervalo);
         document.getElementById("contador").style.display = "none";
@@ -268,7 +268,7 @@ function cargarSiguienteFrase() {
             if (contador > 0) {
                 contadorDiv.textContent = contador;
             } else if (contador === 0) {
-                contadorDiv.textContent = gameTranslations.yaPlay || "YA!";
+                contadorDiv.textContent = "YA!";
             } else {
                 clearInterval(intervalo);
                 document.getElementById("contador").style.display = "none";
@@ -314,7 +314,7 @@ function verificarEscritura(tecla) {
         vidas--;
         actualizarVidas();
 
-        if (vidas === 0) {
+        if (totalErrores === 5) {
             const tiempoFinal = performance.now();
             const tiempoTotal = ((tiempoFinal - tiempoInicio) / 1000).toFixed(2); // Tiempo completado con decimales
             if (Math.random() < 0.1 ) { // 1% de probabilidad
@@ -330,6 +330,7 @@ function verificarEscritura(tecla) {
             endGame(puntuation, tiempoTotal);
             return;
         }
+
     }
 
     posicionActual++;
@@ -341,7 +342,7 @@ function verificarEscritura(tecla) {
 };
 
 function activateThanosSnap() {
-    console.log(gameTranslations.thanosActivarPlay || "💥 Modo Thanos activado: la mitad de las letras desaparecerán...");
+    console.log("💥 Modo Thanos activado: la mitad de las letras desaparecerán...");
 
     const spans = Array.from(inputOcult.querySelectorAll("span"));
     const half = Math.floor(spans.length / 2);
@@ -350,7 +351,7 @@ function activateThanosSnap() {
 
     new Audio('snap.mp3').play();
 
-    alert(gameTranslations.thanosMensajePlay || "💀 Thanos ha chasqueado los dedos... la mitad se desintegra y tu partida se acabó.");
+    alert("💀 Thanos ha chasqueado los dedos... la mitad se desintegra y tu partida se acabó.");
 
     // Efecto visual
     toRemove.forEach((span, i) => {
@@ -412,10 +413,11 @@ function endGame(score, tiempo) {
     })
     .then(response => response.text())
     .then(data => {
-         if (data.trim() === "OK") {
+        if (data === "OK") {
+            // Redirigir una vez se haya establecido la sesión
             window.location.href = "gameover.php";
         } else {
-            console.error("Error al finalizar el juego en el servidor:", data);
+            console.error("Error al finalizar el juego en el servidor.");
         }
     })
     .catch(error => console.error("Error al comunicarse con el servidor:", error));
