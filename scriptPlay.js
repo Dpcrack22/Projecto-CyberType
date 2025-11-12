@@ -79,8 +79,6 @@ function mostrarFrase() {
     hiddenInput.focus();
     updateProgress(); // actualizar barra (cada vez que mostramos una frase)
     
-    startTime(); // Iniciar barra de progreso 3 segundos
-    tiempoInicio = performance.now();
 }
 
 function createHiddenInput() {
@@ -198,6 +196,7 @@ const intervalo = setInterval(() => {
         }, 100);
 
         mostrarFrase();
+        startTime();
     }
 }, 1000);
 
