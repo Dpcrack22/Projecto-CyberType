@@ -89,3 +89,10 @@ Paco | 0 | 0 | No Activado
 Bili | 3650 | 15.34 | No Activado
 Bili | 0 | 0 | No Activado
 Bili | 0 | 0 | No Activado
+Paco | -350 | 1.32 | Activado
+Paco | 0 | 0 | No Activado
+Paco | 0 | 0 | No Activado
+Paco | 0 | 0 | No Activado
+Paco | 0 | 0 | No Activado
+Paco | 0 | 0 | No Activado
+Paco | 0 | 0 | No Activado

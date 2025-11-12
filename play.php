@@ -69,6 +69,14 @@
             <div id="progressFill"></div>
         </div>
     </div>
+    <script>const modoPermadeath = <?php echo $modoPermadeath ? 'true' : 'false'; ?>;</script>
+    <script>
+        const gameTranslations = {
+                yaPlay: "<?= $t['yaPlay'] ?>",
+                thanosActivarPlay: "<?= $t['thanosActivarPlay'] ?>",
+                thanosMensajePlay: "<?= $t['thanosMensajePlay'] ?>"
+            };
+    </script>
     <?php if ($modoPermadeath): ?>
         <script src="./scriptPlayPerma.js?<?php echo time(); ?>" defer></script>
     <?php else: ?>
@@ -76,17 +84,9 @@
     <?php endif; ?>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const modoPermadeath = <?php echo $modoPermadeath ? 'true' : 'false'; ?>;
             const dificultadSeleccionada = "<?= $difficulty ?>";
             const langSeleccionado = "<?= $lang ?>";
             
-            // Traducciones para el juego
-            const gameTranslations = {
-                yaPlay: "<?= $t['yaPlay'] ?>",
-                thanosActivarPlay: "<?= $t['thanosActivarPlay'] ?>",
-                thanosMensajePlay: "<?= $t['thanosMensajePlay'] ?>"
-            };
-
             fetch('get_sentence.php', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},

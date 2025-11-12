@@ -314,7 +314,7 @@ function verificarEscritura(tecla) {
         vidas--;
         actualizarVidas();
 
-        if (totalErrores === 5) {
+        if (vidas === 0) {
             const tiempoFinal = performance.now();
             const tiempoTotal = ((tiempoFinal - tiempoInicio) / 1000).toFixed(2); // Tiempo completado con decimales
             if (Math.random() < 0.1 ) { // 1% de probabilidad
@@ -412,11 +412,10 @@ function endGame(score, tiempo) {
     })
     .then(response => response.text())
     .then(data => {
-        if (data === "OK") {
-            // Redirigir una vez se haya establecido la sesión
+         if (data.trim() === "OK") {
             window.location.href = "gameover.php";
         } else {
-            console.error("Error al finalizar el juego en el servidor.");
+            console.error("Error al finalizar el juego en el servidor:", data);
         }
     })
     .catch(error => console.error("Error al comunicarse con el servidor:", error));
