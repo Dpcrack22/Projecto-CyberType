@@ -61,6 +61,10 @@ registrarLog("admin/list_sentences.php", "El administrador '$usuario' accedió a
             echo htmlspecialchars($_SESSION['mensaje']);
             unset($_SESSION['mensaje']);
             unset($_SESSION['tipo_mensaje']);
+        } elseif (isset($_SESSION['frase_recien_agregada'])) {
+            // Mostrar mensaje de frase agregada
+            $t = loadLanguage($lang);
+            echo htmlspecialchars("✓ " . $t['parrafo1Create']);
         }
         ?>
     </div>
@@ -104,7 +108,18 @@ registrarLog("admin/list_sentences.php", "El administrador '$usuario' accedió a
         </tr>
         <?php if ($total > 0): ?>
             <?php foreach ($frasesPagina as $dato): ?>
-                <tr>
+                <?php
+                    // Verificar si esta frase fue recién agregada
+                    $esRecienAgregada = false;
+                    if (isset($_SESSION['frase_recien_agregada']) && isset($_SESSION['dificultad_recien_agregada'])) {
+                        $fraseEnSesion = explode('@@', $_SESSION['frase_recien_agregada'])[0] ?? $_SESSION['frase_recien_agregada'];
+                        $fraseEnTabla = explode('@@', $dato['frase'])[0];
+                        if ($fraseEnSesion === $fraseEnTabla && $_SESSION['dificultad_recien_agregada'] === $dato['dificultad']) {
+                            $esRecienAgregada = true;
+                        }
+                    }
+                ?>
+                <tr <?php echo $esRecienAgregada ? 'class="frase-recien-agregada"' : ''; ?>>
                     <td><?php echo htmlspecialchars($dato['dificultad']); ?></td>
                     <td>
                         <?php 
@@ -120,6 +135,13 @@ registrarLog("admin/list_sentences.php", "El administrador '$usuario' accedió a
                         </form>
                     </td>
                 </tr>
+                <?php
+                    // Limpiar la sesión después de mostrar la frase destacada
+                    if ($esRecienAgregada) {
+                        unset($_SESSION['frase_recien_agregada']);
+                        unset($_SESSION['dificultad_recien_agregada']);
+                    }
+                ?>
             <?php endforeach; ?>
         <?php else: ?>
             <tr><td colspan="3"><?= $t['noFrases'] ?></td></tr>

@@ -440,3 +440,19 @@
 2025-11-13 | 09:43:47 | ::1 | index.php | El jugador 'Jose' cerró sesión.
 2025-11-13 | 09:43:47 | ::1 | index.php | El jugador 'Unknown' accedió al menú principal.
 2025-11-13 | 09:43:47 | ::1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-13 | 14:26:40 | 127.0.0.1 | index.php | El jugador 'Unknown' accedió al menú principal.
+2025-11-13 | 14:26:46 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2025-11-13 | 14:26:49 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2025-11-13 | 14:26:49 | 127.0.0.1 | admin/login.php | Intento de inicio de sesión fallido con usuario ''.
+2025-11-13 | 14:26:49 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2025-11-13 | 14:26:55 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2025-11-13 | 14:26:55 | 127.0.0.1 | admin/login.php | El administrador 'admin' inició sesión correctamente.
+2025-11-13 | 14:26:55 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2025-11-13 | 14:26:57 | 127.0.0.1 | admin/create_sentence.php | El administrador 'admin' accedió a la página de creación de frases.
+2025-11-13 | 14:27:00 | 127.0.0.1 | admin/create_sentence.php | El administrador 'admin' accedió a la página de creación de frases.
+2025-11-13 | 14:27:00 | 127.0.0.1 | admin/create_sentence.php | El administrador 'admin' añadió la frase 'paco' a dificultad 'facil'.
+2025-11-13 | 14:27:00 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-13 | 14:27:08 | 127.0.0.1 | admin/delete_sentence.php | El administrador 'admin' eliminó la frase 'paco' de dificultad 'facil'.
+2025-11-13 | 14:27:08 | 127.0.0.1 | admin/list_sentences.php | El administrador 'admin' accedió al listado de frases (página 1).
+2025-11-13 | 14:27:10 | 127.0.0.1 | admin/logout.php | El administrador 'admin' cerró sesión.
+2025-11-13 | 14:27:10 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.

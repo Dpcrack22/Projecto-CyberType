@@ -1320,6 +1320,27 @@ header .user-info {
     padding: 10px 0;
 }
 
+.body-listarFrases tr.frase-recien-agregada {
+    background-color: #4BB543 !important;
+    animation: highlight-fade 3s ease-in-out;
+}
+
+.body-listarFrases tr.frase-recien-agregada td {
+    color: #000000;
+    font-weight: bold;
+}
+
+@keyframes highlight-fade {
+    0% {
+        background-color: #4BB543;
+        box-shadow: 0 0 15px rgba(75, 181, 67, 0.8);
+    }
+    100% {
+        background-color: #4BB543;
+        box-shadow: 0 0 0px rgba(75, 181, 67, 0);
+    }
+}
+
 /* ADMIN HEADER STYLES */
 .admin-name {
     font-weight: bold;

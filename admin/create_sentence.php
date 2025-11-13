@@ -106,8 +106,13 @@
 
                 if ($fraseAgregada) {
                     file_put_contents($archivo, implode(PHP_EOL, $lineas) . PHP_EOL);
-                    echo "<p class='success-message'>" . $t['parrafo1Create'] . "</p>";
+                    // Guardar la frase añadida en sesión para destacarla en list_sentences.php
+                    $_SESSION['frase_recien_agregada'] = $nuevaFrase;
+                    $_SESSION['dificultad_recien_agregada'] = $dificultad;
                     registrarLog("admin/create_sentence.php", "El administrador '$usuario' añadió la frase '$nuevaFrase' a dificultad '$dificultad'.");
+                    // Redirigir a list_sentences.php
+                    header("Location: list_sentences.php");
+                    exit;
                 } else {
                     echo "<p class='error-message'>" . $t['parrafo2Create'] . "</p>";
                     registrarLog("admin/create_sentence.php", "El administrador '$usuario' intentó añadir una frase duplicada: '$nuevaFrase' (dificultad '$dificultad').");
