@@ -26,6 +26,9 @@ let fraseAleatoria = "";
 let hiddenInput = null;
 let isComposing = false;
 
+// Bandera para permitir entrada de teclas
+let permitirEntrada = false;
+
 let tiempoInicio = 0;
 let tiempoTranscurrido = 0;
 let intervalTiempo;
@@ -207,6 +210,7 @@ const intervalo = setInterval(() => {
         }, 100);
 
         mostrarFrase();
+        permitirEntrada = true;
         startTime();
     }
 }, 1000);
@@ -246,6 +250,7 @@ function manejarTecla(e) {
 }
 
 function cargarSiguienteFrase() {
+    permitirEntrada = false;
     indiceFraseActual++;
     if (indiceFraseActual >= frasesJuego.length) {
         const tiempoFinal = performance.now();
@@ -285,6 +290,7 @@ function cargarSiguienteFrase() {
                 document.getElementById("titulo-play").style.display = "block";
 
                 mostrarFrase();
+                permitirEntrada = true;
                 startTime();
             }
         }, 1000);
@@ -293,6 +299,12 @@ function cargarSiguienteFrase() {
 
 function verificarEscritura(tecla) {
     console.log("👉 Tecla pulsada:", tecla);
+    
+    // No procesar si la entrada aún no está permitida
+    if (!permitirEntrada) {
+        return;
+    }
+    
     const spans = inputOcult.querySelectorAll("span");
     const letraEsperada = fraseAleatoria[posicionActual];
 
