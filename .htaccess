@@ -1,5 +1,5 @@
 # 🚫 Bloquear acceso a archivos sensibles
-<FilesMatch "^(sentences\.txt|credentials\.txt)$">
+<FilesMatch "^(sentences\.txt|credentials\.txt|logs\.txt)$">
     Require all denied
 </FilesMatch>
 
