@@ -6,7 +6,6 @@ const audioMiss = new Audio("Miss.wav");
 const audioGameover = new Audio("gameover.wav");
 const bonusDiv = document.getElementById("bonusMessage");
 const tiempoDiv = document.getElementById("tiempoTranscurrido");
-const vidasJuego = document.getElementById("vidas").style.display = "none";
 
 // Variables de juego modificables
 let puntuation = 0;
@@ -18,10 +17,6 @@ let multiplicador = 1;
 // Contador de inicio
 let contador = 3;
 
-// Barra de progreso 3 segundos
-let comboTimer;
-let timeLeft = 3;
-
 // Frases y estado del juego
 let indiceFraseActual = 0;
 let posicionActual = 0;
@@ -30,7 +25,6 @@ let fraseAleatoria = "";
 // Input oculto para capturar composition/input (acentos) correctamente
 let hiddenInput = null;
 let isComposing = false;
-let skipNextInput = false;
 
 // Bandera para permitir entrada de teclas
 let permitirEntrada = false;
@@ -53,6 +47,20 @@ let thanosActive = false;
 let totalFrases = 0;
 let progressLabel = null;
 let progressFill = null;
+
+// Barra de progreso 3 segundos
+let comboTimer;
+let timeLeft = 3;
+
+// Modo Permadeath
+let vidas = 5;
+const vidasElem = document.querySelectorAll(".vida");
+
+function actualizarVidas() {
+    for (let i = 0; i < vidasElem.length; i++) {
+        vidasElem[i].style.display = i < vidas ? "inline" : "none";
+    }
+}
 
 
 function mostrarFrase() {
@@ -84,7 +92,7 @@ function mostrarFrase() {
     hiddenInput.value = "";
     hiddenInput.focus();
     updateProgress(); // actualizar barra (cada vez que mostramos una frase)
-    
+
 }
 
 function createHiddenInput() {
@@ -117,17 +125,11 @@ function createHiddenInput() {
             }
             hiddenInput.value = '';
         }
-        // Skip the input event that fires immediately after compositionend to prevent double processing
-        skipNextInput = true;
     });
 
     // Input normal (no composición)
     hiddenInput.addEventListener('input', (e) => {
         if (isComposing) return; // compositionend ya lo maneja
-        if (skipNextInput) {
-            skipNextInput = false;
-            return;
-        }
         if (e.data) {
             for (let ch of e.data) {
                 if (ch.length === 1) verificarEscritura(ch);
@@ -297,10 +299,12 @@ function cargarSiguienteFrase() {
 
 function verificarEscritura(tecla) {
     console.log("👉 Tecla pulsada:", tecla);
+    
     // No procesar si la entrada aún no está permitida
     if (!permitirEntrada) {
         return;
     }
+    
     const spans = inputOcult.querySelectorAll("span");
     const letraEsperada = fraseAleatoria[posicionActual];
 
@@ -312,8 +316,8 @@ function verificarEscritura(tecla) {
         audioRight.play().catch(() => {});
         spans[posicionActual].classList.add("correcta");
         spans[posicionActual].classList.remove("incorrecta");
-        puntuation += 10;
-        startTime(); // Reiniciar barra de progreso 3 segundos
+        puntuation += 25;
+        startTime();
         easterEgg(true);
         console.log(tecla);
         // Registrar la tecla pulsada con información sobre acento y la tecla esperada
@@ -324,11 +328,31 @@ function verificarEscritura(tecla) {
         audioMiss.play().catch(() => {});
         spans[posicionActual].classList.add("incorrecta");
         spans[posicionActual].classList.remove("correcta");
-        puntuation -= 5;
-        startTime(); // Reiniciar barra de progreso 3 segundos
+        puntuation -= 10;
+        startTime();
         easterEgg(false);
         // Registrar la tecla pulsada (incorrecta)
         enviarLogKeypress(tecla, letraEsperada, false);
+        totalErrores++;
+        vidas--;
+        actualizarVidas();
+
+        if (vidas === 0) {
+            const tiempoFinal = performance.now();
+            const tiempoTotal = ((tiempoFinal - tiempoInicio) / 1000).toFixed(2); // Tiempo completado con decimales
+            if (Math.random() < 0.1 ) { // 1% de probabilidad
+                thanosSnapTriggered = true;
+                activateThanosSnap();
+                setTimeout(() => {
+                    endGame(puntuation, tiempoTotal);
+                }, 4000);
+                return;
+            }
+            clearInterval(intervalTiempo);
+            enviarLogTeclas(fraseAleatoria, fraseAleatoria, tiempoTranscurrido);
+            endGame(puntuation, tiempoTotal);
+            return;
+        }
     }
 
     posicionActual++;
@@ -351,10 +375,9 @@ function activateThanosSnap() {
 
     alert(gameTranslations.thanosMensajePlay || "💀 Thanos ha chasqueado los dedos... la mitad se desintegra y tu partida se acabó.");
 
-    // Stop/pause the 3-second combo/progress bar when Thanos activates
     thanosActive = true;
     pauseTime();
-
+    
     // Efecto visual
     toRemove.forEach((span, i) => {
         setTimeout(() => {
@@ -412,14 +435,14 @@ function endGame(score, tiempo) {
         + "&bonus=" + encodeURIComponent(bonus)
         + "&tiempo=" + encodeURIComponent(tiempo)
         + "&multiplicador=" + encodeURIComponent(multiplicador)
+        + "&permadeath=" + (modoPermadeath ? "1" : "0")
     })
     .then(response => response.text())
     .then(data => {
-        if (data === "OK") {
-            // Redirigir una vez se haya establecido la sesión
+         if (data.trim() === "OK") {
             window.location.href = "gameover.php";
         } else {
-            console.error("Error al finalizar el juego en el servidor.");
+            console.error("Error al finalizar el juego en el servidor:", data);
         }
     })
     .catch(error => console.error("Error al comunicarse con el servidor:", error));
@@ -510,7 +533,6 @@ function updateProgress() {
     const pct = totalFrases > 0 ? Math.round((current / totalFrases) * 100) : 0;
     progressFill.style.width = `${pct}%`;
 }
-
 
 // Funciones barra de progreso 3 segundos
 

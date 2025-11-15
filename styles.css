@@ -85,6 +85,94 @@
     background-color: #A50000;
 }
 
+/* Checkbox Permadeath personalizado */
+.body-index section label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: white;
+    user-select: none;
+    margin-top: 15px;
+}
+
+/* Ocultamos el checkbox nativo */
+.body-index section label input[type="checkbox"] {
+    display: none;
+}
+
+/* Creamos el toggle visual */
+.body-index section label::before {
+    content: '';
+    display: inline-block;
+    width: 50px;
+    height: 25px;
+    background-color: #363636; /* fondo gris oscuro */
+    border-radius: 15px;
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+/* El círculo interno */
+.body-index section label::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 21px;
+    height: 21px;
+    background-color: #ED1D24; /* rojo Marvel */
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+/* Compatibilidad moderna: toggle cuando está activo */
+.body-index section label:has(input[type="checkbox"]:checked)::before {
+    background-color: #ED1D24; /* fondo rojo */
+}
+
+.body-index section label:has(input[type="checkbox"]:checked)::after {
+    transform: translateX(25px); /* movemos el círculo a la derecha */
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 8px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #555;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 220px;
+    background-color: #333;
+    color: #fff;
+    text-align: left;
+    padding: 8px;
+    border-radius: 4px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Posición arriba del ícono */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
 .hero-container {
     display: flex;
     align-items: center;
@@ -114,9 +202,6 @@
     max-width: 500px;
 }
 
-/* Estilos para el header con la imagen, y la sesión iniciada */
-/* El header se reutiliza en todas las páginas después de iniciar sesión */
-/* Debe quedar arriba como si fuera una cabecera fija */
 header {
     background-color: #1A1A1A;
     padding: 10px 20px;
@@ -160,6 +245,8 @@ header .user-info {
 .logout-link:hover {
     background-color: #d16b2a;
 }
+
+
 
 /* PLAY PAGE STYLES */
 .body-play {
@@ -245,6 +332,30 @@ header .user-info {
     display: none;
 }
 
+
+.body-play header #vidas {
+    display: flex;
+    justify-content: center;   
+    align-items: center;       
+    gap: 10px;                 
+    margin: 0;                 
+    padding: 0 10px;           
+}
+
+.body-play header .vida {
+    width: 45px;              
+    height: 45px;              
+    object-fit: contain;       
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background-color: transparent;
+    cursor: default;           
+}
+
+.body-play header .vida:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(237, 29, 36, 0.6);
+}
+
 #imageContainer {
     display: flex;
     justify-content: center;
@@ -299,6 +410,26 @@ header .user-info {
     text-align: center;
     border: 2px solid #A50000;
     box-shadow: 0 0 20px rgba(237, 29, 36, 0.6);
+}
+
+#barraProgresoTiempo {
+    position:fixed;
+    bottom: 30px;
+    width: 250px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 40px auto;
+    box-shadow: 0 0 6px rgba(0,0,0,0.3);
+    z-index: 9999;
+}
+
+#tiempoRestanteFill {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, limegreen, yellow);
+    transition: width 0.1s linear;
 }
 
 /* 404 PAGE STYLES */
@@ -503,6 +634,48 @@ header .user-info {
     text-decoration: none;
     color: #FFFFFF;
 }
+
+.imagenes-gameover {
+  position: absolute;
+  bottom: 100px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  gap: 10px; 
+  justify-content: space-around;
+  align-items: flex-end;
+  margin: 0;
+}
+
+.foto {
+  width: 150px;
+  height: auto;
+  opacity: 1;
+  animation: parpadeo 3s infinite;
+}
+
+.foto:nth-child(1) {
+  animation-delay: 0s;
+}
+.foto:nth-child(2) {
+  animation-delay: 1s;
+}
+.foto:nth-child(3) {
+  animation-delay: 2s;
+}
+
+@keyframes parpadeo {
+  0%, 33.33% {
+    opacity: 1; 
+  }
+  50%, 83.33% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 
 /* RANKING PAGE STYLES */
 .body-ranking {
@@ -959,7 +1132,7 @@ header .user-info {
     margin-bottom: 20px;
     text-transform: uppercase;
     letter-spacing: 6px;
-    margin-top: 30px;
+    margin-top: 100px;
 }
 .body-addImage form #sentenceImage {
     display: none;
@@ -1143,6 +1316,8 @@ header .user-info {
     color: #4BB543;
     font-weight: bold;
     margin-bottom: 20px;
+    display: block;
+    padding: 10px 0;
 }
 
 /* ADMIN HEADER STYLES */
@@ -1323,6 +1498,7 @@ header .user-info {
     align-items: center;
     gap: 10px;
     margin-bottom: 30px;
+    flex-wrap: wrap;
 }
 
 .body-listarFrases .paginador a,
@@ -1396,4 +1572,29 @@ header .user-info {
     height: 100%;
     background: linear-gradient(90deg, #ED1D24, #FFCB05);
     transition: width 0.3s ease;
+}
+
+/* Selector de idioma */
+.lang-selector {
+    position: fixed;       /* fijo en la pantalla */
+    bottom: 20px;          /* 20px desde abajo */
+    right: 20px;           /* 20px desde la derecha */
+    z-index: 1000;         /* por encima de otros elementos */
+    background-color: rgba(0,0,0,0.6); /* semi-transparente para visibilidad */
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
+.lang-selector select {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.lang-selector select:focus {
+    outline: none;
 }
