@@ -55,6 +55,25 @@ Cuando el jugador termina todas las frases, accede a la pantalla final donde pue
 
 ---
 
+## 🧪 Desarrollo con frontend React (Vite) + backend PHP
+
+Esta opción es útil si estás migrando la interfaz a React manteniendo el backend actual en PHP.
+
+1. Levanta el backend PHP (desde la raíz del repo):
+   ```bash
+   php -S localhost:8000 -t .
+   ```
+2. Levanta el frontend React (en otra terminal):
+   ```bash
+   cd frontend
+   npm install
+   npm run dev
+   ```
+3. Desde React, llama a los endpoints PHP usando el prefijo `/backend` (proxy de Vite), por ejemplo:
+   - `fetch('/backend/get_sentence.php')`
+
+---
+
 ## 🕹️ Instrucciones de juego
 
 1. **Pantalla inicial (index.php):**  
