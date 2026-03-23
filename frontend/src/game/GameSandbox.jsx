@@ -1,12 +1,20 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { getSentences } from '../api/game'
 
-export default function GameSandbox() {
-  const [difficulty, setDifficulty] = useState('facil')
-  const [lang, setLang] = useState('es')
+export default function GameSandbox({ initialDifficulty = 'facil', initialLang = 'es' }) {
+  const [difficulty, setDifficulty] = useState(initialDifficulty)
+  const [lang, setLang] = useState(initialLang)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [items, setItems] = useState([])
+
+  useEffect(() => {
+    setDifficulty(initialDifficulty)
+  }, [initialDifficulty])
+
+  useEffect(() => {
+    setLang(initialLang)
+  }, [initialLang])
 
   async function load() {
     setLoading(true)
