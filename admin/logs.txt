@@ -457,3 +457,9 @@
 2025-11-13 | 14:27:10 | 127.0.0.1 | admin/logout.php | El administrador 'admin' cerró sesión.
 2025-11-13 | 14:27:10 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
 2026-03-23 | 14:57:01 | 127.0.0.1 | admin/api/_auth.php | Acceso no autorizado a API (sin sesión).
+2026-03-23 | 15:10:30 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2026-03-23 | 15:10:36 | 127.0.0.1 | admin/api/_auth.php | Acceso no autorizado a API (sin sesión).
+2026-03-23 | 15:10:44 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2026-03-23 | 15:10:44 | 127.0.0.1 | admin/login.php | El administrador 'admin' inició sesión correctamente.
+2026-03-23 | 15:10:44 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2026-03-23 | 15:11:00 | 127.0.0.1 | admin/api/delete_sentence.php | El admin 'admin' elimino la frase 'Wakanda por siempre' (facil, es)
