@@ -542,3 +542,9 @@
 2026-03-23 | 15:19:14 | 127.0.0.1 | index.php | El jugador 'Paco' cerró sesión.
 2026-03-23 | 15:19:25 | 127.0.0.1 | api/start_game.php | Inicio (React) del jugador 'Paco' con dificultad 'facil' (permadeath=0)
 2026-03-23 | 15:19:28 | 127.0.0.1 | index.php | El jugador 'Paco' cerró sesión.
+2026-03-23 | 15:10:30 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2026-03-23 | 15:10:36 | 127.0.0.1 | admin/api/_auth.php | Acceso no autorizado a API (sin sesión).
+2026-03-23 | 15:10:44 | 127.0.0.1 | admin/login.php | Alguien accedio al login.php.
+2026-03-23 | 15:10:44 | 127.0.0.1 | admin/login.php | El administrador 'admin' inició sesión correctamente.
+2026-03-23 | 15:10:44 | 127.0.0.1 | admin/index.php | El administrador 'admin' accedió al panel principal.
+2026-03-23 | 15:11:00 | 127.0.0.1 | admin/api/delete_sentence.php | El admin 'admin' elimino la frase 'Wakanda por siempre' (facil, es)
